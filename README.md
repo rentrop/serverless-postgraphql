@@ -27,3 +27,16 @@ to build the graphql-schema.
 ## Deploy and test
 * `sls deploy`
 You are all set now. You can now query the resulting endpoint as you wish. Try it e.g. with [the Graphiql Chrome extension](https://chrome.google.com/webstore/detail/chromeiql/fkkiamalmpiidkljmicmjfbieiclmeij)
+
+## Example Query:
+```
+mutation {
+  authenticate(input: {email: "spowell0@noaa.gov", password: "iFbWWlc"}) {
+    clientMutationId
+    jwtToken {
+      role
+      personId
+    }
+  }
+}
+```
