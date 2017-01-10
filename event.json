@@ -1,0 +1,6 @@
+{
+  "query": "mutation {\nauthenticate(input: {email: \"spowell0@noaa.gov\", password: \"iFbWWlc\"}) {\njwtToken\n}\n}",
+  "variables": "",
+  "operationName": "",
+  "headers": {}
+}

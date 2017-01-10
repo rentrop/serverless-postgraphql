@@ -17,7 +17,54 @@ functions:
       - http:
           method: post
           path: graphql
-          cors: true
+          integration: lambda
+          request:
+            template:
+              application/json: |
+                {
+                  "query" : "$util.escapeJavaScript($input.path('$.query'))",
+                  "variables" : "$util.escapeJavaScript($input.path('$.variables'))",
+                  "operationName" : "$util.escapeJavaScript($input.path('$.operationName'))",
+                  "headers" : {
+                     #if( $input.params().header.get('Authorization').toString() != "" )
+                        "authorization" : "$input.params().header.get('Authorization')"
+                     #end
+                  }
+                }
+              application/graphql: |
+                {
+                  "query" : "$util.escapeJavaScript($input.body)",
+                  "headers" : {
+                     #if( $input.params().header.get('Authorization').toString() != "" )
+                        "authorization" : "$input.params().header.get('Authorization')"
+                     #end
+                  }
+                }
+      - http:
+          method: get
+          path: graphql
+          integration: lambda
+          request:
+            parameters:
+              querystrings:
+                query: true
+                variables: false
+                operationName: false
+              headers:
+                Authorization: false
+            template:
+              application/json: |
+                {
+                  "query" : "$util.escapeJavaScript($input.params('query'))",
+                  "variables" : "$util.escapeJavaScript($input.params('variables'))",
+                  "operationName" : "$util.escapeJavaScript($input.params('operationName'))",
+                  "headers" : {
+                     #if( $input.params().header.get('Authorization').toString() != "" )
+                        "authorization" : "$input.params().header.get('Authorization')"
+                     #end
+                  }
+                }
+
     environment:
       PGCON: postgresql://forum_example_postgraphql:xyz@pgEndpoint:5432/forumexample
       JWT_SECRET: keyboard_kitten

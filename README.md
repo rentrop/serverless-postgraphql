@@ -36,11 +36,25 @@ to build the graphql-schema.
 * Deploy to Server:
   * `sls deploy function -f graphql` or for a 'full' deployment `sls deploy`
 
-You are all set now. You can now query the resulting endpoint as you wish. Try it e.g. with [the Graphiql Chrome extension](https://chrome.google.com/webstore/detail/chromeiql/fkkiamalmpiidkljmicmjfbieiclmeij)
+You are all set now. You can now query the resulting endpoint as you wish via __POST__ and __GET__
+
+One example to authenticate a user would be:
+```
+mutation {
+  authenticate(input: {email: "spowell0@noaa.gov", password: "iFbWWlc"}) {
+    jwtToken
+  }
+}
+```
+
+You can try this by entering the following in your browser:
+ > your-url/dev/graphql?query=mutation%20%7B%0Aauthenticate%28input%3A%20%7Bemail%3A%20%22spowell0%40noaa.gov%22%2C%20password%3A%20%22iFbWWlc%22%7D%29%20%7B%0AjwtToken%0A%7D%0A%7D
+
+
 
 # TODO:
-If the JWT token is invalid or wrongly formatted lambda returns `internal server error`. Why?
-At the moment the JWT validation is done within [setupRequestPgClientTransaction.js](https://github.com/calebmer/postgraphql/blob/master/src/postgraphql/http/setupRequestPgClientTransaction.js). This functions throws `httpError` on error.
-This can be improved by e.g.:
-* Do the JWT-Validation via a [custom authorizer for API Gateway](http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html)
-* Reimplement the `setupRequestPgClientTransaction`-function to throw 'lambda-errors' instead of the current `throw httpError`
+* Responde with error-codes.  
+At the moment always statusCode:200 is returned.
+Not sure how to give back error-codes and preserve the graphql `{"errors": [...]}`-style.
+Using `cb(some error)` and a custom `template` could be a solution... Not sure how exactly. [Serverless Doku on status codes](
+https://serverless.com/framework/docs/providers/aws/events/apigateway#custom-status-codes)

@@ -9,16 +9,6 @@ const setupRequestPgClientTransaction = require("postgraphql/build/postgraphql/h
 const PgCat = JSON.parse(fs.readFileSync('pgCatalog/pgCatalog.json', 'utf8'));
 
 module.exports.graphql = (event, context, cb) => {
-  if(event.headers.Authorization !== null){
-    event.headers.authorization = event.headers.Authorization
-  }
-  let gqlParam
-  try {
-    gqlParam = JSON.parse(event.body);
-  } catch (err){
-    cb(err)
-  }
-
   // Setup connection to PostgresDB
   const pgClient = new Client(process.env.PGCON);
   pgClient.connect();
@@ -46,22 +36,29 @@ module.exports.graphql = (event, context, cb) => {
                     jwtSecret: options.jwtSecret,
                     pgDefaultRole: options.pgDefaultRole
                   })
-                  .then((pgRole) => {
-                    graphql(gqlSchema, gqlParam.query, null,
+                  .then( (pgRole) => {
+                    graphql(gqlSchema, event.query, null,
                             {[pgClientFromContext.$$pgClient]: pgClient},
-                            gqlParam.variables, gqlParam.operationName)
+                            event.variables, event.operationName)
                             .then((response) => {
                               pgClient.end();
-                              cb(null, {statusCode: 200,  body: JSON.stringify(response)})
+                              cb(null, response)
                             })
-                            .catch(() => cb(e))
+                            .catch(() => cb(e));
                   })
                   .then(() => pgClient.query('commit'))
-                  .catch(() => cb(e));
+                  .catch( (err) => {
+                    pgClient.end();
+                    cb(null, {"errors": [err]});
+                  });
                 })
-          } catch(error) {
-            pgClient.end(); cb(e);
+          } catch(err) {
+            pgClient.end();
+            cb(null, {"errors": [err]});
           }
         })
-      .catch(e => {pgClient.end(); cb(e)});
+      .catch( (err) => {
+        pgClient.end();
+        cb(null, {"errors": [err]});
+      });
     }
