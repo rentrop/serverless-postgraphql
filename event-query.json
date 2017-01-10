@@ -1,0 +1,22 @@
+{
+  "body":"{\"query\":\"{currentPerson {id,fullName,firstName,lastName,latestPost{headline}}}\"}",
+  "headers": {
+    "Accept": "application/json, text/xml, application/xml, */*",
+    "Accept-Encoding": "gzip, deflate",
+    "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiZm9ydW1fZXhhbXBsZV9wZXJzb24iLCJwZXJzb25faWQiOjEsImlhdCI6MTQ4NDA2MTMyOSwiZXhwIjoxNDg0MTQ3NzI5LCJhdWQiOiJwb3N0Z3JhcGhxbCIsImlzcyI6InBvc3RncmFwaHFsIn0.iqVDt_8pNTgSQ8qH1SZ4degUb_WtvCI5jFSHfGHReSA",
+    "CloudFront-Forwarded-Proto": "https",
+    "CloudFront-Is-Desktop-Viewer": "true",
+    "CloudFront-Is-Mobile-Viewer": "false",
+    "CloudFront-Is-SmartTV-Viewer": "false",
+    "CloudFront-Is-Tablet-Viewer": "false",
+    "CloudFront-Viewer-Country": "AT",
+    "Content-Type": "application/json",
+    "Host": "4bp38olyz7.execute-api.eu-central-1.amazonaws.com",
+    "User-Agent": "libcurl/7.51.0 r-curl/2.3 httr/1.2.1",
+    "Via": "1.1 b4ee4db849dcb5fce83f0bc3d6a9d57f.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Id": "gdbynQ0o_SVb5tmHBN7bGSY-eTS1hp858tlcsypy6bhs21lCN_gDqw==",
+    "X-Forwarded-For": "80.110.126.135, 54.240.145.81",
+    "X-Forwarded-Port": "443",
+    "X-Forwarded-Proto": "https"
+  }
+}

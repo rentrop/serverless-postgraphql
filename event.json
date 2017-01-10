@@ -1,3 +1,0 @@
-{
-  "body":"{\"query\":\"mutation { authenticate(input: {email: \\\"spowell0@noaa.gov\\\", password: \\\"iFbWWlc\\\"}) { clientMutationId jwtToken { role, personId } } }\"}"
-}
