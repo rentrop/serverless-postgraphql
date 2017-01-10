@@ -12,7 +12,7 @@
     "populate-data": "psql $npm_package_config_PGCON -f ./populateDB/data.sql",
     "drop-data": "psql $npm_package_config_PGCON -f ./populateDB/drop.sql",
     "build-schema": "node ./pgCatalog/buildPgCatalog.js $npm_package_config_PGCON forum_example",
-    "postgraphql-local": "postgraphql -c $npm_package_config_PGCON --schema forum_example"
+    "postgraphql-local": "postgraphql --connection $npm_package_config_PGCON --schema forum_example --default-role forum_example_anonymous --secret keyboard_kitten --token forum_example.jwt_token"
   },
   "author": "Richard",
   "license": "MIT",
