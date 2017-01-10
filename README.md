@@ -27,7 +27,7 @@ The last command runs a SQL query to get schema-information about the Postgres D
 The information is written to a JSON-file which is then loaded by the lambda function (handler.js)
 to build the graphql-schema.
 
-## Deploy and test
+## Deploy
 
 * You can now test your endpint locally using:
   * `sls invoke local -f graphql -p event-auth.json`
@@ -52,9 +52,12 @@ You can try this by entering the following in your browser:
 
 
 
-# TODO:
+# TODO/Ideas
 * Responde with error-codes.  
 At the moment always statusCode:200 is returned.
 Not sure how to give back error-codes and preserve the graphql `{"errors": [...]}`-style.
-Using `cb(some error)` and a custom `template` could be a solution... Not sure how exactly. [Serverless Doku on status codes](
-https://serverless.com/framework/docs/providers/aws/events/apigateway#custom-status-codes)
+Using `cb(some error)` and a custom `template` could be a solution... Not sure how exactly - [Serverless Doku on status codes](https://serverless.com/framework/docs/providers/aws/events/apigateway#custom-status-codes)
+
+* Using API Gateway Custom Authorizers  
+At the moment the JWT-Validation is done via postgraphql's [setupRequestPgClientTransaction](https://github.com/calebmer/postgraphql/blob/e72696de3d67f5d478c009f8be4c9b25fdb1e2ed/src/postgraphql/http/setupRequestPgClientTransaction.js#L39) function.  
+Maybe it would be better to do it via [API Gateway Custom Authorizers](http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html) - [Serverless Doku](https://serverless.com/framework/docs/providers/aws/events/apigateway#http-endpoints-with-custom-authorizers)
