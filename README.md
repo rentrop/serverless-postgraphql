@@ -37,3 +37,10 @@ to build the graphql-schema.
   * `sls deploy function -f graphql` or for a 'full' deployment `sls deploy`
 
 You are all set now. You can now query the resulting endpoint as you wish. Try it e.g. with [the Graphiql Chrome extension](https://chrome.google.com/webstore/detail/chromeiql/fkkiamalmpiidkljmicmjfbieiclmeij)
+
+# TODO:
+If the JWT token is invalid or wrongly formatted lambda returns `internal server error`. Why?
+At the moment the JWT validation is done within [setupRequestPgClientTransaction.js](https://github.com/calebmer/postgraphql/blob/master/src/postgraphql/http/setupRequestPgClientTransaction.js). This functions throws `httpError` on error.
+This can be improved by e.g.:
+* Do the JWT-Validation via a [custom authorizer for API Gateway](http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html)
+* Reimplement the `setupRequestPgClientTransaction`-function to throw 'lambda-errors' instead of the current `throw httpError`
