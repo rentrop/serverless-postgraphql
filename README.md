@@ -1,9 +1,14 @@
 Serverless graphql endpoint for PostgresSQL database using [AWS](https://aws.amazon.com/de/),
-[serverless](https://github.com/serverless/serverless) and [postgraphql](https://github.com/calebmer/postgraphql)
+[serverless](https://github.com/serverless/serverless)
+and [postgraphql](https://github.com/calebmer/postgraphql)
+
+* [Short Intro to postgraphql](https://www.youtube.com/watch?v=b3pwlCDy6vY)
 
 # How to use:
 
 ## Setup
+[Install serverless](https://github.com/serverless/serverless#quick-start)
+
 ```
 git clone https://github.com/rentrop/serverless-postgraphql
 cd serverless-postgraphql
