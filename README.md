@@ -22,7 +22,7 @@ sls deploy -v
 * From the result of `sls deploy` take the `pgEndpoint` and insert it in:
   * `package.json`-file in the config of `PGCON` (line 7)
   * `serverless.yml`-file in the environment-variable named `PGCON` (line 21)
-* Populate the DB with the data from postgraphql's excelent [forum example](https://github.com/rentrop/postgraphql/tree/master/examples/forum). You need the `psql` cli. On Mac just follow the instructions [here](http://postgresapp.com/) to install it.
+* Populate the DB with the data from postgraphql's excelent [forum example](https://github.com/calebmer/postgraphql/tree/master/examples/forum). You need the `psql` cli. On Mac just follow the instructions [here](http://postgresapp.com/) to install it.
   * `npm run populate-schema`
   * `npm run populate-data`
 * Get the schema from the database and write it as a json file:
@@ -32,16 +32,12 @@ The last command runs a SQL query to get schema-information about the Postgres D
 The information is written to a JSON-file which is then loaded by the lambda function (handler.js)
 to build the graphql-schema.
 
-## Deploy
+## Deploy & Test
 
-* You can now test your endpint locally using:
-  * `sls invoke local -f graphql -p event-auth.json`
-  * `sls invoke local -f graphql -p event-query.json` In case this fails:
-  Take the returned token from the first invoke and put it into `event-query.json`
-* Deploy to Server:
+Deploy to Server:
   * `sls deploy function -f graphql` or for a 'full' deployment `sls deploy`
 
-You are all set now. You can now query the resulting endpoint as you wish via __POST__ and __GET__
+You are all set now. You can now query the resulting endpoint as you wish via __POST__ and __GET__.
 
 One example to authenticate a user would be:
 ```
@@ -55,7 +51,14 @@ mutation {
 You can try this by entering the following in your browser:
  > your-url/dev/graphql?query=mutation%20%7B%0Aauthenticate%28input%3A%20%7Bemail%3A%20%22spowell0%40noaa.gov%22%2C%20password%3A%20%22iFbWWlc%22%7D%29%20%7B%0AjwtToken%0A%7D%0A%7D
 
+For most other queries you need to be authorised. Authorization in postgraphql is done via the jwtToken. Set this in your following requests as `Authorization` header:
 
+```
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhIjoxLCJiIjoyLCJjIjozfQ.hxhGCCCmGV9nT1slief1WgEsOsfdnlVizNrODxfh1M8
+```
+
+* Here you can find an [in-depth explainaition](https://github.com/calebmer/postgraphql/blob/master/examples/forum/TUTORIAL.md#authentication-and-authorization)
+* Gist on how to [query this endpoint in R](https://gist.github.com/rentrop/83cb1d8fc8593726a808032e55314019)
 
 # TODO/Ideas
 * Responde with error-codes.  
