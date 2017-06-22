@@ -23,7 +23,7 @@ functions:
               application/json: |
                 {
                   "query" : "$util.escapeJavaScript($input.path('$.query'))",
-                  "variables" : "$util.escapeJavaScript($input.path('$.variables'))",
+                  "variables" : $input.json('$.variables'),
                   "operationName" : "$util.escapeJavaScript($input.path('$.operationName'))",
                   "headers" : {
                      #if( $input.params().header.get('Authorization').toString() != "" )
