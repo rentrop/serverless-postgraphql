@@ -6,7 +6,40 @@ and [postgraphql](https://github.com/calebmer/postgraphql)
 
 # How to use:
 
-## Setup
+## Set up your development environment
+
+💾 Install [Postgres](https://www.postgresql.org/) 🐘
+  *  I use [Postgres.app](http://postgresapp.com/)
+
+💾 [Install yarn](https://yarnpkg.com/en/docs/install) 
+
+👯 Clone the repo and install
+```
+git clone https://github.com/ctxfloods-backend`
+cd ctxfloods-backend
+yarn install
+```
+
+🐘  Make sure postgres is running
+
+⌨️ Initialize the database
+```
+yarn run init-local-db
+```
+
+⌨️ Run the local server
+```
+yarn run local-server
+```
+
+✅ Run the tests
+```
+yarn run tests
+```
+
+🍻 Cheers! Everything should now be up and running! 
+
+## Deploying to AWS
 [Install serverless](https://github.com/serverless/serverless#quick-start)
 
 ```

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When registering, deactivating, and reactivating a user as a super admin As a super admin once more should reactivate the user 1`] = `
+Object {
+  "reactivateUser": Object {
+    "user": Object {
+      "active": true,
+      "firstName": "New",
+      "lastName": "User",
+    },
+  },
+}
+`;
+
+exports[`When registering, deactivating, and reactivating a user as a super admin As the new user again should fail to get the correct current user 1`] = `[Error: Invalid status code: 403]`;
+
+exports[`When registering, deactivating, and reactivating a user as a super admin As the new user should get the correct current user 1`] = `"New"`;
+
+exports[`When registering, deactivating, and reactivating a user as a super admin As the reactivated user should get the correct current user 1`] = `
+Object {
+  "currentUser": Object {
+    "firstName": "New",
+    "lastName": "User",
+  },
+}
+`;
+
+exports[`When registering, deactivating, and reactivating a user as a super admin should see the user is deactivated 1`] = `
+Object {
+  "userById": Object {
+    "active": false,
+    "firstName": "New",
+    "lastName": "User",
+  },
+}
+`;

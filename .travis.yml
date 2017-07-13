@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+- node
+addons:
+  postgresql: 9.4
+services:
+  - postgresql
+before_script: yarn run init-local-db; yarn run local-drop-rebuild
+script: yarn run postgraphql-local & yarn run test

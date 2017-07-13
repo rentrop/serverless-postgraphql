@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`As a super admin When adding a crossing the new crossing should show up in the DB 1`] = `
+Object {
+  "crossingById": Object {
+    "communityCrossingsByCrossingId": Object {
+      "nodes": Array [
+        Object {
+          "communityId": 1,
+        },
+      ],
+    },
+    "description": "Describe!",
+    "humanAddress": "Near the barn",
+    "name": "New Crossing",
+  },
+}
+`;
+
+exports[`As a super admin When adding a crossing to a different community the new crossing should show up in the DB 1`] = `
+Object {
+  "crossingById": Object {
+    "communityCrossingsByCrossingId": Object {
+      "nodes": Array [
+        Object {
+          "communityId": 2,
+        },
+      ],
+    },
+    "description": "Describe!",
+    "humanAddress": "Near the barn",
+    "name": "New Crossing",
+  },
+}
+`;
+
+exports[`As a super admin When adding and editing a community the new community should show up in the DB 1`] = `
+Object {
+  "communityById": Object {
+    "name": "New Community",
+  },
+}
+`;
+
+exports[`As a super admin When adding and editing a community the renamed community should show up in the DB 1`] = `
+Object {
+  "communityById": Object {
+    "name": "Renamed Community",
+  },
+}
+`;
+
+exports[`As a super admin When adding and editing a status duration the new status duration should show up in the DB 1`] = `
+Object {
+  "statusDurationById": Object {
+    "name": "New Status Duration",
+  },
+}
+`;
+
+exports[`As a super admin When adding and editing a status duration the renamed status duration should show up in the DB 1`] = `
+Object {
+  "statusDurationById": Object {
+    "name": "Renamed Status Duration",
+  },
+}
+`;
+
+exports[`As a super admin When adding and editing a status reason the new status reason should show up in the DB 1`] = `
+Object {
+  "statusReasonById": Object {
+    "name": "New Status Reason",
+  },
+}
+`;
+
+exports[`As a super admin When adding and editing a status reason the renamed status reason should show up in the DB 1`] = `
+Object {
+  "statusReasonById": Object {
+    "name": "Renamed Status Reason",
+  },
+}
+`;
+
+exports[`As a super admin When adding and editing a status the new status should show up in the DB 1`] = `
+Object {
+  "statusById": Object {
+    "name": "New Status",
+  },
+}
+`;
+
+exports[`As a super admin When adding and editing a status the renamed status should show up in the DB 1`] = `
+Object {
+  "statusById": Object {
+    "name": "Renamed Status",
+  },
+}
+`;
+
+exports[`As a super admin When updating the status of a crossing the new status should show up in the DB 1`] = `
+Object {
+  "crossingById": Object {
+    "latestStatus": Object {
+      "notes": "THIS IS A STATUS UPDATE TEST",
+    },
+  },
+}
+`;
+
+exports[`As a super admin should get the correct current user 1`] = `
+Object {
+  "currentUser": Object {
+    "id": 1,
+  },
+}
+`;
