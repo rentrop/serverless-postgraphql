@@ -15,7 +15,7 @@ and [postgraphql](https://github.com/calebmer/postgraphql)
 
 👯 Clone the repo and install
 ```
-git clone https://github.com/ctxfloods-backend`
+git clone https://github.com/cityofaustin/ctxfloods-backend
 cd ctxfloods-backend
 yarn install
 ```
