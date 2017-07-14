@@ -68,6 +68,19 @@ insert into floods.status_duration (id, status_id, name, timespan) values
   (2, 4, 'A Week', interval '1 week');
 alter sequence floods.status_duration_id_seq restart with 3;
 
+-- Add status associations
+insert into floods.status_association (id, status_id, detail, rule) values
+  (1, 1, 'reason', 'disabled'),
+  (2, 1, 'duration', 'disabled'),
+  (3, 2, 'reason', 'required'),
+  (4, 2, 'duration', 'disabled'),
+  (5, 3, 'reason', 'disabled'),
+  (6, 3, 'duration', 'disabled'),
+  (7, 4, 'reason', 'required'),
+  (8, 4, 'duration', 'required');
+alter sequence floods.status_association_id_seq restart with 9;
+
+
 -- Add status updates
 insert into floods.status_update (id, status_id, creator_id, crossing_id, notes, created_at) values
   (1, 1, 1, 1, 'notes', '2017-05-03T09:27:57Z'),

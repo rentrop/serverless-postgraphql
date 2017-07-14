@@ -72,6 +72,20 @@ const queryPublicData = function(lokka) {
       expect(response).not.toBeNull();
     });
 
+    it('should get all status associations', async () => {
+      const response = await lokka.send(`
+      {
+        allStatusAssociations {
+          nodes {
+            id
+          }
+        }
+      }
+      `);
+
+      expect(response).not.toBeNull();
+    });
+
     it('should get all status durations', async () => {
       const response = await lokka.send(`
       {

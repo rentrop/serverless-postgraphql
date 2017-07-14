@@ -100,6 +100,32 @@ comment on column floods.status_duration.status_id is 'The id of the status the 
 comment on column floods.status_duration.name is 'The name of the status reason.';
 comment on column floods.status_duration.timespan is 'The timespan of the status reason.';
 
+-- Create status detail type
+create type floods.status_detail as enum (
+  'reason',
+  'duration'
+);
+
+-- Create status rule type
+create type floods.status_rule as enum (
+  'disabled',
+  'enabled',
+  'required'
+);
+
+-- Create the Status Associations table
+create table floods.status_association (
+  id               serial primary key,
+  status_id        integer not null references floods.status(id),
+  detail           floods.status_detail not null,
+  rule             floods.status_rule not null
+);
+
+comment on table floods.status_association is 'An association of a status to a rule about status details.';
+comment on column floods.status_association.id is 'The primary unique identifier for the status association.';
+comment on column floods.status_association.detail is 'The type of detailed information in the association.';
+comment on column floods.status_association.rule is 'The rule about the permissions in the association.';
+
 -- Create the Status Update table
 create table floods.status_update (
   id                  serial primary key,
@@ -286,15 +312,27 @@ $$ language plpgsql strict security definer;
 comment on function floods.reactivate_user(integer, text, text, text) is 'Reactivates a user and creates an account.';
 
 -- Create function to update status
--- TODO: Logic behind status reason etc.
+-- TODO: Figure out how to make reason and duration dynamic
 create function floods.new_status_update(
   status_id integer,
   crossing_id integer,
-  notes text
+  notes text,
+  status_reason_id integer,
+  status_duration_id integer
 ) returns floods.status_update as $$
 declare
   floods_status_update floods.status_update;
 begin
+  -- TODO: Remove this hacky fix and redefine as strict after
+    -- https://github.com/postgraphql/postgraphql/issues/438 is closed
+  if status_id is null then
+    raise exception 'Status is required';
+  end if;
+
+  if crossing_id is null then
+    raise exception 'Crossing is required';
+  end if;
+
   -- If we aren't a super admin
   if current_setting('jwt.claims.role') != 'floods_super_admin' then
     -- and we're trying to update the status of a crossing in a different community
@@ -303,15 +341,63 @@ begin
     end if;
   end if;
 
-  insert into floods.status_update (status_id, creator_id, crossing_id, notes) values
-    (status_id, current_setting('jwt.claims.user_id')::integer, crossing_id, notes)
+  -- If the status reason is not null
+  if status_reason_id is not null then
+    -- but the association says it should be disabled
+    if (select rule from floods.status_association where floods.status_association.status_id = new_status_update.status_id and detail = 'reason') = 'disabled' then
+      -- we shouldn't be here, throw
+      raise exception 'Status reasons are disabled for status:  %', (select name from floods.status where id = status_id);
+    end if;
+
+    -- but the status reason is for a different status
+    if (select floods.status_reason.status_id from floods.status_reason where id = status_reason_id) != new_status_update.status_id then
+      -- we shouldn't be here, throw
+      raise exception 'This status reason is not for status:  %', (select name from floods.status where id = new_status_update.status_id);
+    end if;
+  end if;
+
+  -- If the status reason is null
+  if status_reason_id is null then
+    -- but the association says it is required
+    if (select rule from floods.status_association where floods.status_association.status_id = new_status_update.status_id and detail = 'reason') = 'required' then
+      -- we shouldn't be here, throw
+      raise exception 'Status reasons are required for status:  %', (select name from floods.status where id = status_id);
+    end if;
+  end if;
+
+  -- If the status duration is not null
+  if status_duration_id is not null then
+    -- but the association says it should be disabled
+    if (select rule from floods.status_association where floods.status_association.status_id = new_status_update.status_id and detail = 'duration') = 'disabled' then
+      -- we shouldn't be here, throw
+      raise exception 'Status durations are disabled for status:  %', (select name from floods.status where id = status_id);
+    end if;
+
+    -- but the status duration is for a different status
+    if (select floods.status_duration.status_id from floods.status_duration where id = status_duration_id) != new_status_update.status_id then
+      -- we shouldn't be here, throw
+      raise exception 'This status duration is not for status:  %', (select name from floods.status where id = new_status_update.status_id);
+    end if;
+  end if;
+
+  -- If the status reason is null
+  if status_duration_id is null then
+    -- but the association says it is required
+    if (select rule from floods.status_association where floods.status_association.status_id = new_status_update.status_id and detail = 'duration') = 'required' then
+      -- we shouldn't be here, throw
+      raise exception 'Status durations are required for status:  %', (select name from floods.status where id = status_id);
+    end if;
+  end if;
+
+  insert into floods.status_update (status_id, creator_id, crossing_id, notes, status_reason_id, status_duration_id) values
+    (status_id, current_setting('jwt.claims.user_id')::integer, crossing_id, notes, status_reason_id, status_duration_id)
     returning * into floods_status_update;
 
   return floods_status_update;
 end;
-$$ language plpgsql strict security definer;
+$$ language plpgsql security definer;
 
-comment on function floods.new_status_update(integer, integer, text) is 'Updates the status of a crossing.';
+comment on function floods.new_status_update(integer, integer, text, integer, integer) is 'Updates the status of a crossing.';
 
 -- Create function to create new crossings
 create function floods.new_crossing(
@@ -654,6 +740,7 @@ grant select on table floods.status to floods_anonymous;
 grant select on table floods.status_update to floods_anonymous;
 grant select on table floods.status_reason to floods_anonymous;
 grant select on table floods.status_duration to floods_anonymous;
+grant select on table floods.status_association to floods_anonymous;
 grant select on table floods.crossing to floods_anonymous;
 grant select on table floods.community_crossing to floods_anonymous;
 
@@ -680,7 +767,7 @@ grant execute on function floods.current_user() to floods_community_editor;
 
 -- Allow community editors and up to update the status of crossings
 -- NOTE: Extra logic around permissions in function
-grant execute on function floods.new_status_update(integer, integer, text) to floods_community_editor;
+grant execute on function floods.new_status_update(integer, integer, text, integer, integer) to floods_community_editor;
 
 -- Allow community editors and up to add crossings
 -- NOTE: Extra logic around permissions in function

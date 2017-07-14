@@ -31,7 +31,7 @@ Object {
 
 exports[`As a community admin When updating the status of a crossing NOT in the same community as the user should fail to update the status 1`] = `[Error: GraphQL Error: Users can only update the status of crossings within their communities]`;
 
-exports[`As a community admin should fail to delete a crossing from antother community 1`] = `[Error: GraphQL Error: Community administrators can only delete crossings in their community]`;
+exports[`As a community admin should fail to delete a crossing from another community 1`] = `[Error: GraphQL Error: Community administrators can only delete crossings in their community]`;
 
 exports[`As a community admin should fail to delete a user from another community 1`] = `[Error: GraphQL Error: Cannot query field "removeUser" on type "Mutation". Did you mean "registerUser", "reactivateUser", "deactivateUser", or "removeCrossing"?]`;
 

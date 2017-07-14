@@ -360,6 +360,20 @@ describe('As a community editor', async () => {
       expect(response).not.toBeNull();
     });
 
+    it('should get all status associations', async () => {
+      const response = await lokka.send(`
+      {
+        allStatusAssociations {
+          nodes {
+            id
+          }
+        }
+      }
+      `);
+
+      expect(response).not.toBeNull();
+    });
+
     it('should get all crossings', async () => {
       const response = await lokka.send(`
       {

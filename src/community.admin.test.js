@@ -307,7 +307,7 @@ describe('As a community admin', async () => {
     }
   });
 
-  it('should fail to delete a crossing from antother community', async () => {
+  it('should fail to delete a crossing from another community', async () => {
     try {
       const response = await lokka.send(`
       mutation {
@@ -399,6 +399,20 @@ describe('As a community admin', async () => {
       const response = await lokka.send(`
       {
         allStatusDurations {
+          nodes {
+            id
+          }
+        }
+      }
+      `);
+
+      expect(response).not.toBeNull();
+    });
+
+    it('should get all status associations', async () => {
+      const response = await lokka.send(`
+      {
+        allStatusAssociations {
           nodes {
             id
           }
