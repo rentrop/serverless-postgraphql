@@ -6,6 +6,7 @@ const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
 const superAdminEmail = 'superadmin@flo.ods';
 const communityAdminEmail = 'admin@community.floods';
 const communityEditorEmail = 'editor@community.floods';
+const inactiveUserEmail = 'inactive@community.floods';
 const everyPassword = 'texasfloods';
 const wrongPassword = 'wrong';
 
@@ -45,6 +46,7 @@ function shouldFail(email="", password="", extra_description) {
       });
 
       expect(response.authenticate.jwtToken).toBeNull();
+      expect(response).toMatchSnapshot();
     });
   }); 
 }
@@ -57,4 +59,5 @@ describe('When authenticating', () => {
   shouldFail(communityAdminEmail, wrongPassword);
   shouldWork(communityEditorEmail, everyPassword);
   shouldFail(communityEditorEmail, wrongPassword);
+  shouldFail(inactiveUserEmail, everyPassword);
 });

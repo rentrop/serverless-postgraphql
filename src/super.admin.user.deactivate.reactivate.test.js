@@ -24,6 +24,25 @@ async function getToken(email, password) {
   return response.authenticate.jwtToken;
 }
 
+function userInDatabase(userId) {
+  it('should see the user in the database', async () => {
+    const response = await anonLokka.send(`
+      query($userId:Int!){
+        userById(id:$userId) {
+          firstName
+          lastName
+          active
+        }
+      }
+    `,
+    {
+      userId: userId
+    });
+
+    expect(response).toMatchSnapshot();
+  });
+}
+
 describe('When registering, deactivating, and reactivating a user as a super admin', () => {
   var newUserEmail = uuidv4() + '@flo.ods';
   var newUserId;
@@ -36,7 +55,7 @@ describe('When registering, deactivating, and reactivating a user as a super adm
         const headers = {
           'Authorization': 'Bearer '+ token
         };
-        lokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql', {headers})});
+        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
         done();
       });
     });
@@ -65,10 +84,14 @@ describe('When registering, deactivating, and reactivating a user as a super adm
         email: newUserEmail
       });
 
+      newUserId = response.registerUser.user.id;
       expect(response).not.toBeNull();
       expect(response.registerUser.user.active).toBeTruthy();
     });
 
+    it('after registering', () => {
+      userInDatabase(newUserId);
+    });
   });
 
   describe('As the new user', async () => {
@@ -79,7 +102,7 @@ describe('When registering, deactivating, and reactivating a user as a super adm
         const headers = {
           'Authorization': 'Bearer '+ token
         };
-        lokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql', {headers})});
+        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
         done();
       });
     });
@@ -107,7 +130,7 @@ describe('When registering, deactivating, and reactivating a user as a super adm
         const headers = {
           'Authorization': 'Bearer '+ token
         };
-        lokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql', {headers})});
+        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
         done();
       });
     });
@@ -129,52 +152,10 @@ describe('When registering, deactivating, and reactivating a user as a super adm
       expect(response).not.toBeNull();
     });
 
-  });
-
-  describe('As the new user again', async () => {
-    var lokka;
-
-    beforeEach(async (done) => {
-      getToken(newUserEmail, newUserPassword).then((token) => {
-        const headers = {
-          'Authorization': 'Bearer '+ token
-        };
-        lokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql', {headers})});
-        done();
-      });
+    it('after deactivating', () => {
+      userInDatabase(newUserId);
     });
 
-    it('should fail to get the correct current user', async () => {
-      try {
-        const response = await lokka.send(`
-          {
-            currentUser {
-              id
-              emailAddress
-            }
-          }
-        `);
-      } catch(e) {
-        expect(e).toMatchSnapshot();
-      }
-    });
-  });
-
-  it('should see the user is deactivated', async () => {
-    const response = await anonLokka.send(`
-      query($userId:Int!){
-        userById(id:$userId) {
-          firstName
-          lastName
-          active
-        }
-      }
-    `,
-    {
-      userId: newUserId
-    });
-
-    expect(response).toMatchSnapshot();
   });
 
   describe('As a super admin once more', async () => {
@@ -185,7 +166,7 @@ describe('When registering, deactivating, and reactivating a user as a super adm
         const headers = {
           'Authorization': 'Bearer '+ token
         };
-        lokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql', {headers})});
+        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
         done();
       });
     });
@@ -215,6 +196,10 @@ describe('When registering, deactivating, and reactivating a user as a super adm
       expect(response).toMatchSnapshot();
     });
 
+    it('after reactivating', () => {
+      userInDatabase(newUserId);
+    });
+
   });
 
   describe('As the reactivated user', async () => {
@@ -225,7 +210,7 @@ describe('When registering, deactivating, and reactivating a user as a super adm
         const headers = {
           'Authorization': 'Bearer '+ token
         };
-        lokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql', {headers})});
+        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
         done();
       });
     });
