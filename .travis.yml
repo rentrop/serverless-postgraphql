@@ -8,9 +8,11 @@ services:
 
 jobs:
   include:
-    - stage: test
+    - stage: Test Locally
       before_script: yarn init-local-db; yarn local-drop-rebuild
       script: yarn postgraphql-local & yarn test
-    - stage: deploy
+    - stage: Deploy to AWS
       before_script: npm install -g serverless
       script: ./travisDeploy.sh
+    - stage: Test against AWS endpoint
+      script: yarn test-on-aws

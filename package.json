@@ -15,7 +15,7 @@
     "local-server": "yarn run local-drop-rebuild;yarn run postgraphql-local",
     "rebuild-and-deploy": "yarn run drop-data;yarn run populate-schema;yarn run populate-data;yarn run build-schema;sls deploy -v",
     "test": "react-scripts test",
-    "test-on-aws": "AWS_ENDPOINT='https://df3yrm54i8.execute-api.us-east-1.amazonaws.com/dev/graphql' USE_AWS_ENDPOINT=true react-scripts test",
+    "test-on-aws": "USE_AWS_ENDPOINT=true react-scripts test",
     "populate-schema": "psql $npm_package_config_PGCON -f ./populateDB/schema.sql",
     "populate-local-schema": "psql $npm_package_config_PGLOCALCON -f ./populateDB/schema.sql",
     "populate-data": "psql $npm_package_config_PGCON -f ./populateDB/data.sql",
