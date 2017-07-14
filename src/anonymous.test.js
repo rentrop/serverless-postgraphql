@@ -1,30 +1,9 @@
 import HttpTransport from 'lokka-transport-http';
 import Lokka from 'lokka';
-import queryPublicData from './queryPublicData';
-import authenticate from './authenticate';
 
 const anonLokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql')});
 
 describe('As an anonymous user', () => {
-  queryPublicData(anonLokka);
-  authenticate(anonLokka, 'super admin', 'superadmin@flo.ods', 'texasfloods');
-  authenticate(anonLokka, 'community admin', 'admin@community.floods', 'texasfloods');
-  authenticate(anonLokka, 'community editor', 'editor@community.floods', 'texasfloods');
-
-  it('should fail to get the current user', async () => {
-    try {
-      const response = await anonLokka.send(`
-      {
-        currentUser {
-          id
-        }
-      }
-    `);
-    } catch(e) {
-      expect(e).toMatchSnapshot();
-    }
-  });
-
   it('should fail to register a new user', async () => {
     try {
       const response = await anonLokka.send(`

@@ -1,8 +1,6 @@
 import HttpTransport from 'lokka-transport-http';
 import Lokka from 'lokka';
 import uuidv4 from 'uuid';
-import queryPublicData from './queryPublicData';
-import authenticate from './authenticate';
 
 const anonLokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql')});
 const superAdminEmail = 'superadmin@flo.ods';

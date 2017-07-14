@@ -1,5 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`As an anonymous user should fail to get the current user 1`] = `[Error: GraphQL Error: permission denied for function current_user]`;
-
 exports[`As an anonymous user should fail to register a new user 1`] = `[Error: GraphQL Error: permission denied for function register_user]`;
