@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When deactivating, and reactivating a user as a community editor As a community editor again should fail to reactivate the new community editor 1`] = `[Error: GraphQL Error: permission denied for function reactivate_user]`;
+
+exports[`When deactivating, and reactivating a user as a community editor As a community editor should fail to deactivate the new community editor 1`] = `[Error: GraphQL Error: Community editors can only deactivate themselves]`;

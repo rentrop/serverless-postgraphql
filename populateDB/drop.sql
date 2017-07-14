@@ -4,7 +4,7 @@
 
 begin;
 
-drop schema if exists forum_example, forum_example_private cascade;
-drop role if exists forum_example_postgraphql, forum_example_anonymous, forum_example_person, forum_example_postgraphql_demo;
+drop schema if exists floods, floods_private cascade;
+drop role if exists floods_postgraphql, floods_anonymous, floods_community_editor, floods_community_admin, floods_super_admin;
 
 commit;

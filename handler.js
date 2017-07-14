@@ -19,10 +19,11 @@ module.exports.graphql = (event, context, cb) => {
   // Set postgraphql options
   // For all options see https://github.com/calebmer/postgraphql/blob/master/docs/library.md
   const options = {
-    pgDefaultRole: "forum_example_anonymous",
+    pgDefaultRole: "floods_anonymous",
     jwtSecret: process.env.JWT_SECRET,
-    jwtPgTypeIdentifier: "forum_example.jwt_token",
-    pgDefaultRole: "forum_example_anonymous"
+    jwtPgTypeIdentifier: "floods.jwt_token",
+    pgDefaultRole: "floods_anonymous",
+    disableDefaultMutations: true
   }
   let gqlSchema
   createPostGraphQLSchema.default(pgClient, PgCatalog, options)

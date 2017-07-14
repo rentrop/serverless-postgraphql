@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When registering a community admin As a community admin should fail to register a new community admin 1`] = `[Error: GraphQL Error: Community administrators can only add editors to the communities they administrate]`;
+
+exports[`When registering a community editor As a community admin should fail to register a new community editor in a different community 1`] = `[Error: GraphQL Error: Community administrators can only add editors to the communities they administrate]`;
+
+exports[`When registering a community editor As the new community editor should get the correct current user 1`] = `
+Object {
+  "currentUser": Object {
+    "firstName": "New",
+    "jobTitle": "Community Editor",
+    "lastName": "User",
+  },
+}
+`;
+
+exports[`When registering a community editor the new user should show up in the DB 1`] = `
+Object {
+  "userById": Object {
+    "firstName": "New",
+    "jobTitle": "Community Editor",
+    "lastName": "User",
+  },
+}
+`;
+
+exports[`When registering a super admin As a community admin should fail to register a new super admin 1`] = `[Error: GraphQL Error: Community administrators can only add editors to the communities they administrate]`;

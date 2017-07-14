@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`As a community admin should fail to delete a crossing from another community 1`] = `[Error: GraphQL Error: Community administrators can only delete crossings in their community]`;
+
+exports[`As a community admin should fail to delete a user from another community 1`] = `[Error: GraphQL Error: Cannot query field "removeUser" on type "Mutation". Did you mean "registerUser", "reactivateUser", "deactivateUser", or "removeCrossing"?]`;
+
+exports[`As a community admin should fail to register a new admin 1`] = `[Error: GraphQL Error: Community administrators can only add editors to the communities they administrate]`;

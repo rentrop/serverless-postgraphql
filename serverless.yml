@@ -1,4 +1,4 @@
-service: serverless-postgraphql
+service: serverless-postgraphql-floods
 
 provider:
   name: aws
@@ -17,6 +17,7 @@ functions:
       - http:
           method: post
           path: graphql
+          cors: true
           integration: lambda
           request:
             template:
@@ -44,6 +45,7 @@ functions:
           method: get
           path: graphql
           integration: lambda
+          cors: true
           request:
             parameters:
               querystrings:
@@ -66,7 +68,7 @@ functions:
                 }
 
     environment:
-      PGCON: postgresql://forum_example_postgraphql:xyz@pgEndpoint:5432/forumexample
+      PGCON: ${env:PGRUNCON}
       JWT_SECRET: keyboard_kitten
 
 # For a pgDB inside a VPC look e.g. here:
@@ -86,7 +88,7 @@ resources:
   pgDB:
     Type: "AWS::RDS::DBInstance"
     Properties:
-      DBName: "forumexample"
+      DBName: "floods"
       AllocatedStorage: 5
       DBInstanceClass: "db.t2.micro"
       Engine: "postgres"
@@ -100,7 +102,7 @@ resources:
       Tags:
         -
           Key: "Name"
-          Value: "forum_example"
+          Value: "floods"
     DeletionPolicy: "Snapshot"
  Outputs:
     pgEndpoint:
