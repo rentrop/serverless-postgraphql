@@ -1,8 +1,9 @@
 import HttpTransport from 'lokka-transport-http';
 import Lokka from 'lokka';
 import uuidv4 from 'uuid';
+import { endpoint } from './endpoints';
 
-const anonLokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql')});
+const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
 const superAdminEmail = 'superadmin@flo.ods';
 const superAdminPassword = 'texasfloods';
 const newUserPassword = 'texasfloods';
@@ -35,7 +36,7 @@ describe('When registering, deactivating, and reactivating a user', () => {
         const headers = {
           'Authorization': 'Bearer '+ token
         };
-        lokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql', {headers})});
+        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
         done();
       });
     });
@@ -78,7 +79,7 @@ describe('When registering, deactivating, and reactivating a user', () => {
         const headers = {
           'Authorization': 'Bearer '+ token
         };
-        lokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql', {headers})});
+        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
         done();
       });
     });
@@ -114,19 +115,21 @@ describe('When registering, deactivating, and reactivating a user', () => {
       expect(response).not.toBeNull();
     });
 
-    it('should fail to get the correct current user', async () => {
-      try {
-        const response = await lokka.send(`
-          {
-            currentUser {
-              id
-              emailAddress
-            }
+    it('should see the user in the database', async () => {
+      const response = await anonLokka.send(`
+        query($userId:Int!){
+          userById(id:$userId) {
+            firstName
+            lastName
+            active
           }
-        `);
-      } catch(e) {
-        expect(e).toMatchSnapshot();
-      }
+        }
+      `,
+      {
+        userId: newUserId
+      });
+
+      expect(response).toMatchSnapshot();
     });
 
   });
@@ -139,7 +142,7 @@ describe('When registering, deactivating, and reactivating a user', () => {
         const headers = {
           'Authorization': 'Bearer '+ token
         };
-        lokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql', {headers})});
+        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
         done();
       });
     });
@@ -178,7 +181,7 @@ describe('When registering, deactivating, and reactivating a user', () => {
         const headers = {
           'Authorization': 'Bearer '+ token
         };
-        lokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql', {headers})});
+        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
         done();
       });
     });

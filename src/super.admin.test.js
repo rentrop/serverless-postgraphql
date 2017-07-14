@@ -1,7 +1,8 @@
 import HttpTransport from 'lokka-transport-http';
 import Lokka from 'lokka';
+import { endpoint } from './endpoints';
 
-const anonLokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql')});
+const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
 const superAdminEmail = 'superadmin@flo.ods';
 const superAdminPassword = 'texasfloods';
 
@@ -29,7 +30,7 @@ describe('As a super admin', async () => {
       const headers = {
         'Authorization': 'Bearer '+ token
       };
-      lokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql', {headers})});
+      lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
       done();
     });
   });

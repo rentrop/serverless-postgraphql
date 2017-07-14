@@ -1,7 +1,8 @@
 import HttpTransport from 'lokka-transport-http';
 import Lokka from 'lokka';
+import { endpoint } from './endpoints';
 
-const anonLokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql')});
+const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
 
 describe('As an anonymous user', () => {
   it('should fail to register a new user', async () => {

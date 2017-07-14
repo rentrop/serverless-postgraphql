@@ -12,9 +12,17 @@ Object {
 }
 `;
 
-exports[`When registering, deactivating, and reactivating a user As the new user should fail to get the correct current user 1`] = `[Error: Invalid status code: 403]`;
-
 exports[`When registering, deactivating, and reactivating a user As the new user should get the correct current user 1`] = `"New"`;
+
+exports[`When registering, deactivating, and reactivating a user As the new user should see the user in the database 1`] = `
+Object {
+  "userById": Object {
+    "active": false,
+    "firstName": "New",
+    "lastName": "User",
+  },
+}
+`;
 
 exports[`When registering, deactivating, and reactivating a user As the reactivated user should get the correct current user 1`] = `
 Object {

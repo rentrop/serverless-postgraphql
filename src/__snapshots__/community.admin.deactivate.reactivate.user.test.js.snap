@@ -25,8 +25,6 @@ Object {
 
 exports[`When registering, deactivating, and reactivating a user as a community admin As the new other community user should get the correct current user 1`] = `"New"`;
 
-exports[`When registering, deactivating, and reactivating a user as a community admin As the new user again should fail to get the correct current user 1`] = `[Error: Invalid status code: 403]`;
-
 exports[`When registering, deactivating, and reactivating a user as a community admin As the new user should get the correct current user 1`] = `"New"`;
 
 exports[`When registering, deactivating, and reactivating a user as a community admin As the reactivated user should get the correct current user 1`] = `
