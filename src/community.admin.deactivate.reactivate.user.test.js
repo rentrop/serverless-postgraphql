@@ -221,35 +221,6 @@ describe('When registering, deactivating, and reactivating a user as a community
     });
   });
 
-  describe('As the new user again', async () => {
-    var lokka;
-
-    beforeEach(async (done) => {
-      getToken(newUserEmail, newUserPassword).then((token) => {
-        const headers = {
-          'Authorization': 'Bearer '+ token
-        };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
-        done();
-      });
-    });
-
-    it('should fail to get the correct current user', async () => {
-      try {
-        const response = await lokka.send(`
-          {
-            currentUser {
-              id
-              emailAddress
-            }
-          }
-        `);
-      } catch(e) {
-        expect(e).toMatchSnapshot();
-      }
-    });
-  });
-
   it('should see the user is deactivated', async () => {
     const response = await anonLokka.send(`
       query($userId:Int!){
