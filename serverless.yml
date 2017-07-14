@@ -68,7 +68,7 @@ functions:
                 }
 
     environment:
-      PGCON: postgresql://floods_postgraphql:xyz@*******************************************:5432/floods
+      PGCON: ${env:PGRUNCON}
       JWT_SECRET: keyboard_kitten
 
 # For a pgDB inside a VPC look e.g. here:

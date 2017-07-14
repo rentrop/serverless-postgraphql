@@ -4,8 +4,8 @@
   "description": "postgraphql test on serverless",
   "main": "handler.js",
   "config": {
-    "PGCON": "postgresql://example:serverless@*************************************:5432/floods",
-    "PGRUNCON": "postgresql://floods_postgraphql:xyz@******************************:5432/floods",
+    "PGCON": "postgresql://example:serverless@***********:5432/floods",
+    "PGRUNCON": "postgresql://floods_postgraphql:xyz@***********:5432/floods",
     "PGLOCALCON": "postgresql://postgres@localhost:5432/floods",
     "PGLOCALRUNCON": "postgresql://floods_postgraphql@localhost:5432/floods",
     "PGLOCALINITCON": "postgresql://postgres@localhost:5432/"
