@@ -1,12 +1,13 @@
 import HttpTransport from 'lokka-transport-http';
 import Lokka from 'lokka';
+import { endpoint } from './endpoints';
 
 const superAdminEmail = 'superadmin@flo.ods';
 const communityAdminEmail = 'admin@community.floods';
 const communityEditorEmail = 'editor@community.floods';
 const everyPassword = 'texasfloods';
 
-const anonLokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql')});
+const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
 async function getToken(email, password) {
   const response = await anonLokka.send(`
     mutation($email:String!, $password:String!) {
@@ -35,7 +36,7 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
         const headers = {
           'Authorization': 'Bearer '+ token
         };
-        lokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql', {headers})});
+        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
         done();
       });
     });
@@ -163,7 +164,7 @@ function shouldFail(username, password, status, crossing, notes, reason, duratio
         const headers = {
           'Authorization': 'Bearer '+ token
         };
-        lokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql', {headers})});
+        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
         done();
       });
     });
