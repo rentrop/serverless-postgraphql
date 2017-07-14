@@ -1,5 +1,7 @@
 import HttpTransport from 'lokka-transport-http';
 import Lokka from 'lokka';
+import local from './endpoints';
+console.log(local);
 
 const anonLokka = new Lokka({transport: new HttpTransport('http://localhost:5000/graphql')});
 const superAdminEmail = 'superadmin@flo.ods';
