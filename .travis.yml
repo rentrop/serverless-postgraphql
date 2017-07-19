@@ -8,11 +8,27 @@ services:
 
 jobs:
   include:
-    - stage: Test Locally
-      before_script: yarn init-local-db; yarn local-drop-rebuild
-      script: yarn postgraphql-local & yarn test
-    - stage: Deploy to AWS
+    - stage: Test Backend Locally
+      before_script: cd backend; yarn; yarn init-local-db; yarn local-drop-rebuild
+      script: cd backend; yarn postgraphql-local & yarn test
+    - stage: Test Frontend Locally
+      script: cd frontend; yarn; yarn test
+    - stage: Deploy Backend to AWS
       before_script: npm install -g serverless
-      script: ./travisDeploy.sh
-    - stage: Test against AWS endpoint
-      script: yarn test-on-aws
+      script: cd backend; yarn; ./travisDeploy.sh
+    - stage: Test backend against AWS endpoint
+      before_script: npm install -g serverless
+      script: cd backend; yarn; yarn test-on-aws
+      after_script: cd backend; yarn; ./travisDeploy.sh
+    - stage: Deploy frontend to s3
+      script: cd frontend; yarn; yarn build
+      deploy:
+        provider: s3
+        access_key_id: $AWS_ACCESS_KEY_ID
+        secret_access_key: $AWS_SECRET_ACCESS_KEY
+        bucket: $AWS_S3_BUCKET
+        skip_cleanup: true
+        local_dir: build
+        acl: public_read
+        on:
+          all_branches: true

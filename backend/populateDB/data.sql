@@ -116,7 +116,8 @@ insert into floods.status_update (id, status_id, creator_id, crossing_id, notes,
   (28, 1, 1, 3, 'notes', '2017-06-01T09:27:57Z'),
   (29, 2, 1, 5, 'notes', '2017-06-04T09:27:57Z'),
   (30, 1, 1, 2, 'notes', '2017-06-02T09:27:57Z'),
-  (31, 1, 4, 7, 'notes', '2017-06-02T09:27:57Z');
-alter sequence floods.status_update_id_seq restart with 32;
+  (31, 1, 4, 7, 'notes', '2017-06-02T09:27:57Z'),
+  (32, 1, 4, 8, 'notes', '2017-06-02T09:27:57Z');
+alter sequence floods.status_update_id_seq restart with 33;
 
 commit;

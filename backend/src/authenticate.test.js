@@ -45,6 +45,7 @@ function shouldFail(email="", password="", extra_description) {
         password: password
       });
 
+      console.log(response);
       expect(response.authenticate.jwtToken).toBeNull();
       expect(response).toMatchSnapshot();
     });
