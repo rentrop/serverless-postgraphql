@@ -8,7 +8,7 @@ import Public from './Public';
 import PrivateRoute from './PrivateRoute';
 import AuthButton from './AuthButton';
 import CreateUser from './CreateUser';
-import CrossingList from './CrossingList';
+import AdminCrossingList from './AdminCrossingList';
 import UserList from './UserList';
 import NewStatusUpdate from './NewStatusUpdate';
 import auth from './services/gqlAuth';
@@ -29,7 +29,7 @@ class FloodsAdminRoutes extends Component {
             <li><Link to="/updatestatus">Update Crossing Status (Protected)</Link></li>
           </ul>
           <Route path="/public" component={Public}/>
-          <Route path="/crossings" component={CrossingList}/>
+          <Route path="/crossings" component={AdminCrossingList}/>
           <Route path="/login" component={Login}/>
           <Route path="/users" component={UserList}/>
           <PrivateRoute path="/protected" component={Protected} authenticated={auth.isAuthenticated()}/>
