@@ -12,7 +12,8 @@ jobs:
       before_script: cd backend; yarn; yarn init-local-db; yarn local-drop-rebuild
       script: cd backend; yarn postgraphql-local & yarn test
     - stage: Test Frontend Locally
-      script: cd frontend; yarn; yarn test
+      before_script: cd backend; yarn; yarn init-local-db; yarn local-drop-rebuild;
+      script: cd backend; yarn postgraphql-local & cd ../frontend; yarn; yarn get-schema; yarn test
     - stage: Deploy Backend to AWS
       before_script: npm install -g serverless
       script: cd backend; yarn; ./travisDeploy.sh
@@ -30,5 +31,3 @@ jobs:
         skip_cleanup: true
         local_dir: build
         acl: public_read
-        on:
-          all_branches: true
