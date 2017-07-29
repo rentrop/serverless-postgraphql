@@ -22,18 +22,20 @@ yarn install
 
 ⌨️ Initialize the database
 ```
-yarn run init-local-db
+yarn init-local-db
 ```
 
 ⌨️ Run the local server
 ```
-yarn run local-server
+yarn local-server
 ```
+<img src="/README/localserverrunning.png" align="middle" height="142" >
 
 ✅ Run the tests
 ```
-yarn run tests
+yarn tests
 ```
+<img src="/README/backendtestspassed.png" align="middle" height="93" >
 
 🍻 Cheers! The backend should now be up and running!
 ### Get the frontend running against the local backend
