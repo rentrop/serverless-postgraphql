@@ -50,4 +50,15 @@ yarn start-local
 ```
 <img src="/README/localfrontendrunning.png" align="middle" height="93" >
 
-🥂 Cheers! The frontend should now be up and running!
+🥂 Cheers! The frontend should now be up and running! Have fun clicking around!
+
+🔑 Some pages require a login:
+
+<img src="/README/logintofrontend.png" align="middle" height="76" >
+
+📧 In case of such a page, the following email addresses work:
+* superadmin@flo.ods
+* admin@community.floods
+* editor@community.floods
+
+ 🗝 By default all passwords are set to "texasfloods"
