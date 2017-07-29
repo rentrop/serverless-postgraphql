@@ -62,3 +62,17 @@ yarn start-local
 * editor@community.floods
 
  🗝 By default all passwords are set to "texasfloods"
+
+### Get Storybook running
+⌨️ Generate the schema file
+```
+cd frontend
+yarn get-schema
+```
+
+⌨️ Run storybook from the frontend
+```
+yarn storybook
+```
+<img src="/README/storybookrunning.png" align="middle" height="62" >
+<img src="/README/storybookscreeny.png" align="middle" height="299" >
