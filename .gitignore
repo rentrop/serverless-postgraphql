@@ -1,4 +1,5 @@
 node_modules
-pgCatalog/pgCatalog.json
+backend/node_modules
+backend/pgCatalog/pgCatalog.json
 !/populateDB/*
-.serverless
+backend/.serverless

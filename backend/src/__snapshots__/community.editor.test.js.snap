@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`As a community editor should fail to register a new user 1`] = `[Error: GraphQL Error: permission denied for function register_user]`;

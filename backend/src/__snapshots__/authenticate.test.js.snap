@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When authenticating as   should not generate a valid jwtToken 1`] = `
+Object {
+  "authenticate": Object {
+    "jwtToken": null,
+  },
+}
+`;
+
+exports[`When authenticating as admin@community.floods  should not generate a valid jwtToken 1`] = `
+Object {
+  "authenticate": Object {
+    "jwtToken": null,
+  },
+}
+`;
+
+exports[`When authenticating as editor@community.floods  should not generate a valid jwtToken 1`] = `
+Object {
+  "authenticate": Object {
+    "jwtToken": null,
+  },
+}
+`;
+
+exports[`When authenticating as inactive@community.floods  should not generate a valid jwtToken 1`] = `
+Object {
+  "authenticate": Object {
+    "jwtToken": null,
+  },
+}
+`;
+
+exports[`When authenticating as superadmin@flo.ods  should not generate a valid jwtToken 1`] = `
+Object {
+  "authenticate": Object {
+    "jwtToken": null,
+  },
+}
+`;
