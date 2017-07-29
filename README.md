@@ -76,3 +76,6 @@ yarn storybook
 ```
 <img src="/README/storybookrunning.png" align="middle" height="62" >
 <img src="/README/storybookscreeny.png" align="middle" height="299" >
+
+## Using TravisCI to test and deploy
+// TODO: ALL OF THIS
