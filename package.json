@@ -4,15 +4,28 @@
   "description": "postgraphql test on serverless",
   "main": "handler.js",
   "config": {
-    "PGCON": "postgresql://example:serverless@pgEndpoint:5432/forumexample"
+    "PGCON": "postgresql://example:serverless@pgEndpoint:5432/forumexample",
+    "PGLOCALCON": "postgresql://postgres@localhost:5432/forumexample",
+    "PGLOCALRUNCON": "postgresql://forum_example_postgraphql@localhost:5432/forumexample",
+    "PGLOCALINITCON": "postgresql://postgres@localhost:5432/"
   },
   "scripts": {
+    "init-local-db": "psql $npm_package_config_PGLOCALINITCON -f ./populateDB/initLocal.sql",
+    "local-server": "yarn run local-drop-rebuild;yarn run postgraphql-local",
+    "rebuild-and-deploy": "yarn run drop-data;yarn run populate-schema;yarn run populate-data;yarn run build-schema;sls deploy -v",
+
     "test": "echo \"Error: no test specified\" && exit 1",
     "populate-schema": "psql $npm_package_config_PGCON -f ./populateDB/schema.sql",
     "populate-data": "psql $npm_package_config_PGCON -f ./populateDB/data.sql",
     "drop-data": "psql $npm_package_config_PGCON -f ./populateDB/drop.sql",
     "build-schema": "node ./pgCatalog/buildPgCatalog.js $npm_package_config_PGCON forum_example",
-    "postgraphql-local": "postgraphql --connection $npm_package_config_PGCON --schema forum_example --default-role forum_example_anonymous --secret keyboard_kitten --token forum_example.jwt_token"
+    "postgraphql-local-aws-db": "postgraphql --connection $npm_package_config_PGCON --schema forum_example --default-role forum_example_anonymous --secret keyboard_kitten --token forum_example.jwt_token",
+    "postgraphql-local": "postgraphql --connection $npm_package_config_PGLOCALRUNCON --schema forum_example --default-role forum_example_anonymous --secret keyboard_kitten --token forum_example.jwt_token",
+    "build-local-schema": "node ./pgCatalog/buildPgCatalog.js $npm_package_config_PGLOCALCON floods",
+    "populate-local-schema": "psql $npm_package_config_PGLOCALCON -f ./populateDB/schema.sql",
+    "drop-local-data": "psql $npm_package_config_PGLOCALCON -f ./populateDB/drop.sql",
+    "populate-local-data": "psql $npm_package_config_PGLOCALCON -f ./populateDB/data.sql",
+    "local-drop-rebuild": "yarn run drop-local-data;yarn run populate-local-schema;yarn run populate-local-data;yarn run build-local-schema;"
   },
   "author": "Richard",
   "license": "MIT",
