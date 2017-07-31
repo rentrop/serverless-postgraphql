@@ -1,4 +1,4 @@
-service: serverless-postgraphql-floods
+service: ctxfloods-${env:CURRENT_FLOODS_BRANCH_NAME}
 
 provider:
   name: aws
@@ -68,7 +68,7 @@ functions:
                 }
 
     environment:
-      PGCON: ${env:PGRUNCON}
+      PGCON: ${env:npm_config_PGRUNCON}
       JWT_SECRET: keyboard_kitten
 
 # For a pgDB inside a VPC look e.g. here:
@@ -104,6 +104,19 @@ resources:
           Key: "Name"
           Value: "floods"
     DeletionPolicy: "Snapshot"
+
+  frontendBucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: ${env:S3_BUCKET}
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders:
+              - "*"
+            AllowedMethods:
+              - GET
+            AllowedOrigins:
+              - "*"
  Outputs:
     pgEndpoint:
       Description: "JDBC connection string for database"

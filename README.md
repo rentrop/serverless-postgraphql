@@ -78,4 +78,27 @@ yarn storybook
 <img src="/README/storybookscreeny.png" align="middle" height="299" >
 
 ## Using TravisCI to test and deploy
-// TODO: ALL OF THIS
+* Generate a new AWS Key
+** Go to your user in [IAM](https://console.aws.amazon.com/iam/home#/users)
+** Go to security credentials and generate an access key
+<img src="/README/securitycredentials.png" align="middle" height="106" >
+<img src="/README/createaccesskey.png" align="middle" height="54" >
+
+* Delete any entries in the env section of [.travis.yml](.travis.yml)
+
+* Run the set up deploy script
+```
+./setUpAWSDeploy.sh
+```
+Upon completion of the script, a new AWS CloudFormation should have been initialized for your branch. .travis.yml will also be updated to include branch specific environment variables.
+
+* Your build should appear on [Travis](https://travis-ci.org/)
+
+### Test the deployed frontend
+//TODO Automate this
+* Go to [S3](https://console.aws.amazon.com/s3/) and find your bucket (it should be ctxfloods-frontend-***your branch name***)
+* Go to Properties -> Static Website Hosting
+  * Select **Use this bucket to host a website**
+    * Set **index.html** as both the Index and Error document (react-router will be doing our error handling)
+
+🍾 Cheers! You should now have a deployed instance up and running.

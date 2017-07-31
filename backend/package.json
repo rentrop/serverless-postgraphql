@@ -4,8 +4,6 @@
   "description": "postgraphql test on serverless",
   "main": "handler.js",
   "config": {
-    "PGCON": "postgresql://example:serverless@***********:5432/floods",
-    "PGRUNCON": "postgresql://floods_postgraphql:xyz@***********:5432/floods",
     "PGLOCALCON": "postgresql://postgres@localhost:5432/floods",
     "PGLOCALRUNCON": "postgresql://floods_postgraphql@localhost:5432/floods",
     "PGLOCALINITCON": "postgresql://postgres@localhost:5432/"
@@ -16,14 +14,17 @@
     "rebuild-and-deploy": "yarn run drop-data;yarn run populate-schema;yarn run populate-data;yarn run build-schema;sls deploy -v",
     "test": "react-scripts test",
     "test-on-aws": "USE_AWS_ENDPOINT=true react-scripts test",
-    "populate-schema": "psql $npm_package_config_PGCON -f ./populateDB/schema.sql",
+    "populate-schema": "psql $npm_config_PGCON -f ./populateDB/schema.sql",
     "populate-local-schema": "psql $npm_package_config_PGLOCALCON -f ./populateDB/schema.sql",
-    "populate-data": "psql $npm_package_config_PGCON -f ./populateDB/data.sql",
+    "populate-data": "psql $npm_config_PGCON -f ./populateDB/data.sql",
     "populate-local-data": "psql $npm_package_config_PGLOCALCON -f ./populateDB/data.sql",
-    "drop-data": "psql $npm_package_config_PGCON -f ./populateDB/drop.sql",
+    "drop-data": "psql $npm_config_PGCON -f ./populateDB/drop.sql",
+
+    "blarg": "echo $npm_package_config_PGCON",
+
     "drop-local-data": "psql $npm_package_config_PGLOCALCON -f ./populateDB/drop.sql",
     "init-local-db": "psql $npm_package_config_PGLOCALINITCON -f ./populateDB/initLocal.sql",
-    "build-schema": "node ./pgCatalog/buildPgCatalog.js $npm_package_config_PGCON floods",
+    "build-schema": "node ./pgCatalog/buildPgCatalog.js $npm_config_PGCON floods",
     "build-local-schema": "node ./pgCatalog/buildPgCatalog.js $npm_package_config_PGLOCALCON floods",
     "postgraphql-local": "postgraphql --connection $npm_package_config_PGLOCALRUNCON --schema floods --default-role floods_anonymous --secret keyboard_kitten --token floods.jwt_token --cors --disable-default-mutations"
   },
