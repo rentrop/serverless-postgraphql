@@ -79,8 +79,8 @@ yarn storybook
 
 ## Using TravisCI to test and deploy
 * Generate a new AWS Key
-** Go to your user in [IAM](https://console.aws.amazon.com/iam/home#/users)
-** Go to security credentials and generate an access key
+  * Go to your user in [IAM](https://console.aws.amazon.com/iam/home#/users)
+  * Go to security credentials and generate an access key
 <img src="/README/securitycredentials.png" align="middle" height="106" >
 <img src="/README/createaccesskey.png" align="middle" height="54" >
 
