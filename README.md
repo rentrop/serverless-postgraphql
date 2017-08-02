@@ -33,7 +33,7 @@ yarn local-server
 
 ✅ Run the tests
 ```
-yarn tests
+yarn test
 ```
 <img src="/README/backendtestspassed.png" align="middle" height="93" >
 
