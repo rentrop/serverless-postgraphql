@@ -43,7 +43,8 @@ create table floods.crossing (
   id               serial primary key,
   name             text not null check (char_length(name) < 80),
   human_address    text not null check (char_length(human_address) < 800),
-  description      text not null check (char_length(description) < 800)
+  description      text not null check (char_length(description) < 800),
+  coordinates      text not null
 );
 
 comment on table floods.crossing is 'A road crossing that might flood.';
@@ -249,7 +250,7 @@ begin
         raise exception 'Community editors can only deactivate themselves';
       end if;
     end if;
-    
+
   end if;
 
   delete from floods_private.user_account where floods_private.user_account.user_id = deactivate_user.user_id;
@@ -404,7 +405,8 @@ create function floods.new_crossing(
   name text,
   human_address text,
   description text,
-  community_id integer
+  community_id integer,
+  coordinates text
 ) returns floods.crossing as $$
 declare
   floods_crossing floods.crossing;
@@ -417,8 +419,8 @@ begin
     end if;
   end if;
 
-  insert into floods.crossing (name, human_address, description) values
-    (name, human_address, description)
+  insert into floods.crossing (name, human_address, description, coordinates) values
+    (name, human_address, description, coordinates)
     returning * into floods_crossing;
 
   insert into floods.community_crossing (community_id, crossing_id) values
@@ -428,7 +430,7 @@ begin
 end;
 $$ language plpgsql strict security definer;
 
-comment on function floods.new_crossing(text, text, text, integer) is 'Adds a crossing.';
+comment on function floods.new_crossing(text, text, text, integer, text) is 'Adds a crossing.';
 
 -- Create function to delete crossings
 -- TODO: all permissions stuff around this
@@ -457,7 +459,7 @@ begin
   end if;
 
   delete from floods.community_crossing where floods.community_crossing.crossing_id = remove_crossing.crossing_id;
-  
+
   delete from floods.crossing where id = crossing_id returning * into deleted_crossing;
 
   return deleted_crossing;
@@ -771,7 +773,7 @@ grant execute on function floods.new_status_update(integer, integer, text, integ
 
 -- Allow community editors and up to add crossings
 -- NOTE: Extra logic around permissions in function
-grant execute on function floods.new_crossing(text, text, text, integer) to floods_community_editor;
+grant execute on function floods.new_crossing(text, text, text, integer, text) to floods_community_editor;
 
 -- Allow community admins and up to remove crossings
 -- NOTE: Extra logic around permissions in function

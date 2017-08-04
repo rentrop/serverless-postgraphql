@@ -24,7 +24,7 @@ async function getToken(email, password) {
   return response.authenticate.jwtToken;
 }
 
-function shouldWork(email, password, communityId, extra_description) {
+function shouldWork(email, password, communityId, coordinates, extra_description) {
   describe('as ' + email + ' ' + (extra_description || ''), () => {
     var lokka;
 
@@ -48,6 +48,7 @@ function shouldWork(email, password, communityId, extra_description) {
             humanAddress: "In test land"
             description: "TEST LAND IS MAGIC!"
             communityId: $communityId
+            coordinates: "(-97.755996, 30.30718)"
           }) {
             crossing {
               id
@@ -93,7 +94,7 @@ function shouldWork(email, password, communityId, extra_description) {
             id
           }
         }
-      }      
+      }
       `,
       {
         id: newCrossingId
@@ -116,11 +117,11 @@ function shouldWork(email, password, communityId, extra_description) {
 
       expect(response.crossingById).toBeNull();
     });
-  }); 
+  });
 }
 
 function shouldFail(email, password, communityId, extra_description) {
-  describe('as ' + email + ' ' + (extra_description || ''), () => {  
+  describe('as ' + email + ' ' + (extra_description || ''), () => {
     var lokka;
 
     beforeAll(async (done) => {
@@ -143,6 +144,7 @@ function shouldFail(email, password, communityId, extra_description) {
             humanAddress: "In test land"
             description: "TEST LAND IS MAGIC!"
             communityId: $communityId
+            coordinates: "(-97.755996, 30.30718)"
           }) {
             crossing {
               id
@@ -190,7 +192,7 @@ function shouldFail(email, password, communityId, extra_description) {
                 id
               }
             }
-          }      
+          }
           `,
           {
             id: newCrossingId
@@ -198,7 +200,7 @@ function shouldFail(email, password, communityId, extra_description) {
       } catch(e) {
         expect(e).toMatchSnapshot();
       }
-    });    
+    });
   });
 }
 

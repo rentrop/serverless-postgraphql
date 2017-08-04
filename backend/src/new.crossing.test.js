@@ -7,6 +7,22 @@ const superAdminEmail = 'superadmin@flo.ods';
 const communityAdminEmail = 'admin@community.floods';
 const communityEditorEmail = 'editor@community.floods';
 const everyPassword = 'texasfloods';
+const atxCoordinates = '(-97.755996, 30.30718)';
+const newCrossingMutation = `
+  mutation($communityId:Int!) {
+    newCrossing(input: {
+      name: "New Crossing"
+      humanAddress: "In test land"
+      description: "TEST LAND IS MAGIC!"
+      communityId: $communityId
+      coordinates: "${atxCoordinates}"
+    }) {
+      crossing {
+        id
+      }
+    }
+  }
+`;
 
 async function getToken(email, password) {
   const response = await anonLokka.send(`
@@ -24,7 +40,7 @@ async function getToken(email, password) {
   return response.authenticate.jwtToken;
 }
 
-function shouldWork(email, password, communityId, extra_description) {
+function shouldWork(email, password, communityId, coordinates, extra_description) {
   describe('as ' + email + ' ' + (extra_description || ''), () => {
     var lokka;
 
@@ -41,20 +57,8 @@ function shouldWork(email, password, communityId, extra_description) {
     var newCrossingId;
 
     it('should add the crossing', async () => {
-      const response = await lokka.send(`
-        mutation($communityId:Int!) {
-          newCrossing(input: {
-            name: "New Crossing"
-            humanAddress: "In test land"
-            description: "TEST LAND IS MAGIC!"
-            communityId: $communityId
-          }) {
-            crossing {
-              id
-            }
-          }
-        }
-      `,
+      const response = await lokka.send(
+        newCrossingMutation,
       {
         communityId: communityId,
       });
@@ -85,11 +89,11 @@ function shouldWork(email, password, communityId, extra_description) {
       expect(response).toMatchSnapshot();
     });
 
-  }); 
+  });
 }
 
-function shouldFail(email, password, communityId, extra_description) {
-  describe('as ' + email + ' ' + (extra_description || ''), () => {  
+function shouldFail(email, password, communityId, coordinates, extra_description) {
+  describe('as ' + email + ' ' + (extra_description || ''), () => {
     var lokka;
 
     beforeAll(async (done) => {
@@ -104,20 +108,8 @@ function shouldFail(email, password, communityId, extra_description) {
 
     it('should fail to add the crossing', async () => {
       try {
-        const response = await lokka.send(`
-          mutation($communityId:Int!) {
-            newCrossing(input: {
-              name: "New Crossing"
-              humanAddress: "In test land"
-              description: "TEST LAND IS MAGIC!"
-              communityId: $communityId
-            }) {
-              crossing {
-                id
-              }
-            }
-          }
-        `,
+        const response = await lokka.send(
+          newCrossingMutation,
         {
           communityId: communityId,
         });
@@ -129,10 +121,11 @@ function shouldFail(email, password, communityId, extra_description) {
 }
 
 describe('When adding a new crossing', () => {
-  shouldWork(superAdminEmail, everyPassword, 1);
-  shouldWork(superAdminEmail, everyPassword, 2);
-  shouldWork(communityAdminEmail, everyPassword, 1);
-  shouldFail(communityAdminEmail, everyPassword, 2, "to a different community");
-  shouldWork(communityEditorEmail, everyPassword, 1);
-  shouldFail(communityEditorEmail, everyPassword, 2, "to a different community");
+  shouldWork(superAdminEmail, everyPassword, 1, atxCoordinates);
+  shouldWork(superAdminEmail, everyPassword, 2, atxCoordinates);
+  shouldWork(communityAdminEmail, everyPassword, 1, atxCoordinates);
+  shouldFail(communityAdminEmail, everyPassword, 2, atxCoordinates, "to a different community");
+  shouldWork(communityEditorEmail, everyPassword, 1, atxCoordinates);
+  shouldFail(communityEditorEmail, everyPassword, 2, atxCoordinates, "to a different community");
+  shouldFail(communityEditorEmail, everyPassword, 2, null, "without coordinates");
 });

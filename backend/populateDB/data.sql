@@ -28,15 +28,15 @@ select floods.register_user(text 'Inactive', text 'User', text 'Retired', intege
 
 
 -- Add crossings
-insert into floods.crossing (id, name, human_address, description) values
-  (1, 'park', 'at the park', 'Crossing at the park'),
-  (2, 'school', 'at the school', 'Crossing at the school'),
-  (3, 'library', 'at the library', 'Crossing at the library'),
-  (4, 'capitol', 'at the capitol', 'Crossing at the capitol'),
-  (5, 'city hall', 'at city hall', 'Crossing at city hall'),
-  (6, 'coffee shop', 'at the coffee shop', 'Crossing at the coffee shop'),
-  (7, 'other community', 'in the other community', 'Crossing in the other community'),
-  (8, 'other community 2', 'another in the other community', 'Another crossing in the other community');
+insert into floods.crossing (id, name, human_address, description, coordinates) values
+  (1, 'park', 'at the park', 'Crossing at the park', '-97.768, 30.267'),
+  (2, 'school', 'at the school', 'Crossing at the school', '-97.768, 30.267'),
+  (3, 'library', 'at the library', 'Crossing at the library', '-97.768, 30.267'),
+  (4, 'capitol', 'at the capitol', 'Crossing at the capitol', '-97.768, 30.267'),
+  (5, 'city hall', 'at city hall', 'Crossing at city hall', '-97.768, 30.267'),
+  (6, 'coffee shop', 'at the coffee shop', 'Crossing at the coffee shop', '-97.768, 30.267'),
+  (7, 'other community', 'in the other community', 'Crossing in the other community', '-97.768, 30.267'),
+  (8, 'other community 2', 'another in the other community', 'Another crossing in the other community', '-97.768, 30.267');
 alter sequence floods.crossing_id_seq restart with 9;
 
 -- Add crossings to communities

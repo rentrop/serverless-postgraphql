@@ -3,3 +3,5 @@ backend/node_modules
 backend/pgCatalog/pgCatalog.json
 !/populateDB/*
 backend/.serverless
+frontend/stories/schema/schema.graphql
+frontend/stories/schema/schema.js

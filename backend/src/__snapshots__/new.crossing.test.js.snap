@@ -38,6 +38,8 @@ Object {
 
 exports[`When adding a new crossing as editor@community.floods to a different community should fail to add the crossing 1`] = `[Error: GraphQL Error: Users can only add crossings to their communities]`;
 
+exports[`When adding a new crossing as editor@community.floods without coordinates should fail to add the crossing 1`] = `[Error: GraphQL Error: Users can only add crossings to their communities]`;
+
 exports[`When adding a new crossing as superadmin@flo.ods  the new crossing should show up in the DB 1`] = `
 Object {
   "crossingById": Object {

@@ -50,6 +50,7 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
               humanAddress: "Near the barn"
               description: "Describe!"
               communityId: 1
+              coordinates: "(-97.755996, 30.30718)"
             }) {
               crossing {
                 id
@@ -205,9 +206,9 @@ describe('When updating the status of a crossing', () => {
   describe('To OPEN', () => {
     describe('with no REASON or DURATION', () => {
       shouldWork(superAdminEmail, everyPassword, 1, 'OPEN with no REASON or DURATION');
-      shouldWork(communityAdminEmail, everyPassword, 1, 'OPEN with no REASON or DURATION',null,null,'In the same community as the crossing'); 
+      shouldWork(communityAdminEmail, everyPassword, 1, 'OPEN with no REASON or DURATION',null,null,'In the same community as the crossing');
       shouldFail(communityAdminEmail, everyPassword, 1, 7, 'OPEN with no REASON or DURATION',null,null,'In another community without the crossing');
-      shouldWork(communityEditorEmail, everyPassword, 1, 'OPEN with no REASON or DURATION',null,null,'In the same community as the crossing'); 
+      shouldWork(communityEditorEmail, everyPassword, 1, 'OPEN with no REASON or DURATION',null,null,'In the same community as the crossing');
       shouldFail(communityEditorEmail, everyPassword, 1, 7, 'OPEN with no REASON or DURATION',null,null,'In another community without the crossing');
     });
 
@@ -240,15 +241,15 @@ describe('When updating the status of a crossing', () => {
     describe('with REASON', () => {
       describe('that matches status', () => {
         shouldWork(superAdminEmail, everyPassword, 2, 'CLOSED with REASON', 1);
-        shouldWork(communityAdminEmail, everyPassword, 2, 'CLOSED with REASON', 1, null, 'In the same community as the crossing'); 
+        shouldWork(communityAdminEmail, everyPassword, 2, 'CLOSED with REASON', 1, null, 'In the same community as the crossing');
         shouldFail(communityAdminEmail, everyPassword, 2, 7, 'CLOSED with REASON', 1, null, 'In another community without the crossing');
-        shouldWork(communityEditorEmail, everyPassword, 2, 'CLOSED with REASON', 1, null, 'In the same community as the crossing'); 
+        shouldWork(communityEditorEmail, everyPassword, 2, 'CLOSED with REASON', 1, null, 'In the same community as the crossing');
         shouldFail(communityEditorEmail, everyPassword, 2, 7, 'CLOSED with REASON', 1, null, 'In another community without the crossing');
       });
       describe('that does not match status', () => {
         shouldFail(superAdminEmail, everyPassword, 2, 3, 'CLOSED with REASON', 2);
-        shouldFail(communityAdminEmail, everyPassword, 2, 3, 'CLOSED with REASON', 2); 
-        shouldFail(communityEditorEmail, everyPassword, 2, 3, 'CLOSED with REASON', 2); 
+        shouldFail(communityAdminEmail, everyPassword, 2, 3, 'CLOSED with REASON', 2);
+        shouldFail(communityEditorEmail, everyPassword, 2, 3, 'CLOSED with REASON', 2);
       });
     });
 
