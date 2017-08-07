@@ -48,7 +48,8 @@ function shouldWork(email, password, communityId, coordinates, extra_description
             humanAddress: "In test land"
             description: "TEST LAND IS MAGIC!"
             communityId: $communityId
-            coordinates: "(-97.755996, 30.30718)"
+            longitude: -97.755996
+            latitude: 30.30718
           }) {
             crossing {
               id
@@ -144,7 +145,8 @@ function shouldFail(email, password, communityId, extra_description) {
             humanAddress: "In test land"
             description: "TEST LAND IS MAGIC!"
             communityId: $communityId
-            coordinates: "(-97.755996, 30.30718)"
+            longitude: -97.755996
+            latitude: 30.30718
           }) {
             crossing {
               id

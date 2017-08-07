@@ -7,15 +7,17 @@ const superAdminEmail = 'superadmin@flo.ods';
 const communityAdminEmail = 'admin@community.floods';
 const communityEditorEmail = 'editor@community.floods';
 const everyPassword = 'texasfloods';
-const atxCoordinates = '(-97.755996, 30.30718)';
+const longitude = -97.755996;
+const latitude = 30.30718;
 const newCrossingMutation = `
-  mutation($communityId:Int!) {
+  mutation($communityId:Int!, $longitude:Float!, $latitude:Float!) {
     newCrossing(input: {
       name: "New Crossing"
       humanAddress: "In test land"
       description: "TEST LAND IS MAGIC!"
       communityId: $communityId
-      coordinates: "${atxCoordinates}"
+      longitude: $longitude
+      latitude: $latitude
     }) {
       crossing {
         id
@@ -40,7 +42,7 @@ async function getToken(email, password) {
   return response.authenticate.jwtToken;
 }
 
-function shouldWork(email, password, communityId, coordinates, extra_description) {
+function shouldWork(email, password, communityId, longitude, latitude, extra_description) {
   describe('as ' + email + ' ' + (extra_description || ''), () => {
     var lokka;
 
@@ -61,6 +63,8 @@ function shouldWork(email, password, communityId, coordinates, extra_description
         newCrossingMutation,
       {
         communityId: communityId,
+        longitude: longitude,
+        latitude: latitude
       });
 
       newCrossingId = response.newCrossing.crossing.id;
@@ -92,7 +96,7 @@ function shouldWork(email, password, communityId, coordinates, extra_description
   });
 }
 
-function shouldFail(email, password, communityId, coordinates, extra_description) {
+function shouldFail(email, password, communityId, longitude, latitude, extra_description) {
   describe('as ' + email + ' ' + (extra_description || ''), () => {
     var lokka;
 
@@ -112,6 +116,8 @@ function shouldFail(email, password, communityId, coordinates, extra_description
           newCrossingMutation,
         {
           communityId: communityId,
+          longitude: longitude,
+          latitude: latitude
         });
       } catch(e) {
         expect(e).toMatchSnapshot();
@@ -121,11 +127,13 @@ function shouldFail(email, password, communityId, coordinates, extra_description
 }
 
 describe('When adding a new crossing', () => {
-  shouldWork(superAdminEmail, everyPassword, 1, atxCoordinates);
-  shouldWork(superAdminEmail, everyPassword, 2, atxCoordinates);
-  shouldWork(communityAdminEmail, everyPassword, 1, atxCoordinates);
-  shouldFail(communityAdminEmail, everyPassword, 2, atxCoordinates, "to a different community");
-  shouldWork(communityEditorEmail, everyPassword, 1, atxCoordinates);
-  shouldFail(communityEditorEmail, everyPassword, 2, atxCoordinates, "to a different community");
-  shouldFail(communityEditorEmail, everyPassword, 2, null, "without coordinates");
+  shouldWork(superAdminEmail, everyPassword, 1, longitude, latitude);
+  shouldWork(superAdminEmail, everyPassword, 2, longitude, latitude);
+  shouldWork(communityAdminEmail, everyPassword, 1, longitude, latitude);
+  shouldFail(communityAdminEmail, everyPassword, 2, longitude, latitude, "to a different community");
+  shouldWork(communityEditorEmail, everyPassword, 1, longitude, latitude);
+  shouldFail(communityEditorEmail, everyPassword, 2, longitude, latitude, "to a different community");
+  shouldFail(superAdminEmail, everyPassword, 2, null, latitude, "without longitude");
+  shouldFail(superAdminEmail, everyPassword, 2, longitude, null, "without latitude");
+  shouldFail(superAdminEmail, everyPassword, 2,  null, null, "without either coordinates");
 });

@@ -2,19 +2,22 @@ language: node_js
 node_js:
 - node
 addons:
-  postgresql: 9.4
+  postgresql: 9.5
+  apt:
+    packages:
+      - postgresql-9.5-postgis-2.3
 services:
 - postgresql
 jobs:
   include:
   - stage: Test Backend Locally
-    before_script: cd backend; yarn; yarn init-local-db; yarn local-drop-rebuild
+    before_script: cd backend; yarn; yarn init-local-db; yarn local-drop-rebuild;
     script: cd backend; yarn postgraphql-local & yarn test
   - stage: Test Frontend Locally
     before_script: cd backend; yarn; yarn init-local-db; yarn local-drop-rebuild;
     script: cd backend; yarn postgraphql-local & cd ../frontend; yarn; yarn get-schema; yarn test
   - stage: Deploy Backend to AWS
-    before_script: 
+    before_script:
       - 'if [ -z "$AWS_ACCESS_KEY_ID" ]; then
           echo "AWS Credentials not set. Skipping deployment.";
           travis_terminate 0;
@@ -23,7 +26,7 @@ jobs:
         fi'
     script: cd backend; yarn; yarn rebuild-and-deploy
   - stage: Test backend against AWS endpoint
-    before_script: 
+    before_script:
       - 'if [ -z "$AWS_ACCESS_KEY_ID" ]; then
           echo "AWS Credentials not set. Skipping tests.";
           travis_terminate 0;
@@ -33,7 +36,7 @@ jobs:
     script: cd backend; yarn; yarn test-on-aws
     after_script: cd backend; yarn; yarn rebuild-and-deploy
   - stage: Deploy frontend to s3
-    before_script: 
+    before_script:
     - 'if [ -z "$AWS_ACCESS_KEY_ID" ]; then
         echo "AWS Credentials not set. Skipping deployment.";
         travis_terminate 0;

@@ -50,7 +50,8 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
               humanAddress: "Near the barn"
               description: "Describe!"
               communityId: 1
-              coordinates: "(-97.755996, 30.30718)"
+              longitude: -97.755996
+              latitude: 30.30718
             }) {
               crossing {
                 id
