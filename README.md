@@ -86,6 +86,11 @@ yarn storybook
 
 * Delete any entries in the env section of [.travis.yml](.travis.yml)
 
+💾 Install [serverless](https://serverless.com/)
+```
+yarn global add serverless
+```
+
 * Run the set up deploy script
 ```
 ./setUpAWSDeploy.sh
