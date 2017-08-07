@@ -78,26 +78,26 @@ yarn storybook
 <img src="/README/storybookscreeny.png" align="middle" height="299" >
 
 ## Using TravisCI to test and deploy
-* Generate a new AWS Key
+🔑 Generate a new AWS Key
   * Go to your user in [IAM](https://console.aws.amazon.com/iam/home#/users)
   * Go to security credentials and generate an access key
 <img src="/README/securitycredentials.png" align="middle" height="106" >
 <img src="/README/createaccesskey.png" align="middle" height="54" >
 
-* Delete any entries in the env section of [.travis.yml](.travis.yml)
+❌ Delete any entries in the env section of [.travis.yml](.travis.yml)
 
 💾 Install [serverless](https://serverless.com/)
 ```
 yarn global add serverless
 ```
 
-* Run the set up deploy script
+⌨️  Run the set up deploy script
 ```
 ./setUpAWSDeploy.sh
 ```
 Upon completion of the script, a new AWS CloudFormation should have been initialized for your branch. .travis.yml will also be updated to include branch specific environment variables.
 
-* Your build should appear on [Travis](https://travis-ci.org/)
+🏗 Your build should appear on [Travis](https://travis-ci.org/)
 
 ### Test the deployed frontend
 //TODO Automate this
