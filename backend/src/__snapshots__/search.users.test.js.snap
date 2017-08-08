@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When searching users should search by first name correctly 1`] = `
+Array [
+  Object {
+    "id": 1,
+  },
+]
+`;
+
+exports[`When searching users should search by last name correctly 1`] = `
+Array [
+  Object {
+    "id": 3,
+  },
+  Object {
+    "id": 5,
+  },
+]
+`;
