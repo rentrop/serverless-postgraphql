@@ -8,6 +8,9 @@ class AdminCrossingDescriptionCell extends React.Component {
         <div className='pt3'>
           {this.props.crossing.name}&nbsp;
         </div>
+        <div className="pt3">
+          {this.props.crossing.humanCoordinates}
+        </div>
         <div className='pt3'>
           User Readable Address
         </div>

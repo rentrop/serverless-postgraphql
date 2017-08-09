@@ -19,7 +19,7 @@ class AdminCrossingList extends React.Component {
       <div className='w-100 flex justify-center'>
         <div className='w-100' style={{ maxWidth: 400 }}>
           {this.props.data.allCrossings.nodes.map((crossing) =>
-            <AdminCrossingListItem 
+            <AdminCrossingListItem
               key={crossing.id}
               crossing={crossing}
               refresh={() => this.props.data.refetch()}
@@ -38,6 +38,7 @@ const allCrossings = gql`
       nodes {
         id
         name
+        humanCoordinates
         latestStatus {
           statusByStatusId {
             name

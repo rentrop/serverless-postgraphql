@@ -78,6 +78,8 @@ function shouldWork(email, password, communityId, longitude, latitude, extra_des
             name
             humanAddress
             description
+            coordinates
+            humanCoordinates
             communityCrossingsByCrossingId {
               nodes {
                 communityId

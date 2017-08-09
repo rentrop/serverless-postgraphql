@@ -10,8 +10,10 @@ Object {
         },
       ],
     },
+    "coordinates": "010100000009FA0B3D627058C03BFC3559A34E3E40",
     "description": "TEST LAND IS MAGIC!",
     "humanAddress": "In test land",
+    "humanCoordinates": "30°18'25.848\\"N 97°45'21.586\\"W",
     "name": "New Crossing",
   },
 }
@@ -29,8 +31,10 @@ Object {
         },
       ],
     },
+    "coordinates": "010100000009FA0B3D627058C03BFC3559A34E3E40",
     "description": "TEST LAND IS MAGIC!",
     "humanAddress": "In test land",
+    "humanCoordinates": "30°18'25.848\\"N 97°45'21.586\\"W",
     "name": "New Crossing",
   },
 }
@@ -48,8 +52,10 @@ Object {
         },
       ],
     },
+    "coordinates": "010100000009FA0B3D627058C03BFC3559A34E3E40",
     "description": "TEST LAND IS MAGIC!",
     "humanAddress": "In test land",
+    "humanCoordinates": "30°18'25.848\\"N 97°45'21.586\\"W",
     "name": "New Crossing",
   },
 }
@@ -65,8 +71,10 @@ Object {
         },
       ],
     },
+    "coordinates": "010100000009FA0B3D627058C03BFC3559A34E3E40",
     "description": "TEST LAND IS MAGIC!",
     "humanAddress": "In test land",
+    "humanCoordinates": "30°18'25.848\\"N 97°45'21.586\\"W",
     "name": "New Crossing",
   },
 }
