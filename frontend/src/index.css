@@ -1,5 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+html {
+  font-family: "Roboto", sans-serif;
+  font-size: 10px; }
+
+p, span {
+  font-size: 1.7rem; }
+
+.flexcontainer {
+  display: flex; }
+
+.flexitem {
+  flex: 1; }
+
+.flexitem--pushed-right {
+  align-self: center;
+  margin-left: auto; }
+
 body {
   margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
+  padding: 0; }

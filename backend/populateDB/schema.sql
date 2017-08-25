@@ -25,6 +25,7 @@ create table floods.user (
   id               serial primary key,
   first_name       text not null check (char_length(first_name) < 80),
   last_name        text not null check (char_length(last_name) < 80),
+  role             text not null,
   job_title        text not null check (char_length(job_title) < 200),
   community_id     integer references floods.community(id),
   email_address    text check (char_length(email_address) < 200),
@@ -40,6 +41,7 @@ comment on column floods.user.job_title is 'The user’s job title.';
 comment on column floods.user.community_id is 'The id of the user’s community.';
 comment on column floods.user.email_address is 'The user’s email address.';
 comment on column floods.user.phone_number is 'The user’s phone number.';
+comment on column floods.user.role is 'The user’s authorization role.';
 
 -- Create the Crossings table
 create table floods.crossing (
@@ -213,8 +215,8 @@ begin
     end if;
   end if;
 
-  insert into floods.user (first_name, last_name, job_title, community_id, email_address, phone_number) values
-    (first_name, last_name, job_title, community_id, email, phone_number)
+  insert into floods.user (first_name, last_name, role, job_title, community_id, email_address, phone_number) values
+    (first_name, last_name, role, job_title, community_id, email, phone_number)
     returning * into floods_user;
 
   insert into floods_private.user_account (user_id, email, role, community_id, password_hash) values

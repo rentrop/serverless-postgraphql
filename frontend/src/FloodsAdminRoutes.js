@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import {
-  Route,
-  Link,
-} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Login from './Login';
 import Public from './Public';
 import PrivateRoute from './PrivateRoute';
-import AuthButton from './AuthButton';
+import Header from './Header';
+import ManageUsers from './ManageUsersPage/ManageUsers';
 import CreateUser from './CreateUser';
 import AdminCrossingList from './AdminCrossingList';
-import UserList from './UserList';
 import NewStatusUpdate from './NewStatusUpdate';
 import auth from './services/gqlAuth';
 
@@ -19,22 +16,20 @@ class FloodsAdminRoutes extends Component {
   render() {
     return (
         <div>
-          <AuthButton/>
-          <ul>
-            <li><Link to="/public">Public Page</Link></li>
-            <li><Link to="/crossings">List Crossings (Public)</Link></li>
-            <li><Link to="/users">List Users</Link></li>
-            <li><Link to="/protected">Protected Page</Link></li>
-            <li><Link to="/createuser">Create User (Protected)</Link></li>
-            <li><Link to="/updatestatus">Update Crossing Status (Protected)</Link></li>
-          </ul>
+          <Route path="/" component={Header}/>
           <Route path="/public" component={Public}/>
           <Route path="/crossings" component={AdminCrossingList}/>
           <Route path="/login" component={Login}/>
-          <Route path="/users" component={UserList}/>
+          <PrivateRoute path="/dashboard/users" component={ManageUsers}
+            authenticated={auth.isAuthenticated()}
+            authorized={auth.roleAuthorized(['floods_community_admin', 'floods_super_admin'])}
+          />
           <PrivateRoute path="/protected" component={Protected} authenticated={auth.isAuthenticated()}/>
           <PrivateRoute path="/updatestatus" component={NewStatusUpdate} authenticated={auth.isAuthenticated()}/>
-          <PrivateRoute path="/createuser" component={CreateUser} authenticated={auth.isAuthenticated()}/>
+          <PrivateRoute path="/createuser" component={CreateUser}
+            authenticated={auth.isAuthenticated()}
+            authorized={auth.roleAuthorized(['floods_community_admin', 'floods_super_admin'])}
+          />
         </div>
     );
   }

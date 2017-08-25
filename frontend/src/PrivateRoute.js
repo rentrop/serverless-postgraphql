@@ -6,12 +6,16 @@ import {
 
 class PrivateRoute extends Component {
   render() {
-    const { component: Component, authenticated, ...rest } = this.props;
+    const { component: Component, authenticated, authorized, ...rest } = this.props;
 
     return (
       <Route {...rest} render={props => (
         authenticated ? (
-          <Component {...props}/>
+          authorized ? (
+            <Component {...props}/>
+          ) : (
+            <div>NOT AUTHORIZED</div>
+          )
         ) : (
           <Redirect to={{
             pathname: '/login',

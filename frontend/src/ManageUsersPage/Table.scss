@@ -1,0 +1,57 @@
+@import "../css/typography.scss";
+
+$color-gray-lightest:        #f1f1f1;
+$color-gray:                 #5b616b;
+$color-white:                #ffffff;
+$font-normal:                 400;
+
+.Table {
+  border-spacing: 0;
+  margin: 2em 0;
+  min-width: 100%;
+
+  thead {
+    th,
+    td {
+      background-color: $color-gray-lightest;
+    }
+  }
+
+  th {
+    text-align: left;
+    font-weight: bold;
+  }
+
+  tbody {
+    th {
+      font-weight: $font-normal;
+    }
+  }
+
+  th,
+  td {
+    background-color: $color-white;
+    border-bottom: 1px solid $color-gray;
+    padding: 1.2rem;
+  }
+}
+
+.Table__header {
+  font-size: 1.5rem;
+}
+
+.Table__content {
+  font-size: 1.7rem;
+}
+
+.Table__content--linked {
+  font-size: 1.7rem;
+  a {
+    color: $font-color;
+  }
+}
+
+.Table__header-caret {
+  width: 20px;
+  margin: 6px 0 -7px -3px;
+}

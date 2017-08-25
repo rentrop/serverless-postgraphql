@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="29px" viewBox="0 0 30 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>chevron-down-bg</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="chevron-down-bg">
+            <rect id="Rectangle" fill="#0F0035" x="0" y="0" width="30" height="29"></rect>
+            <path d="M15.55,21.12 C15.4034498,21.2684047 15.2035687,21.3519352 14.995,21.3519352 C14.7864313,21.3519352 14.5865502,21.2684047 14.44,21.12 L5.33,12 C5.18099676,11.8517351 5.09722527,11.650201 5.09722527,11.44 C5.09722527,11.229799 5.18099676,11.0282649 5.33,10.88 L7.33,8.88 C7.47655022,8.73159533 7.67643127,8.64806478 7.885,8.64806478 C8.09356873,8.64806478 8.29344978,8.73159533 8.44,8.88 L15,15.4 L21.52,8.88 C21.6665502,8.73159533 21.8664313,8.64806478 22.075,8.64806478 C22.2835687,8.64806478 22.4834498,8.73159533 22.63,8.88 L24.63,10.88 C24.7790032,11.0282649 24.8627747,11.229799 24.8627747,11.44 C24.8627747,11.650201 24.7790032,11.8517351 24.63,12 L15.55,21.12 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

@@ -10,6 +10,8 @@
     "aws-sdk": "^2.49.0",
     "get-graphql-schema": "^2.1.0",
     "jwt-decode": "^2.2.0",
+    "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.0.2",
     "react": "^15.5.4",
     "react-apollo": "^1.4.2",
     "react-dom": "^15.5.4",
@@ -22,8 +24,11 @@
     "react-scripts": "0.9.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start-local": "REACT_APP_AWS_ENDPOINT='http://localhost:5000/graphql' react-scripts start",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "start-local": "REACT_APP_AWS_ENDPOINT='http://localhost:5000/graphql' yarn run start",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "yarn run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "get-schema": "./stories/schema/getSchema.sh",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

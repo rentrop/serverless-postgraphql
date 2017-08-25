@@ -1,0 +1,12 @@
+.flexcontainer {
+  display: flex;
+}
+
+.flexitem {
+  flex: 1;
+}
+
+.flexitem--pushed-right {
+  align-self: center;
+  margin-left: auto;
+}

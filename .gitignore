@@ -5,3 +5,6 @@ backend/pgCatalog/pgCatalog.json
 backend/.serverless
 frontend/stories/schema/schema.graphql
 frontend/stories/schema/schema.js
+frontend/.DS_Store
+frontend/src/.DS_Store
+.DS_Store
