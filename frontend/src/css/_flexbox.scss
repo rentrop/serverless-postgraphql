@@ -1,12 +1,22 @@
-.flexcontainer {
+@mixin flexcontainer {
   display: flex;
 }
-
-.flexitem {
-  flex: 1;
+.flexcontainer {
+  @include flexcontainer;
 }
 
-.flexitem--pushed-right {
+@mixin flexitem {
+  flex: 1;
+}
+.flexitem {
+  @include flexitem;
+}
+
+@mixin flexitem--pushed-right {
+  @include flexitem;
   align-self: center;
   margin-left: auto;
+}
+.flexitem--pushed-right {
+  @include flexitem--pushed-right;
 }

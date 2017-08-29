@@ -7,4 +7,5 @@ frontend/stories/schema/schema.graphql
 frontend/stories/schema/schema.js
 frontend/.DS_Store
 frontend/src/.DS_Store
+frontend/**/*.css
 .DS_Store

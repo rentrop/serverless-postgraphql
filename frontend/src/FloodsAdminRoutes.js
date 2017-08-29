@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import Login from './Login';
 import Public from './Public';
 import PrivateRoute from './PrivateRoute';
-import Header from './Header';
+import Header from './Header/Header';
 import ManageUsers from './ManageUsersPage/ManageUsers';
 import CreateUser from './CreateUser';
 import AdminCrossingList from './AdminCrossingList';

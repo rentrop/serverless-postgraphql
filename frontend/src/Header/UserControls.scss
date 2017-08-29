@@ -1,0 +1,13 @@
+@import "../css/flexbox";
+
+.UserControls {
+  @include flexcontainer;
+  @include flexitem--pushed-right;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.Header__settings-icon {
+  margin-right: 1rem;
+  height: 2rem;
+}
