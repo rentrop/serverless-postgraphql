@@ -24,7 +24,6 @@ const manageUsersHeaders = [{
   isSortable: true,
 }];
 
-
 class UserList extends React.Component {
   parseRole(role) {
     const roleArray = role.split("_");
@@ -36,16 +35,21 @@ class UserList extends React.Component {
   }
 
   render () {
-    if (this.props.data.loading) {
+    if (!this.props.data || this.props.data.loading) {
       return (<div>Loading</div>)
     }
 
-    if (this.props.data.allUsers == null) {
+    const { communityUsers, allUsers } = this.props.data;
+    if ((communityUsers == null) && (allUsers == null)) {
       // TODO: add error logging
       return (<div>Error Loading Users</div>);
     }
 
-    const userData = this.props.data.allUsers.nodes.map((user) => {
+    const users = this.props.currentUser.role === "floods_super_admin"
+      ? allUsers
+      : communityUsers;
+
+    const userData = users.nodes.map((user) => {
     	return [
         { isLinked: true, link: `/user/${user.id}`, content: `${user.firstName} ${user.lastName}` },
         this.parseRole(user.role),
@@ -61,20 +65,38 @@ class UserList extends React.Component {
 
 }
 
-const allUsers = gql`
-  {
-    allUsers {
+
+const getUsers = gql`
+  fragment UserData on User {
+    id
+    firstName
+    lastName
+    role
+    communityByCommunityId {
+      id
+      name
+    }
+  }
+  query allUsers($superUser: Boolean!, $communityId: Int!) {
+    allUsers @include(if: $superUser) {
       nodes {
-        id
-        firstName
-        lastName
-        role
-        communityByCommunityId {
-          name
-        }
+        ...UserData
+      }
+    }
+    communityUsers: allUsers(condition: {communityId: $communityId}) @skip(if: $superUser) {
+      nodes {
+        ...UserData
       }
     }
   }
 `;
 
-export default graphql(allUsers)(UserList);
+export default graphql(getUsers, {
+  skip: (ownProps) => !ownProps.currentUser,
+  options: (ownProps) => ({
+    variables: {
+      communityId: ownProps.currentUser.communityId,
+      superUser: ownProps.currentUser.role === "floods_super_admin"
+    }
+  }),
+})(UserList);

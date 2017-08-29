@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-
 import LinkButton from '../LinkButton';
 import BulkActionsDropdown from './BulkActionsDropdown';
 import TableSearch from './TableSearch';

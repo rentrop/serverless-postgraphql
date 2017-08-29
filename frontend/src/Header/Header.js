@@ -2,8 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import './Header.css';
 import externalLinkSvg from '../images/external-link.svg';
-
-import AuthButton from '../AuthButton';
 import UserControls from './UserControls';
 
 class Header extends React.Component {
@@ -28,7 +26,7 @@ class Header extends React.Component {
             &nbsp;
             <img src={externalLinkSvg} alt="External Link" className="Header__link-icon" />.
           </span>
-          <UserControls/>
+          <UserControls {...this.props} />
         </div>
 
         <div className="Header__main">

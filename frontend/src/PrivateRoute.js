@@ -12,7 +12,7 @@ class PrivateRoute extends Component {
       <Route {...rest} render={props => (
         authenticated ? (
           authorized ? (
-            <Component {...props}/>
+            <Component {...props} {...this.props} />
           ) : (
             <div>NOT AUTHORIZED</div>
           )
