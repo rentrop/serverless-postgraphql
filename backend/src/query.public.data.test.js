@@ -94,7 +94,7 @@ async function shouldWork(email="", password="", extra_description) {
           }
           allCrossings {
             nodes {
-              latestStatus {
+              statusUpdateByLatestStatusId {
                 id
               }
             }

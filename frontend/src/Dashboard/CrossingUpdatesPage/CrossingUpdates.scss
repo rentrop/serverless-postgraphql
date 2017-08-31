@@ -1,0 +1,32 @@
+@import "../../css/flexbox";
+
+.CrossingUpdates {
+  margin: auto 10%;
+}
+
+.CrossingUpdates__map-container {
+  margin-top: 2%;
+}
+
+@mixin CrossingUpdates__tab {
+  font-size: 1.4rem;
+  padding: .5rem 1rem;
+  a {
+    text-decoration: none;
+  }
+}
+.CrossingUpdates__tab--header {
+  @include CrossingUpdates__tab;
+  font-weight: bold;
+}
+
+.CrossingUpdates__tab--inactive {
+  @include CrossingUpdates__tab;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.CrossingUpdates__tab--active {
+  @include CrossingUpdates__tab;
+  font-weight: bold;
+}

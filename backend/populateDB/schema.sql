@@ -46,10 +46,11 @@ comment on column floods.user.role is 'The user’s authorization role.';
 -- Create the Crossings table
 create table floods.crossing (
   id                serial primary key,
-  name              text not null check (char_length(name) < 80),
+  name              text not null check (char_length(name) < 180),
   human_address     text not null check (char_length(human_address) < 800),
   description       text not null check (char_length(description) < 800),
-  coordinates       geometry not null
+  coordinates       geometry not null,
+  geojson           text not null check (char_length(geojson) < 100)
 );
 
 comment on table floods.crossing is 'A road crossing that might flood.';
@@ -58,6 +59,7 @@ comment on column floods.crossing.name is 'The name of the crossing.';
 comment on column floods.crossing.human_address is 'The human readable address of the crossing.';
 comment on column floods.crossing.description is 'The description of the crossing.';
 comment on column floods.crossing.coordinates is 'The GIS coordinates of the crossing created with ST_MakePoint.';
+comment on column floods.crossing.geojson is 'The GeoJSON coordinates of the crossing.';
 
 -- Create the Community Crossing relation table
 create table floods.community_crossing (
@@ -155,16 +157,10 @@ comment on column floods.status_update.status_duration_id is 'The id of the stat
 comment on column floods.status_update.notes is 'Notes about the status update.';
 comment on column floods.status_update.created_at is 'The time this update was made.';
 
--- Create the function to get the latest status for a given crossing
-create function floods.crossing_latest_status(crossing floods.crossing) returns floods.status_update as $$
-  select status_update.*
-  from floods.status_update as status_update
-  where status_update.crossing_id = crossing.id
-  order by created_at desc
-  limit 1
-$$ language sql stable;
-
-comment on function floods.crossing_latest_status(floods.crossing) is 'Gets the latest status of a given crossing.';
+-- Update the Crossings table and Add the Latest Status Update
+alter table floods.crossing
+  add column latest_status_id integer references floods.status_update(id);
+comment on column floods.crossing.latest_status_id is 'The latest status of the crossing.';
 
 -- Create the private account table
 create table floods_private.user_account (
@@ -421,6 +417,10 @@ begin
     (status_id, current_setting('jwt.claims.user_id')::integer, crossing_id, notes, status_reason_id, status_duration_id)
     returning * into floods_status_update;
 
+  update floods.crossing
+    set latest_status_id = floods_status_update.id
+    where crossing_id = floods_status_update.crossing_id;
+
   return floods_status_update;
 end;
 $$ language plpgsql security definer;
@@ -447,8 +447,8 @@ begin
     end if;
   end if;
 
-  insert into floods.crossing (name, human_address, description, coordinates) values
-    (name, human_address, description, ST_MakePoint(longitude, latitude))
+  insert into floods.crossing (name, human_address, description, coordinates, geojson) values
+    (name, human_address, description, ST_MakePoint(longitude, latitude), ST_AsGeoJSON(ST_MakePoint(longitude, latitude)))
     returning * into floods_crossing;
 
   insert into floods.community_crossing (community_id, crossing_id) values
@@ -782,9 +782,6 @@ grant select on table floods.community_crossing to floods_anonymous;
 
 -- Allow all users to log in and get an auth token
 grant execute on function floods.authenticate(text, text) to floods_anonymous;
-
--- Allow all users to get the latest status of a crossing
-grant execute on function floods.crossing_latest_status(floods.crossing) to floods_anonymous;
 
 -- Allow all users to search users
 grant execute on function floods.search_users(text) to floods_anonymous;

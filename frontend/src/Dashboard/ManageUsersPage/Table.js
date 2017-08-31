@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Table.css'
-import caretDownSvg from '../images/caret-down.svg'
+import caretDownSvg from '../../images/caret-down.svg'
 
 class Table extends Component {
 

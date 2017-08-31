@@ -89,7 +89,7 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
         const response = await lokka.send(`
           query($crossing:Int!) {
             crossingById(id:$crossing) {
-              latestStatus {
+              statusUpdateByLatestStatusId {
                 id
               }
             }
@@ -99,7 +99,7 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
           crossing: crossing
         });
 
-        originalStatusId = response.crossingById.latestStatus.id;
+        originalStatusId = response.crossingById.statusUpdateByLatestStatusId.id;
         expect(response).not.toBeNull();
       });
     });
@@ -137,7 +137,7 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
       const response = await lokka.send(`
         query($crossing:Int!) {
           crossingById(id:$crossing) {
-            latestStatus {
+            statusUpdateByLatestStatusId {
               id
               notes
             }
@@ -148,9 +148,9 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
         crossing: crossing
       });
 
-      expect(response.crossingById.latestStatus.id).not.toEqual(originalStatusId);
-      expect(response.crossingById.latestStatus.id).toEqual(newStatusId);
-      expect(response.crossingById.latestStatus.notes).toMatchSnapshot();
+      expect(response.crossingById.statusUpdateByLatestStatusId.id).not.toEqual(originalStatusId);
+      expect(response.crossingById.statusUpdateByLatestStatusId.id).toEqual(newStatusId);
+      expect(response.crossingById.statusUpdateByLatestStatusId.notes).toMatchSnapshot();
     });
   });
 }

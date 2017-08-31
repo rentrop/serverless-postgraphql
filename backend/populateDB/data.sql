@@ -6,13 +6,11 @@ insert into floods.community (id, name) values
   (2, 'Everywhere else.');
 alter sequence floods.community_id_seq restart with 3;
 
--- Add users
-
 -- Set the jwt claim settings so the register user function works
 -- Make sure they're local so we actually use the token outside of this script
 select set_config('jwt.claims.community_id', '1', true);
 select set_config('jwt.claims.role', 'floods_super_admin', true);
-
+-- Add users
 alter sequence floods.user_id_seq restart with 1;
 select floods.register_user(text 'Super', text 'Admin', text 'Superhero, Administrator', integer '1', text '867-5309', text 'superadmin@flo.ods', text 'texasfloods', text 'floods_super_admin');
 alter sequence floods.user_id_seq restart with 2;
@@ -26,17 +24,16 @@ select floods.register_user(text 'Community', text 'Editor Too', text 'Community
 alter sequence floods.user_id_seq restart with 6;
 select floods.register_user(text 'Inactive', text 'User', text 'Retired', integer '1', text '867-5309', text 'inactive@flo.ods', text 'texasfloods', text 'floods_community_editor');
 
-
 -- Add crossings
-insert into floods.crossing (id, name, human_address, description, coordinates) values
-  (1, 'park', 'at the park', 'Crossing at the park', ST_MakePoint(-97.768, 30.267)),
-  (2, 'school', 'at the school', 'Crossing at the school', ST_MakePoint(-97.768, 30.267)),
-  (3, 'library', 'at the library', 'Crossing at the library', ST_MakePoint(-97.768, 30.267)),
-  (4, 'capitol', 'at the capitol', 'Crossing at the capitol', ST_MakePoint(-97.768, 30.267)),
-  (5, 'city hall', 'at city hall', 'Crossing at city hall', ST_MakePoint(-97.768, 30.267)),
-  (6, 'coffee shop', 'at the coffee shop', 'Crossing at the coffee shop', ST_MakePoint(-97.768, 30.267)),
-  (7, 'other community', 'in the other community', 'Crossing in the other community', ST_MakePoint(-97.768, 30.267)),
-  (8, 'other community 2', 'another in the other community', 'Another crossing in the other community', ST_MakePoint(-97.768, 30.267));
+insert into floods.crossing (id, name, human_address, description, coordinates, geojson) values
+  (1, 'park', 'at the park', 'Crossing at the park', ST_MakePoint(-97.768, 30.267), ST_AsGeoJSON(ST_MakePoint(-97.768, 30.267))),
+  (2, 'school', 'at the school', 'Crossing at the school', ST_MakePoint(-97.768, 30.267), ST_AsGeoJSON(ST_MakePoint(-97.768, 30.267))),
+  (3, 'library', 'at the library', 'Crossing at the library', ST_MakePoint(-97.768, 30.267), ST_AsGeoJSON(ST_MakePoint(-97.768, 30.267))),
+  (4, 'capitol', 'at the capitol', 'Crossing at the capitol', ST_MakePoint(-97.768, 30.267), ST_AsGeoJSON(ST_MakePoint(-97.768, 30.267))),
+  (5, 'city hall', 'at city hall', 'Crossing at city hall', ST_MakePoint(-97.768, 30.267), ST_AsGeoJSON(ST_MakePoint(-97.768, 30.267))),
+  (6, 'coffee shop', 'at the coffee shop', 'Crossing at the coffee shop', ST_MakePoint(-97.768, 30.267), ST_AsGeoJSON(ST_MakePoint(-97.768, 30.267))),
+  (7, 'other community', 'in the other community', 'Crossing in the other community', ST_MakePoint(-97.768, 30.267), ST_AsGeoJSON(ST_MakePoint(-97.768, 30.267))),
+  (8, 'other community 2', 'another in the other community', 'Another crossing in the other community', ST_MakePoint(-97.768, 30.267), ST_AsGeoJSON(ST_MakePoint(-97.768, 30.267)));
 alter sequence floods.crossing_id_seq restart with 9;
 
 -- Add crossings to communities
@@ -83,7 +80,6 @@ insert into floods.status_association (id, status_id, detail, rule) values
   (8, 4, 'duration', 'required');
 alter sequence floods.status_association_id_seq restart with 9;
 
-
 -- Add status updates
 insert into floods.status_update (id, status_id, creator_id, crossing_id, notes, created_at) values
   (1, 1, 1, 1, 'notes', '2017-05-03T09:27:57Z'),
@@ -119,5 +115,15 @@ insert into floods.status_update (id, status_id, creator_id, crossing_id, notes,
   (31, 1, 4, 7, 'notes', '2017-06-02T09:27:57Z'),
   (32, 1, 4, 8, 'notes', '2017-06-02T09:27:57Z');
 alter sequence floods.status_update_id_seq restart with 33;
+
+-- Add latest statuses
+update floods.crossing set latest_status_id = 26 where id = 1;
+update floods.crossing set latest_status_id = 30 where id = 2;
+update floods.crossing set latest_status_id = 28 where id = 3;
+update floods.crossing set latest_status_id = 18 where id = 4;
+update floods.crossing set latest_status_id = 29 where id = 5;
+update floods.crossing set latest_status_id = 24 where id = 6;
+update floods.crossing set latest_status_id = 31 where id = 7;
+update floods.crossing set latest_status_id = 32 where id = 8;
 
 commit;

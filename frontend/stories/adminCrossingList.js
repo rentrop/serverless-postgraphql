@@ -10,7 +10,7 @@ const crossingNodes = {
   1: {
     id: 1,
     name: "Test Crossing",
-    latestStatus: {
+    statusUpdateByLatestStatusId: {
       statusByStatusId: {
         name: "Test Status Name"
       },

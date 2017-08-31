@@ -1,18 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import './Header.css';
-import externalLinkSvg from '../images/external-link.svg';
+import externalLinkSvg from '../../images/external-link.svg';
 import UserControls from './UserControls';
 
 class Header extends React.Component {
-
-  getTitleByPathname(pathname) {
-    if (pathname.startsWith("/dashboard")) {
-      return "CTXfloods Dashboard";
-    } else {
-      return "CTXfloods";
-    }
-  }
 
   render() {
     const { pathname } = this.props.location;
@@ -30,15 +22,15 @@ class Header extends React.Component {
         </div>
 
         <div className="Header__main">
-          <h1 className="Header__h1">{this.getTitleByPathname(pathname)}</h1>
+          <h1 className="Header__h1">{"CTXfloods Dashboard"}</h1>
           <ul className="Header__tabs">
-            <li className="Header__tab">
-              <Link to="/updatestatus">Crossing Updates</Link>
+            <li className={pathname.endsWith('crossings') ? 'Header__tab--active' : 'Header__tab'}>
+              <Link to="/dashboard/crossings">Crossing Updates</Link>
             </li>
-            <li className="Header__tab">
+            <li className={pathname.endsWith('addcrossing') ? 'Header__tab' : 'Header__tab'}>
               <Link to="#">Add Crossing</Link>
             </li>
-            <li className="Header__tab--active">
+            <li className={pathname.endsWith('users') ? 'Header__tab--active' : 'Header__tab'}>
               <Link to="/dashboard/users">Manage Users</Link>
             </li>
           </ul>

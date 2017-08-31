@@ -10,11 +10,13 @@
     "aws-sdk": "^2.49.0",
     "get-graphql-schema": "^2.1.0",
     "jwt-decode": "^2.2.0",
+    "mapbox-gl": "^0.39.1",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.0.2",
     "react": "^15.5.4",
     "react-apollo": "^1.4.2",
     "react-dom": "^15.5.4",
+    "react-mapbox-gl": "^2.2.0",
     "react-router-dom": "^4.1.1",
     "react-test-renderer": "^15.5.4",
     "storybook-addon-apollo-graphql": "^0.1.2",
@@ -31,7 +33,7 @@
     "watch-css": "yarn run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "get-schema": "./stories/schema/getSchema.sh",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "yarn build-css; react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9001 -c .storybook"
   }
