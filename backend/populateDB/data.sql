@@ -1,9 +1,9 @@
 begin;
 
 -- Add communities
-insert into floods.community (id, name) values
-  (1, 'All of Texas.'),
-  (2, 'Everywhere else.');
+insert into floods.community (id, name, viewportgeojson) values
+  (1, 'All of Texas.', ST_AsGeoJSON(ST_MakeEnvelope(-106.422319, 26.829358, -94.490523, 36.956948))),
+  (2, 'Right near Zilker.', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
 alter sequence floods.community_id_seq restart with 3;
 
 -- Set the jwt claim settings so the register user function works

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import FloodsAdminRoutes from './FloodsAdminRoutes';
+import FloodsRoutes from './FloodsRoutes';
 import client from './services/apolloClientService';
 import { ApolloProvider } from 'react-apollo';
 
@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <Router>
-          <FloodsAdminRoutes/>
+          <FloodsRoutes/>
         </Router>
       </ApolloProvider>
     );

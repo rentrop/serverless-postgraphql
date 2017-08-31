@@ -13,12 +13,14 @@ create extension if not exists "postgis";
 -- Create the Communities table
 create table floods.community (
   id               serial primary key,
-  name             text not null check (char_length(name) < 200)
+  name             text not null check (char_length(name) < 200),
+  viewportgeojson  text
 );
 
 comment on table floods.community is 'A community defined by a geospatial area.';
 comment on column floods.community.id is 'The primary unique identifier for the community.';
 comment on column floods.community.name is 'The name of the community.';
+comment on column floods.community.viewportgeojson is 'The viewport of the community.';
 
 -- Create the users table
 create table floods.user (
@@ -453,6 +455,11 @@ begin
 
   insert into floods.community_crossing (community_id, crossing_id) values
     (community_id, floods_crossing.id);
+
+  -- Update the community viewport
+  update floods.community
+    set viewportgeojson = (select ST_AsGeoJSON(ST_Envelope(ST_Extent(c.coordinates))) from floods.crossing c, floods.community_crossing cc where cc.crossing_id = c.id and cc.community_id = new_crossing.community_id)
+    where id = new_crossing.community_id;
 
   return floods_crossing;
 end;

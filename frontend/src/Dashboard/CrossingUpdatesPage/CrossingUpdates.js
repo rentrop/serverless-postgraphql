@@ -19,6 +19,12 @@ class CrossingUpdates extends Component {
   }
 
   render() {
+    const envelope = JSON.parse(this.props.currentUser.communityByCommunityId.viewportgeojson);
+    var viewport = [
+      [Math.min(...envelope.coordinates[0].map(arr => arr[0])), Math.min(...envelope.coordinates[0].map(arr => arr[1]))],
+      [Math.max(...envelope.coordinates[0].map(arr => arr[0])), Math.max(...envelope.coordinates[0].map(arr => arr[1]))]
+    ];
+
     return (
       <div className="CrossingUpdates">
         <div className="flexcontainer">
@@ -29,7 +35,7 @@ class CrossingUpdates extends Component {
         </div>
         {this.state.activeTab === 'map' ? 
           <div className="CrossingUpdates__map-container">
-            <CrossingMap mapHeight="80vh" mapWidth="80vw"/>
+            <CrossingMap mapHeight="80vh" mapWidth="80vw" viewport={viewport}/>
           </div>
         :
           <div>LIST VIEW</div>
