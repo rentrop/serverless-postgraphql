@@ -2,11 +2,29 @@ import React from 'react';
 import mapboxstyle from './mapboxstyle';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import * as MapboxGl from 'mapbox-gl';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 
 const Map = ReactMapboxGl({ accessToken: null });
 
 class CrossingMap extends React.Component {
+
+  onMapboxStyleLoad (map) {
+    this.addGeoLocateControl(map);
+  }
+
+  addGeoLocateControl (map) {
+    map.addControl(new MapboxGl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      fitBoundsOptions: {
+        maxZoom: 15
+      },
+      watchPosition: true,
+      showUserLocation: true
+    }));
+  }
 
   render () {
     if (this.props.data.loading) {
@@ -23,6 +41,7 @@ class CrossingMap extends React.Component {
 
     return (
       <Map
+        onStyleLoad={this.onMapboxStyleLoad.bind(this)}
         style={mapboxstyle}
         containerStyle={{
           height: this.props.mapHeight,
