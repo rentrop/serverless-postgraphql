@@ -14,13 +14,10 @@ class PrivateRoute extends Component {
           authorized ? (
             <Component {...props} {...this.props} />
           ) : (
-            <div>NOT AUTHORIZED</div>
+            <div>Not Authorized</div>
           )
         ) : (
-          <Redirect to={{
-            pathname: '/login',
-            state: { from: props.location }
-          }}/>
+          <div>Not Authenticated</div>
         )
       )}/>
     );

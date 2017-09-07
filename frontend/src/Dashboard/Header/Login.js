@@ -28,25 +28,15 @@ class Login extends Component {
     .then(({ data }) => {
       console.log('got data', data);
       localStorage.setItem('jwt_user_token', data.authenticate.jwtToken);
-      this.setState({ redirectToReferrer: true })
+      window.location.reload();
     }).catch((error) => {
       console.log('there was an error sending the query', error);
     });
   }
 
-  render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } }
-    const { redirectToReferrer } = this.state
-    
-    if (redirectToReferrer) {
-      return (
-        <Redirect to={from}/>
-      )
-    }
-    
+  render() {    
     return (
       <div>
-        <p>You must log in to view the page at {from.pathname}</p>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type="text"
                  value={this.state.email}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import Login from './Login';
 import auth from '../../services/gqlAuth'
 
 import cogSvg from '../../images/cog.svg';
@@ -19,8 +20,8 @@ class UserControlsBase extends React.Component {
           }
           &nbsp; | &nbsp;
           <button
-            onClick={() => auth.signout(() => this.props.history.push('/login'))}
             className="button-reset link"
+            onClick={() => auth.signout(() => window.location.reload())}
           >
             Sign out
           </button>
@@ -28,6 +29,7 @@ class UserControlsBase extends React.Component {
       ) : (
         <div className="UserControls">
           <p>You are not logged in.</p>
+          <Login/>
         </div>
       )
     )
