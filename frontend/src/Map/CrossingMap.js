@@ -14,7 +14,10 @@ const STATUS_CLOSED = 2;
 class CrossingMap extends React.Component {
   state = {
     selectedCrossingId: -1, // Mapbox filters don't support null values
-    center: [null, null]
+    center: [
+      (this.props.viewport[0][0]+this.props.viewport[1][0])/2,
+      (this.props.viewport[0][1]+this.props.viewport[1][1])/2
+    ]
   }
 
   onMapboxStyleLoad (map) {
