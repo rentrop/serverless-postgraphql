@@ -319,7 +319,8 @@ comment on function floods.reactivate_user(integer, text, text, text) is 'Reacti
 -- Create function to search users
 -- TODO: plainto_tsquery probably won't do everything we need, so we'll need to implement something else to form a valid tsquery for search on the frontend
 create function floods.search_users(
-  search text
+  search text default null,
+  community integer default null
 ) returns setof floods.user as $$
   select resultuser
   from (select
@@ -331,11 +332,13 @@ create function floods.search_users(
       floods.user u,
       floods.community c
     where
-      u.community_id = c.id) user_search
-  where user_search.document @@ plainto_tsquery(search);
+      u.community_id = c.id and
+      (community is null or community = u.community_id)
+  ) user_search
+  where search is null or user_search.document @@ plainto_tsquery(search);
 $$ language sql stable security definer;
 
-comment on function floods.search_users(text) is 'Searches users.';
+comment on function floods.search_users(text, integer) is 'Searches users.';
 
 -- Create function to update status
 -- TODO: Figure out how to make reason and duration dynamic
@@ -791,7 +794,7 @@ grant select on table floods.community_crossing to floods_anonymous;
 grant execute on function floods.authenticate(text, text) to floods_anonymous;
 
 -- Allow all users to search users
-grant execute on function floods.search_users(text) to floods_anonymous;
+grant execute on function floods.search_users(text, integer) to floods_anonymous;
 
 -- Allow community admins and up to register new users
 -- NOTE: Extra logic around permissions in function

@@ -56,4 +56,56 @@ describe('When searching users', () => {
 
     expect(response.searchUsers.nodes).toMatchSnapshot();    
   });
+
+  it('should return nothing when search string doesnt match anything', async () => {
+    const response = await anonLokka.send(`
+      query($unmatchedSearch:String) {
+        searchUsers(search: $unmatchedSearch) {
+          nodes {
+            id
+          }
+        }
+      }
+    `,
+    {
+      unmatchedSearch: "abcdefghijklmnopqrstuvwxyz"
+    });
+
+    expect(response.searchUsers.nodes.length).toEqual(0);    
+  });
+
+  it('should return all users when search string is null', async () => {
+    const response = await anonLokka.send(`
+      query($nullSearch:String) {
+        searchUsers(search: $nullSearch) {
+          nodes {
+            id
+          }
+        }
+      }
+    `,
+    {
+      nullSearch: null
+    });
+
+    expect(response.searchUsers.nodes.length).not.toEqual(0);    
+  });
+
+  it('should filter by community correctly', async () => {
+    const response = await anonLokka.send(`
+      query($community:Int) {
+        searchUsers(community: $community) {
+          nodes {
+            communityId
+          }
+        }
+      }
+    `,
+    {
+      community: 2
+    });
+
+    expect(response.searchUsers.nodes).toContainEqual({ communityId: 2 });
+    expect(response.searchUsers.nodes).not.toContainEqual({ communityId: 1 });     
+  });
 });
