@@ -15,12 +15,12 @@ import gql from 'graphql-tag';
 class FloodsRoutes extends Component {
   render() {
     const currentUser = this.props.data && this.props.data.currentUser;
-    
+
     if (this.props.data && this.props.data.loading) {
       return (<div>Loading</div>)
     }
-    
-    return (        
+
+    return (
       <div>
         <Route path="/" exact component={PublicHomepage} />
         <Route path="/dashboard" render={(props) => <Header currentUser={currentUser} {...props} />} />

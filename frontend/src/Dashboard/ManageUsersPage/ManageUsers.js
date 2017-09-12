@@ -6,6 +6,17 @@ import UserList from './UserList';
 import './ManageUsers.css';
 
 class ManageUsers extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { searchParam: '' };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.setState({ searchParam: e.target.elements.tableSearch.value });
+  }
+
   render() {
     return (
       <div className="ManageUsers">
@@ -18,10 +29,10 @@ class ManageUsers extends Component {
         <div className="flexcontainer">
           <BulkActionsDropdown />
           <div className="ManageUsers__right-aligned-element">
-            <TableSearch />
+            <TableSearch handleSubmit={this.handleSubmit} />
           </div>
         </div>
-        <UserList {...this.props} />
+        <UserList {...this.props} searchParam={this.state.searchParam} />
       </div>
     );
   }

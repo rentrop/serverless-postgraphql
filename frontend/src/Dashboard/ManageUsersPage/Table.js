@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import './Table.css'
 import caretDownSvg from '../../images/caret-down.svg'
@@ -35,7 +34,7 @@ class Table extends Component {
                   { row.map((cell, i) => {
                      return cell.isLinked ? (
                         <td key={i} className="Table__content--linked">
-                           <Link to={cell.link}>{ cell.content }</Link>
+                           <a href={cell.link}>{ cell.content }</a>
                         </td>
                        ) : (
                          <td key={i} className="Table__content">{ cell }</td>

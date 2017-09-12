@@ -5,11 +5,11 @@ class TableSearch extends Component {
 
   render() {
     return (
-      <form action="" className="flexcontainer">
-        <input type="text" placeholder="Search names and communities"
+      <form action="" className="flexcontainer" onSubmit={this.props.handleSubmit}>
+        <input type="text" name="tableSearch" placeholder="Search names and communities"
           className="TableSearch__input"
         />
-        <input type="button" className="TableSearch__search-button"
+        <input type="submit" className="TableSearch__search-button"
           aria-label="search"
         />
       </form>

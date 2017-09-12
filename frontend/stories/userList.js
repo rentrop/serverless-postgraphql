@@ -14,14 +14,23 @@ const userNodes = {
     role: "floods_super_admin",
     communityByCommunityId: {
       name: "all of texas",
+      id: '1',
     }
   }
 };
 
+const superAdmin = {
+  communityId: 1,
+  firstName: "Super",
+  id: 1,
+  lastName: "Admin",
+  role: "floods_super_admin",
+}
+
 const root = {
-  allUsers: () => ({ nodes: Object.values(userNodes) })
+  searchUsers: () => ({ nodes: Object.values(userNodes) }),
 };
 
 storiesOf('List Users', module)
   .addDecorator(withApolloProvider({ schema, root }))
-  .add('List Users', () => <UserList />);
+  .add('List Users', () => <UserList currentUser={superAdmin} />);

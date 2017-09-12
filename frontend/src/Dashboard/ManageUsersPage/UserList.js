@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import Table from './Table';
 
@@ -39,17 +39,14 @@ class UserList extends React.Component {
       return (<div>Loading</div>)
     }
 
-    const { communityUsers, allUsers } = this.props.data;
-    if ((communityUsers == null) && (allUsers == null)) {
+    const { searchUsers } = this.props.data;
+
+    if (searchUsers == null) {
       // TODO: add error logging
       return (<div>Error Loading Users</div>);
     }
 
-    const users = this.props.currentUser.role === "floods_super_admin"
-      ? allUsers
-      : communityUsers;
-
-    const userData = users.nodes.map((user) => {
+    const userData = searchUsers.nodes.map((user) => {
     	return [
         { isLinked: true, link: `/user/${user.id}`, content: `${user.firstName} ${user.lastName}` },
         this.parseRole(user.role),
@@ -65,38 +62,26 @@ class UserList extends React.Component {
 
 }
 
-
-const getUsers = gql`
-  fragment UserData on User {
-    id
-    firstName
-    lastName
-    role
-    communityByCommunityId {
-      id
-      name
-    }
-  }
-  query allUsers($superUser: Boolean!, $communityId: Int!) {
-    allUsers @include(if: $superUser) {
-      nodes {
-        ...UserData
-      }
-    }
-    communityUsers: allUsers(condition: {communityId: $communityId}) @skip(if: $superUser) {
-      nodes {
-        ...UserData
+const searchUsers = gql`
+  query searchUsers($searchString: String, $community: Int) {
+  searchUsers(search: $searchString, community: $community) {
+    nodes {
+      firstName
+      lastName
+      role
+      communityByCommunityId {
+        id
+        name
       }
     }
   }
-`;
+}`;
 
-export default graphql(getUsers, {
-  skip: (ownProps) => !ownProps.currentUser,
+export default graphql(searchUsers, {
   options: (ownProps) => ({
     variables: {
-      communityId: ownProps.currentUser.communityId,
-      superUser: ownProps.currentUser.role === "floods_super_admin"
+      searchString: ownProps.searchParam === "" ? null : ownProps.searchParam,
+      community: ownProps.currentUser.role === "floods_super_admin" ? null : ownProps.currentUser.communityId
     }
-  }),
+  })
 })(UserList);
