@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
-import Table from './Table';
+import Table from '../Table/Table';
 
 const manageUsersHeaders = [{
   title: '',

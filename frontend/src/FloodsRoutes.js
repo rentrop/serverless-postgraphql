@@ -5,6 +5,7 @@ import Header from './Dashboard/Header/Header';
 import ManageUsers from './Dashboard/ManageUsersPage/ManageUsers';
 import CreateUser from './CreateUser';
 import CrossingMapPage from './Dashboard/CrossingMapPage/CrossingMapPage'
+import CrossingListPage from './Dashboard/CrossingListPage/CrossingListPage';
 import NewStatusUpdate from './NewStatusUpdate';
 import PublicHomepage from './PublicHomepage';
 import auth from './services/gqlAuth';
@@ -29,6 +30,11 @@ class FloodsRoutes extends Component {
           currentUser={currentUser}
         />
         <PrivateRoute path="/dashboard/crossings/map" component={CrossingMapPage}
+          authenticated={auth.isAuthenticated()}
+          authorized={auth.roleAuthorized(['floods_community_editor','floods_community_admin', 'floods_super_admin'])}
+          currentUser={currentUser}
+        />
+        <PrivateRoute path="/dashboard/crossings/list" component={CrossingListPage}
           authenticated={auth.isAuthenticated()}
           authorized={auth.roleAuthorized(['floods_community_editor','floods_community_admin', 'floods_super_admin'])}
           currentUser={currentUser}

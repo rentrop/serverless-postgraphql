@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import LinkButton from '../../LinkButton';
 import BulkActionsDropdown from '../Table/BulkActionsDropdown';
 import TableSearch from '../Table/TableSearch';
-import UserList from './UserList';
-import './ManageUsers.css';
+import CrossingList from './CrossingList';
+import './CrossingListPage.css';
 
-class ManageUsers extends Component {
+class CrossingListPage extends Component {
   constructor(props) {
     super(props);
     this.state = { searchParam: '' };
@@ -19,20 +19,14 @@ class ManageUsers extends Component {
 
   render() {
     return (
-      <div className="ManageUsers">
-        <div className="flexcontainer">
-          <h1 className="ManageUsers__h1">Manage Users</h1>
-          <div className="ManageUsers__right-aligned-element">
-            <LinkButton url="/createuser" text="Add New" />
-          </div>
-        </div>
+      <div className="ManageCrossings">
         <div className="flexcontainer">
           <BulkActionsDropdown />
-          <div className="ManageUsers__right-aligned-element">
+          <div className="ManageCrossings__right-aligned-element">
             <TableSearch handleSubmit={this.handleSubmit} />
           </div>
         </div>
-        <UserList {...this.props} searchParam={this.state.searchParam} />
+        <CrossingList {...this.props} searchParam={this.state.searchParam} />
       </div>
     );
   }
@@ -40,4 +34,4 @@ class ManageUsers extends Component {
 }
 
 
-export default ManageUsers;
+export default CrossingListPage;
