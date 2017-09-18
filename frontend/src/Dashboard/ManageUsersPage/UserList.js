@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, compose } from 'react-apollo';
+import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import Table from '../Table/Table';
 

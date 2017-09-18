@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { gql, graphql } from 'react-apollo';
 
 class Login extends Component {

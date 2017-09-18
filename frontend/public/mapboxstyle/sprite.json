@@ -1,0 +1,44 @@
+{
+  "circle-11": {
+    "height": 33,
+    "pixelRatio": 1,
+    "width": 33,
+    "x": 37,
+    "y": 0
+  },
+  "circle-15": {
+    "height": 37,
+    "pixelRatio": 1,
+    "width": 37,
+    "x": 0,
+    "y": 0
+  },
+  "cross-11": {
+    "height": 28,
+    "pixelRatio": 1,
+    "width": 28,
+    "x": 32,
+    "y": 37
+  },
+  "cross-15": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 0,
+    "y": 37
+  },
+  "marker-11": {
+    "height": 15,
+    "pixelRatio": 1,
+    "width": 15,
+    "x": 79,
+    "y": 37
+  },
+  "marker-15": {
+    "height": 19,
+    "pixelRatio": 1,
+    "width": 19,
+    "x": 60,
+    "y": 37
+  }
+}

@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mapbox/mapbox-gl-style-spec": "^9.0.1",
+    "@mapbox/spritezero-cli": "^2.1.0",
     "@storybook/addon-storyshots": "^3.1.9",
     "@storybook/cli": "^3.2.9",
     "@storybook/react": "^3.1.9",
@@ -30,6 +32,9 @@
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "start-local": "REACT_APP_AWS_ENDPOINT='http://localhost:5000/graphql' yarn run start",
+    "validate-map-style": "node src/Map/style/scripts/validate.js",
+    "build-map-style": "yarn build-map-icons; node src/Map/style/scripts/build.js",
+    "build-map-icons": "spritezero public/mapboxstyle/sprite src/Map/style/icons/; spritezero --retina public/mapboxstyle/sprite@2x src/Map/style/icons/",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "yarn run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "get-schema": "./src/stories/schema/getSchema.sh",
