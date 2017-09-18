@@ -1,9 +1,7 @@
 import { configure } from '@storybook/react';
 
 function loadStories() {
-  require('../stories/adminCrossingList.js');
-  require('../stories/userList.js');
+  require('../src/stories/userList.js');
 }
-
 
 configure(loadStories, module);
