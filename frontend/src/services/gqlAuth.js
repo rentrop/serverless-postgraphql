@@ -1,7 +1,7 @@
 import decode from 'jwt-decode';
 import { isTokenExpired } from './jwtHelper';
 
-module.exports = {
+const auth = {
   isAuthenticated() {
     var token = localStorage.getItem('jwt_user_token');
     if(token === null || token === "null") return false;
@@ -23,3 +23,5 @@ module.exports = {
     cb.call();
   }
 }
+
+export default auth;
