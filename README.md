@@ -19,6 +19,7 @@ cd backend
 yarn install
 ```
 🐘  Make sure postgres is running
+* Make sure [psql](https://postgresapp.com/documentation/cli-tools.html) works in your terminal
 
 ⌨️ Initialize the database
 ```
