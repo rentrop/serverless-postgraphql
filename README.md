@@ -45,6 +45,11 @@ yarn test
 cd frontend
 yarn install
 ```
+🖋 Build the map style
+```
+yarn build-map-style
+```
+
 ⌨️ Run the frontend against the local backend
 ```
 yarn start-local
