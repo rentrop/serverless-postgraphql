@@ -1,0 +1,86 @@
+@import "../../css/flexbox";
+@import "../../css/font-awesome/font-awesome.scss";
+
+$container-height: 46px;
+
+$border-color: #D0CED7;
+$text-color: #D0CED7;
+$selected-text-color: #11022F;
+
+$open-color: #ACF6EA;
+$caution-color: #F6F3AC;
+$closed-color: #FFCEC6;
+
+.StatusToggleContainer {
+  @include flexcontainer;
+  width: 258px;
+  height: $container-height;
+}
+
+.StatusToggle {
+  @include flexitem;
+  text-align: center;
+  vertical-align: bottom;
+  line-height: $container-height;
+  border: 1px solid $border-color;
+  border-right-style: none;
+  color: $text-color;
+}
+
+.StatusToggle--selected {
+  color: $selected-text-color;
+}
+
+.StatusToggle__open {
+  @extend .StatusToggle;
+  border-radius: 8px 0px 0px 8px;
+  -webkit-text-stroke-width: 1.5px;
+  font-size: 1.8em;
+}
+
+.StatusToggle__open--selected {
+  @extend .StatusToggle__open;
+  @extend .StatusToggle--selected;
+  background-color: $open-color;
+}
+
+.StatusToggle__caution {
+  @extend .StatusToggle;
+  font-size: 1.8em;
+}
+
+.StatusToggle__caution--selected {
+  @extend .StatusToggle__caution;
+  @extend .StatusToggle--selected;
+  background-color: $caution-color;
+}
+
+.StatusToggle__closed {
+  @extend .StatusToggle;
+  -webkit-text-stroke: 1px white;
+  font-size: 2.5em;
+}
+
+.StatusToggle__closed--selected {
+  @extend .StatusToggle__closed;
+  @extend .StatusToggle--selected;
+  background-color: $closed-color;
+  -webkit-text-stroke: 1px $closed-color;
+}
+
+.StatusToggle__longterm {
+  @extend .StatusToggle;
+  border-right-style: solid;
+  border-radius: 0px 8px 8px 0px;
+  font-size: 2em;
+}
+
+.StatusToggle__longterm--selected {
+  @extend .StatusToggle__longterm;
+  @extend .StatusToggle--selected;
+  background-color: $closed-color;
+}
+
+.hover {
+  color: $selected-text-color;
+}

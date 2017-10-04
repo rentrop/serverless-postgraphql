@@ -19,6 +19,7 @@
     "react": "^16.0.0-rc.3",
     "react-apollo": "^1.4.2",
     "react-dom": "^16.0.0-rc.3",
+    "react-fontawesome": "^1.6.1",
     "react-mapbox-gl": "^2.5.0",
     "react-router-dom": "^4.1.1",
     "react-test-renderer": "^16.0.0-rc.3",
@@ -41,6 +42,6 @@
     "build": "react-scripts build",
     "test": "yarn build-css; react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook & yarn watch-css"
   }
 }

@@ -5,3 +5,227 @@ exports[`Storyshots List Users List Users 1`] = `
   Loading
 </div>
 `;
+
+exports[`Storyshots Toggle Crossing Status Caution 1`] = `
+<div
+  className="StatusToggleContainer"
+>
+  <div
+    className="StatusToggle__open"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-circle-o"
+    />
+  </div>
+  <div
+    className="StatusToggle__caution--selected"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-exclamation-triangle"
+    />
+  </div>
+  <div
+    className="StatusToggle__closed"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-times"
+    />
+  </div>
+  <div
+    className="StatusToggle__longterm"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-times"
+      style={
+        Object {
+          "textDecoration": "underline",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Toggle Crossing Status Closed 1`] = `
+<div
+  className="StatusToggleContainer"
+>
+  <div
+    className="StatusToggle__open"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-circle-o"
+    />
+  </div>
+  <div
+    className="StatusToggle__caution"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-exclamation-triangle"
+    />
+  </div>
+  <div
+    className="StatusToggle__closed--selected"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-times"
+    />
+  </div>
+  <div
+    className="StatusToggle__longterm"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-times"
+      style={
+        Object {
+          "textDecoration": "underline",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Toggle Crossing Status Long Term Closure 1`] = `
+<div
+  className="StatusToggleContainer"
+>
+  <div
+    className="StatusToggle__open"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-circle-o"
+    />
+  </div>
+  <div
+    className="StatusToggle__caution"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-exclamation-triangle"
+    />
+  </div>
+  <div
+    className="StatusToggle__closed"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-times"
+    />
+  </div>
+  <div
+    className="StatusToggle__longterm--selected"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-times"
+      style={
+        Object {
+          "textDecoration": "underline",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Toggle Crossing Status Open 1`] = `
+<div
+  className="StatusToggleContainer"
+>
+  <div
+    className="StatusToggle__open--selected"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-circle-o"
+    />
+  </div>
+  <div
+    className="StatusToggle__caution"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-exclamation-triangle"
+    />
+  </div>
+  <div
+    className="StatusToggle__closed"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-times"
+    />
+  </div>
+  <div
+    className="StatusToggle__longterm"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <span
+      aria-hidden={true}
+      className="fa fa-times"
+      style={
+        Object {
+          "textDecoration": "underline",
+        }
+      }
+    />
+  </div>
+</div>
+`;
