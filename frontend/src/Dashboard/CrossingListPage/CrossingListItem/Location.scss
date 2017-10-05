@@ -1,0 +1,23 @@
+@import "../../../css/flexbox";
+
+.LocationContainer {
+  @include flexitem;
+}
+
+.MapIcon {
+  display: inline-block;
+  font-size: 12pt;
+  color: #474554;
+  vertical-align: top;
+  width: 24px;
+  text-align: center;
+}
+
+.LocationText {
+  display: inline-block;
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: .2pt;
+}

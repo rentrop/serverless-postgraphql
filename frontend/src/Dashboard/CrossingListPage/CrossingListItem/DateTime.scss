@@ -1,0 +1,23 @@
+@import "../../../css/flexbox";
+
+.DateTimeContainer {
+  @include flexitem;
+}
+
+.ClockIcon {
+  display: inline-block;
+  font-size: 12pt;
+  color: #474554;
+  vertical-align: top;
+  width: 38px;
+  text-align: center;
+}
+
+.DateTimeText {
+  display: inline-block;
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: .2pt;
+}

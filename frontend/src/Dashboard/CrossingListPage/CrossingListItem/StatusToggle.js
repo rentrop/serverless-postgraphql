@@ -12,16 +12,16 @@ class StatusToggle extends React.Component {
     super(props);
 
     switch (props.status) {
-      case 'open':
+      case 'Open':
         this.state = { selectedStatus: STATUS_OPEN }
         break;
-      case 'caution':
+      case 'Caution':
         this.state = { selectedStatus: STATUS_CAUTION }
         break;
-      case 'closed':
+      case 'Closed':
         this.state = { selectedStatus: STATUS_CLOSED }
         break;
-      case 'longterm':
+      case 'Long Term Closure':
         this.state = { selectedStatus: STATUS_LONGTERM }
         break;
     }
