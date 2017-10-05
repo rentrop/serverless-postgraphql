@@ -1,13 +1,14 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import CrossingListItem from '../Dashboard/CrossingListPage/CrossingListItem/CrossingListItem'
+import * as statusConstants from '../Dashboard/CrossingListPage/CrossingListItem/StatusConstants'
 
 storiesOf('Crossing List Item', module)
-  .add('Open', () => <CrossingListItem status='Open'/>)
-  .add('Open Dirty', () => <CrossingListItem status='Open' dirty="true"/>)
-  .add('Caution', () => <CrossingListItem status='Caution'/>)
-  .add('Caution Dirty', () => <CrossingListItem status='Caution' dirty="true"/>)
-  .add('Closed', () => <CrossingListItem status='Closed'/>)
-  .add('Closed Dirty', () => <CrossingListItem status='Closed' dirty="true"/>)
-  .add('Long Term Closure', () => <CrossingListItem status='Long Term Closure'/>)
-  .add('Long Term Closure Dirty', () => <CrossingListItem status='Long Term Closure' dirty="true"/>)
+  .add('Open', () => <CrossingListItem savedStatus={statusConstants.OPEN}/>)
+  .add('Open Dirty', () => <CrossingListItem savedStatus={statusConstants.OPEN} dirty="true"/>)
+  .add('Caution', () => <CrossingListItem savedStatus={statusConstants.CAUTION}/>)
+  .add('Caution Dirty', () => <CrossingListItem savedStatus={statusConstants.CAUTION} dirty="true"/>)
+  .add('Closed', () => <CrossingListItem savedStatus={statusConstants.CLOSED}/>)
+  .add('Closed Dirty', () => <CrossingListItem savedStatus={statusConstants.CLOSED} dirty="true"/>)
+  .add('Long Term Closure', () => <CrossingListItem savedStatus={statusConstants.LONGTERM}/>)
+  .add('Long Term Closure Dirty', () => <CrossingListItem savedStatus={statusConstants.LONGTERM} dirty="true"/>)

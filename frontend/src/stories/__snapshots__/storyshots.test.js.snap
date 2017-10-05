@@ -2487,7 +2487,7 @@ exports[`Storyshots Crossing List Item Status Toggle Caution 1`] = `
 >
   <div
     className="StatusToggle__open"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2498,7 +2498,7 @@ exports[`Storyshots Crossing List Item Status Toggle Caution 1`] = `
   </div>
   <div
     className="StatusToggle__caution--selected"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2509,7 +2509,7 @@ exports[`Storyshots Crossing List Item Status Toggle Caution 1`] = `
   </div>
   <div
     className="StatusToggle__closed"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2520,7 +2520,7 @@ exports[`Storyshots Crossing List Item Status Toggle Caution 1`] = `
   </div>
   <div
     className="StatusToggle__longterm"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2543,7 +2543,7 @@ exports[`Storyshots Crossing List Item Status Toggle Closed 1`] = `
 >
   <div
     className="StatusToggle__open"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2554,7 +2554,7 @@ exports[`Storyshots Crossing List Item Status Toggle Closed 1`] = `
   </div>
   <div
     className="StatusToggle__caution"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2565,7 +2565,7 @@ exports[`Storyshots Crossing List Item Status Toggle Closed 1`] = `
   </div>
   <div
     className="StatusToggle__closed--selected"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2576,7 +2576,7 @@ exports[`Storyshots Crossing List Item Status Toggle Closed 1`] = `
   </div>
   <div
     className="StatusToggle__longterm"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2599,7 +2599,7 @@ exports[`Storyshots Crossing List Item Status Toggle Long Term Closure 1`] = `
 >
   <div
     className="StatusToggle__open"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2610,7 +2610,7 @@ exports[`Storyshots Crossing List Item Status Toggle Long Term Closure 1`] = `
   </div>
   <div
     className="StatusToggle__caution"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2621,7 +2621,7 @@ exports[`Storyshots Crossing List Item Status Toggle Long Term Closure 1`] = `
   </div>
   <div
     className="StatusToggle__closed"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2632,7 +2632,7 @@ exports[`Storyshots Crossing List Item Status Toggle Long Term Closure 1`] = `
   </div>
   <div
     className="StatusToggle__longterm--selected"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2655,7 +2655,7 @@ exports[`Storyshots Crossing List Item Status Toggle Open 1`] = `
 >
   <div
     className="StatusToggle__open--selected"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2666,7 +2666,7 @@ exports[`Storyshots Crossing List Item Status Toggle Open 1`] = `
   </div>
   <div
     className="StatusToggle__caution"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2677,7 +2677,7 @@ exports[`Storyshots Crossing List Item Status Toggle Open 1`] = `
   </div>
   <div
     className="StatusToggle__closed"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
@@ -2688,7 +2688,7 @@ exports[`Storyshots Crossing List Item Status Toggle Open 1`] = `
   </div>
   <div
     className="StatusToggle__longterm"
-    onClick={[Function]}
+    onClick={undefined}
     onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
