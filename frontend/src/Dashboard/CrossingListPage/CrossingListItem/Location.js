@@ -4,15 +4,18 @@ import './Location.css';
 
 class Location extends React.Component {
   render () {
+    const { crossing } = this.props;
+    const communityNames = crossing.communityCrossingsByCrossingId.nodes.map(community => community.communityByCommunityId.name);
+    
     return (
       <div className="LocationContainer">
         <div className="MapIcon">
           <FontAwesome name="map-marker" />
         </div>
         <div className="LocationText">
-          <div>605 Spurlock Valley · West Lake Hills, TX 78746</div>
-          <div style={{"font-style":"italic"}}>E of Intersection w/ Clifford</div>
-          <div>City of Austin, Travis County</div>
+          <div>{ crossing.humanAddress }</div>
+          <div style={{"font-style":"italic"}}>{ crossing.description }</div>
+          <div>{communityNames.join(", ")}</div>
         </div>
       </div>
     );

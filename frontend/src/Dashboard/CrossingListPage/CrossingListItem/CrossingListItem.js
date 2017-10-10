@@ -16,14 +16,27 @@ statusStrings.set(statusConstants.LONGTERM, 'Long Term Closure');
 class CrossingListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { selectedStatus: props.savedStatus };
+    this.state = {
+      selectedStatus: props.crossing.statusUpdateByLatestStatusId.statusId,
+      selectedReason: props.crossing.statusUpdateByLatestStatusId.statusReasonId,
+      selectedDuration: props.crossing.statusUpdateByLatestStatusId.statusDurationId,
+      notes: props.crossing.statusUpdateByLatestStatusId.notes
+    };
   }
 
   isDirty() {
     // Temporary fix for storybook
     if(this.props.dirty) return true;
 
-    return (this.props.savedStatus !== this.state.selectedStatus);
+    const savedStatus = this.props.crossing.statusUpdateByLatestStatusId.statusId;
+    const savedReason = this.props.crossing.statusUpdateByLatestStatusId.statusReasonId;
+    const savedDuration = this.props.crossing.statusUpdateByLatestStatusId.statusDurationId;
+    const savedNotes = this.props.crossing.statusUpdateByLatestStatusId.notes;
+
+    return (savedStatus != this.state.selectedStatus ||
+            savedReason != this.state.selectedReason ||
+            savedDuration != this.state.selectedDuration ||
+            savedNotes != this.state.notes);
   }
 
   openClicked = () => { this.setState({ selectedStatus: statusConstants.OPEN }) };
@@ -31,7 +44,13 @@ class CrossingListItem extends React.Component {
   closedClicked = () => { this.setState({ selectedStatus: statusConstants.CLOSED }) };
   longtermClicked = () => { this.setState({ selectedStatus: statusConstants.LONGTERM }) };
 
+  reasonChanged = (e) => { this.setState({ selectedReason: e.target.value }) };
+  durationChanged = (e) => { this.setState({ selectedDuration: e.target.value }) };
+  notesChanged = (e) => { this.setState({ notes: e.target.value }) };
+
   render () {
+    const { crossing, reasons, durations } = this.props;
+
     var show = [];
     switch(this.state.selectedStatus) {
       case statusConstants.OPEN:
@@ -52,9 +71,9 @@ class CrossingListItem extends React.Component {
       <div className={this.isDirty() ? "DirtyBorder" : ""}>
         <div className="CrossingListItemContainer">
           <div className="CrossingListItemFlexContainer">
-            <div className="CrossingName">Spurlock Valley</div>
-            <Location />
-            <DateTime />
+            <div className="CrossingName">{crossing.name}</div>
+            <Location crossing={ crossing } />
+            <DateTime update={ crossing.statusUpdateByLatestStatusId } />
           </div>
           <div className="CrossingListItemFlexContainer">
             <div className="flexitem">
@@ -72,12 +91,15 @@ class CrossingListItem extends React.Component {
                   <div className="ControlLabel">Reason</div>
                   <div className="required">{this.isDirty() ? "Required" : ""}</div>
                 </div>
-                <Dropdown />
+                <Dropdown
+                  options={reasons}
+                  selected={this.state.selectedReason}
+                  onChange={this.reasonChanged} />
               </div>
             </div>
             <div className="flexitem">
               <div className="ControlLabel">Notes to the public</div>
-              <input className="NotesTextBox" type="text" />
+              <input className="NotesTextBox" type="text" value={this.state.notes} onChange={this.notesChanged}/>
             </div>
           </div>
           <div className={show.includes('duration') || show.includes('cancelSave') ? "CrossingListItemFlexContainer" : ""}>
@@ -88,7 +110,10 @@ class CrossingListItem extends React.Component {
                   <div className="ControlLabel">Duration</div>
                   <div className="required">{this.isDirty() ? "Required" : ""}</div>
                 </div>
-                <Dropdown />
+                <Dropdown
+                  options={durations}
+                  selected={this.state.selectedDuration}
+                  onChange={this.durationChanged} />
               </div>
             </div>
             <div className="flexitem">

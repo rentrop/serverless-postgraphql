@@ -14,6 +14,7 @@
     "get-graphql-schema": "^2.1.0",
     "jwt-decode": "^2.2.0",
     "mapbox-gl": "^0.40.0",
+    "moment": "^2.18.1",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.0.2",
     "react": "^16.0.0-rc.3",

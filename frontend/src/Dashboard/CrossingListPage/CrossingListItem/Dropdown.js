@@ -4,12 +4,20 @@ import './Dropdown.css'
 class Dropdown extends Component {
 
   render() {
+    const { selected, options } = this.props;
+
     return (
       <div className="Dropdown">
-        <select className="Dropdown__select" name="" id="">
-          <option value="" disabled>Options</option>
-          <option value="1">First</option>
-          <option value="2">Second</option>
+        <select 
+          className="Dropdown__select"
+          name=""
+          id=""
+          onChange={this.props.onChange}>
+          {options.map(opt => 
+            <option value={opt.id} selected={opt.id === selected}>
+              {opt.name}
+            </option>
+          )}
         </select>
       </div>
     );

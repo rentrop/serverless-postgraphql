@@ -3,12 +3,126 @@ import { storiesOf } from '@storybook/react';
 import CrossingListItem from '../Dashboard/CrossingListPage/CrossingListItem/CrossingListItem'
 import * as statusConstants from '../Dashboard/CrossingListPage/CrossingListItem/StatusConstants'
 
+const reasons = [
+  { id: 1, name: 'Flooded'},
+  { id: 2, name: 'Bridge Broken'}
+];
+
+const durations = [
+  { id: 1, name: 'A Minute'},
+  { id: 2, name: 'A Week'}
+]
+
+const openCrossing = {
+  "id": 1,
+  "name": "Spurlock Valley",
+  "description": "E of Intersection w\/ Clifford",
+  "humanAddress": "605 Spurlock Valley \u00b7 West Lake Hills, TX 78746",
+  "statusUpdateByLatestStatusId": {
+    "statusId": 1,
+    "createdAt": "2017-10-10T04:35:37.306767",
+    "notes": "All Clear",
+    "userByCreatorId": {
+      "firstName": "Super",
+      "lastName": "Admin",
+    },
+  },
+  "communityCrossingsByCrossingId": {
+    "nodes": [
+      {
+        "communityByCommunityId": {
+          "name": "All of Texas.",
+        },
+      }
+    ],
+  },
+}
+
+const closedCrossing = {
+  "id": 1,
+  "name": "Spurlock Valley",
+  "description": "E of Intersection w\/ Clifford",
+  "humanAddress": "605 Spurlock Valley \u00b7 West Lake Hills, TX 78746",
+  "statusUpdateByLatestStatusId": {
+    "statusId": 2,
+    "statusReasonId": 1,
+    "createdAt": "2017-10-10T04:35:37.306767",
+    "notes": "No Go",
+    "userByCreatorId": {
+      "firstName": "Super",
+      "lastName": "Admin",
+    },
+  },
+  "communityCrossingsByCrossingId": {
+    "nodes": [
+      {
+        "communityByCommunityId": {
+          "name": "All of Texas.",
+        },
+      }
+    ],
+  },
+}
+
+const cautionCrossing = {
+  "id": 1,
+  "name": "Spurlock Valley",
+  "description": "E of Intersection w\/ Clifford",
+  "humanAddress": "605 Spurlock Valley \u00b7 West Lake Hills, TX 78746",
+  "statusUpdateByLatestStatusId": {
+    "statusId": 3,
+    "statusReasonId": 1,
+    "createdAt": "2017-10-10T04:35:37.306767",
+    "notes": "Watch Out",
+    "userByCreatorId": {
+      "firstName": "Super",
+      "lastName": "Admin",
+    },
+  },
+  "communityCrossingsByCrossingId": {
+    "nodes": [
+      {
+        "communityByCommunityId": {
+          "name": "All of Texas.",
+        },
+      }
+    ],
+  },
+}
+
+const longtermCrossing = {
+  "id": 1,
+  "name": "Spurlock Valley",
+  "description": "E of Intersection w\/ Clifford",
+  "humanAddress": "605 Spurlock Valley \u00b7 West Lake Hills, TX 78746",
+  "statusUpdateByLatestStatusId": {
+    "statusId": 4,
+    "statusReasonId": 2,
+    "statusDurationId": 2,
+    "createdAt": "2017-10-10T04:35:37.306767",
+    "notes": "Gonna be a while",
+    "userByCreatorId": {
+      "firstName": "Super",
+      "lastName": "Admin",
+    },
+  },
+  "communityCrossingsByCrossingId": {
+    "nodes": [
+      {
+        "communityByCommunityId": {
+          "name": "All of Texas.",
+        },
+      }
+    ],
+  },
+}
+
 storiesOf('Crossing List Item', module)
-  .add('Open', () => <CrossingListItem savedStatus={statusConstants.OPEN}/>)
-  .add('Open Dirty', () => <CrossingListItem savedStatus={statusConstants.OPEN} dirty="true"/>)
-  .add('Caution', () => <CrossingListItem savedStatus={statusConstants.CAUTION}/>)
-  .add('Caution Dirty', () => <CrossingListItem savedStatus={statusConstants.CAUTION} dirty="true"/>)
-  .add('Closed', () => <CrossingListItem savedStatus={statusConstants.CLOSED}/>)
-  .add('Closed Dirty', () => <CrossingListItem savedStatus={statusConstants.CLOSED} dirty="true"/>)
-  .add('Long Term Closure', () => <CrossingListItem savedStatus={statusConstants.LONGTERM}/>)
-  .add('Long Term Closure Dirty', () => <CrossingListItem savedStatus={statusConstants.LONGTERM} dirty="true"/>)
+  .add('Open', () => <CrossingListItem reasons={reasons} durations={durations} crossing={openCrossing} />)
+  .add('Open Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={openCrossing} dirty="true" />)
+  .add('Caution', () => <CrossingListItem reasons={reasons} durations={durations} crossing={cautionCrossing} />)
+  .add('Caution Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={cautionCrossing} dirty="true" />)
+  .add('Closed', () => <CrossingListItem reasons={reasons} durations={durations} crossing={closedCrossing} />)
+  .add('Closed Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={closedCrossing} dirty="true" />)
+  .add('Long Term Closure', () => <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} />)
+  .add('Long Term Closure Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} dirty="true" />)

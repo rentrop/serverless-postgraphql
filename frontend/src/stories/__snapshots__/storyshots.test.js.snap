@@ -51,7 +51,7 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
               E of Intersection w/ Clifford
             </div>
             <div>
-              City of Austin, Travis County
+              All of Texas.
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
             className="DateTimeText"
           >
             <div>
-              7/17/17, 12:01am
+              10/10/17, 4:35 am
             </div>
             <div
               style={
@@ -79,7 +79,7 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
                 }
               }
             >
-              L. Leopold
+              S. Admin
             </div>
           </div>
         </div>
@@ -177,22 +177,19 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={true}
+                  value={1}
                 >
-                  Options
+                  Flooded
                 </option>
                 <option
-                  value="1"
+                  selected={false}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  Bridge Broken
                 </option>
               </select>
             </div>
@@ -208,7 +205,9 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
           </div>
           <input
             className="NotesTextBox"
+            onChange={[Function]}
             type="text"
+            value="Watch Out"
           />
         </div>
       </div>
@@ -245,22 +244,19 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={false}
+                  value={1}
                 >
-                  Options
+                  A Minute
                 </option>
                 <option
-                  value="1"
+                  selected={false}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  A Week
                 </option>
               </select>
             </div>
@@ -353,7 +349,7 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
               E of Intersection w/ Clifford
             </div>
             <div>
-              City of Austin, Travis County
+              All of Texas.
             </div>
           </div>
         </div>
@@ -372,7 +368,7 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
             className="DateTimeText"
           >
             <div>
-              7/17/17, 12:01am
+              10/10/17, 4:35 am
             </div>
             <div
               style={
@@ -381,7 +377,7 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
                 }
               }
             >
-              L. Leopold
+              S. Admin
             </div>
           </div>
         </div>
@@ -479,22 +475,19 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={true}
+                  value={1}
                 >
-                  Options
+                  Flooded
                 </option>
                 <option
-                  value="1"
+                  selected={false}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  Bridge Broken
                 </option>
               </select>
             </div>
@@ -510,7 +503,9 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
           </div>
           <input
             className="NotesTextBox"
+            onChange={[Function]}
             type="text"
+            value="Watch Out"
           />
         </div>
       </div>
@@ -547,22 +542,19 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={false}
+                  value={1}
                 >
-                  Options
+                  A Minute
                 </option>
                 <option
-                  value="1"
+                  selected={false}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  A Week
                 </option>
               </select>
             </div>
@@ -655,7 +647,7 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
               E of Intersection w/ Clifford
             </div>
             <div>
-              City of Austin, Travis County
+              All of Texas.
             </div>
           </div>
         </div>
@@ -674,7 +666,7 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
             className="DateTimeText"
           >
             <div>
-              7/17/17, 12:01am
+              10/10/17, 4:35 am
             </div>
             <div
               style={
@@ -683,7 +675,7 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
                 }
               }
             >
-              L. Leopold
+              S. Admin
             </div>
           </div>
         </div>
@@ -781,22 +773,19 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={true}
+                  value={1}
                 >
-                  Options
+                  Flooded
                 </option>
                 <option
-                  value="1"
+                  selected={false}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  Bridge Broken
                 </option>
               </select>
             </div>
@@ -812,7 +801,9 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
           </div>
           <input
             className="NotesTextBox"
+            onChange={[Function]}
             type="text"
+            value="No Go"
           />
         </div>
       </div>
@@ -849,22 +840,19 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={false}
+                  value={1}
                 >
-                  Options
+                  A Minute
                 </option>
                 <option
-                  value="1"
+                  selected={false}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  A Week
                 </option>
               </select>
             </div>
@@ -957,7 +945,7 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
               E of Intersection w/ Clifford
             </div>
             <div>
-              City of Austin, Travis County
+              All of Texas.
             </div>
           </div>
         </div>
@@ -976,7 +964,7 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
             className="DateTimeText"
           >
             <div>
-              7/17/17, 12:01am
+              10/10/17, 4:35 am
             </div>
             <div
               style={
@@ -985,7 +973,7 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
                 }
               }
             >
-              L. Leopold
+              S. Admin
             </div>
           </div>
         </div>
@@ -1083,22 +1071,19 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={true}
+                  value={1}
                 >
-                  Options
+                  Flooded
                 </option>
                 <option
-                  value="1"
+                  selected={false}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  Bridge Broken
                 </option>
               </select>
             </div>
@@ -1114,7 +1099,9 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
           </div>
           <input
             className="NotesTextBox"
+            onChange={[Function]}
             type="text"
+            value="No Go"
           />
         </div>
       </div>
@@ -1151,22 +1138,19 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={false}
+                  value={1}
                 >
-                  Options
+                  A Minute
                 </option>
                 <option
-                  value="1"
+                  selected={false}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  A Week
                 </option>
               </select>
             </div>
@@ -1224,7 +1208,7 @@ exports[`Storyshots Crossing List Item DateTime DateTime 1`] = `
     className="DateTimeText"
   >
     <div>
-      7/17/17, 12:01am
+      10/10/17, 4:35 am
     </div>
     <div
       style={
@@ -1233,7 +1217,7 @@ exports[`Storyshots Crossing List Item DateTime DateTime 1`] = `
         }
       }
     >
-      L. Leopold
+      S. Admin
     </div>
   </div>
 </div>
@@ -1267,7 +1251,7 @@ exports[`Storyshots Crossing List Item Location Location 1`] = `
       E of Intersection w/ Clifford
     </div>
     <div>
-      City of Austin, Travis County
+      All of Texas.
     </div>
   </div>
 </div>
@@ -1324,7 +1308,7 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
               E of Intersection w/ Clifford
             </div>
             <div>
-              City of Austin, Travis County
+              All of Texas.
             </div>
           </div>
         </div>
@@ -1343,7 +1327,7 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
             className="DateTimeText"
           >
             <div>
-              7/17/17, 12:01am
+              10/10/17, 4:35 am
             </div>
             <div
               style={
@@ -1352,7 +1336,7 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
                 }
               }
             >
-              L. Leopold
+              S. Admin
             </div>
           </div>
         </div>
@@ -1450,22 +1434,19 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={false}
+                  value={1}
                 >
-                  Options
+                  Flooded
                 </option>
                 <option
-                  value="1"
+                  selected={true}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  Bridge Broken
                 </option>
               </select>
             </div>
@@ -1481,7 +1462,9 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
           </div>
           <input
             className="NotesTextBox"
+            onChange={[Function]}
             type="text"
+            value="Gonna be a while"
           />
         </div>
       </div>
@@ -1518,22 +1501,19 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={false}
+                  value={1}
                 >
-                  Options
+                  A Minute
                 </option>
                 <option
-                  value="1"
+                  selected={true}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  A Week
                 </option>
               </select>
             </div>
@@ -1626,7 +1606,7 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
               E of Intersection w/ Clifford
             </div>
             <div>
-              City of Austin, Travis County
+              All of Texas.
             </div>
           </div>
         </div>
@@ -1645,7 +1625,7 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
             className="DateTimeText"
           >
             <div>
-              7/17/17, 12:01am
+              10/10/17, 4:35 am
             </div>
             <div
               style={
@@ -1654,7 +1634,7 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
                 }
               }
             >
-              L. Leopold
+              S. Admin
             </div>
           </div>
         </div>
@@ -1752,22 +1732,19 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={false}
+                  value={1}
                 >
-                  Options
+                  Flooded
                 </option>
                 <option
-                  value="1"
+                  selected={true}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  Bridge Broken
                 </option>
               </select>
             </div>
@@ -1783,7 +1760,9 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
           </div>
           <input
             className="NotesTextBox"
+            onChange={[Function]}
             type="text"
+            value="Gonna be a while"
           />
         </div>
       </div>
@@ -1820,22 +1799,19 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={false}
+                  value={1}
                 >
-                  Options
+                  A Minute
                 </option>
                 <option
-                  value="1"
+                  selected={true}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  A Week
                 </option>
               </select>
             </div>
@@ -1928,7 +1904,7 @@ exports[`Storyshots Crossing List Item Open 1`] = `
               E of Intersection w/ Clifford
             </div>
             <div>
-              City of Austin, Travis County
+              All of Texas.
             </div>
           </div>
         </div>
@@ -1947,7 +1923,7 @@ exports[`Storyshots Crossing List Item Open 1`] = `
             className="DateTimeText"
           >
             <div>
-              7/17/17, 12:01am
+              10/10/17, 4:35 am
             </div>
             <div
               style={
@@ -1956,7 +1932,7 @@ exports[`Storyshots Crossing List Item Open 1`] = `
                 }
               }
             >
-              L. Leopold
+              S. Admin
             </div>
           </div>
         </div>
@@ -2054,22 +2030,19 @@ exports[`Storyshots Crossing List Item Open 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={false}
+                  value={1}
                 >
-                  Options
+                  Flooded
                 </option>
                 <option
-                  value="1"
+                  selected={false}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  Bridge Broken
                 </option>
               </select>
             </div>
@@ -2085,7 +2058,9 @@ exports[`Storyshots Crossing List Item Open 1`] = `
           </div>
           <input
             className="NotesTextBox"
+            onChange={[Function]}
             type="text"
+            value="All Clear"
           />
         </div>
       </div>
@@ -2122,22 +2097,19 @@ exports[`Storyshots Crossing List Item Open 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={false}
+                  value={1}
                 >
-                  Options
+                  A Minute
                 </option>
                 <option
-                  value="1"
+                  selected={false}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  A Week
                 </option>
               </select>
             </div>
@@ -2230,7 +2202,7 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
               E of Intersection w/ Clifford
             </div>
             <div>
-              City of Austin, Travis County
+              All of Texas.
             </div>
           </div>
         </div>
@@ -2249,7 +2221,7 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
             className="DateTimeText"
           >
             <div>
-              7/17/17, 12:01am
+              10/10/17, 4:35 am
             </div>
             <div
               style={
@@ -2258,7 +2230,7 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
                 }
               }
             >
-              L. Leopold
+              S. Admin
             </div>
           </div>
         </div>
@@ -2356,22 +2328,19 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={false}
+                  value={1}
                 >
-                  Options
+                  Flooded
                 </option>
                 <option
-                  value="1"
+                  selected={false}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  Bridge Broken
                 </option>
               </select>
             </div>
@@ -2387,7 +2356,9 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
           </div>
           <input
             className="NotesTextBox"
+            onChange={[Function]}
             type="text"
+            value="All Clear"
           />
         </div>
       </div>
@@ -2424,22 +2395,19 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
                 className="Dropdown__select"
                 id=""
                 name=""
+                onChange={[Function]}
               >
                 <option
-                  disabled={true}
-                  value=""
+                  selected={false}
+                  value={1}
                 >
-                  Options
+                  A Minute
                 </option>
                 <option
-                  value="1"
+                  selected={false}
+                  value={2}
                 >
-                  First
-                </option>
-                <option
-                  value="2"
-                >
-                  Second
+                  A Week
                 </option>
               </select>
             </div>
