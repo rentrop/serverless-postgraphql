@@ -26,8 +26,10 @@ async function getToken(email, password) {
 
 function shouldWork(username, password, status, notes, reason, duration, extra_description) {
   var originalStatusId;
+  var secondOriginalStatusId;
   var newStatusId;
-  var crossing;
+  var crossingToUpdate;
+  var crossingToNotUpdate;
   var lokka;
 
   describe('as ' + username + ' ' + (extra_description || ''), () => {
@@ -60,7 +62,7 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
           }
         `);
 
-        crossing = response.newCrossing.crossing.id;
+        crossingToUpdate = response.newCrossing.crossing.id;
         expect(response).not.toBeNull();
       });
 
@@ -79,7 +81,50 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
           }
         `,
         {
-          crossing: crossing
+          crossing: crossingToUpdate
+        });
+
+        expect(response.newStatusUpdate.statusUpdate.notes).toMatchSnapshot();
+      });
+
+      it('should add a second new crossing', async () => {
+        const response = await lokka.send(`
+          mutation {
+            newCrossing(input: {
+              name: "New Crossing 2"
+              humanAddress: "Near the barn"
+              description: "Describe!"
+              communityId: 1
+              longitude: -97.755996
+              latitude: 30.30718
+            }) {
+              crossing {
+                id
+              }
+            }
+          }
+        `);
+
+        crossingToNotUpdate = response.newCrossing.crossing.id;
+        expect(response).not.toBeNull();
+      });
+
+      it('should give it a status', async () => {
+        const response = await lokka.send(`
+          mutation($crossing:Int) {
+            newStatusUpdate(input: {
+              statusId: 1,
+              crossingId: $crossing,
+              notes: "Second"
+            }) {
+              statusUpdate {
+                notes
+              }
+            }
+          }
+        `,
+        {
+          crossing: crossingToNotUpdate
         });
 
         expect(response.newStatusUpdate.statusUpdate.notes).toMatchSnapshot();
@@ -96,10 +141,28 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
           }
         `,
         {
-          crossing: crossing
+          crossing: crossingToUpdate
         });
 
         originalStatusId = response.crossingById.statusUpdateByLatestStatusId.id;
+        expect(response).not.toBeNull();
+      });
+
+      it('it should get the second current status', async () => {
+        const response = await lokka.send(`
+          query($crossing:Int!) {
+            crossingById(id:$crossing) {
+              statusUpdateByLatestStatusId {
+                id
+              }
+            }
+          }
+        `,
+        {
+          crossing: crossingToNotUpdate
+        });
+
+        secondOriginalStatusId = response.crossingById.statusUpdateByLatestStatusId.id;
         expect(response).not.toBeNull();
       });
     });
@@ -123,7 +186,7 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
       `,
       {
         status: status,
-        crossing: crossing,
+        crossing: crossingToUpdate,
         notes: notes,
         reason: reason,
         duration: duration
@@ -145,11 +208,30 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
         }
       `,
       {
-        crossing: crossing
+        crossing: crossingToUpdate
       });
 
       expect(response.crossingById.statusUpdateByLatestStatusId.id).not.toEqual(originalStatusId);
       expect(response.crossingById.statusUpdateByLatestStatusId.id).toEqual(newStatusId);
+      expect(response.crossingById.statusUpdateByLatestStatusId.notes).toMatchSnapshot();
+    });
+
+    it('the second crossing should still have the original status', async () => {
+      const response = await lokka.send(`
+        query($crossing:Int!) {
+          crossingById(id:$crossing) {
+            statusUpdateByLatestStatusId {
+              id
+              notes
+            }
+          }
+        }
+      `,
+      {
+        crossing: crossingToNotUpdate
+      });
+
+      expect(response.crossingById.statusUpdateByLatestStatusId.id).toEqual(secondOriginalStatusId);
       expect(response.crossingById.statusUpdateByLatestStatusId.notes).toMatchSnapshot();
     });
   });

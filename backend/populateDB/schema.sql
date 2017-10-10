@@ -424,7 +424,7 @@ begin
 
   update floods.crossing
     set latest_status_id = floods_status_update.id
-    where crossing_id = floods_status_update.crossing_id;
+    where id = floods_status_update.crossing_id;
 
   return floods_status_update;
 end;
