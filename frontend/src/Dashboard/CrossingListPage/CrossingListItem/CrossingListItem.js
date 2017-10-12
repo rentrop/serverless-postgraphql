@@ -118,9 +118,8 @@ class CrossingListItem extends React.Component {
 
     return (
       <div>
-      <div style={{height: '12px', backgroundColor: '#f5f3f7'}}></div>
-      <div className={this.isDirty() ? "DirtyBorder" : ""}>
         <div className="CrossingListItemContainer">
+          <div className={this.isDirty() ? "DirtyBorder" : ""}>
           <div className="CrossingListItemFlexContainer">
             <div className="CrossingName">{crossing.name}</div>
             <Location crossing={ crossing } />
@@ -178,7 +177,6 @@ class CrossingListItem extends React.Component {
           </div>
         </div>
       </div>
-      <div style={{height: '12px', backgroundColor: '#f5f3f7'}}></div>
       </div>
     );
   }

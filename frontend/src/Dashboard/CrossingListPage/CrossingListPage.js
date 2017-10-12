@@ -20,12 +20,6 @@ class CrossingListPage extends Component {
   render() {
     return (
       <div className="ManageCrossings">
-        <div className="flexcontainer">
-          <BulkActionsDropdown />
-          <div className="ManageCrossings__right-aligned-element">
-            <TableSearch handleSubmit={this.handleSubmit} />
-          </div>
-        </div>
         <CrossingList {...this.props} searchParam={this.state.searchParam} />
       </div>
     );

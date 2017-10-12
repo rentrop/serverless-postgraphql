@@ -3,18 +3,10 @@
 exports[`Storyshots Crossing List Item Caution 1`] = `
 <div>
   <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
-  <div
-    className=""
+    className="CrossingListItemContainer"
   >
     <div
-      className="CrossingListItemContainer"
+      className=""
     >
       <div
         className="CrossingListItemFlexContainer"
@@ -289,32 +281,16 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
       </div>
     </div>
   </div>
-  <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
 </div>
 `;
 
 exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
 <div>
   <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
-  <div
-    className="DirtyBorder"
+    className="CrossingListItemContainer"
   >
     <div
-      className="CrossingListItemContainer"
+      className="DirtyBorder"
     >
       <div
         className="CrossingListItemFlexContainer"
@@ -589,32 +565,16 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
       </div>
     </div>
   </div>
-  <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
 </div>
 `;
 
 exports[`Storyshots Crossing List Item Closed 1`] = `
 <div>
   <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
-  <div
-    className=""
+    className="CrossingListItemContainer"
   >
     <div
-      className="CrossingListItemContainer"
+      className=""
     >
       <div
         className="CrossingListItemFlexContainer"
@@ -889,32 +849,16 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
       </div>
     </div>
   </div>
-  <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
 </div>
 `;
 
 exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
 <div>
   <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
-  <div
-    className="DirtyBorder"
+    className="CrossingListItemContainer"
   >
     <div
-      className="CrossingListItemContainer"
+      className="DirtyBorder"
     >
       <div
         className="CrossingListItemFlexContainer"
@@ -1189,14 +1133,6 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
       </div>
     </div>
   </div>
-  <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
 </div>
 `;
 
@@ -1268,18 +1204,10 @@ exports[`Storyshots Crossing List Item Location Location 1`] = `
 exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
 <div>
   <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
-  <div
-    className=""
+    className="CrossingListItemContainer"
   >
     <div
-      className="CrossingListItemContainer"
+      className=""
     >
       <div
         className="CrossingListItemFlexContainer"
@@ -1554,32 +1482,16 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
       </div>
     </div>
   </div>
-  <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
 </div>
 `;
 
 exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
 <div>
   <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
-  <div
-    className="DirtyBorder"
+    className="CrossingListItemContainer"
   >
     <div
-      className="CrossingListItemContainer"
+      className="DirtyBorder"
     >
       <div
         className="CrossingListItemFlexContainer"
@@ -1854,32 +1766,16 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
       </div>
     </div>
   </div>
-  <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
 </div>
 `;
 
 exports[`Storyshots Crossing List Item Open 1`] = `
 <div>
   <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
-  <div
-    className=""
+    className="CrossingListItemContainer"
   >
     <div
-      className="CrossingListItemContainer"
+      className=""
     >
       <div
         className="CrossingListItemFlexContainer"
@@ -2141,32 +2037,16 @@ exports[`Storyshots Crossing List Item Open 1`] = `
       </div>
     </div>
   </div>
-  <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
 </div>
 `;
 
 exports[`Storyshots Crossing List Item Open Dirty 1`] = `
 <div>
   <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
-  <div
-    className="DirtyBorder"
+    className="CrossingListItemContainer"
   >
     <div
-      className="CrossingListItemContainer"
+      className="DirtyBorder"
     >
       <div
         className="CrossingListItemFlexContainer"
@@ -2428,14 +2308,6 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
       </div>
     </div>
   </div>
-  <div
-    style={
-      Object {
-        "backgroundColor": "#f5f3f7",
-        "height": "12px",
-      }
-    }
-  />
 </div>
 `;
 

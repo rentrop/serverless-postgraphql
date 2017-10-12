@@ -1,9 +1,10 @@
 import React from 'react';
 import { graphql, compose } from 'react-apollo';
-import CrossingListItem from './CrossingListItem/CrossingListItem'
-import crossingsQuery from './queries/crossingsQuery'
-import statusReasonsQuery from './queries/statusReasonsQuery'
-import statusDurationsQuery from './queries/statusDurationsQuery'
+import CrossingListItem from './CrossingListItem/CrossingListItem';
+import crossingsQuery from './queries/crossingsQuery';
+import statusReasonsQuery from './queries/statusReasonsQuery';
+import statusDurationsQuery from './queries/statusDurationsQuery';
+import './CrossingList.css';
 
 class CrossingList extends React.Component {
   state = {}
@@ -28,7 +29,7 @@ class CrossingList extends React.Component {
     }
 
     return (
-      <div>
+      <div className='CrossingListContainer'>
         {crossings.map(crossing => 
           <CrossingListItem
             crossing={crossing}

@@ -3,13 +3,20 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,200,200i,300,300i,400,400i,500,500i');
 
 .DirtyBorder {
-  border: 4px solid #40B3FF
+  border-top: 20px solid white;
+  border-bottom: 20px solid white;
+  outline: 4px solid #40B3FF;
+  margin-bottom: -16px;
+  margin-top: -16px;
 }
 
 .CrossingListItemContainer {
   width: 1280px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
+  border-bottom: 20px solid white;
+  border-top: 20px solid white;
+  background-color: white;
+  box-shadow: 0px 1px 3px grey;
 }
 
 .CrossingListItemFlexContainer {
