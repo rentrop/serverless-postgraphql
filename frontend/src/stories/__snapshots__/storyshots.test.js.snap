@@ -273,11 +273,13 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
             >
               <div
                 className="CancelButton"
+                onClick={[Function]}
               >
                 Cancel
               </div>
               <div
                 className="SaveButton"
+                onClick={[Function]}
               >
                 Save
               </div>
@@ -571,11 +573,13 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
             >
               <div
                 className="CancelButton"
+                onClick={[Function]}
               >
                 Cancel
               </div>
               <div
                 className="SaveButton"
+                onClick={[Function]}
               >
                 Save
               </div>
@@ -869,11 +873,13 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
             >
               <div
                 className="CancelButton"
+                onClick={[Function]}
               >
                 Cancel
               </div>
               <div
                 className="SaveButton"
+                onClick={[Function]}
               >
                 Save
               </div>
@@ -1167,11 +1173,13 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
             >
               <div
                 className="CancelButton"
+                onClick={[Function]}
               >
                 Cancel
               </div>
               <div
                 className="SaveButton"
+                onClick={[Function]}
               >
                 Save
               </div>
@@ -1530,11 +1538,13 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
             >
               <div
                 className="CancelButton"
+                onClick={[Function]}
               >
                 Cancel
               </div>
               <div
                 className="SaveButton"
+                onClick={[Function]}
               >
                 Save
               </div>
@@ -1828,11 +1838,13 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
             >
               <div
                 className="CancelButton"
+                onClick={[Function]}
               >
                 Cancel
               </div>
               <div
                 className="SaveButton"
+                onClick={[Function]}
               >
                 Save
               </div>
@@ -2031,20 +2043,7 @@ exports[`Storyshots Crossing List Item Open 1`] = `
                 id=""
                 name=""
                 onChange={[Function]}
-              >
-                <option
-                  selected={false}
-                  value={1}
-                >
-                  Flooded
-                </option>
-                <option
-                  selected={false}
-                  value={2}
-                >
-                  Bridge Broken
-                </option>
-              </select>
+              />
             </div>
           </div>
         </div>
@@ -2126,11 +2125,13 @@ exports[`Storyshots Crossing List Item Open 1`] = `
             >
               <div
                 className="CancelButton"
+                onClick={[Function]}
               >
                 Cancel
               </div>
               <div
                 className="SaveButton"
+                onClick={[Function]}
               >
                 Save
               </div>
@@ -2329,20 +2330,7 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
                 id=""
                 name=""
                 onChange={[Function]}
-              >
-                <option
-                  selected={false}
-                  value={1}
-                >
-                  Flooded
-                </option>
-                <option
-                  selected={false}
-                  value={2}
-                >
-                  Bridge Broken
-                </option>
-              </select>
+              />
             </div>
           </div>
         </div>
@@ -2424,11 +2412,13 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
             >
               <div
                 className="CancelButton"
+                onClick={[Function]}
               >
                 Cancel
               </div>
               <div
                 className="SaveButton"
+                onClick={[Function]}
               >
                 Save
               </div>

@@ -351,17 +351,17 @@ describe('When updating the status of a crossing', () => {
 
   describe('To CAUTION', () => {
     describe('with no REASON or DURATION', () => {
-      shouldWork(superAdminEmail, everyPassword, 3, 'CAUTION with no REASON or DURATION');
-      shouldWork(communityAdminEmail, everyPassword, 3, 'CAUTION with no REASON or DURATION',null,null,'In the same community as the crossing');
-      shouldFail(communityAdminEmail, everyPassword, 3, 7, 'CAUTION with no REASON or DURATION',null,null,'In another community without the crossing');
-      shouldWork(communityEditorEmail, everyPassword, 3, 'CAUTION with no REASON or DURATION',null,null,'In the same community as the crossing');
-      shouldFail(communityEditorEmail, everyPassword, 3, 7, 'CAUTION with no REASON or DURATION',null,null,'In another community without the crossing');
+      shouldFail(superAdminEmail, everyPassword, 3, 'CAUTION with no REASON or DURATION');
+      shouldFail(communityAdminEmail, everyPassword, 3, 'CAUTION with no REASON or DURATION');
+      shouldFail(communityEditorEmail, everyPassword, 3, 'CAUTION with no REASON or DURATION');
     });
 
     describe('with REASON', () => {
-      shouldFail(superAdminEmail, everyPassword, 3, 3, 'CAUTION with REASON', 1);
-      shouldFail(communityEditorEmail, everyPassword, 3, 3, 'CAUTION with REASON', 1);
-      shouldFail(communityAdminEmail, everyPassword, 3, 3, 'CAUTION with REASON', 1);
+      shouldWork(superAdminEmail, everyPassword, 3, 'CAUTION with REASON', 3);
+      shouldWork(communityAdminEmail, everyPassword, 3, 'CAUTION with REASON',3,null,'In the same community as the crossing');
+      shouldFail(communityAdminEmail, everyPassword, 3, 7, 'CAUTION with REASON',null,null,'In another community without the crossing');
+      shouldWork(communityEditorEmail, everyPassword, 3, 'CAUTION with REASON',3,null,'In the same community as the crossing');
+      shouldFail(communityEditorEmail, everyPassword, 3, 7, 'CAUTION with REASON',null,null,'In another community without the crossing');
     });
 
     describe('with DURATION', () => {
@@ -371,9 +371,9 @@ describe('When updating the status of a crossing', () => {
     });
 
     describe('with REASON and DURATION', () => {
-      shouldFail(superAdminEmail, everyPassword, 3, 3, 'CAUTION with REASON and DURATION', 1, 1);
-      shouldFail(communityAdminEmail, everyPassword, 3, 3, 'CAUTION with REASON and DURATION', 1, 1);
-      shouldFail(communityEditorEmail, everyPassword, 3, 3, 'CAUTION with REASON and DURATION', 1, 1);
+      shouldFail(superAdminEmail, everyPassword, 3, 3, 'CAUTION with REASON and DURATION', 3, 1);
+      shouldFail(communityAdminEmail, everyPassword, 3, 3, 'CAUTION with REASON and DURATION', 3, 1);
+      shouldFail(communityEditorEmail, everyPassword, 3, 3, 'CAUTION with REASON and DURATION', 3, 1);
     });
   });
 

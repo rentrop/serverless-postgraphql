@@ -353,7 +353,6 @@ describe('As a super admin', async () => {
         mutation {
           newStatusDuration(input: {
             name: "New Status Duration"
-            statusId: 1,
             timespan: {
               days: 1
             }

@@ -100,14 +100,12 @@ comment on column floods.status_reason.name is 'The name of the status reason.';
 -- Create the Status Duration table
 create table floods.status_duration (
   id               serial primary key,
-  status_id        integer not null references floods.status(id),
   name             text not null check (char_length(name) < 80),
   timespan         interval not null
 );
 
 comment on table floods.status_duration is 'The amount of time a crossing might be in a given status.';
 comment on column floods.status_duration.id is 'The primary unique identifier for the status duration.';
-comment on column floods.status_duration.status_id is 'The id of the status the duration applies to.';
 comment on column floods.status_duration.name is 'The name of the status reason.';
 comment on column floods.status_duration.timespan is 'The timespan of the status reason.';
 
@@ -401,12 +399,6 @@ begin
       -- we shouldn't be here, throw
       raise exception 'Status durations are disabled for status:  %', (select name from floods.status where id = status_id);
     end if;
-
-    -- but the status duration is for a different status
-    if (select floods.status_duration.status_id from floods.status_duration where id = status_duration_id) != new_status_update.status_id then
-      -- we shouldn't be here, throw
-      raise exception 'This status duration is not for status:  %', (select name from floods.status where id = new_status_update.status_id);
-    end if;
   end if;
 
   -- If the status reason is null
@@ -619,22 +611,21 @@ comment on function floods.delete_status_reason(integer) is 'Deletes a status re
 
 -- Create function to create new status durations
 create function floods.new_status_duration(
-  status_id integer,
   name text,
   timespan interval
 ) returns floods.status_duration as $$
 declare
   floods_status_duration floods.status_duration;
 begin
-  insert into floods.status_duration (status_id, name, timespan) values
-    (status_id, name, timespan)
+  insert into floods.status_duration (name, timespan) values
+    (name, timespan)
     returning * into floods_status_duration;
 
   return floods_status_duration;
 end;
 $$ language plpgsql strict security definer;
 
-comment on function floods.new_status_duration(integer, text, interval) is 'Adds a status duration.';
+comment on function floods.new_status_duration(text, interval) is 'Adds a status duration.';
 
 -- Create function to change status names
 create function floods.change_status_duration_name(
@@ -839,7 +830,7 @@ grant execute on function floods.change_status_reason_name(integer, text) to flo
 grant execute on function floods.delete_status_reason(integer) to floods_super_admin;
 
 -- Allow super admins to create/edit/delete status reasons
-grant execute on function floods.new_status_duration(integer, text, interval) to floods_super_admin;
+grant execute on function floods.new_status_duration(text, interval) to floods_super_admin;
 grant execute on function floods.change_status_duration_name(integer, text) to floods_super_admin;
 grant execute on function floods.delete_status_duration(integer) to floods_super_admin;
 

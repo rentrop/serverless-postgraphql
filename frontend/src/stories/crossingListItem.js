@@ -4,8 +4,12 @@ import CrossingListItem from '../Dashboard/CrossingListPage/CrossingListItem/Cro
 import * as statusConstants from '../Dashboard/CrossingListPage/CrossingListItem/StatusConstants'
 
 const reasons = [
-  { id: 1, name: 'Flooded'},
-  { id: 2, name: 'Bridge Broken'}
+  { id: 1, name: 'Flooded', statusId: 2},
+  { id: 2, name: 'Bridge Broken', statusId: 2},
+  { id: 1, name: 'Flooded', statusId: 3},
+  { id: 2, name: 'Bridge Broken', statusId: 3},
+  { id: 1, name: 'Flooded', statusId: 4},
+  { id: 2, name: 'Bridge Broken', statusId: 4}
 ];
 
 const durations = [

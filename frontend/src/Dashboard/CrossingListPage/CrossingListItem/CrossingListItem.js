@@ -1,11 +1,14 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import { graphql } from 'react-apollo';
 import Location from './Location';
 import DateTime from './DateTime';
 import StatusToggle from './StatusToggle';
 import Dropdown from './Dropdown';
 import './CrossingListItem.css';
 import * as statusConstants from './StatusConstants';
+import newStatusUpdateMutation from '../queries/newStatusUpdateMutation';
+import crossingsQuery from '../queries/crossingsQuery';
 
 const statusStrings = new Map();
 statusStrings.set(statusConstants.OPEN, 'Open');
@@ -24,6 +27,27 @@ class CrossingListItem extends React.Component {
     };
   }
 
+  newStatusUpdate(e) {
+    this.props.newStatusUpdateMutation({
+      variables: {
+        crossingId: this.props.crossing.id,
+        statusId: this.state.selectedStatus,
+        reasonId: (this.state.selectedStatus !== statusConstants.OPEN ? this.state.selectedReason : null),
+        durationId: (this.state.selectedStatus === statusConstants.LONGTERM ? this.state.selectedDuration : null),
+        notes: this.state.notes
+      },
+      refetchQueries: [{ query: crossingsQuery }]
+    })
+    .then(({ data }) => {
+      this.setState({ selectedStatus: data.newStatusUpdate.statusUpdate.statusId });
+      this.setState({ selectedReason: data.newStatusUpdate.statusUpdate.statusReasonId });
+      this.setState({ selectedDuration: data.newStatusUpdate.statusUpdate.statusDurationId });
+      this.setState({ notes: data.newStatusUpdate.statusUpdate.notes });
+    }).catch((error) => {
+      console.log('there was an error sending the query', error);
+    });
+  }
+
   isDirty() {
     // Temporary fix for storybook
     if(this.props.dirty) return true;
@@ -39,14 +63,41 @@ class CrossingListItem extends React.Component {
             savedNotes != this.state.notes);
   }
 
-  openClicked = () => { this.setState({ selectedStatus: statusConstants.OPEN }) };
-  cautionClicked = () => { this.setState({ selectedStatus: statusConstants.CAUTION }) };
-  closedClicked = () => { this.setState({ selectedStatus: statusConstants.CLOSED }) };
-  longtermClicked = () => { this.setState({ selectedStatus: statusConstants.LONGTERM }) };
+  openClicked = () => { 
+    this.setState({ selectedStatus: statusConstants.OPEN });
+    this.setState({ notes: '' });
+    this.setState({ selectedReason: null });
+    this.setState({ selectedDuration: null });
+  };
+  cautionClicked = () => {
+    this.setState({ selectedStatus: statusConstants.CAUTION });
+    this.setState({ notes: '' });
+    this.setState({ selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.CAUTION).id });
+    this.setState({ selectedDuration: null });
+  };
+  closedClicked = () => { 
+    this.setState({ selectedStatus: statusConstants.CLOSED });
+    this.setState({ notes: '' });
+    this.setState({ selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.CLOSED).id });
+    this.setState({ selectedDuration: null });
+  };
+  longtermClicked = () => {
+    this.setState({ selectedStatus: statusConstants.LONGTERM });
+    this.setState({ notes: '' });
+    this.setState({ selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.LONGTERM).id });
+    this.setState({ selectedDuration: this.props.durations[0].id });
+  };
 
   reasonChanged = (e) => { this.setState({ selectedReason: e.target.value }) };
   durationChanged = (e) => { this.setState({ selectedDuration: e.target.value }) };
   notesChanged = (e) => { this.setState({ notes: e.target.value }) };
+
+  cancelClicked = () => { 
+    this.setState({ selectedStatus: this.props.crossing.statusUpdateByLatestStatusId.statusId });
+    this.setState({ selectedReason: this.props.crossing.statusUpdateByLatestStatusId.statusReasonId });
+    this.setState({ selectedDuration: this.props.crossing.statusUpdateByLatestStatusId.statusDurationId });
+    this.setState({ notes: this.props.crossing.statusUpdateByLatestStatusId.notes });
+  };
 
   render () {
     const { crossing, reasons, durations } = this.props;
@@ -92,7 +143,7 @@ class CrossingListItem extends React.Component {
                   <div className="required">{this.isDirty() ? "Required" : ""}</div>
                 </div>
                 <Dropdown
-                  options={reasons}
+                  options={reasons.filter(reason => reason.statusId === this.state.selectedStatus)}
                   selected={this.state.selectedReason}
                   onChange={this.reasonChanged} />
               </div>
@@ -119,8 +170,8 @@ class CrossingListItem extends React.Component {
             <div className="flexitem">
               <div className={show.includes('cancelSave') ? "" : "hidden"}>
                 <div className="flexcontainer">              
-                  <div className="CancelButton">Cancel</div>
-                  <div className="SaveButton">Save</div>
+                  <div className="CancelButton" onClick={this.cancelClicked}>Cancel</div>
+                  <div className="SaveButton" onClick={this.newStatusUpdate.bind(this)}>Save</div>
                 </div>
               </div>
             </div>
@@ -133,4 +184,4 @@ class CrossingListItem extends React.Component {
   }
 }
 
-export default CrossingListItem;
+export default graphql(newStatusUpdateMutation, { name: 'newStatusUpdateMutation' })(CrossingListItem);

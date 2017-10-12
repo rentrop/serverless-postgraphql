@@ -25,6 +25,7 @@ $closed-color: #FFCEC6;
   border: 1px solid $border-color;
   border-right-style: none;
   color: $text-color;
+  cursor: pointer;
 }
 
 .StatusToggle--selected {
