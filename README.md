@@ -3,7 +3,7 @@ Central Texas Floods
 
 ## Set up your development environment
 💾 Install [Postgres](https://www.postgresql.org/) 🐘
-  *  I use [Postgres.app](http://postgresapp.com/)
+  *  If you're using macOS I strongly recommend using [Postgres.app](http://postgresapp.com/)
 
 💾 [Install yarn](https://yarnpkg.com/en/docs/install) 
 
