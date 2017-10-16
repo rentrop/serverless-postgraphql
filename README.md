@@ -25,6 +25,10 @@ yarn install
 ```
 yarn init-local-db
 ```
+For those that installed postgres via homebrew you may need to create the postgres user
+```
+/usr/local/Cellar/postgresql/<version>/bin/createuser -s postgres
+```
 
 ⌨️ Run the local server
 ```
