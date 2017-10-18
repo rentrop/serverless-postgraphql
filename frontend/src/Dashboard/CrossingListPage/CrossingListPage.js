@@ -3,6 +3,7 @@ import LinkButton from '../../LinkButton';
 import BulkActionsDropdown from '../Table/BulkActionsDropdown';
 import TableSearch from '../Table/TableSearch';
 import CrossingList from './CrossingList';
+import CrossingListHeader from './CrossingListHeader/CrossingListHeader';
 import './CrossingListPage.css';
 
 class CrossingListPage extends Component {
@@ -20,6 +21,7 @@ class CrossingListPage extends Component {
   render() {
     return (
       <div className="ManageCrossings">
+        <CrossingListHeader/>
         <CrossingList {...this.props} searchParam={this.state.searchParam} />
       </div>
     );

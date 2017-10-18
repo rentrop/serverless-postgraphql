@@ -1,0 +1,112 @@
+$header-background-color: #0C0333;
+$header-text-color: white;
+$search-button-color: #1764F6;
+
+.CrossingListHeader {
+  background: $header-background-color;
+}
+
+.CrossingListHeader.fullsize {
+  height: 65px;
+  display: flex;
+}
+
+.CrossingListHeader.smallsize {
+  min-width: 240px;
+}
+
+.CrossingListSearch.fullsize {
+  margin-left: 5%;
+  flex: 1;
+  display: flex;
+  min-width: 200px;
+}
+
+.CrossingListSearch.smallsize {
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%
+}
+
+.CrossingListSearchInput {
+  height: 45px;
+  box-sizing: border-box;
+  width: 85%;
+  margin-top: 10px;
+  font-size: 1.4em;
+  padding-left: 1em;
+  min-width: 155px;
+}
+
+.CrossingListSearchButton {
+  background: $search-button-color;
+  width: 15%;
+  min-width: 30px;
+  height: 45px;
+  margin-top: 10px;
+  color: $header-text-color;
+  font-size: 1.6em;
+  text-align: center;
+  line-height: 45px;
+}
+
+.CrossingListSortToggle {
+  color: $header-text-color;
+}
+
+.CrossingListSortToggle.fullsize {
+  flex: auto;
+}
+
+.CrossingListSortToggleText.fullsize {
+  line-height: 65px;
+  text-align: center;
+  margin-left: -30%;
+  font-size: 1.3em;
+}
+
+.CrossingListSortToggle.smallsize {
+  flex: auto;
+}
+
+.CrossingListSortToggleText.smallsize {
+  line-height: 65px;
+  text-align: center;
+  margin-left: -30%;
+  font-size: 1.3em;
+}
+
+.CrossingListFilterToggle.smallsize {
+  flex: auto;
+  color: $header-text-color
+}
+
+.CrossingListFilterToggle.smallsize {
+  line-height: 65px;
+  text-align: center;
+  margin-left: -30%;
+  font-size: 1.3em;
+}
+
+.CrossingListFilter.fullsize {
+  color: $header-text-color;
+  display: flex;
+  justify-content: space-between;
+  min-width: 340px;
+  font-size: 1.3em;
+  line-height: 65px;
+  flex: 1.5;
+}
+
+.CrossingListFilterItem.fullsize {
+  flex: auto;
+}
+
+.CrossingListFilterCheckbox.fullsize {
+  width: 1.5em;
+  height: 1.3em;
+}
+
+.smallflex {
+  display: flex;
+}

@@ -1,5 +1,157 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Crossing List Header Full Width 1`] = `
+<div
+  className="CrossingListHeader"
+>
+  <div
+    className="CrossingListSearch"
+  >
+    <input
+      className="CrossingListSearchInput"
+      placeholder="Search your crossings"
+      type="text"
+    />
+    <div
+      className="CrossingListSearchButton"
+    >
+      <span
+        aria-hidden={true}
+        className="fa fa-search"
+      >
+        <span
+          style={
+            Object {
+              "border": "0px",
+              "clip": "rect(0px, 0px, 0px, 0px)",
+              "height": "1px",
+              "margin": "-1px",
+              "overflow": "hidden",
+              "padding": "0px",
+              "position": "absolute",
+              "width": "1px",
+            }
+          }
+        >
+          Search
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    className="CrossingListSortToggle"
+  >
+    <div
+      className="CrossingListSortToggleText"
+    >
+      LAST UPDATED 
+      <span
+        aria-hidden={true}
+        className="fa fa-caret-up"
+      >
+        <span
+          style={
+            Object {
+              "border": "0px",
+              "clip": "rect(0px, 0px, 0px, 0px)",
+              "height": "1px",
+              "margin": "-1px",
+              "overflow": "hidden",
+              "padding": "0px",
+              "position": "absolute",
+              "width": "1px",
+            }
+          }
+        >
+          Ascending
+        </span>
+      </span>
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`Storyshots Crossing List Header Width < 768px 1`] = `
+<div
+  style={
+    Object {
+      "width": "400px",
+    }
+  }
+>
+  <div
+    className="CrossingListHeader"
+  >
+    <div
+      className="CrossingListSearch"
+    >
+      <input
+        className="CrossingListSearchInput"
+        placeholder="Search your crossings"
+        type="text"
+      />
+      <div
+        className="CrossingListSearchButton"
+      >
+        <span
+          aria-hidden={true}
+          className="fa fa-search"
+        >
+          <span
+            style={
+              Object {
+                "border": "0px",
+                "clip": "rect(0px, 0px, 0px, 0px)",
+                "height": "1px",
+                "margin": "-1px",
+                "overflow": "hidden",
+                "padding": "0px",
+                "position": "absolute",
+                "width": "1px",
+              }
+            }
+          >
+            Search
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      className="CrossingListSortToggle"
+    >
+      <div
+        className="CrossingListSortToggleText"
+      >
+        LAST UPDATED 
+        <span
+          aria-hidden={true}
+          className="fa fa-caret-up"
+        >
+          <span
+            style={
+              Object {
+                "border": "0px",
+                "clip": "rect(0px, 0px, 0px, 0px)",
+                "height": "1px",
+                "margin": "-1px",
+                "overflow": "hidden",
+                "padding": "0px",
+                "position": "absolute",
+                "width": "1px",
+              }
+            }
+          >
+            Ascending
+          </span>
+        </span>
+      </div>
+    </div>
+    
+  </div>
+</div>
+`;
+
 exports[`Storyshots Crossing List Item Caution 1`] = `
 <div>
   <div
