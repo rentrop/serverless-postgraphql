@@ -10,11 +10,21 @@ const query = {
 };
 
 class CrossingListHeader extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showFilterDrawer: false,
+      invertSort: false
+    };
+  }
+
+  toggleFilterDropdown = () => { this.setState({ showFilterDrawer: !this.state.showFilterDrawer }) };
+  toggleSortDirection = () => { this.setState({ invertSort: !this.state.invertSort }) };
+
   render() {
     return (
       <ContainerQuery query={query}>
         {(params) => (
-          
           <div className={classnames(params, 'CrossingListHeader')}>
             <div className={classnames(params, 'CrossingListSearch')}>
               <input type="text" className={classnames(params, 'CrossingListSearchInput')} placeholder="Search your crossings"/>
@@ -25,26 +35,26 @@ class CrossingListHeader extends Component {
 
             {params.smallsize ? (
               <div className='smallflex'>
-                <div className={classnames(params, 'CrossingListSortToggle')}>
+                <div className={classnames(params, 'CrossingListSortToggle')} onClick={this.toggleSortDirection}>
                   <div className={classnames(params, 'CrossingListSortToggleText')}>
-                    LAST UPDATED <FontAwesome name="caret-up" ariaLabel="Ascending"/>
+                    LAST UPDATED {this.state.invertSort ? <FontAwesome name="caret-up" ariaLabel="Ascending"/> : <FontAwesome name="caret-down" ariaLabel="Descending"/>}
                   </div>
                 </div>
-                <div className={classnames(params, 'CrossingListFilterToggle')}>
+                <div className={classnames(params, 'CrossingListFilterToggle', {'selected': this.state.showFilterDrawer})} onClick={this.toggleFilterDropdown}>
                   <div className={classnames(params, 'CrossingListFilterToggleText')}>
-                    FILTER <FontAwesome name="plus" ariaLabel="Expand"/>
+                    FILTER {this.state.showFilterDrawer ? <FontAwesome name="minus" ariaLabel="Hide"/> : <FontAwesome name="plus" ariaLabel="Show"/>}
                   </div>
                 </div>
               </div>
             ) : (
-              <div className={classnames(params, 'CrossingListSortToggle')}>
+              <div className={classnames(params, 'CrossingListSortToggle')} onClick={this.toggleSortDirection}>
                 <div className={classnames(params, 'CrossingListSortToggleText')}>
-                  LAST UPDATED <FontAwesome name="caret-up" ariaLabel="Ascending"/>
+                  LAST UPDATED {this.state.invertSort ? <FontAwesome name="caret-up" ariaLabel="Ascending"/> : <FontAwesome name="caret-down" ariaLabel="Descending"/>}
                 </div>
               </div>
             )}
 
-            {params.fullsize ? (
+            {params.smallsize && !this.state.showFilterDrawer ? "" : (
               <div className={classnames(params, 'CrossingListFilter')}>
                 <div className={classnames(params, 'CrossingListFilterItem')}>
                   <input className={classnames(params, 'CrossingListFilterCheckbox')} type='checkbox'/>
@@ -62,9 +72,8 @@ class CrossingListHeader extends Component {
                   <input className={classnames(params, 'CrossingListFilterCheckbox')} type='checkbox'/>
                   Long Term Closure
                 </div>
-              </div>
-            ) : ''}
-
+              </div> 
+            )}
           </div>
         )}
       </ContainerQuery>

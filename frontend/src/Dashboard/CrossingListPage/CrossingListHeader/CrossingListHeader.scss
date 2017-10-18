@@ -1,17 +1,11 @@
-$header-background-color: #0C0333;
-$header-text-color: white;
-$search-button-color: #1764F6;
-
-.CrossingListHeader {
-  background: $header-background-color;
-}
-
 .CrossingListHeader.fullsize {
   height: 65px;
+  background: #0C0333;
   display: flex;
 }
 
 .CrossingListHeader.smallsize {
+  background: #0C0333;
   min-width: 240px;
 }
 
@@ -39,23 +33,15 @@ $search-button-color: #1764F6;
 }
 
 .CrossingListSearchButton {
-  background: $search-button-color;
+  background: #1764F6;
   width: 15%;
   min-width: 30px;
   height: 45px;
   margin-top: 10px;
-  color: $header-text-color;
+  color: white;
   font-size: 1.6em;
   text-align: center;
   line-height: 45px;
-}
-
-.CrossingListSortToggle {
-  color: $header-text-color;
-}
-
-.CrossingListSortToggle.fullsize {
-  flex: auto;
 }
 
 .CrossingListSortToggleText.fullsize {
@@ -65,37 +51,53 @@ $search-button-color: #1764F6;
   font-size: 1.3em;
 }
 
-.CrossingListSortToggle.smallsize {
+.CrossingListSortToggle {
   flex: auto;
+  color: white;
+  cursor: pointer;
+}
+
+.CrossingListSortToggle.smallsize {
+  flex: 1;
 }
 
 .CrossingListSortToggleText.smallsize {
   line-height: 65px;
   text-align: center;
-  margin-left: -30%;
   font-size: 1.3em;
-}
-
-.CrossingListFilterToggle.smallsize {
-  flex: auto;
-  color: $header-text-color
 }
 
 .CrossingListFilterToggle.smallsize {
   line-height: 65px;
   text-align: center;
-  margin-left: -30%;
   font-size: 1.3em;
+  cursor: pointer;
+  flex: 1;
+  color: white;
+}
+
+.CrossingListFilterToggle.smallsize.selected {
+  background-color: #3C298D;
 }
 
 .CrossingListFilter.fullsize {
-  color: $header-text-color;
+  color: white;
   display: flex;
   justify-content: space-between;
   min-width: 340px;
   font-size: 1.3em;
   line-height: 65px;
   flex: 1.5;
+}
+
+.CrossingListFilter.smallsize {
+  background-color: #3C298D;
+  color: white;
+  padding-left: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  font-size: 1.2em;
+  line-height: 2em;
 }
 
 .CrossingListFilterItem.fullsize {

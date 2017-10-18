@@ -40,6 +40,7 @@ exports[`Storyshots Crossing List Header Full Width 1`] = `
   </div>
   <div
     className="CrossingListSortToggle"
+    onClick={[Function]}
   >
     <div
       className="CrossingListSortToggleText"
@@ -47,7 +48,7 @@ exports[`Storyshots Crossing List Header Full Width 1`] = `
       LAST UPDATED 
       <span
         aria-hidden={true}
-        className="fa fa-caret-up"
+        className="fa fa-caret-down"
       >
         <span
           style={
@@ -63,12 +64,51 @@ exports[`Storyshots Crossing List Header Full Width 1`] = `
             }
           }
         >
-          Ascending
+          Descending
         </span>
       </span>
     </div>
   </div>
-  
+  <div
+    className="CrossingListFilter"
+  >
+    <div
+      className="CrossingListFilterItem"
+    >
+      <input
+        className="CrossingListFilterCheckbox"
+        type="checkbox"
+      />
+      Open
+    </div>
+    <div
+      className="CrossingListFilterItem"
+    >
+      <input
+        className="CrossingListFilterCheckbox"
+        type="checkbox"
+      />
+      Caution
+    </div>
+    <div
+      className="CrossingListFilterItem"
+    >
+      <input
+        className="CrossingListFilterCheckbox"
+        type="checkbox"
+      />
+      Closed
+    </div>
+    <div
+      className="CrossingListFilterItem"
+    >
+      <input
+        className="CrossingListFilterCheckbox"
+        type="checkbox"
+      />
+      Long Term Closure
+    </div>
+  </div>
 </div>
 `;
 
@@ -119,6 +159,7 @@ exports[`Storyshots Crossing List Header Width < 768px 1`] = `
     </div>
     <div
       className="CrossingListSortToggle"
+      onClick={[Function]}
     >
       <div
         className="CrossingListSortToggleText"
@@ -126,7 +167,7 @@ exports[`Storyshots Crossing List Header Width < 768px 1`] = `
         LAST UPDATED 
         <span
           aria-hidden={true}
-          className="fa fa-caret-up"
+          className="fa fa-caret-down"
         >
           <span
             style={
@@ -142,12 +183,51 @@ exports[`Storyshots Crossing List Header Width < 768px 1`] = `
               }
             }
           >
-            Ascending
+            Descending
           </span>
         </span>
       </div>
     </div>
-    
+    <div
+      className="CrossingListFilter"
+    >
+      <div
+        className="CrossingListFilterItem"
+      >
+        <input
+          className="CrossingListFilterCheckbox"
+          type="checkbox"
+        />
+        Open
+      </div>
+      <div
+        className="CrossingListFilterItem"
+      >
+        <input
+          className="CrossingListFilterCheckbox"
+          type="checkbox"
+        />
+        Caution
+      </div>
+      <div
+        className="CrossingListFilterItem"
+      >
+        <input
+          className="CrossingListFilterCheckbox"
+          type="checkbox"
+        />
+        Closed
+      </div>
+      <div
+        className="CrossingListFilterItem"
+      >
+        <input
+          className="CrossingListFilterCheckbox"
+          type="checkbox"
+        />
+        Long Term Closure
+      </div>
+    </div>
   </div>
 </div>
 `;
