@@ -88,7 +88,7 @@ class CrossingMap extends React.Component {
                    <Feature key={i}
                             coordinates={JSON.parse(crossing.geojson).coordinates}
                             onClick={this.onCrossingClick.bind(this)}
-                            properties={{"crossingStatus": crossing.statusUpdateByLatestStatusId.statusId}}/>
+                            properties={{"crossingStatus": crossing.statusUpdateByLatestStatusUpdateId.statusId}}/>
               )}
             )
           }
@@ -111,7 +111,7 @@ class CrossingMap extends React.Component {
                    <Feature key={i}
                             coordinates={JSON.parse(crossing.geojson).coordinates}
                             onClick={this.onCrossingClick.bind(this)}
-                            properties={{"crossingStatus": crossing.statusUpdateByLatestStatusId.statusId}}/>
+                            properties={{"crossingStatus": crossing.statusUpdateByLatestStatusUpdateId.statusId}}/>
               )}
             )
           }
@@ -145,7 +145,7 @@ const allCrossings = gql`
         id
         name
         geojson
-        statusUpdateByLatestStatusId {
+        statusUpdateByLatestStatusUpdateId {
           statusId
         }
       }

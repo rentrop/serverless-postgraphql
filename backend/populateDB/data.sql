@@ -117,14 +117,24 @@ insert into floods.status_update (id, status_id, creator_id, crossing_id, notes,
   (32, 1, 4, 8, 'notes', null, '2017-06-02T09:27:57Z');
 alter sequence floods.status_update_id_seq restart with 33;
 
+-- Add latest status updates
+update floods.crossing set latest_status_update_id = 26 where id = 1;
+update floods.crossing set latest_status_update_id = 30 where id = 2;
+update floods.crossing set latest_status_update_id = 28 where id = 3;
+update floods.crossing set latest_status_update_id = 18 where id = 4;
+update floods.crossing set latest_status_update_id = 29 where id = 5;
+update floods.crossing set latest_status_update_id = 24 where id = 6;
+update floods.crossing set latest_status_update_id = 31 where id = 7;
+update floods.crossing set latest_status_update_id = 32 where id = 8;
+
 -- Add latest statuses
-update floods.crossing set latest_status_id = 26 where id = 1;
-update floods.crossing set latest_status_id = 30 where id = 2;
-update floods.crossing set latest_status_id = 28 where id = 3;
-update floods.crossing set latest_status_id = 18 where id = 4;
-update floods.crossing set latest_status_id = 29 where id = 5;
-update floods.crossing set latest_status_id = 24 where id = 6;
-update floods.crossing set latest_status_id = 31 where id = 7;
-update floods.crossing set latest_status_id = 32 where id = 8;
+update floods.crossing set latest_status_id = 2 where id = 1;
+update floods.crossing set latest_status_id = 1 where id = 2;
+update floods.crossing set latest_status_id = 1 where id = 3;
+update floods.crossing set latest_status_id = 1 where id = 4;
+update floods.crossing set latest_status_id = 2 where id = 5;
+update floods.crossing set latest_status_id = 2 where id = 6;
+update floods.crossing set latest_status_id = 1 where id = 7;
+update floods.crossing set latest_status_id = 1 where id = 8;
 
 commit;

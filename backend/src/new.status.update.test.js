@@ -134,7 +134,7 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
         const response = await lokka.send(`
           query($crossing:Int!) {
             crossingById(id:$crossing) {
-              statusUpdateByLatestStatusId {
+              statusUpdateByLatestStatusUpdateId {
                 id
               }
             }
@@ -144,7 +144,7 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
           crossing: crossingToUpdate
         });
 
-        originalStatusId = response.crossingById.statusUpdateByLatestStatusId.id;
+        originalStatusId = response.crossingById.statusUpdateByLatestStatusUpdateId.id;
         expect(response).not.toBeNull();
       });
 
@@ -152,7 +152,7 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
         const response = await lokka.send(`
           query($crossing:Int!) {
             crossingById(id:$crossing) {
-              statusUpdateByLatestStatusId {
+              statusUpdateByLatestStatusUpdateId {
                 id
               }
             }
@@ -162,7 +162,7 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
           crossing: crossingToNotUpdate
         });
 
-        secondOriginalStatusId = response.crossingById.statusUpdateByLatestStatusId.id;
+        secondOriginalStatusId = response.crossingById.statusUpdateByLatestStatusUpdateId.id;
         expect(response).not.toBeNull();
       });
     });
@@ -200,7 +200,7 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
       const response = await lokka.send(`
         query($crossing:Int!) {
           crossingById(id:$crossing) {
-            statusUpdateByLatestStatusId {
+            statusUpdateByLatestStatusUpdateId {
               id
               notes
             }
@@ -211,16 +211,16 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
         crossing: crossingToUpdate
       });
 
-      expect(response.crossingById.statusUpdateByLatestStatusId.id).not.toEqual(originalStatusId);
-      expect(response.crossingById.statusUpdateByLatestStatusId.id).toEqual(newStatusId);
-      expect(response.crossingById.statusUpdateByLatestStatusId.notes).toMatchSnapshot();
+      expect(response.crossingById.statusUpdateByLatestStatusUpdateId.id).not.toEqual(originalStatusId);
+      expect(response.crossingById.statusUpdateByLatestStatusUpdateId.id).toEqual(newStatusId);
+      expect(response.crossingById.statusUpdateByLatestStatusUpdateId.notes).toMatchSnapshot();
     });
 
     it('the second crossing should still have the original status', async () => {
       const response = await lokka.send(`
         query($crossing:Int!) {
           crossingById(id:$crossing) {
-            statusUpdateByLatestStatusId {
+            statusUpdateByLatestStatusUpdateId {
               id
               notes
             }
@@ -231,8 +231,8 @@ function shouldWork(username, password, status, notes, reason, duration, extra_d
         crossing: crossingToNotUpdate
       });
 
-      expect(response.crossingById.statusUpdateByLatestStatusId.id).toEqual(secondOriginalStatusId);
-      expect(response.crossingById.statusUpdateByLatestStatusId.notes).toMatchSnapshot();
+      expect(response.crossingById.statusUpdateByLatestStatusUpdateId.id).toEqual(secondOriginalStatusId);
+      expect(response.crossingById.statusUpdateByLatestStatusUpdateId.notes).toMatchSnapshot();
     });
   });
 }

@@ -22,7 +22,7 @@ const openCrossing = {
   "name": "Spurlock Valley",
   "description": "E of Intersection w\/ Clifford",
   "humanAddress": "605 Spurlock Valley \u00b7 West Lake Hills, TX 78746",
-  "statusUpdateByLatestStatusId": {
+  "statusUpdateByLatestStatusUpdateId": {
     "statusId": 1,
     "createdAt": "2017-10-10T04:35:37.306767",
     "notes": "All Clear",
@@ -47,7 +47,7 @@ const closedCrossing = {
   "name": "Spurlock Valley",
   "description": "E of Intersection w\/ Clifford",
   "humanAddress": "605 Spurlock Valley \u00b7 West Lake Hills, TX 78746",
-  "statusUpdateByLatestStatusId": {
+  "statusUpdateByLatestStatusUpdateId": {
     "statusId": 2,
     "statusReasonId": 1,
     "createdAt": "2017-10-10T04:35:37.306767",
@@ -73,7 +73,7 @@ const cautionCrossing = {
   "name": "Spurlock Valley",
   "description": "E of Intersection w\/ Clifford",
   "humanAddress": "605 Spurlock Valley \u00b7 West Lake Hills, TX 78746",
-  "statusUpdateByLatestStatusId": {
+  "statusUpdateByLatestStatusUpdateId": {
     "statusId": 3,
     "statusReasonId": 1,
     "createdAt": "2017-10-10T04:35:37.306767",
@@ -99,7 +99,7 @@ const longtermCrossing = {
   "name": "Spurlock Valley",
   "description": "E of Intersection w\/ Clifford",
   "humanAddress": "605 Spurlock Valley \u00b7 West Lake Hills, TX 78746",
-  "statusUpdateByLatestStatusId": {
+  "statusUpdateByLatestStatusUpdateId": {
     "statusId": 4,
     "statusReasonId": 2,
     "statusDurationId": 2,

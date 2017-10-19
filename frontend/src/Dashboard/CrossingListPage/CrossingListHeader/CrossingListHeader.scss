@@ -84,7 +84,7 @@
   color: white;
   display: flex;
   justify-content: space-between;
-  min-width: 340px;
+  min-width: 450px;
   font-size: 1.3em;
   line-height: 65px;
   flex: 1.5;
@@ -98,6 +98,14 @@
   padding-bottom: 2%;
   font-size: 1.2em;
   line-height: 2em;
+}
+
+.CrossingListFilterItem {
+  cursor: pointer;
+}
+
+.CrossingListFilterCheckbox {
+  cursor: pointer;
 }
 
 .CrossingListFilterItem.fullsize {

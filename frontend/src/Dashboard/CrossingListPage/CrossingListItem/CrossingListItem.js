@@ -9,6 +9,7 @@ import './CrossingListItem.css';
 import * as statusConstants from './StatusConstants';
 import newStatusUpdateMutation from '../queries/newStatusUpdateMutation';
 import crossingsQuery from '../queries/crossingsQuery';
+import statusCountsQuery from '../queries/statusCountsQuery';
 
 const statusStrings = new Map();
 statusStrings.set(statusConstants.OPEN, 'Open');
@@ -20,10 +21,10 @@ class CrossingListItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedStatus: props.crossing.statusUpdateByLatestStatusId.statusId,
-      selectedReason: props.crossing.statusUpdateByLatestStatusId.statusReasonId,
-      selectedDuration: props.crossing.statusUpdateByLatestStatusId.statusDurationId,
-      notes: props.crossing.statusUpdateByLatestStatusId.notes
+      selectedStatus: props.crossing.statusUpdateByLatestStatusUpdateId.statusId,
+      selectedReason: props.crossing.statusUpdateByLatestStatusUpdateId.statusReasonId,
+      selectedDuration: props.crossing.statusUpdateByLatestStatusUpdateId.statusDurationId,
+      notes: props.crossing.statusUpdateByLatestStatusUpdateId.notes
     };
   }
 
@@ -36,7 +37,7 @@ class CrossingListItem extends React.Component {
         durationId: (this.state.selectedStatus === statusConstants.LONGTERM ? this.state.selectedDuration : null),
         notes: this.state.notes
       },
-      refetchQueries: [{ query: crossingsQuery }]
+      refetchQueries: [{ query: crossingsQuery }, {query: statusCountsQuery}]
     })
     .then(({ data }) => {
       this.setState({ selectedStatus: data.newStatusUpdate.statusUpdate.statusId });
@@ -52,10 +53,10 @@ class CrossingListItem extends React.Component {
     // Temporary fix for storybook
     if(this.props.dirty) return true;
 
-    const savedStatus = this.props.crossing.statusUpdateByLatestStatusId.statusId;
-    const savedReason = this.props.crossing.statusUpdateByLatestStatusId.statusReasonId;
-    const savedDuration = this.props.crossing.statusUpdateByLatestStatusId.statusDurationId;
-    const savedNotes = this.props.crossing.statusUpdateByLatestStatusId.notes;
+    const savedStatus = this.props.crossing.statusUpdateByLatestStatusUpdateId.statusId;
+    const savedReason = this.props.crossing.statusUpdateByLatestStatusUpdateId.statusReasonId;
+    const savedDuration = this.props.crossing.statusUpdateByLatestStatusUpdateId.statusDurationId;
+    const savedNotes = this.props.crossing.statusUpdateByLatestStatusUpdateId.notes;
 
     return (savedStatus != this.state.selectedStatus ||
             savedReason != this.state.selectedReason ||
@@ -93,10 +94,10 @@ class CrossingListItem extends React.Component {
   notesChanged = (e) => { this.setState({ notes: e.target.value }) };
 
   cancelClicked = () => { 
-    this.setState({ selectedStatus: this.props.crossing.statusUpdateByLatestStatusId.statusId });
-    this.setState({ selectedReason: this.props.crossing.statusUpdateByLatestStatusId.statusReasonId });
-    this.setState({ selectedDuration: this.props.crossing.statusUpdateByLatestStatusId.statusDurationId });
-    this.setState({ notes: this.props.crossing.statusUpdateByLatestStatusId.notes });
+    this.setState({ selectedStatus: this.props.crossing.statusUpdateByLatestStatusUpdateId.statusId });
+    this.setState({ selectedReason: this.props.crossing.statusUpdateByLatestStatusUpdateId.statusReasonId });
+    this.setState({ selectedDuration: this.props.crossing.statusUpdateByLatestStatusUpdateId.statusDurationId });
+    this.setState({ notes: this.props.crossing.statusUpdateByLatestStatusUpdateId.notes });
   };
 
   render () {
@@ -123,7 +124,7 @@ class CrossingListItem extends React.Component {
           <div className="CrossingListItemFlexContainer">
             <div className="CrossingName">{crossing.name}</div>
             <Location crossing={ crossing } />
-            <DateTime update={ crossing.statusUpdateByLatestStatusId } />
+            <DateTime update={ crossing.statusUpdateByLatestStatusUpdateId } />
           </div>
           <div className="CrossingListItemFlexContainer">
             <div className="flexitem">

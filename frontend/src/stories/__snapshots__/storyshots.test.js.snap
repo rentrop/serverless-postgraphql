@@ -1,118 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Crossing List Header Full Width 1`] = `
-<div
-  className="CrossingListHeader"
->
-  <div
-    className="CrossingListSearch"
-  >
-    <input
-      className="CrossingListSearchInput"
-      placeholder="Search your crossings"
-      type="text"
-    />
-    <div
-      className="CrossingListSearchButton"
-    >
-      <span
-        aria-hidden={true}
-        className="fa fa-search"
-      >
-        <span
-          style={
-            Object {
-              "border": "0px",
-              "clip": "rect(0px, 0px, 0px, 0px)",
-              "height": "1px",
-              "margin": "-1px",
-              "overflow": "hidden",
-              "padding": "0px",
-              "position": "absolute",
-              "width": "1px",
-            }
-          }
-        >
-          Search
-        </span>
-      </span>
-    </div>
-  </div>
-  <div
-    className="CrossingListSortToggle"
-    onClick={[Function]}
-  >
-    <div
-      className="CrossingListSortToggleText"
-    >
-      LAST UPDATED 
-      <span
-        aria-hidden={true}
-        className="fa fa-caret-down"
-      >
-        <span
-          style={
-            Object {
-              "border": "0px",
-              "clip": "rect(0px, 0px, 0px, 0px)",
-              "height": "1px",
-              "margin": "-1px",
-              "overflow": "hidden",
-              "padding": "0px",
-              "position": "absolute",
-              "width": "1px",
-            }
-          }
-        >
-          Descending
-        </span>
-      </span>
-    </div>
-  </div>
-  <div
-    className="CrossingListFilter"
-  >
-    <div
-      className="CrossingListFilterItem"
-    >
-      <input
-        className="CrossingListFilterCheckbox"
-        type="checkbox"
-      />
-      Open
-    </div>
-    <div
-      className="CrossingListFilterItem"
-    >
-      <input
-        className="CrossingListFilterCheckbox"
-        type="checkbox"
-      />
-      Caution
-    </div>
-    <div
-      className="CrossingListFilterItem"
-    >
-      <input
-        className="CrossingListFilterCheckbox"
-        type="checkbox"
-      />
-      Closed
-    </div>
-    <div
-      className="CrossingListFilterItem"
-    >
-      <input
-        className="CrossingListFilterCheckbox"
-        type="checkbox"
-      />
-      Long Term Closure
-    </div>
-  </div>
-</div>
-`;
+exports[`Storyshots Crossing List Header Full Width 1`] = `""`;
 
-exports[`Storyshots Crossing List Header Width < 768px 1`] = `
+exports[`Storyshots Crossing List Header Width 400px 1`] = `
 <div
   style={
     Object {
@@ -193,39 +83,191 @@ exports[`Storyshots Crossing List Header Width < 768px 1`] = `
     >
       <div
         className="CrossingListFilterItem"
+        onClick={[Function]}
       >
         <input
+          checked={true}
           className="CrossingListFilterCheckbox"
           type="checkbox"
         />
-        Open
+        Open (
+        6
+        )
       </div>
       <div
         className="CrossingListFilterItem"
+        onClick={[Function]}
       >
         <input
+          checked={true}
           className="CrossingListFilterCheckbox"
           type="checkbox"
         />
-        Caution
+        Caution (
+        6
+        )
       </div>
       <div
         className="CrossingListFilterItem"
+        onClick={[Function]}
       >
         <input
+          checked={true}
           className="CrossingListFilterCheckbox"
           type="checkbox"
         />
-        Closed
+        Closed (
+        6
+        )
       </div>
       <div
         className="CrossingListFilterItem"
+        onClick={[Function]}
       >
         <input
+          checked={true}
           className="CrossingListFilterCheckbox"
           type="checkbox"
         />
-        Long Term Closure
+        Long Term Closure (
+        6
+        )
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Crossing List Header Width 900px 1`] = `
+<div
+  style={
+    Object {
+      "width": "900px",
+    }
+  }
+>
+  <div
+    className="CrossingListHeader"
+  >
+    <div
+      className="CrossingListSearch"
+    >
+      <input
+        className="CrossingListSearchInput"
+        placeholder="Search your crossings"
+        type="text"
+      />
+      <div
+        className="CrossingListSearchButton"
+      >
+        <span
+          aria-hidden={true}
+          className="fa fa-search"
+        >
+          <span
+            style={
+              Object {
+                "border": "0px",
+                "clip": "rect(0px, 0px, 0px, 0px)",
+                "height": "1px",
+                "margin": "-1px",
+                "overflow": "hidden",
+                "padding": "0px",
+                "position": "absolute",
+                "width": "1px",
+              }
+            }
+          >
+            Search
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      className="CrossingListSortToggle"
+      onClick={[Function]}
+    >
+      <div
+        className="CrossingListSortToggleText"
+      >
+        LAST UPDATED 
+        <span
+          aria-hidden={true}
+          className="fa fa-caret-down"
+        >
+          <span
+            style={
+              Object {
+                "border": "0px",
+                "clip": "rect(0px, 0px, 0px, 0px)",
+                "height": "1px",
+                "margin": "-1px",
+                "overflow": "hidden",
+                "padding": "0px",
+                "position": "absolute",
+                "width": "1px",
+              }
+            }
+          >
+            Descending
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      className="CrossingListFilter"
+    >
+      <div
+        className="CrossingListFilterItem"
+        onClick={[Function]}
+      >
+        <input
+          checked={true}
+          className="CrossingListFilterCheckbox"
+          type="checkbox"
+        />
+        Open (
+        6
+        )
+      </div>
+      <div
+        className="CrossingListFilterItem"
+        onClick={[Function]}
+      >
+        <input
+          checked={true}
+          className="CrossingListFilterCheckbox"
+          type="checkbox"
+        />
+        Caution (
+        6
+        )
+      </div>
+      <div
+        className="CrossingListFilterItem"
+        onClick={[Function]}
+      >
+        <input
+          checked={true}
+          className="CrossingListFilterCheckbox"
+          type="checkbox"
+        />
+        Closed (
+        6
+        )
+      </div>
+      <div
+        className="CrossingListFilterItem"
+        onClick={[Function]}
+      >
+        <input
+          checked={true}
+          className="CrossingListFilterCheckbox"
+          type="checkbox"
+        />
+        Long Term Closure (
+        6
+        )
       </div>
     </div>
   </div>
