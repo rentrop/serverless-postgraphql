@@ -83,10 +83,10 @@ exports[`Storyshots Crossing List Header Width 400px 1`] = `
     >
       <div
         className="CrossingListFilterItem"
-        onClick={[Function]}
+        onClick={undefined}
       >
         <input
-          checked={true}
+          checked={undefined}
           className="CrossingListFilterCheckbox"
           type="checkbox"
         />
@@ -96,10 +96,10 @@ exports[`Storyshots Crossing List Header Width 400px 1`] = `
       </div>
       <div
         className="CrossingListFilterItem"
-        onClick={[Function]}
+        onClick={undefined}
       >
         <input
-          checked={true}
+          checked={undefined}
           className="CrossingListFilterCheckbox"
           type="checkbox"
         />
@@ -109,10 +109,10 @@ exports[`Storyshots Crossing List Header Width 400px 1`] = `
       </div>
       <div
         className="CrossingListFilterItem"
-        onClick={[Function]}
+        onClick={undefined}
       >
         <input
-          checked={true}
+          checked={undefined}
           className="CrossingListFilterCheckbox"
           type="checkbox"
         />
@@ -122,10 +122,10 @@ exports[`Storyshots Crossing List Header Width 400px 1`] = `
       </div>
       <div
         className="CrossingListFilterItem"
-        onClick={[Function]}
+        onClick={undefined}
       >
         <input
-          checked={true}
+          checked={undefined}
           className="CrossingListFilterCheckbox"
           type="checkbox"
         />
@@ -219,10 +219,10 @@ exports[`Storyshots Crossing List Header Width 900px 1`] = `
     >
       <div
         className="CrossingListFilterItem"
-        onClick={[Function]}
+        onClick={undefined}
       >
         <input
-          checked={true}
+          checked={undefined}
           className="CrossingListFilterCheckbox"
           type="checkbox"
         />
@@ -232,10 +232,10 @@ exports[`Storyshots Crossing List Header Width 900px 1`] = `
       </div>
       <div
         className="CrossingListFilterItem"
-        onClick={[Function]}
+        onClick={undefined}
       >
         <input
-          checked={true}
+          checked={undefined}
           className="CrossingListFilterCheckbox"
           type="checkbox"
         />
@@ -245,10 +245,10 @@ exports[`Storyshots Crossing List Header Width 900px 1`] = `
       </div>
       <div
         className="CrossingListFilterItem"
-        onClick={[Function]}
+        onClick={undefined}
       >
         <input
-          checked={true}
+          checked={undefined}
           className="CrossingListFilterCheckbox"
           type="checkbox"
         />
@@ -258,10 +258,10 @@ exports[`Storyshots Crossing List Header Width 900px 1`] = `
       </div>
       <div
         className="CrossingListFilterItem"
-        onClick={[Function]}
+        onClick={undefined}
       >
         <input
-          checked={true}
+          checked={undefined}
           className="CrossingListFilterCheckbox"
           type="checkbox"
         />

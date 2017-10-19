@@ -8,6 +8,7 @@ const crossingsQuery = gql`
         name
         description
         humanAddress
+        latestStatusId
         statusUpdateByLatestStatusUpdateId {
           statusId
           statusReasonId

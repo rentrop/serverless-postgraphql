@@ -101,7 +101,9 @@ class CrossingListItem extends React.Component {
   };
 
   render () {
-    const { crossing, reasons, durations } = this.props;
+    const { crossing, reasons, durations, hidden } = this.props;
+
+    if (hidden) return '';
 
     var show = [];
     switch(this.state.selectedStatus) {

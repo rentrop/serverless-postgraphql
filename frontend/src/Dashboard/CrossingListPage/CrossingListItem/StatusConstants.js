@@ -1,9 +1,8 @@
-// export const OPEN = Symbol("OPEN");
-// export const CAUTION = Symbol("CAUTION");
-// export const CLOSED = Symbol("CLOSED");
-// export const LONGTERM = Symbol("LONGTERM");
+// We switched these to integers to match DB values to match the DB.
+// It would be nice if we used Symbols instead.
+// Ex:
+//    export const LONGTERM = Symbol("LONGTERM");
 
-// Switched to integers to match DB values
 export const OPEN = 1;
 export const CLOSED = 2;
 export const CAUTION = 3;

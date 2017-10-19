@@ -5,6 +5,8 @@ import crossingsQuery from './queries/crossingsQuery';
 import statusReasonsQuery from './queries/statusReasonsQuery';
 import statusDurationsQuery from './queries/statusDurationsQuery';
 import './CrossingList.css';
+import * as statusConstants from './CrossingListItem/StatusConstants';
+import classnames from 'classnames';
 
 class CrossingList extends React.Component {
   state = {}
@@ -19,7 +21,16 @@ class CrossingList extends React.Component {
       return (<div>Loading</div>)
     }
 
+    const { showOpen, showClosed, showCaution, showLongterm } = this.props;
+
     const crossings = this.props.crossingsQuery.allCrossings.nodes;
+    let crossingIdsToShow = crossings.filter(crossing => 
+      crossing.latestStatusId == statusConstants.OPEN && showOpen ||
+      crossing.latestStatusId == statusConstants.CLOSED && showClosed ||
+      crossing.latestStatusId == statusConstants.CAUTION && showCaution ||
+      crossing.latestStatusId == statusConstants.LONGTERM && showLongterm
+    ).map(filteredCrossing => filteredCrossing.id);
+
     const statusReasons = this.props.statusReasonsQuery.allStatusReasons.nodes;
     const statusDurations = this.props.statusDurationsQuery.allStatusDurations.nodes;
 
@@ -34,7 +45,8 @@ class CrossingList extends React.Component {
           <CrossingListItem
             crossing={crossing}
             reasons={statusReasons} 
-            durations={statusDurations} />
+            durations={statusDurations}
+            hidden={!crossingIdsToShow.includes(crossing.id)} />
         )}
       </div>
     );

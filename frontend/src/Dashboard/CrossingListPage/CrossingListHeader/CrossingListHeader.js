@@ -17,29 +17,20 @@ class CrossingListHeader extends Component {
     super(props);
     this.state = {
       showFilterDrawer: false,
-      invertSort: false,
-      showOpen: true,
-      showClosed: true,
-      showCaution: true,
-      showLongterm: true
+      invertSort: false
     };
   }
 
   toggleFilterDropdown = () => { this.setState({ showFilterDrawer: !this.state.showFilterDrawer }) };
   toggleSortDirection = () => { this.setState({ invertSort: !this.state.invertSort }) };
 
-  toggleShowOpen = () => { this.setState({ showOpen: !this.state.showOpen }) };
-  toggleShowClosed = () => { this.setState({ showClosed: !this.state.showClosed }) };
-  toggleShowCaution = () => { this.setState({ showCaution: !this.state.showCaution }) };
-  toggleShowLongterm = () => { this.setState({ showLongterm: !this.state.showLongterm }) };
-
   render() {
     if ( !this.props.data || this.props.data.loading) {
       return '';
     };
 
+    const { toggleShowOpen, toggleShowClosed, toggleShowCaution, toggleShowLongterm, showOpen, showClosed, showCaution, showLongterm } = this.props;
     const { openCrossings, closedCrossings, cautionCrossings, longtermCrossings } = this.props.data;
-
 
     return (
       <ContainerQuery query={containerQuery}>
@@ -75,20 +66,20 @@ class CrossingListHeader extends Component {
 
             {params.smallsize && !this.state.showFilterDrawer ? "" : (
               <div className={classnames(params, 'CrossingListFilter')}>
-                <div className={classnames(params, 'CrossingListFilterItem')} onClick={this.toggleShowOpen}>
-                  <input className={classnames(params, 'CrossingListFilterCheckbox')} type='checkbox' checked={this.state.showOpen}/>
+                <div className={classnames(params, 'CrossingListFilterItem')} onClick={toggleShowOpen}>
+                  <input className={classnames(params, 'CrossingListFilterCheckbox')} type='checkbox' checked={showOpen}/>
                   Open ({openCrossings.totalCount})
                 </div>
-                <div className={classnames(params, 'CrossingListFilterItem')} onClick={this.toggleShowCaution}>
-                  <input className={classnames(params, 'CrossingListFilterCheckbox')} type='checkbox' checked={this.state.showCaution}/>
+                <div className={classnames(params, 'CrossingListFilterItem')} onClick={toggleShowCaution}>
+                  <input className={classnames(params, 'CrossingListFilterCheckbox')} type='checkbox' checked={showCaution}/>
                   Caution ({cautionCrossings.totalCount})
                 </div>
-                <div className={classnames(params, 'CrossingListFilterItem')} onClick={this.toggleShowClosed}>
-                  <input className={classnames(params, 'CrossingListFilterCheckbox')} type='checkbox' checked={this.state.showClosed}/>
+                <div className={classnames(params, 'CrossingListFilterItem')} onClick={toggleShowClosed}>
+                  <input className={classnames(params, 'CrossingListFilterCheckbox')} type='checkbox' checked={showClosed}/>
                   Closed ({closedCrossings.totalCount})
                 </div>
-                <div className={classnames(params, 'CrossingListFilterItem')} onClick={this.toggleShowLongterm}>
-                  <input className={classnames(params, 'CrossingListFilterCheckbox')} type='checkbox' checked={this.state.showLongterm}/>
+                <div className={classnames(params, 'CrossingListFilterItem')} onClick={toggleShowLongterm}>
+                  <input className={classnames(params, 'CrossingListFilterCheckbox')} type='checkbox' checked={showLongterm}/>
                   Long Term Closure ({longtermCrossings.totalCount})
                 </div>
               </div> 
