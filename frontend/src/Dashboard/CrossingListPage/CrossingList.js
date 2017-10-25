@@ -11,6 +11,14 @@ import classnames from 'classnames';
 class CrossingList extends React.Component {
   state = {}
 
+  shouldHideCrossing (crossing, showOpen, showClosed, showCaution, showLongterm) {
+      return ( 
+        crossing.latestStatusId == statusConstants.OPEN && !showOpen ||
+        crossing.latestStatusId == statusConstants.CLOSED && !showClosed ||
+        crossing.latestStatusId == statusConstants.CAUTION && !showCaution ||
+        crossing.latestStatusId == statusConstants.LONGTERM && !showLongterm);
+  }
+
   render () {
     if ( !this.props.crossingsQuery ||
           this.props.crossingsQuery.loading ||
@@ -21,15 +29,9 @@ class CrossingList extends React.Component {
       return (<div>Loading</div>)
     }
 
-    const { showOpen, showClosed, showCaution, showLongterm } = this.props;
+    const { showOpen, showClosed, showCaution, showLongterm, sortByUpdatedAsc } = this.props;
 
-    const crossings = this.props.crossingsQuery.allCrossings.nodes;
-    let crossingIdsToShow = crossings.filter(crossing => 
-      crossing.latestStatusId == statusConstants.OPEN && showOpen ||
-      crossing.latestStatusId == statusConstants.CLOSED && showClosed ||
-      crossing.latestStatusId == statusConstants.CAUTION && showCaution ||
-      crossing.latestStatusId == statusConstants.LONGTERM && showLongterm
-    ).map(filteredCrossing => filteredCrossing.id);
+    const crossings = this.props.crossingsQuery.allCrossings.nodes.slice();
 
     const statusReasons = this.props.statusReasonsQuery.allStatusReasons.nodes;
     const statusDurations = this.props.statusDurationsQuery.allStatusDurations.nodes;
@@ -39,14 +41,24 @@ class CrossingList extends React.Component {
       return (<div>Error Loading Crossings</div>);
     }
 
+    crossings.sort((c1, c2) => {
+      const createdAt1 = c1.statusUpdateByLatestStatusUpdateId.createdAt;
+      const createdAt2 = c2.statusUpdateByLatestStatusUpdateId.createdAt;
+
+      return sortByUpdatedAsc ?
+              (createdAt1 > createdAt2 ? 1 : -1) :
+              (createdAt2 > createdAt1 ? 1 : -1);
+    });
+
     return (
       <div className='CrossingListContainer'>
         {crossings.map(crossing => 
           <CrossingListItem
+            key={crossing.id}
             crossing={crossing}
             reasons={statusReasons} 
             durations={statusDurations}
-            hidden={!crossingIdsToShow.includes(crossing.id)} />
+            hidden={this.shouldHideCrossing(crossing, showOpen, showClosed, showCaution, showLongterm)} />
         )}
       </div>
     );

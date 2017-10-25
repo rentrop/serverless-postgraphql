@@ -49,7 +49,7 @@ exports[`Storyshots Crossing List Header Width 400px 1`] = `
     </div>
     <div
       className="CrossingListSortToggle"
-      onClick={[Function]}
+      onClick={undefined}
     >
       <div
         className="CrossingListSortToggleText"
@@ -185,7 +185,7 @@ exports[`Storyshots Crossing List Header Width 900px 1`] = `
     </div>
     <div
       className="CrossingListSortToggle"
-      onClick={[Function]}
+      onClick={undefined}
     >
       <div
         className="CrossingListSortToggleText"
