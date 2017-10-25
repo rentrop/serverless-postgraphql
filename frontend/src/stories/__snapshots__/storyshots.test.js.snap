@@ -285,11 +285,12 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
       <div
         className="CrossingListItemFlexContainer"
       >
-        <div
+        <a
           className="CrossingName"
+          href="/dashboard/crossing/1"
         >
           Spurlock Valley
-        </div>
+        </a>
         <div
           className="LocationContainer"
         >
@@ -569,11 +570,12 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
       <div
         className="CrossingListItemFlexContainer"
       >
-        <div
+        <a
           className="CrossingName"
+          href="/dashboard/crossing/1"
         >
           Spurlock Valley
-        </div>
+        </a>
         <div
           className="LocationContainer"
         >
@@ -853,11 +855,12 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
       <div
         className="CrossingListItemFlexContainer"
       >
-        <div
+        <a
           className="CrossingName"
+          href="/dashboard/crossing/1"
         >
           Spurlock Valley
-        </div>
+        </a>
         <div
           className="LocationContainer"
         >
@@ -1137,11 +1140,12 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
       <div
         className="CrossingListItemFlexContainer"
       >
-        <div
+        <a
           className="CrossingName"
+          href="/dashboard/crossing/1"
         >
           Spurlock Valley
-        </div>
+        </a>
         <div
           className="LocationContainer"
         >
@@ -1486,11 +1490,12 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
       <div
         className="CrossingListItemFlexContainer"
       >
-        <div
+        <a
           className="CrossingName"
+          href="/dashboard/crossing/1"
         >
           Spurlock Valley
-        </div>
+        </a>
         <div
           className="LocationContainer"
         >
@@ -1770,11 +1775,12 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
       <div
         className="CrossingListItemFlexContainer"
       >
-        <div
+        <a
           className="CrossingName"
+          href="/dashboard/crossing/1"
         >
           Spurlock Valley
-        </div>
+        </a>
         <div
           className="LocationContainer"
         >
@@ -2054,11 +2060,12 @@ exports[`Storyshots Crossing List Item Open 1`] = `
       <div
         className="CrossingListItemFlexContainer"
       >
-        <div
+        <a
           className="CrossingName"
+          href="/dashboard/crossing/1"
         >
           Spurlock Valley
-        </div>
+        </a>
         <div
           className="LocationContainer"
         >
@@ -2325,11 +2332,12 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
       <div
         className="CrossingListItemFlexContainer"
       >
-        <div
+        <a
           className="CrossingName"
+          href="/dashboard/crossing/1"
         >
           Spurlock Valley
-        </div>
+        </a>
         <div
           className="LocationContainer"
         >

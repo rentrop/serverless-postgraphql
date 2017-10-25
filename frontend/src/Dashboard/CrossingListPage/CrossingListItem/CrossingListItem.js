@@ -124,7 +124,7 @@ class CrossingListItem extends React.Component {
         <div className="CrossingListItemContainer">
           <div className={this.isDirty() ? "DirtyBorder" : ""}>
           <div className="CrossingListItemFlexContainer">
-            <div className="CrossingName">{crossing.name}</div>
+            <a href={`/dashboard/crossing/${crossing.id}`} className="CrossingName">{crossing.name}</a>
             <Location crossing={ crossing } />
             <DateTime update={ crossing.statusUpdateByLatestStatusUpdateId } />
           </div>
