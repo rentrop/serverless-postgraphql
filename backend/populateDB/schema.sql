@@ -478,7 +478,6 @@ $$ language sql stable security definer;
 comment on function floods.crossing_human_coordinates(floods.crossing) is 'Adds a human readable coordinates as a string in the Degrees, Minutes, Seconds representation.';
 
 -- Create function to delete crossings
--- TODO: all permissions stuff around this
 create function floods.remove_crossing(
   crossing_id integer
 ) returns floods.crossing as $$
@@ -512,6 +511,28 @@ end;
 $$ language plpgsql strict security definer;
 
 comment on function floods.remove_crossing(integer) is 'Removes a crossing from the database.';
+
+-- Create function to edit crossing
+create function floods.edit_crossing(
+  crossing_id integer,
+  name text,
+  description text
+) returns floods.crossing as $$
+declare
+  floods_crossing floods.crossing;
+begin
+
+  update floods.crossing
+    set name = edit_crossing.name,
+        description = edit_crossing.description
+    where id = crossing_id
+    returning * into floods_crossing;
+
+  return floods_crossing;
+end;
+$$ language plpgsql strict security definer;
+
+comment on function floods.edit_crossing(integer, text, text) is 'Edits an existing crossing.';
 
 -- Create function to create new statuses
 create function floods.new_status(
@@ -815,9 +836,10 @@ grant execute on function floods.current_user() to floods_community_editor;
 -- NOTE: Extra logic around permissions in function
 grant execute on function floods.new_status_update(integer, integer, text, integer, integer) to floods_community_editor;
 
--- Allow community editors and up to add crossings
+-- Allow community editors and up to add/edit crossings
 -- NOTE: Extra logic around permissions in function
 grant execute on function floods.new_crossing(text, text, text, integer, decimal, decimal) to floods_community_editor;
+grant execute on function floods.edit_crossing(integer, text, text) to floods_community_editor;
 
 -- Allow community admins and up to remove crossings
 -- NOTE: Extra logic around permissions in function

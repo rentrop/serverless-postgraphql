@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When editing a crossing as admin@community.floods  the edited crossing should show up in the DB 1`] = `
+Object {
+  "crossingById": Object {
+    "communityCrossingsByCrossingId": Object {
+      "nodes": Array [
+        Object {
+          "communityId": 1,
+        },
+      ],
+    },
+    "description": "Edited Description",
+    "humanAddress": "In test land",
+    "name": "Edited Crossing Name",
+  },
+}
+`;
+
+exports[`When editing a crossing as admin@community.floods  the new crossing should show up in the DB 1`] = `
+Object {
+  "crossingById": Object {
+    "communityCrossingsByCrossingId": Object {
+      "nodes": Array [
+        Object {
+          "communityId": 1,
+        },
+      ],
+    },
+    "description": "TEST LAND IS MAGIC!",
+    "humanAddress": "In test land",
+    "name": "New Crossing",
+  },
+}
+`;
+
+exports[`When editing a crossing as editor@community.floods  the edited crossing should show up in the DB 1`] = `
+Object {
+  "crossingById": Object {
+    "communityCrossingsByCrossingId": Object {
+      "nodes": Array [
+        Object {
+          "communityId": 1,
+        },
+      ],
+    },
+    "description": "Edited Description",
+    "humanAddress": "In test land",
+    "name": "Edited Crossing Name",
+  },
+}
+`;
+
+exports[`When editing a crossing as editor@community.floods  the new crossing should show up in the DB 1`] = `
+Object {
+  "crossingById": Object {
+    "communityCrossingsByCrossingId": Object {
+      "nodes": Array [
+        Object {
+          "communityId": 1,
+        },
+      ],
+    },
+    "description": "TEST LAND IS MAGIC!",
+    "humanAddress": "In test land",
+    "name": "New Crossing",
+  },
+}
+`;
+
+exports[`When editing a crossing as superadmin@flo.ods  the edited crossing should show up in the DB 1`] = `
+Object {
+  "crossingById": Object {
+    "communityCrossingsByCrossingId": Object {
+      "nodes": Array [
+        Object {
+          "communityId": 1,
+        },
+      ],
+    },
+    "description": "Edited Description",
+    "humanAddress": "In test land",
+    "name": "Edited Crossing Name",
+  },
+}
+`;
+
+exports[`When editing a crossing as superadmin@flo.ods  the new crossing should show up in the DB 1`] = `
+Object {
+  "crossingById": Object {
+    "communityCrossingsByCrossingId": Object {
+      "nodes": Array [
+        Object {
+          "communityId": 1,
+        },
+      ],
+    },
+    "description": "TEST LAND IS MAGIC!",
+    "humanAddress": "In test land",
+    "name": "New Crossing",
+  },
+}
+`;
