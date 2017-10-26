@@ -10,8 +10,7 @@
   margin-top: -16px;
 }
 
-.CrossingListItemContainer {
-  width: 1280px;
+.CrossingListItem {
   margin-bottom: 10px;
   border-bottom: 20px solid white;
   border-top: 20px solid white;
@@ -21,13 +20,25 @@
 
 .CrossingListItemFlexContainer {
   @include flexcontainer;
-  margin-left: 85px;
-  margin-right: 85px;
-  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+// TODO: follow BEM style naming convention -- create CrossingListItemFlexContainer--lg
+.CrossingListItem--lg .CrossingListItemFlexContainer{
+  flex-direction: row;
+}
+
+.CrossingListItemFlexItem {
+  @include flexitem;
+  margin: 10px;
+}
+
+.CrossingListItemFlexItem--spacer {
+  @include flexitem;
+  margin: 0 10px;
 }
 
 .CrossingName {
-  @include flexitem;
   font-size: 12pt;
   color: #055eff;
   text-decoration: underline;
@@ -37,7 +48,6 @@
 
 .ControlLabelContainer {
   @include flexcontainer;
-  width: 270px;
 }
 
 .ControlLabel {
@@ -48,7 +58,7 @@
 }
 
 .NotesTextBox {
-  width: 370px;
+  width: 100%;
   font-size: 12pt;
   text-indent: 12px;
   height: 40px;
@@ -56,12 +66,16 @@
   border: 1px solid #d6d4dc;
 }
 
+.ButtonContainer {
+  @include flexcontainer;
+  align-items: flex-end;
+  height: 100%;
+}
+
 @mixin button {
   @include flexitem;
   height: 40px;
   line-height: 40px;
-  width: 150px;
-  margin-top: 30px;
   border-radius: 5px;
   font-size: 11pt;
   font-family: "Roboto";
@@ -81,10 +95,6 @@
   color: white;
   background-color: #0054FF;
   margin-left: 15px;
-}
-
-.hidden {
-  display: none;
 }
 
 .required {

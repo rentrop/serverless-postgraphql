@@ -10,6 +10,14 @@ import * as statusConstants from './StatusConstants';
 import newStatusUpdateMutation from '../queries/newStatusUpdateMutation';
 import crossingsQuery from '../queries/crossingsQuery';
 import statusCountsQuery from '../queries/statusCountsQuery';
+import {ContainerQuery} from 'react-container-query';
+import classnames from 'classnames';
+
+const containerQuery = {
+  'CrossingListItem--lg': {
+    minWidth: 600,
+  }
+};
 
 const statusStrings = new Map();
 statusStrings.set(statusConstants.OPEN, 'Open');
@@ -119,67 +127,103 @@ class CrossingListItem extends React.Component {
         break;  
     }
 
-    return (
-      <div>
-        <div className="CrossingListItemContainer">
-          <div className={this.isDirty() ? "DirtyBorder" : ""}>
-          <div className="CrossingListItemFlexContainer">
-            <a href={`/dashboard/crossing/${crossing.id}`} className="CrossingName">{crossing.name}</a>
-            <Location crossing={ crossing } />
-            <DateTime update={ crossing.statusUpdateByLatestStatusUpdateId } />
-          </div>
-          <div className="CrossingListItemFlexContainer">
-            <div className="flexitem">
-              <div className="ControlLabel">Status: {statusStrings.get(this.state.selectedStatus)}</div>
-              <StatusToggle 
-                status={this.state.selectedStatus}
-                openClicked={this.openClicked}
-                cautionClicked={this.cautionClicked}
-                closedClicked={this.closedClicked}
-                longtermClicked={this.longtermClicked} />
-            </div>
-            <div className="flexitem">
-              <div className={show.includes('reason') ? "" : "hidden"}>
-                <div className="ControlLabelContainer">
-                  <div className="ControlLabel">Reason</div>
-                  <div className="required">{this.isDirty() ? "Required" : ""}</div>
-                </div>
-                <Dropdown
-                  options={reasons.filter(reason => reason.statusId === this.state.selectedStatus)}
-                  selected={this.state.selectedReason}
-                  onChange={this.reasonChanged} />
-              </div>
-            </div>
-            <div className="flexitem">
-              <div className="ControlLabel">Notes to the public</div>
-              <input className="NotesTextBox" type="text" value={this.state.notes} onChange={this.notesChanged}/>
-            </div>
-          </div>
-          <div className={show.includes('duration') || show.includes('cancelSave') ? "CrossingListItemFlexContainer" : ""}>
-            <div className="flexitem" />
-            <div className="flexitem">
-              <div className={show.includes('duration') ? "" : "hidden"}>
-                <div className="ControlLabelContainer">
-                  <div className="ControlLabel">Duration</div>
-                  <div className="required">{this.isDirty() ? "Required" : ""}</div>
-                </div>
-                <Dropdown
-                  options={durations}
-                  selected={this.state.selectedDuration}
-                  onChange={this.durationChanged} />
-              </div>
-            </div>
-            <div className="flexitem">
-              <div className={show.includes('cancelSave') ? "" : "hidden"}>
-                <div className="flexcontainer">              
-                  <div className="CancelButton" onClick={this.cancelClicked}>Cancel</div>
-                  <div className="SaveButton" onClick={this.newStatusUpdate.bind(this)}>Save</div>
-                </div>
-              </div>
-            </div>
-          </div>
+    const CrossingListItemJSX = (
+      <div className={this.isDirty() ? "DirtyBorder" : ""}>
+      <div className="CrossingListItemFlexContainer">
+        <div className="CrossingListItemFlexItem">
+          <a href={`/dashboard/crossing/${crossing.id}`} className="CrossingName">{crossing.name}</a>
+        </div>
+        <div className="CrossingListItemFlexItem">
+          <Location crossing={ crossing } />
+        </div>
+        <div className="CrossingListItemFlexItem">
+          <DateTime update={ crossing.statusUpdateByLatestStatusUpdateId } />
         </div>
       </div>
+      <div className="CrossingListItemFlexContainer">
+        <div className="CrossingListItemFlexItem">
+          <div className="ControlLabel">Status: {statusStrings.get(this.state.selectedStatus)}</div>
+          <StatusToggle 
+            status={this.state.selectedStatus}
+            openClicked={this.openClicked}
+            cautionClicked={this.cautionClicked}
+            closedClicked={this.closedClicked}
+            longtermClicked={this.longtermClicked} />
+        </div>
+        
+      {show.includes('reason') ? (
+        <div className="CrossingListItemFlexItem">
+          <div className="ControlLabelContainer">
+            <div className="ControlLabel">Reason</div>
+            <div className="required">{this.isDirty() ? "Required" : ""}</div>
+          </div>
+          <Dropdown
+            options={reasons.filter(reason => reason.statusId === this.state.selectedStatus)}
+            selected={this.state.selectedReason}
+            onChange={this.reasonChanged} />
+        </div>
+      ) : (
+        <div className="CrossingListItemFlexItem--spacer" />
+      )}
+        <div className="CrossingListItemFlexItem">
+          <div className="ControlLabel">Notes to the public</div>
+          <input className="NotesTextBox" type="text" value={this.state.notes} onChange={this.notesChanged}/>
+        </div>
+      </div>
+
+      
+      { (show.includes('duration') || show.includes('cancelSave')) && (
+
+      <div className="CrossingListItemFlexContainer">
+        <div className="CrossingListItemFlexItem--spacer" />
+        
+      {show.includes('duration') ? (
+        <div className="CrossingListItemFlexItem">
+          <div className="ControlLabelContainer">
+            <div className="ControlLabel">Duration</div>
+            <div className="required">{this.isDirty() ? "Required" : ""}</div>
+          </div>
+          <Dropdown
+            options={durations}
+            selected={this.state.selectedDuration}
+            onChange={this.durationChanged} />
+        </div>
+      ) : (
+        <div className="CrossingListItemFlexItem--spacer" />
+      )}
+
+      {show.includes('cancelSave') ? (
+        <div className="CrossingListItemFlexItem">
+          <div className="ButtonContainer">              
+            <div className="CancelButton" onClick={this.cancelClicked}>Cancel</div>
+            <div className="SaveButton" onClick={this.newStatusUpdate.bind(this)}>Save</div>
+          </div>
+        </div>
+      ) : (
+        <div className="CrossingListItemFlexItem--spacer" />
+      )}
+
+      </div>
+      )}
+
+      </div>
+    );
+
+    if(!this.props.cqClassName) {
+      return (
+        <ContainerQuery query={containerQuery}>
+        {(params) => (
+          <div className={classnames(params, "CrossingListItem")}>
+            {CrossingListItemJSX}
+          </div>
+        )}
+        </ContainerQuery>
+      );      
+    }
+
+    return (
+      <div className={this.props.cqClassName}>
+        {CrossingListItemJSX}
       </div>
     );
   }

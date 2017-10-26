@@ -275,15 +275,17 @@ exports[`Storyshots Crossing List Header Width 900px 1`] = `
 `;
 
 exports[`Storyshots Crossing List Item Caution 1`] = `
-<div>
+<div
+  className="CrossingListItem"
+>
   <div
-    className="CrossingListItemContainer"
+    className=""
   >
     <div
-      className=""
+      className="CrossingListItemFlexContainer"
     >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <a
           className="CrossingName"
@@ -291,6 +293,10 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
         >
           Spurlock Valley
         </a>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="LocationContainer"
         >
@@ -322,6 +328,10 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="DateTimeContainer"
         >
@@ -351,208 +361,128 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
           </div>
         </div>
       </div>
+    </div>
+    <div
+      className="CrossingListItemFlexContainer"
+    >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
+          className="ControlLabel"
+        >
+          Status: 
+          Caution
+        </div>
+        <div
+          className="StatusToggleContainer"
         >
           <div
-            className="ControlLabel"
+            className="StatusToggle__open"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            Status: 
-            Caution
+            <span
+              aria-hidden={true}
+              className="fa fa-circle-o"
+            />
           </div>
           <div
-            className="StatusToggleContainer"
+            className="StatusToggle__caution--selected"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            <div
-              className="StatusToggle__open"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-circle-o"
-              />
-            </div>
-            <div
-              className="StatusToggle__caution--selected"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-exclamation-triangle"
-              />
-            </div>
-            <div
-              className="StatusToggle__closed"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-              />
-            </div>
-            <div
-              className="StatusToggle__longterm"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
+            <span
+              aria-hidden={true}
+              className="fa fa-exclamation-triangle"
+            />
+          </div>
+          <div
+            className="StatusToggle__closed"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+            />
+          </div>
+          <div
+            className="StatusToggle__longterm"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+              style={
+                Object {
+                  "textDecoration": "underline",
                 }
-              />
-            </div>
+              }
+            />
           </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className=""
-          >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Reason
-              </div>
-              <div
-                className="required"
-              >
-                
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={true}
-                  value={1}
-                >
-                  Flooded
-                </option>
-                <option
-                  selected={false}
-                  value={2}
-                >
-                  Bridge Broken
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className="ControlLabel"
-          >
-            Notes to the public
-          </div>
-          <input
-            className="NotesTextBox"
-            onChange={[Function]}
-            type="text"
-            value="Watch Out"
-          />
         </div>
       </div>
       <div
-        className=""
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
+          className="ControlLabelContainer"
+        >
+          <div
+            className="ControlLabel"
+          >
+            Reason
+          </div>
+          <div
+            className="required"
+          >
+            
+          </div>
+        </div>
+        <div
+          className="Dropdown"
+        >
+          <select
+            className="Dropdown__select"
+            id=""
+            name=""
+            onChange={[Function]}
+          >
+            <option
+              selected={true}
+              value={1}
+            >
+              Flooded
+            </option>
+            <option
+              selected={false}
+              value={2}
+            >
+              Bridge Broken
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
+        <div
+          className="ControlLabel"
+        >
+          Notes to the public
+        </div>
+        <input
+          className="NotesTextBox"
+          onChange={[Function]}
+          type="text"
+          value="Watch Out"
         />
-        <div
-          className="flexitem"
-        >
-          <div
-            className="hidden"
-          >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Duration
-              </div>
-              <div
-                className="required"
-              >
-                
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={false}
-                  value={1}
-                >
-                  A Minute
-                </option>
-                <option
-                  selected={false}
-                  value={2}
-                >
-                  A Week
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className="hidden"
-          >
-            <div
-              className="flexcontainer"
-            >
-              <div
-                className="CancelButton"
-                onClick={[Function]}
-              >
-                Cancel
-              </div>
-              <div
-                className="SaveButton"
-                onClick={[Function]}
-              >
-                Save
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -560,15 +490,17 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
 `;
 
 exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
-<div>
+<div
+  className="CrossingListItem"
+>
   <div
-    className="CrossingListItemContainer"
+    className="DirtyBorder"
   >
     <div
-      className="DirtyBorder"
+      className="CrossingListItemFlexContainer"
     >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <a
           className="CrossingName"
@@ -576,6 +508,10 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
         >
           Spurlock Valley
         </a>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="LocationContainer"
         >
@@ -607,6 +543,10 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="DateTimeContainer"
         >
@@ -636,206 +576,156 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
           </div>
         </div>
       </div>
+    </div>
+    <div
+      className="CrossingListItemFlexContainer"
+    >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
+          className="ControlLabel"
+        >
+          Status: 
+          Caution
+        </div>
+        <div
+          className="StatusToggleContainer"
         >
           <div
-            className="ControlLabel"
+            className="StatusToggle__open"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            Status: 
-            Caution
+            <span
+              aria-hidden={true}
+              className="fa fa-circle-o"
+            />
           </div>
           <div
-            className="StatusToggleContainer"
+            className="StatusToggle__caution--selected"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            <div
-              className="StatusToggle__open"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-circle-o"
-              />
-            </div>
-            <div
-              className="StatusToggle__caution--selected"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-exclamation-triangle"
-              />
-            </div>
-            <div
-              className="StatusToggle__closed"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-              />
-            </div>
-            <div
-              className="StatusToggle__longterm"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
+            <span
+              aria-hidden={true}
+              className="fa fa-exclamation-triangle"
+            />
+          </div>
+          <div
+            className="StatusToggle__closed"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+            />
+          </div>
+          <div
+            className="StatusToggle__longterm"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+              style={
+                Object {
+                  "textDecoration": "underline",
                 }
-              />
-            </div>
+              }
+            />
           </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className=""
-          >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Reason
-              </div>
-              <div
-                className="required"
-              >
-                Required
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={true}
-                  value={1}
-                >
-                  Flooded
-                </option>
-                <option
-                  selected={false}
-                  value={2}
-                >
-                  Bridge Broken
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className="ControlLabel"
-          >
-            Notes to the public
-          </div>
-          <input
-            className="NotesTextBox"
-            onChange={[Function]}
-            type="text"
-            value="Watch Out"
-          />
         </div>
       </div>
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
-        />
-        <div
-          className="flexitem"
+          className="ControlLabelContainer"
         >
           <div
-            className="hidden"
+            className="ControlLabel"
           >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Duration
-              </div>
-              <div
-                className="required"
-              >
-                Required
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={false}
-                  value={1}
-                >
-                  A Minute
-                </option>
-                <option
-                  selected={false}
-                  value={2}
-                >
-                  A Week
-                </option>
-              </select>
-            </div>
+            Reason
+          </div>
+          <div
+            className="required"
+          >
+            Required
           </div>
         </div>
         <div
-          className="flexitem"
+          className="Dropdown"
+        >
+          <select
+            className="Dropdown__select"
+            id=""
+            name=""
+            onChange={[Function]}
+          >
+            <option
+              selected={true}
+              value={1}
+            >
+              Flooded
+            </option>
+            <option
+              selected={false}
+              value={2}
+            >
+              Bridge Broken
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
+        <div
+          className="ControlLabel"
+        >
+          Notes to the public
+        </div>
+        <input
+          className="NotesTextBox"
+          onChange={[Function]}
+          type="text"
+          value="Watch Out"
+        />
+      </div>
+    </div>
+    <div
+      className="CrossingListItemFlexContainer"
+    >
+      <div
+        className="CrossingListItemFlexItem--spacer"
+      />
+      <div
+        className="CrossingListItemFlexItem--spacer"
+      />
+      <div
+        className="CrossingListItemFlexItem"
+      >
+        <div
+          className="ButtonContainer"
         >
           <div
-            className=""
+            className="CancelButton"
+            onClick={[Function]}
           >
-            <div
-              className="flexcontainer"
-            >
-              <div
-                className="CancelButton"
-                onClick={[Function]}
-              >
-                Cancel
-              </div>
-              <div
-                className="SaveButton"
-                onClick={[Function]}
-              >
-                Save
-              </div>
-            </div>
+            Cancel
+          </div>
+          <div
+            className="SaveButton"
+            onClick={[Function]}
+          >
+            Save
           </div>
         </div>
       </div>
@@ -845,15 +735,17 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
 `;
 
 exports[`Storyshots Crossing List Item Closed 1`] = `
-<div>
+<div
+  className="CrossingListItem"
+>
   <div
-    className="CrossingListItemContainer"
+    className=""
   >
     <div
-      className=""
+      className="CrossingListItemFlexContainer"
     >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <a
           className="CrossingName"
@@ -861,6 +753,10 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
         >
           Spurlock Valley
         </a>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="LocationContainer"
         >
@@ -892,6 +788,10 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="DateTimeContainer"
         >
@@ -921,208 +821,128 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
           </div>
         </div>
       </div>
+    </div>
+    <div
+      className="CrossingListItemFlexContainer"
+    >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
+          className="ControlLabel"
+        >
+          Status: 
+          Closed
+        </div>
+        <div
+          className="StatusToggleContainer"
         >
           <div
-            className="ControlLabel"
+            className="StatusToggle__open"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            Status: 
-            Closed
+            <span
+              aria-hidden={true}
+              className="fa fa-circle-o"
+            />
           </div>
           <div
-            className="StatusToggleContainer"
+            className="StatusToggle__caution"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            <div
-              className="StatusToggle__open"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-circle-o"
-              />
-            </div>
-            <div
-              className="StatusToggle__caution"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-exclamation-triangle"
-              />
-            </div>
-            <div
-              className="StatusToggle__closed--selected"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-              />
-            </div>
-            <div
-              className="StatusToggle__longterm"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
+            <span
+              aria-hidden={true}
+              className="fa fa-exclamation-triangle"
+            />
+          </div>
+          <div
+            className="StatusToggle__closed--selected"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+            />
+          </div>
+          <div
+            className="StatusToggle__longterm"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+              style={
+                Object {
+                  "textDecoration": "underline",
                 }
-              />
-            </div>
+              }
+            />
           </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className=""
-          >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Reason
-              </div>
-              <div
-                className="required"
-              >
-                
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={true}
-                  value={1}
-                >
-                  Flooded
-                </option>
-                <option
-                  selected={false}
-                  value={2}
-                >
-                  Bridge Broken
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className="ControlLabel"
-          >
-            Notes to the public
-          </div>
-          <input
-            className="NotesTextBox"
-            onChange={[Function]}
-            type="text"
-            value="No Go"
-          />
         </div>
       </div>
       <div
-        className=""
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
+          className="ControlLabelContainer"
+        >
+          <div
+            className="ControlLabel"
+          >
+            Reason
+          </div>
+          <div
+            className="required"
+          >
+            
+          </div>
+        </div>
+        <div
+          className="Dropdown"
+        >
+          <select
+            className="Dropdown__select"
+            id=""
+            name=""
+            onChange={[Function]}
+          >
+            <option
+              selected={true}
+              value={1}
+            >
+              Flooded
+            </option>
+            <option
+              selected={false}
+              value={2}
+            >
+              Bridge Broken
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
+        <div
+          className="ControlLabel"
+        >
+          Notes to the public
+        </div>
+        <input
+          className="NotesTextBox"
+          onChange={[Function]}
+          type="text"
+          value="No Go"
         />
-        <div
-          className="flexitem"
-        >
-          <div
-            className="hidden"
-          >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Duration
-              </div>
-              <div
-                className="required"
-              >
-                
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={false}
-                  value={1}
-                >
-                  A Minute
-                </option>
-                <option
-                  selected={false}
-                  value={2}
-                >
-                  A Week
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className="hidden"
-          >
-            <div
-              className="flexcontainer"
-            >
-              <div
-                className="CancelButton"
-                onClick={[Function]}
-              >
-                Cancel
-              </div>
-              <div
-                className="SaveButton"
-                onClick={[Function]}
-              >
-                Save
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -1130,15 +950,17 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
 `;
 
 exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
-<div>
+<div
+  className="CrossingListItem"
+>
   <div
-    className="CrossingListItemContainer"
+    className="DirtyBorder"
   >
     <div
-      className="DirtyBorder"
+      className="CrossingListItemFlexContainer"
     >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <a
           className="CrossingName"
@@ -1146,6 +968,10 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
         >
           Spurlock Valley
         </a>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="LocationContainer"
         >
@@ -1177,6 +1003,10 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="DateTimeContainer"
         >
@@ -1206,206 +1036,156 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
           </div>
         </div>
       </div>
+    </div>
+    <div
+      className="CrossingListItemFlexContainer"
+    >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
+          className="ControlLabel"
+        >
+          Status: 
+          Closed
+        </div>
+        <div
+          className="StatusToggleContainer"
         >
           <div
-            className="ControlLabel"
+            className="StatusToggle__open"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            Status: 
-            Closed
+            <span
+              aria-hidden={true}
+              className="fa fa-circle-o"
+            />
           </div>
           <div
-            className="StatusToggleContainer"
+            className="StatusToggle__caution"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            <div
-              className="StatusToggle__open"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-circle-o"
-              />
-            </div>
-            <div
-              className="StatusToggle__caution"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-exclamation-triangle"
-              />
-            </div>
-            <div
-              className="StatusToggle__closed--selected"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-              />
-            </div>
-            <div
-              className="StatusToggle__longterm"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
+            <span
+              aria-hidden={true}
+              className="fa fa-exclamation-triangle"
+            />
+          </div>
+          <div
+            className="StatusToggle__closed--selected"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+            />
+          </div>
+          <div
+            className="StatusToggle__longterm"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+              style={
+                Object {
+                  "textDecoration": "underline",
                 }
-              />
-            </div>
+              }
+            />
           </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className=""
-          >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Reason
-              </div>
-              <div
-                className="required"
-              >
-                Required
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={true}
-                  value={1}
-                >
-                  Flooded
-                </option>
-                <option
-                  selected={false}
-                  value={2}
-                >
-                  Bridge Broken
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className="ControlLabel"
-          >
-            Notes to the public
-          </div>
-          <input
-            className="NotesTextBox"
-            onChange={[Function]}
-            type="text"
-            value="No Go"
-          />
         </div>
       </div>
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
-        />
-        <div
-          className="flexitem"
+          className="ControlLabelContainer"
         >
           <div
-            className="hidden"
+            className="ControlLabel"
           >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Duration
-              </div>
-              <div
-                className="required"
-              >
-                Required
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={false}
-                  value={1}
-                >
-                  A Minute
-                </option>
-                <option
-                  selected={false}
-                  value={2}
-                >
-                  A Week
-                </option>
-              </select>
-            </div>
+            Reason
+          </div>
+          <div
+            className="required"
+          >
+            Required
           </div>
         </div>
         <div
-          className="flexitem"
+          className="Dropdown"
+        >
+          <select
+            className="Dropdown__select"
+            id=""
+            name=""
+            onChange={[Function]}
+          >
+            <option
+              selected={true}
+              value={1}
+            >
+              Flooded
+            </option>
+            <option
+              selected={false}
+              value={2}
+            >
+              Bridge Broken
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
+        <div
+          className="ControlLabel"
+        >
+          Notes to the public
+        </div>
+        <input
+          className="NotesTextBox"
+          onChange={[Function]}
+          type="text"
+          value="No Go"
+        />
+      </div>
+    </div>
+    <div
+      className="CrossingListItemFlexContainer"
+    >
+      <div
+        className="CrossingListItemFlexItem--spacer"
+      />
+      <div
+        className="CrossingListItemFlexItem--spacer"
+      />
+      <div
+        className="CrossingListItemFlexItem"
+      >
+        <div
+          className="ButtonContainer"
         >
           <div
-            className=""
+            className="CancelButton"
+            onClick={[Function]}
           >
-            <div
-              className="flexcontainer"
-            >
-              <div
-                className="CancelButton"
-                onClick={[Function]}
-              >
-                Cancel
-              </div>
-              <div
-                className="SaveButton"
-                onClick={[Function]}
-              >
-                Save
-              </div>
-            </div>
+            Cancel
+          </div>
+          <div
+            className="SaveButton"
+            onClick={[Function]}
+          >
+            Save
           </div>
         </div>
       </div>
@@ -1480,15 +1260,17 @@ exports[`Storyshots Crossing List Item Location Location 1`] = `
 `;
 
 exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
-<div>
+<div
+  className="CrossingListItem"
+>
   <div
-    className="CrossingListItemContainer"
+    className=""
   >
     <div
-      className=""
+      className="CrossingListItemFlexContainer"
     >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <a
           className="CrossingName"
@@ -1496,6 +1278,10 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
         >
           Spurlock Valley
         </a>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="LocationContainer"
         >
@@ -1527,6 +1313,10 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="DateTimeContainer"
         >
@@ -1556,224 +1346,197 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
           </div>
         </div>
       </div>
+    </div>
+    <div
+      className="CrossingListItemFlexContainer"
+    >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
+          className="ControlLabel"
+        >
+          Status: 
+          Long Term Closure
+        </div>
+        <div
+          className="StatusToggleContainer"
         >
           <div
-            className="ControlLabel"
+            className="StatusToggle__open"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            Status: 
-            Long Term Closure
+            <span
+              aria-hidden={true}
+              className="fa fa-circle-o"
+            />
           </div>
           <div
-            className="StatusToggleContainer"
+            className="StatusToggle__caution"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            <div
-              className="StatusToggle__open"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-circle-o"
-              />
-            </div>
-            <div
-              className="StatusToggle__caution"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-exclamation-triangle"
-              />
-            </div>
-            <div
-              className="StatusToggle__closed"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-              />
-            </div>
-            <div
-              className="StatusToggle__longterm--selected"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
+            <span
+              aria-hidden={true}
+              className="fa fa-exclamation-triangle"
+            />
+          </div>
+          <div
+            className="StatusToggle__closed"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+            />
+          </div>
+          <div
+            className="StatusToggle__longterm--selected"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+              style={
+                Object {
+                  "textDecoration": "underline",
                 }
-              />
-            </div>
+              }
+            />
           </div>
         </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
-          className="flexitem"
-        >
-          <div
-            className=""
-          >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Reason
-              </div>
-              <div
-                className="required"
-              >
-                
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={false}
-                  value={1}
-                >
-                  Flooded
-                </option>
-                <option
-                  selected={true}
-                  value={2}
-                >
-                  Bridge Broken
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div
-          className="flexitem"
+          className="ControlLabelContainer"
         >
           <div
             className="ControlLabel"
           >
-            Notes to the public
+            Reason
           </div>
-          <input
-            className="NotesTextBox"
+          <div
+            className="required"
+          >
+            
+          </div>
+        </div>
+        <div
+          className="Dropdown"
+        >
+          <select
+            className="Dropdown__select"
+            id=""
+            name=""
             onChange={[Function]}
-            type="text"
-            value="Gonna be a while"
-          />
+          >
+            <option
+              selected={false}
+              value={1}
+            >
+              Flooded
+            </option>
+            <option
+              selected={true}
+              value={2}
+            >
+              Bridge Broken
+            </option>
+          </select>
         </div>
       </div>
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
+          className="ControlLabel"
+        >
+          Notes to the public
+        </div>
+        <input
+          className="NotesTextBox"
+          onChange={[Function]}
+          type="text"
+          value="Gonna be a while"
         />
+      </div>
+    </div>
+    <div
+      className="CrossingListItemFlexContainer"
+    >
+      <div
+        className="CrossingListItemFlexItem--spacer"
+      />
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
-          className="flexitem"
+          className="ControlLabelContainer"
         >
           <div
-            className=""
+            className="ControlLabel"
           >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Duration
-              </div>
-              <div
-                className="required"
-              >
-                
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={false}
-                  value={1}
-                >
-                  A Minute
-                </option>
-                <option
-                  selected={true}
-                  value={2}
-                >
-                  A Week
-                </option>
-              </select>
-            </div>
+            Duration
+          </div>
+          <div
+            className="required"
+          >
+            
           </div>
         </div>
         <div
-          className="flexitem"
+          className="Dropdown"
         >
-          <div
-            className="hidden"
+          <select
+            className="Dropdown__select"
+            id=""
+            name=""
+            onChange={[Function]}
           >
-            <div
-              className="flexcontainer"
+            <option
+              selected={false}
+              value={1}
             >
-              <div
-                className="CancelButton"
-                onClick={[Function]}
-              >
-                Cancel
-              </div>
-              <div
-                className="SaveButton"
-                onClick={[Function]}
-              >
-                Save
-              </div>
-            </div>
-          </div>
+              A Minute
+            </option>
+            <option
+              selected={true}
+              value={2}
+            >
+              A Week
+            </option>
+          </select>
         </div>
       </div>
+      <div
+        className="CrossingListItemFlexItem--spacer"
+      />
     </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
-<div>
+<div
+  className="CrossingListItem"
+>
   <div
-    className="CrossingListItemContainer"
+    className="DirtyBorder"
   >
     <div
-      className="DirtyBorder"
+      className="CrossingListItemFlexContainer"
     >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <a
           className="CrossingName"
@@ -1781,6 +1544,10 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
         >
           Spurlock Valley
         </a>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="LocationContainer"
         >
@@ -1812,6 +1579,10 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="DateTimeContainer"
         >
@@ -1841,206 +1612,194 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
           </div>
         </div>
       </div>
+    </div>
+    <div
+      className="CrossingListItemFlexContainer"
+    >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
+          className="ControlLabel"
+        >
+          Status: 
+          Long Term Closure
+        </div>
+        <div
+          className="StatusToggleContainer"
         >
           <div
-            className="ControlLabel"
+            className="StatusToggle__open"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            Status: 
-            Long Term Closure
+            <span
+              aria-hidden={true}
+              className="fa fa-circle-o"
+            />
           </div>
           <div
-            className="StatusToggleContainer"
+            className="StatusToggle__caution"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            <div
-              className="StatusToggle__open"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-circle-o"
-              />
-            </div>
-            <div
-              className="StatusToggle__caution"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-exclamation-triangle"
-              />
-            </div>
-            <div
-              className="StatusToggle__closed"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-              />
-            </div>
-            <div
-              className="StatusToggle__longterm--selected"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
+            <span
+              aria-hidden={true}
+              className="fa fa-exclamation-triangle"
+            />
+          </div>
+          <div
+            className="StatusToggle__closed"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+            />
+          </div>
+          <div
+            className="StatusToggle__longterm--selected"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+              style={
+                Object {
+                  "textDecoration": "underline",
                 }
-              />
-            </div>
+              }
+            />
           </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className=""
-          >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Reason
-              </div>
-              <div
-                className="required"
-              >
-                Required
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={false}
-                  value={1}
-                >
-                  Flooded
-                </option>
-                <option
-                  selected={true}
-                  value={2}
-                >
-                  Bridge Broken
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className="ControlLabel"
-          >
-            Notes to the public
-          </div>
-          <input
-            className="NotesTextBox"
-            onChange={[Function]}
-            type="text"
-            value="Gonna be a while"
-          />
         </div>
       </div>
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
-        />
-        <div
-          className="flexitem"
+          className="ControlLabelContainer"
         >
           <div
-            className=""
+            className="ControlLabel"
           >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Duration
-              </div>
-              <div
-                className="required"
-              >
-                Required
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={false}
-                  value={1}
-                >
-                  A Minute
-                </option>
-                <option
-                  selected={true}
-                  value={2}
-                >
-                  A Week
-                </option>
-              </select>
-            </div>
+            Reason
+          </div>
+          <div
+            className="required"
+          >
+            Required
           </div>
         </div>
         <div
-          className="flexitem"
+          className="Dropdown"
+        >
+          <select
+            className="Dropdown__select"
+            id=""
+            name=""
+            onChange={[Function]}
+          >
+            <option
+              selected={false}
+              value={1}
+            >
+              Flooded
+            </option>
+            <option
+              selected={true}
+              value={2}
+            >
+              Bridge Broken
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
+        <div
+          className="ControlLabel"
+        >
+          Notes to the public
+        </div>
+        <input
+          className="NotesTextBox"
+          onChange={[Function]}
+          type="text"
+          value="Gonna be a while"
+        />
+      </div>
+    </div>
+    <div
+      className="CrossingListItemFlexContainer"
+    >
+      <div
+        className="CrossingListItemFlexItem--spacer"
+      />
+      <div
+        className="CrossingListItemFlexItem"
+      >
+        <div
+          className="ControlLabelContainer"
         >
           <div
-            className=""
+            className="ControlLabel"
           >
-            <div
-              className="flexcontainer"
+            Duration
+          </div>
+          <div
+            className="required"
+          >
+            Required
+          </div>
+        </div>
+        <div
+          className="Dropdown"
+        >
+          <select
+            className="Dropdown__select"
+            id=""
+            name=""
+            onChange={[Function]}
+          >
+            <option
+              selected={false}
+              value={1}
             >
-              <div
-                className="CancelButton"
-                onClick={[Function]}
-              >
-                Cancel
-              </div>
-              <div
-                className="SaveButton"
-                onClick={[Function]}
-              >
-                Save
-              </div>
-            </div>
+              A Minute
+            </option>
+            <option
+              selected={true}
+              value={2}
+            >
+              A Week
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
+        <div
+          className="ButtonContainer"
+        >
+          <div
+            className="CancelButton"
+            onClick={[Function]}
+          >
+            Cancel
+          </div>
+          <div
+            className="SaveButton"
+            onClick={[Function]}
+          >
+            Save
           </div>
         </div>
       </div>
@@ -2050,15 +1809,17 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
 `;
 
 exports[`Storyshots Crossing List Item Open 1`] = `
-<div>
+<div
+  className="CrossingListItem"
+>
   <div
-    className="CrossingListItemContainer"
+    className=""
   >
     <div
-      className=""
+      className="CrossingListItemFlexContainer"
     >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <a
           className="CrossingName"
@@ -2066,6 +1827,10 @@ exports[`Storyshots Crossing List Item Open 1`] = `
         >
           Spurlock Valley
         </a>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="LocationContainer"
         >
@@ -2097,6 +1862,10 @@ exports[`Storyshots Crossing List Item Open 1`] = `
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="DateTimeContainer"
         >
@@ -2126,195 +1895,90 @@ exports[`Storyshots Crossing List Item Open 1`] = `
           </div>
         </div>
       </div>
+    </div>
+    <div
+      className="CrossingListItemFlexContainer"
+    >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
+          className="ControlLabel"
+        >
+          Status: 
+          Open
+        </div>
+        <div
+          className="StatusToggleContainer"
         >
           <div
-            className="ControlLabel"
+            className="StatusToggle__open--selected"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            Status: 
-            Open
+            <span
+              aria-hidden={true}
+              className="fa fa-circle-o"
+            />
           </div>
           <div
-            className="StatusToggleContainer"
+            className="StatusToggle__caution"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            <div
-              className="StatusToggle__open--selected"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-circle-o"
-              />
-            </div>
-            <div
-              className="StatusToggle__caution"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-exclamation-triangle"
-              />
-            </div>
-            <div
-              className="StatusToggle__closed"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-              />
-            </div>
-            <div
-              className="StatusToggle__longterm"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
+            <span
+              aria-hidden={true}
+              className="fa fa-exclamation-triangle"
+            />
+          </div>
+          <div
+            className="StatusToggle__closed"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+            />
+          </div>
+          <div
+            className="StatusToggle__longterm"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+              style={
+                Object {
+                  "textDecoration": "underline",
                 }
-              />
-            </div>
+              }
+            />
           </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className="hidden"
-          >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Reason
-              </div>
-              <div
-                className="required"
-              >
-                
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              />
-            </div>
-          </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className="ControlLabel"
-          >
-            Notes to the public
-          </div>
-          <input
-            className="NotesTextBox"
-            onChange={[Function]}
-            type="text"
-            value="All Clear"
-          />
         </div>
       </div>
       <div
-        className=""
+        className="CrossingListItemFlexItem--spacer"
+      />
+      <div
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
+          className="ControlLabel"
+        >
+          Notes to the public
+        </div>
+        <input
+          className="NotesTextBox"
+          onChange={[Function]}
+          type="text"
+          value="All Clear"
         />
-        <div
-          className="flexitem"
-        >
-          <div
-            className="hidden"
-          >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Duration
-              </div>
-              <div
-                className="required"
-              >
-                
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={false}
-                  value={1}
-                >
-                  A Minute
-                </option>
-                <option
-                  selected={false}
-                  value={2}
-                >
-                  A Week
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className="hidden"
-          >
-            <div
-              className="flexcontainer"
-            >
-              <div
-                className="CancelButton"
-                onClick={[Function]}
-              >
-                Cancel
-              </div>
-              <div
-                className="SaveButton"
-                onClick={[Function]}
-              >
-                Save
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -2322,15 +1986,17 @@ exports[`Storyshots Crossing List Item Open 1`] = `
 `;
 
 exports[`Storyshots Crossing List Item Open Dirty 1`] = `
-<div>
+<div
+  className="CrossingListItem"
+>
   <div
-    className="CrossingListItemContainer"
+    className="DirtyBorder"
   >
     <div
-      className="DirtyBorder"
+      className="CrossingListItemFlexContainer"
     >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <a
           className="CrossingName"
@@ -2338,6 +2004,10 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
         >
           Spurlock Valley
         </a>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="LocationContainer"
         >
@@ -2369,6 +2039,10 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
           className="DateTimeContainer"
         >
@@ -2398,193 +2072,118 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
           </div>
         </div>
       </div>
+    </div>
+    <div
+      className="CrossingListItemFlexContainer"
+    >
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
+          className="ControlLabel"
+        >
+          Status: 
+          Open
+        </div>
+        <div
+          className="StatusToggleContainer"
         >
           <div
-            className="ControlLabel"
+            className="StatusToggle__open--selected"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            Status: 
-            Open
+            <span
+              aria-hidden={true}
+              className="fa fa-circle-o"
+            />
           </div>
           <div
-            className="StatusToggleContainer"
+            className="StatusToggle__caution"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
           >
-            <div
-              className="StatusToggle__open--selected"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-circle-o"
-              />
-            </div>
-            <div
-              className="StatusToggle__caution"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-exclamation-triangle"
-              />
-            </div>
-            <div
-              className="StatusToggle__closed"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-              />
-            </div>
-            <div
-              className="StatusToggle__longterm"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
+            <span
+              aria-hidden={true}
+              className="fa fa-exclamation-triangle"
+            />
+          </div>
+          <div
+            className="StatusToggle__closed"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+            />
+          </div>
+          <div
+            className="StatusToggle__longterm"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-times"
+              style={
+                Object {
+                  "textDecoration": "underline",
                 }
-              />
-            </div>
+              }
+            />
           </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className="hidden"
-          >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Reason
-              </div>
-              <div
-                className="required"
-              >
-                Required
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              />
-            </div>
-          </div>
-        </div>
-        <div
-          className="flexitem"
-        >
-          <div
-            className="ControlLabel"
-          >
-            Notes to the public
-          </div>
-          <input
-            className="NotesTextBox"
-            onChange={[Function]}
-            type="text"
-            value="All Clear"
-          />
         </div>
       </div>
       <div
-        className="CrossingListItemFlexContainer"
+        className="CrossingListItemFlexItem--spacer"
+      />
+      <div
+        className="CrossingListItemFlexItem"
       >
         <div
-          className="flexitem"
-        />
-        <div
-          className="flexitem"
+          className="ControlLabel"
         >
-          <div
-            className="hidden"
-          >
-            <div
-              className="ControlLabelContainer"
-            >
-              <div
-                className="ControlLabel"
-              >
-                Duration
-              </div>
-              <div
-                className="required"
-              >
-                Required
-              </div>
-            </div>
-            <div
-              className="Dropdown"
-            >
-              <select
-                className="Dropdown__select"
-                id=""
-                name=""
-                onChange={[Function]}
-              >
-                <option
-                  selected={false}
-                  value={1}
-                >
-                  A Minute
-                </option>
-                <option
-                  selected={false}
-                  value={2}
-                >
-                  A Week
-                </option>
-              </select>
-            </div>
-          </div>
+          Notes to the public
         </div>
+        <input
+          className="NotesTextBox"
+          onChange={[Function]}
+          type="text"
+          value="All Clear"
+        />
+      </div>
+    </div>
+    <div
+      className="CrossingListItemFlexContainer"
+    >
+      <div
+        className="CrossingListItemFlexItem--spacer"
+      />
+      <div
+        className="CrossingListItemFlexItem--spacer"
+      />
+      <div
+        className="CrossingListItemFlexItem"
+      >
         <div
-          className="flexitem"
+          className="ButtonContainer"
         >
           <div
-            className=""
+            className="CancelButton"
+            onClick={[Function]}
           >
-            <div
-              className="flexcontainer"
-            >
-              <div
-                className="CancelButton"
-                onClick={[Function]}
-              >
-                Cancel
-              </div>
-              <div
-                className="SaveButton"
-                onClick={[Function]}
-              >
-                Save
-              </div>
-            </div>
+            Cancel
+          </div>
+          <div
+            className="SaveButton"
+            onClick={[Function]}
+          >
+            Save
           </div>
         </div>
       </div>
@@ -2813,6 +2412,554 @@ exports[`Storyshots Crossing List Item Status Toggle Open 1`] = `
         }
       }
     />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Crossing List Item Width 400px 1`] = `
+<div
+  style={
+    Object {
+      "width": "400px",
+    }
+  }
+>
+  <div
+    className="CrossingListItem"
+  >
+    <div
+      className=""
+    >
+      <div
+        className="CrossingListItemFlexContainer"
+      >
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <a
+            className="CrossingName"
+            href="/dashboard/crossing/1"
+          >
+            Spurlock Valley
+          </a>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="LocationContainer"
+          >
+            <div
+              className="MapIcon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-map-marker"
+              />
+            </div>
+            <div
+              className="LocationText"
+            >
+              <div>
+                605 Spurlock Valley · West Lake Hills, TX 78746
+              </div>
+              <div
+                style={
+                  Object {
+                    "font-style": "italic",
+                  }
+                }
+              >
+                E of Intersection w/ Clifford
+              </div>
+              <div>
+                All of Texas.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="DateTimeContainer"
+          >
+            <div
+              className="ClockIcon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
+            </div>
+            <div
+              className="DateTimeText"
+            >
+              <div>
+                10/10/17, 4:35 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "text-decoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexContainer"
+      >
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabel"
+          >
+            Status: 
+            Long Term Closure
+          </div>
+          <div
+            className="StatusToggleContainer"
+          >
+            <div
+              className="StatusToggle__open"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-circle-o"
+              />
+            </div>
+            <div
+              className="StatusToggle__caution"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-exclamation-triangle"
+              />
+            </div>
+            <div
+              className="StatusToggle__closed"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+              />
+            </div>
+            <div
+              className="StatusToggle__longterm--selected"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabelContainer"
+          >
+            <div
+              className="ControlLabel"
+            >
+              Reason
+            </div>
+            <div
+              className="required"
+            >
+              
+            </div>
+          </div>
+          <div
+            className="Dropdown"
+          >
+            <select
+              className="Dropdown__select"
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                selected={false}
+                value={1}
+              >
+                Flooded
+              </option>
+              <option
+                selected={true}
+                value={2}
+              >
+                Bridge Broken
+              </option>
+            </select>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabel"
+          >
+            Notes to the public
+          </div>
+          <input
+            className="NotesTextBox"
+            onChange={[Function]}
+            type="text"
+            value="Gonna be a while"
+          />
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexContainer"
+      >
+        <div
+          className="CrossingListItemFlexItem--spacer"
+        />
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabelContainer"
+          >
+            <div
+              className="ControlLabel"
+            >
+              Duration
+            </div>
+            <div
+              className="required"
+            >
+              
+            </div>
+          </div>
+          <div
+            className="Dropdown"
+          >
+            <select
+              className="Dropdown__select"
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                selected={false}
+                value={1}
+              >
+                A Minute
+              </option>
+              <option
+                selected={true}
+                value={2}
+              >
+                A Week
+              </option>
+            </select>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem--spacer"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Crossing List Item Width 900px 1`] = `
+<div
+  style={
+    Object {
+      "width": "900px",
+    }
+  }
+>
+  <div
+    className="CrossingListItem"
+  >
+    <div
+      className=""
+    >
+      <div
+        className="CrossingListItemFlexContainer"
+      >
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <a
+            className="CrossingName"
+            href="/dashboard/crossing/1"
+          >
+            Spurlock Valley
+          </a>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="LocationContainer"
+          >
+            <div
+              className="MapIcon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-map-marker"
+              />
+            </div>
+            <div
+              className="LocationText"
+            >
+              <div>
+                605 Spurlock Valley · West Lake Hills, TX 78746
+              </div>
+              <div
+                style={
+                  Object {
+                    "font-style": "italic",
+                  }
+                }
+              >
+                E of Intersection w/ Clifford
+              </div>
+              <div>
+                All of Texas.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="DateTimeContainer"
+          >
+            <div
+              className="ClockIcon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
+            </div>
+            <div
+              className="DateTimeText"
+            >
+              <div>
+                10/10/17, 4:35 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "text-decoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexContainer"
+      >
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabel"
+          >
+            Status: 
+            Long Term Closure
+          </div>
+          <div
+            className="StatusToggleContainer"
+          >
+            <div
+              className="StatusToggle__open"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-circle-o"
+              />
+            </div>
+            <div
+              className="StatusToggle__caution"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-exclamation-triangle"
+              />
+            </div>
+            <div
+              className="StatusToggle__closed"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+              />
+            </div>
+            <div
+              className="StatusToggle__longterm--selected"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabelContainer"
+          >
+            <div
+              className="ControlLabel"
+            >
+              Reason
+            </div>
+            <div
+              className="required"
+            >
+              
+            </div>
+          </div>
+          <div
+            className="Dropdown"
+          >
+            <select
+              className="Dropdown__select"
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                selected={false}
+                value={1}
+              >
+                Flooded
+              </option>
+              <option
+                selected={true}
+                value={2}
+              >
+                Bridge Broken
+              </option>
+            </select>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabel"
+          >
+            Notes to the public
+          </div>
+          <input
+            className="NotesTextBox"
+            onChange={[Function]}
+            type="text"
+            value="Gonna be a while"
+          />
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexContainer"
+      >
+        <div
+          className="CrossingListItemFlexItem--spacer"
+        />
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabelContainer"
+          >
+            <div
+              className="ControlLabel"
+            >
+              Duration
+            </div>
+            <div
+              className="required"
+            >
+              
+            </div>
+          </div>
+          <div
+            className="Dropdown"
+          >
+            <select
+              className="Dropdown__select"
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                selected={false}
+                value={1}
+              >
+                A Minute
+              </option>
+              <option
+                selected={true}
+                value={2}
+              >
+                A Week
+              </option>
+            </select>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem--spacer"
+        />
+      </div>
+    </div>
   </div>
 </div>
 `;
