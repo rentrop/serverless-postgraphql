@@ -36,7 +36,7 @@ class CrossingList extends React.Component {
       return (<div>Loading</div>)
     }
 
-    const { showOpen, showClosed, showCaution, showLongterm, sortByUpdatedAsc } = this.props;
+    const { showOpen, showClosed, showCaution, showLongterm, sortByUpdatedAsc, currentUser } = this.props;
 
     const crossings = this.props.crossingsQuery.allCrossings.nodes.slice();
 
@@ -69,6 +69,7 @@ class CrossingList extends React.Component {
                   crossing={crossing}
                   reasons={statusReasons} 
                   durations={statusDurations}
+                  currentUser={currentUser}
                   hidden={this.shouldHideCrossing(crossing, showOpen, showClosed, showCaution, showLongterm)}
                   cqClassName={cqClassName} 
                 />

@@ -352,7 +352,7 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
             <div
               style={
                 Object {
-                  "text-decoration": "underline",
+                  "textDecoration": "underline",
                 }
               }
             >
@@ -450,18 +450,17 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
         >
           <select
             className="Dropdown__select"
+            defaultValue={1}
             id=""
             name=""
             onChange={[Function]}
           >
             <option
-              selected={true}
               value={1}
             >
               Flooded
             </option>
             <option
-              selected={false}
               value={2}
             >
               Bridge Broken
@@ -567,7 +566,7 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
             <div
               style={
                 Object {
-                  "text-decoration": "underline",
+                  "textDecoration": "underline",
                 }
               }
             >
@@ -665,18 +664,17 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
         >
           <select
             className="Dropdown__select"
+            defaultValue={1}
             id=""
             name=""
             onChange={[Function]}
           >
             <option
-              selected={true}
               value={1}
             >
               Flooded
             </option>
             <option
-              selected={false}
               value={2}
             >
               Bridge Broken
@@ -812,7 +810,7 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
             <div
               style={
                 Object {
-                  "text-decoration": "underline",
+                  "textDecoration": "underline",
                 }
               }
             >
@@ -910,18 +908,17 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
         >
           <select
             className="Dropdown__select"
+            defaultValue={1}
             id=""
             name=""
             onChange={[Function]}
           >
             <option
-              selected={true}
               value={1}
             >
               Flooded
             </option>
             <option
-              selected={false}
               value={2}
             >
               Bridge Broken
@@ -1027,7 +1024,7 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
             <div
               style={
                 Object {
-                  "text-decoration": "underline",
+                  "textDecoration": "underline",
                 }
               }
             >
@@ -1125,18 +1122,17 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
         >
           <select
             className="Dropdown__select"
+            defaultValue={1}
             id=""
             name=""
             onChange={[Function]}
           >
             <option
-              selected={true}
               value={1}
             >
               Flooded
             </option>
             <option
-              selected={false}
               value={2}
             >
               Bridge Broken
@@ -1215,7 +1211,7 @@ exports[`Storyshots Crossing List Item DateTime DateTime 1`] = `
     <div
       style={
         Object {
-          "text-decoration": "underline",
+          "textDecoration": "underline",
         }
       }
     >
@@ -1337,7 +1333,7 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
             <div
               style={
                 Object {
-                  "text-decoration": "underline",
+                  "textDecoration": "underline",
                 }
               }
             >
@@ -1435,18 +1431,17 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
         >
           <select
             className="Dropdown__select"
+            defaultValue={2}
             id=""
             name=""
             onChange={[Function]}
           >
             <option
-              selected={false}
               value={1}
             >
               Flooded
             </option>
             <option
-              selected={true}
               value={2}
             >
               Bridge Broken
@@ -1498,18 +1493,17 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
         >
           <select
             className="Dropdown__select"
+            defaultValue={2}
             id=""
             name=""
             onChange={[Function]}
           >
             <option
-              selected={false}
               value={1}
             >
               A Minute
             </option>
             <option
-              selected={true}
               value={2}
             >
               A Week
@@ -1603,7 +1597,7 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
             <div
               style={
                 Object {
-                  "text-decoration": "underline",
+                  "textDecoration": "underline",
                 }
               }
             >
@@ -1701,18 +1695,17 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
         >
           <select
             className="Dropdown__select"
+            defaultValue={2}
             id=""
             name=""
             onChange={[Function]}
           >
             <option
-              selected={false}
               value={1}
             >
               Flooded
             </option>
             <option
-              selected={true}
               value={2}
             >
               Bridge Broken
@@ -1764,18 +1757,17 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
         >
           <select
             className="Dropdown__select"
+            defaultValue={2}
             id=""
             name=""
             onChange={[Function]}
           >
             <option
-              selected={false}
               value={1}
             >
               A Minute
             </option>
             <option
-              selected={true}
               value={2}
             >
               A Week
@@ -1886,7 +1878,7 @@ exports[`Storyshots Crossing List Item Open 1`] = `
             <div
               style={
                 Object {
-                  "text-decoration": "underline",
+                  "textDecoration": "underline",
                 }
               }
             >
@@ -2063,7 +2055,7 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
             <div
               style={
                 Object {
-                  "text-decoration": "underline",
+                  "textDecoration": "underline",
                 }
               }
             >
@@ -2501,7 +2493,7 @@ exports[`Storyshots Crossing List Item Width 400px 1`] = `
               <div
                 style={
                   Object {
-                    "text-decoration": "underline",
+                    "textDecoration": "underline",
                   }
                 }
               >
@@ -2599,18 +2591,17 @@ exports[`Storyshots Crossing List Item Width 400px 1`] = `
           >
             <select
               className="Dropdown__select"
+              defaultValue={2}
               id=""
               name=""
               onChange={[Function]}
             >
               <option
-                selected={false}
                 value={1}
               >
                 Flooded
               </option>
               <option
-                selected={true}
                 value={2}
               >
                 Bridge Broken
@@ -2662,18 +2653,17 @@ exports[`Storyshots Crossing List Item Width 400px 1`] = `
           >
             <select
               className="Dropdown__select"
+              defaultValue={2}
               id=""
               name=""
               onChange={[Function]}
             >
               <option
-                selected={false}
                 value={1}
               >
                 A Minute
               </option>
               <option
-                selected={true}
                 value={2}
               >
                 A Week
@@ -2775,7 +2765,7 @@ exports[`Storyshots Crossing List Item Width 900px 1`] = `
               <div
                 style={
                   Object {
-                    "text-decoration": "underline",
+                    "textDecoration": "underline",
                   }
                 }
               >
@@ -2873,18 +2863,17 @@ exports[`Storyshots Crossing List Item Width 900px 1`] = `
           >
             <select
               className="Dropdown__select"
+              defaultValue={2}
               id=""
               name=""
               onChange={[Function]}
             >
               <option
-                selected={false}
                 value={1}
               >
                 Flooded
               </option>
               <option
-                selected={true}
                 value={2}
               >
                 Bridge Broken
@@ -2936,18 +2925,17 @@ exports[`Storyshots Crossing List Item Width 900px 1`] = `
           >
             <select
               className="Dropdown__select"
+              defaultValue={2}
               id=""
               name=""
               onChange={[Function]}
             >
               <option
-                selected={false}
                 value={1}
               >
                 A Minute
               </option>
               <option
-                selected={true}
                 value={2}
               >
                 A Week

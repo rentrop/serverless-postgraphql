@@ -15,7 +15,7 @@ class DateTime extends React.Component {
         </div>
         <div className="DateTimeText">
           <div>{ moment(update.createdAt).format("MM/DD/YY, h:mm a") }</div>
-          <div style={{"text-decoration":"underline"}}>
+          <div style={{textDecoration:"underline"}}>
             { user.firstName.substring(0, 1) + '. ' + user.lastName }
           </div>
         </div>

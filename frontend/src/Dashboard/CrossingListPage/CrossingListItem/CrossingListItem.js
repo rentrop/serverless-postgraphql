@@ -10,6 +10,7 @@ import * as statusConstants from './StatusConstants';
 import newStatusUpdateMutation from '../queries/newStatusUpdateMutation';
 import crossingsQuery from '../queries/crossingsQuery';
 import statusCountsQuery from '../queries/statusCountsQuery';
+import crossingFragment from '../queries/crossingFragment';
 import {ContainerQuery} from 'react-container-query';
 import classnames from 'classnames';
 
@@ -37,21 +38,74 @@ class CrossingListItem extends React.Component {
   }
 
   newStatusUpdate(e) {
+    const updateData = {
+      id: Math.round(Math.random() * -1000000),
+      crossingId: this.props.crossing.id,
+      statusId: this.state.selectedStatus,
+      reasonId: (this.state.selectedStatus !== statusConstants.OPEN ? this.state.selectedReason : null),
+      durationId: (this.state.selectedStatus === statusConstants.LONGTERM ? this.state.selectedDuration : null),
+      notes: this.state.notes,
+      user: this.props.currentUser
+    }
+
     this.props.newStatusUpdateMutation({
       variables: {
-        crossingId: this.props.crossing.id,
-        statusId: this.state.selectedStatus,
-        reasonId: (this.state.selectedStatus !== statusConstants.OPEN ? this.state.selectedReason : null),
-        durationId: (this.state.selectedStatus === statusConstants.LONGTERM ? this.state.selectedDuration : null),
-        notes: this.state.notes
+        crossingId: updateData.crossingId,
+        statusId: updateData.statusId,
+        reasonId: updateData.reasonId,
+        durationId: updateData.durationId,
+        notes: updateData.notes
       },
-      refetchQueries: [{ query: crossingsQuery }, {query: statusCountsQuery}]
+      optimisticResponse: {
+        newStatusUpdate: {
+          statusUpdate: {
+            crossingId: updateData.crossingId,
+            crossingByCrossingId: {
+              id: updateData.crossingId,
+              latestStatusId: updateData.statusId,
+              latestStatusUpdateId: updateData.id,
+              statusUpdateByLatestStatusUpdateId: {
+                id: updateData.id,
+                crossingId: updateData.crossingId,
+                statusId: updateData.statusId,
+                statusReasonId: updateData.reasonId,
+                statusDurationId: updateData.durationId,
+                createdAt: Date.now(),
+                notes: updateData.notes,
+                userByCreatorId: {
+                  firstName: updateData.user.firstName,
+                  lastName: updateData.user.lastName,
+                  __typename: "User"
+                },
+                __typename: "StatusUpdate"
+              },
+              __typename: "Crossing"
+            },
+            __typename: "StatusUpdate"
+          },
+          __typename: "NewStatusUpdatePayload"
+        },
+      },
+      update: (store, {data: {newStatusUpdate}}) => {
+        // Get the updated crossing from the status update mutation
+        const updatedCrossing = newStatusUpdate.statusUpdate.crossingByCrossingId;
+
+        // Write the updated crossing to the cache
+        store.writeFragment({
+          id: 'Crossing:' + updatedCrossing.id,
+          fragment: crossingFragment,
+          data: updatedCrossing
+        });
+      },
+      refetchQueries: [{query: statusCountsQuery}]
     })
     .then(({ data }) => {
-      this.setState({ selectedStatus: data.newStatusUpdate.statusUpdate.statusId });
-      this.setState({ selectedReason: data.newStatusUpdate.statusUpdate.statusReasonId });
-      this.setState({ selectedDuration: data.newStatusUpdate.statusUpdate.statusDurationId });
-      this.setState({ notes: data.newStatusUpdate.statusUpdate.notes });
+      const update = data.newStatusUpdate.statusUpdate.crossingByCrossingId.statusUpdateByLatestStatusUpdateId;
+
+      this.setState({ selectedStatus: update.statusId });
+      this.setState({ selectedReason: update.statusReasonId });
+      this.setState({ selectedDuration: update.statusDurationId });
+      this.setState({ notes: update.notes });
     }).catch((error) => {
       console.log('there was an error sending the query', error);
     });
