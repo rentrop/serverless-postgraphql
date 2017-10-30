@@ -81,58 +81,58 @@ exports[`Storyshots Crossing List Header Width 400px 1`] = `
     <div
       className="CrossingListFilter"
     >
-      <div
+      <label
         className="CrossingListFilterItem"
-        onClick={undefined}
       >
         <input
-          checked={undefined}
           className="CrossingListFilterCheckbox"
+          defaultChecked={undefined}
+          onClick={undefined}
           type="checkbox"
         />
         Open (
         6
         )
-      </div>
-      <div
+      </label>
+      <label
         className="CrossingListFilterItem"
-        onClick={undefined}
       >
         <input
-          checked={undefined}
           className="CrossingListFilterCheckbox"
+          defaultChecked={undefined}
+          onClick={undefined}
           type="checkbox"
         />
         Caution (
         6
         )
-      </div>
-      <div
+      </label>
+      <label
         className="CrossingListFilterItem"
-        onClick={undefined}
       >
         <input
-          checked={undefined}
           className="CrossingListFilterCheckbox"
+          defaultChecked={undefined}
+          onClick={undefined}
           type="checkbox"
         />
         Closed (
         6
         )
-      </div>
-      <div
+      </label>
+      <label
         className="CrossingListFilterItem"
-        onClick={undefined}
       >
         <input
-          checked={undefined}
           className="CrossingListFilterCheckbox"
+          defaultChecked={undefined}
+          onClick={undefined}
           type="checkbox"
         />
         Long Term Closure (
         6
         )
-      </div>
+      </label>
     </div>
   </div>
 </div>
@@ -217,58 +217,58 @@ exports[`Storyshots Crossing List Header Width 900px 1`] = `
     <div
       className="CrossingListFilter"
     >
-      <div
+      <label
         className="CrossingListFilterItem"
-        onClick={undefined}
       >
         <input
-          checked={undefined}
           className="CrossingListFilterCheckbox"
+          defaultChecked={undefined}
+          onClick={undefined}
           type="checkbox"
         />
         Open (
         6
         )
-      </div>
-      <div
+      </label>
+      <label
         className="CrossingListFilterItem"
-        onClick={undefined}
       >
         <input
-          checked={undefined}
           className="CrossingListFilterCheckbox"
+          defaultChecked={undefined}
+          onClick={undefined}
           type="checkbox"
         />
         Caution (
         6
         )
-      </div>
-      <div
+      </label>
+      <label
         className="CrossingListFilterItem"
-        onClick={undefined}
       >
         <input
-          checked={undefined}
           className="CrossingListFilterCheckbox"
+          defaultChecked={undefined}
+          onClick={undefined}
           type="checkbox"
         />
         Closed (
         6
         )
-      </div>
-      <div
+      </label>
+      <label
         className="CrossingListFilterItem"
-        onClick={undefined}
       >
         <input
-          checked={undefined}
           className="CrossingListFilterCheckbox"
+          defaultChecked={undefined}
+          onClick={undefined}
           type="checkbox"
         />
         Long Term Closure (
         6
         )
-      </div>
+      </label>
     </div>
   </div>
 </div>
@@ -315,7 +315,7 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
             <div
               style={
                 Object {
-                  "font-style": "italic",
+                  "fontStyle": "italic",
                 }
               }
             >
@@ -527,7 +527,7 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
             <div
               style={
                 Object {
-                  "font-style": "italic",
+                  "fontStyle": "italic",
                 }
               }
             >
@@ -769,7 +769,7 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
             <div
               style={
                 Object {
-                  "font-style": "italic",
+                  "fontStyle": "italic",
                 }
               }
             >
@@ -981,7 +981,7 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
             <div
               style={
                 Object {
-                  "font-style": "italic",
+                  "fontStyle": "italic",
                 }
               }
             >
@@ -1234,7 +1234,7 @@ exports[`Storyshots Crossing List Item Location Location 1`] = `
     <div
       style={
         Object {
-          "font-style": "italic",
+          "fontStyle": "italic",
         }
       }
     >
@@ -1288,7 +1288,7 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
             <div
               style={
                 Object {
-                  "font-style": "italic",
+                  "fontStyle": "italic",
                 }
               }
             >
@@ -1550,7 +1550,7 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
             <div
               style={
                 Object {
-                  "font-style": "italic",
+                  "fontStyle": "italic",
                 }
               }
             >
@@ -1829,7 +1829,7 @@ exports[`Storyshots Crossing List Item Open 1`] = `
             <div
               style={
                 Object {
-                  "font-style": "italic",
+                  "fontStyle": "italic",
                 }
               }
             >
@@ -2004,7 +2004,7 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
             <div
               style={
                 Object {
-                  "font-style": "italic",
+                  "fontStyle": "italic",
                 }
               }
             >
@@ -2440,7 +2440,7 @@ exports[`Storyshots Crossing List Item Width 400px 1`] = `
               <div
                 style={
                   Object {
-                    "font-style": "italic",
+                    "fontStyle": "italic",
                   }
                 }
               >
@@ -2710,7 +2710,7 @@ exports[`Storyshots Crossing List Item Width 900px 1`] = `
               <div
                 style={
                   Object {
-                    "font-style": "italic",
+                    "fontStyle": "italic",
                   }
                 }
               >

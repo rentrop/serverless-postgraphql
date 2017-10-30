@@ -14,7 +14,7 @@ class Location extends React.Component {
         </div>
         <div className="LocationText">
           <div>{ crossing.humanAddress }</div>
-          <div style={{"font-style":"italic"}}>{ crossing.description }</div>
+          <div style={{"fontStyle":"italic"}}>{ crossing.description }</div>
           <div>{communityNames.join(", ")}</div>
         </div>
       </div>

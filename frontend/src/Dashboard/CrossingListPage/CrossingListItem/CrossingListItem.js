@@ -1,5 +1,4 @@
 import React from 'react';
-import FontAwesome from 'react-fontawesome';
 import { graphql } from 'react-apollo';
 import Location from './Location';
 import DateTime from './DateTime';
@@ -8,7 +7,6 @@ import Dropdown from './Dropdown';
 import './CrossingListItem.css';
 import * as statusConstants from './StatusConstants';
 import newStatusUpdateMutation from '../queries/newStatusUpdateMutation';
-import crossingsQuery from '../queries/crossingsQuery';
 import statusCountsQuery from '../queries/statusCountsQuery';
 import crossingFragment from '../queries/crossingFragment';
 import {ContainerQuery} from 'react-container-query';
@@ -120,10 +118,10 @@ class CrossingListItem extends React.Component {
     const savedDuration = this.props.crossing.statusUpdateByLatestStatusUpdateId.statusDurationId;
     const savedNotes = this.props.crossing.statusUpdateByLatestStatusUpdateId.notes;
 
-    return (savedStatus != this.state.selectedStatus ||
-            savedReason != this.state.selectedReason ||
-            savedDuration != this.state.selectedDuration ||
-            savedNotes != this.state.notes);
+    return (savedStatus !== this.state.selectedStatus ||
+            savedReason !== this.state.selectedReason ||
+            savedDuration !== this.state.selectedDuration ||
+            savedNotes !== this.state.notes);
   }
 
   openClicked = () => { 

@@ -20,10 +20,11 @@ class CrossingList extends React.Component {
 
   shouldHideCrossing (crossing, showOpen, showClosed, showCaution, showLongterm) {
       return ( 
-        crossing.latestStatusId == statusConstants.OPEN && !showOpen ||
-        crossing.latestStatusId == statusConstants.CLOSED && !showClosed ||
-        crossing.latestStatusId == statusConstants.CAUTION && !showCaution ||
-        crossing.latestStatusId == statusConstants.LONGTERM && !showLongterm);
+        (crossing.latestStatusId === statusConstants.OPEN && !showOpen) ||
+        (crossing.latestStatusId === statusConstants.CLOSED && !showClosed) ||
+        (crossing.latestStatusId === statusConstants.CAUTION && !showCaution) ||
+        (crossing.latestStatusId === statusConstants.LONGTERM && !showLongterm)
+      );
   }
 
   render () {
