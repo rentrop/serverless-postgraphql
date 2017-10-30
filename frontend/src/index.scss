@@ -6,6 +6,12 @@ body {
   padding: 0;
 }
 
+.PageLayout {
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 0 5%;
+}
+
 .mapboxgl-user-location-dot {
     background-color: #1DA1F2;
     width: 16px;

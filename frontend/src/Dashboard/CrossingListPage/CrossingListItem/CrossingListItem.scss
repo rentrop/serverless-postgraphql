@@ -2,20 +2,15 @@
 @import "../../../css/font-awesome/font-awesome.scss";
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,200,200i,300,300i,400,400i,500,500i');
 
-.DirtyBorder {
-  border-top: 20px solid white;
-  border-bottom: 20px solid white;
-  outline: 4px solid #40B3FF;
-  margin-bottom: -16px;
-  margin-top: -16px;
-}
-
 .CrossingListItem {
   margin-bottom: 10px;
-  border-bottom: 20px solid white;
-  border-top: 20px solid white;
   background-color: white;
   box-shadow: 0px 1px 3px grey;
+  padding: 20px;
+}
+
+.CrossingListItem.CrossingListItem--dirty {
+  outline: 4px solid #40B3FF;
 }
 
 .CrossingListItemFlexContainer {
@@ -23,8 +18,7 @@
   flex-direction: column;
 }
 
-// TODO: follow BEM style naming convention -- create CrossingListItemFlexContainer--lg
-.CrossingListItem--lg .CrossingListItemFlexContainer{
+.CrossingListItem.CrossingListItem--lg .CrossingListItemFlexContainer{
   flex-direction: row;
 }
 

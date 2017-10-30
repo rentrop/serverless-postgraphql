@@ -60,7 +60,7 @@ class CrossingList extends React.Component {
     return (
       <ContainerQuery query={containerQuery}>
         {(params) => {
-          const cqClassName = classnames(params, 'CrossingListItem');
+          const cqClassName = classnames(params);
           return (
             <div className='CrossingListContainer'>
               {crossings.map(crossing => 

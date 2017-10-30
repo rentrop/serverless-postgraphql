@@ -22,7 +22,7 @@ class FloodsRoutes extends Component {
     }
 
     return (
-      <div>
+      <div className="PageLayout">
         <Route path="/" exact component={PublicHomepage} />
         <Route path="/dashboard" render={(props) => <Header currentUser={currentUser} {...props} />} />
         <PrivateRoute path="/dashboard/users" component={ManageUsers}
