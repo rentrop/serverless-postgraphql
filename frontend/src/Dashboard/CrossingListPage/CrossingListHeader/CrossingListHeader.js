@@ -5,7 +5,6 @@ import classnames from 'classnames';
 import FontAwesome from 'react-fontawesome';
 import { graphql } from 'react-apollo';
 import statusCountsQuery from 'Dashboard/CrossingListPage/queries/statusCountsQuery';
-import statusCountsQuery from '../queries/statusCountsQuery';
 
 const containerQuery = {
   'fullsize': { minWidth: 768 },
@@ -80,7 +79,7 @@ class CrossingListHeader extends Component {
                   <input className={classnames(params, 'CrossingListFilterCheckbox')} type='checkbox' defaultChecked={showLongterm} onClick={toggleShowLongterm}/>
                   Long Term Closure ({longtermCrossings.totalCount})
                 </label>
-              </div> 
+              </div>
             )}
           </div>
         )}
