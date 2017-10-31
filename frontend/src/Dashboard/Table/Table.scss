@@ -1,9 +1,5 @@
-@import "../../css/typography.scss";
-
-$color-gray-lightest:        #f1f1f1;
-$color-gray:                 #5b616b;
-$color-white:                #ffffff;
-$font-normal:                 400;
+@import "css/mixins/colors";
+@import "css/mixins/typography";
 
 .Table {
   border-spacing: 0;

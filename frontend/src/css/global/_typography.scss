@@ -1,0 +1,15 @@
+@import "../mixins/colors";
+@import "../mixins/typography";
+
+html {
+  font-family: $font-sans;
+  font-size: $em-base;
+}
+
+p, span {
+  font-size: 1.7rem;
+}
+
+.link {
+  text-decoration: underline !important;
+}

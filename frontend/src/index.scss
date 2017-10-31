@@ -1,5 +1,7 @@
-@import "./css/typography.scss";
-@import "./css/flexbox.scss";
+@import "css/global/buttons";
+@import "css/global/flexbox";
+@import "css/global/typography";
+@import "css/mixins/colors";
 
 body {
   margin: 0;

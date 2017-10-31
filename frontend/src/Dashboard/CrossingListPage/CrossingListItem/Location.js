@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import './Location.css';
+import 'Dashboard/CrossingListPage/CrossingListItem/Location.css';
 
 class Location extends React.Component {
   render () {

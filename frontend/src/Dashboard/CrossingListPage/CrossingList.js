@@ -1,11 +1,11 @@
 import React from 'react';
 import { graphql, compose } from 'react-apollo';
-import CrossingListItem from './CrossingListItem/CrossingListItem';
-import crossingsQuery from './queries/crossingsQuery';
-import statusReasonsQuery from './queries/statusReasonsQuery';
-import statusDurationsQuery from './queries/statusDurationsQuery';
-import './CrossingList.css';
-import * as statusConstants from './CrossingListItem/StatusConstants';
+import CrossingListItem from 'Dashboard/CrossingListPage/CrossingListItem/CrossingListItem';
+import crossingsQuery from 'Dashboard/CrossingListPage/queries/crossingsQuery';
+import statusReasonsQuery from 'Dashboard/CrossingListPage/queries/statusReasonsQuery';
+import statusDurationsQuery from 'Dashboard/CrossingListPage/queries/statusDurationsQuery';
+import 'Dashboard/CrossingListPage/CrossingList.css';
+import * as statusConstants from 'Dashboard/CrossingListPage/CrossingListItem/StatusConstants';
 import {ContainerQuery} from 'react-container-query';
 import classnames from 'classnames';
 

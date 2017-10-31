@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CrossingList from './CrossingList';
-import CrossingListHeader from './CrossingListHeader/CrossingListHeader';
+import CrossingList from 'Dashboard/CrossingListPage/CrossingList';
+import CrossingListHeader from 'Dashboard/CrossingListPage/CrossingListHeader/CrossingListHeader';
 
 class CrossingListPage extends Component {
   constructor(props) {

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './CrossingListHeader.css';
+import 'Dashboard/CrossingListPage/CrossingListHeader/CrossingListHeader.css';
 import {ContainerQuery} from 'react-container-query';
 import classnames from 'classnames';
 import FontAwesome from 'react-fontawesome';
 import { graphql } from 'react-apollo';
+import statusCountsQuery from 'Dashboard/CrossingListPage/queries/statusCountsQuery';
 import statusCountsQuery from '../queries/statusCountsQuery';
 
 const containerQuery = {

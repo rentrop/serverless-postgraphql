@@ -1,15 +1,15 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
-import Location from './Location';
-import DateTime from './DateTime';
-import StatusToggle from './StatusToggle';
-import Dropdown from './Dropdown';
-import './CrossingListItem.css';
-import * as statusConstants from './StatusConstants';
-import newStatusUpdateMutation from '../queries/newStatusUpdateMutation';
-import statusCountsQuery from '../queries/statusCountsQuery';
-import crossingFragment from '../queries/crossingFragment';
-import {ContainerQuery} from 'react-container-query';
+import Location from 'Dashboard/CrossingListPage/CrossingListItem/Location';
+import DateTime from 'Dashboard/CrossingListPage/CrossingListItem/DateTime';
+import StatusToggle from 'Dashboard/CrossingListPage/CrossingListItem/StatusToggle';
+import Dropdown from 'Dashboard/CrossingListPage/CrossingListItem/Dropdown';
+import 'Dashboard/CrossingListPage/CrossingListItem/CrossingListItem.css';
+import * as statusConstants from 'Dashboard/CrossingListPage/CrossingListItem/StatusConstants';
+import newStatusUpdateMutation from 'Dashboard/CrossingListPage/queries/newStatusUpdateMutation';
+import statusCountsQuery from 'Dashboard/CrossingListPage/queries/statusCountsQuery';
+import crossingFragment from 'Dashboard/CrossingListPage/queries/crossingFragment';
+import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';
 
 const containerQuery = {
