@@ -33,7 +33,7 @@
     "react-scripts": "1.0.13"
   },
   "scripts": {
-    "start-js": "react-scripts start",
+    "start-js": "NODE_PATH=src react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "start-local": "REACT_APP_AWS_ENDPOINT='http://localhost:5000/graphql' yarn run start",
     "validate-map-style": "node src/Map/style/scripts/validate.js",
@@ -43,8 +43,8 @@
     "watch-css": "yarn run build-css && node-sass-chokidar --include-path ./src src/ -o src/ --watch --recursive",
     "get-schema": "./src/stories/schema/getSchema.sh",
     "build": "react-scripts build",
-    "test": "yarn build-css; react-scripts test --env=jsdom",
+    "test": "yarn build-css; NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9001 -c .storybook & yarn watch-css"
+    "storybook": "NODE_PATH=src start-storybook -p 9001 -c .storybook & yarn watch-css"
   }
 }

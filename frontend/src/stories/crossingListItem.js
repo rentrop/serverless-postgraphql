@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import CrossingListItem from '../Dashboard/CrossingListPage/CrossingListItem/CrossingListItem'
-import * as statusConstants from '../Dashboard/CrossingListPage/CrossingListItem/StatusConstants'
+import CrossingListItem from 'Dashboard/CrossingListPage/CrossingListItem/CrossingListItem'
+import * as statusConstants from 'Dashboard/CrossingListPage/CrossingListItem/StatusConstants'
 
 const reasons = [
   { id: 1, name: 'Flooded', statusId: 2},
@@ -130,12 +130,12 @@ storiesOf('Crossing List Item', module)
   .add('Closed Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={closedCrossing} dirty="true" />)
   .add('Long Term Closure', () => <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} />)
   .add('Long Term Closure Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} dirty="true" />)
-  .add('Width 900px', () => 
-    <div style={{width: '900px'}}>
+  .add('Large Width', () => 
+    <div className="storybook--lg">
       <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} />
     </div>)
-  .add('Width 400px', () => 
-    <div style={{width: '400px'}}>
+  .add('Small Width', () => 
+    <div className="storybook--sm">
       <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} />
     </div>
   );

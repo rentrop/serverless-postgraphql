@@ -1,150 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Crossing List Header Full Width 1`] = `""`;
-
-exports[`Storyshots Crossing List Header Width 400px 1`] = `
+exports[`Storyshots Crossing List Header Large Width 1`] = `
 <div
-  style={
-    Object {
-      "width": "400px",
-    }
-  }
+  className="storybook--lg"
 >
-  <div
-    className="CrossingListHeader"
-  >
-    <div
-      className="CrossingListSearch"
-    >
-      <input
-        className="CrossingListSearchInput"
-        placeholder="Search your crossings"
-        type="text"
-      />
-      <div
-        className="CrossingListSearchButton"
-      >
-        <span
-          aria-hidden={true}
-          className="fa fa-search"
-        >
-          <span
-            style={
-              Object {
-                "border": "0px",
-                "clip": "rect(0px, 0px, 0px, 0px)",
-                "height": "1px",
-                "margin": "-1px",
-                "overflow": "hidden",
-                "padding": "0px",
-                "position": "absolute",
-                "width": "1px",
-              }
-            }
-          >
-            Search
-          </span>
-        </span>
-      </div>
-    </div>
-    <div
-      className="CrossingListSortToggle"
-      onClick={undefined}
-    >
-      <div
-        className="CrossingListSortToggleText"
-      >
-        LAST UPDATED 
-        <span
-          aria-hidden={true}
-          className="fa fa-caret-down"
-        >
-          <span
-            style={
-              Object {
-                "border": "0px",
-                "clip": "rect(0px, 0px, 0px, 0px)",
-                "height": "1px",
-                "margin": "-1px",
-                "overflow": "hidden",
-                "padding": "0px",
-                "position": "absolute",
-                "width": "1px",
-              }
-            }
-          >
-            Descending
-          </span>
-        </span>
-      </div>
-    </div>
-    <div
-      className="CrossingListFilter"
-    >
-      <label
-        className="CrossingListFilterItem"
-      >
-        <input
-          className="CrossingListFilterCheckbox"
-          defaultChecked={undefined}
-          onClick={undefined}
-          type="checkbox"
-        />
-        Open (
-        6
-        )
-      </label>
-      <label
-        className="CrossingListFilterItem"
-      >
-        <input
-          className="CrossingListFilterCheckbox"
-          defaultChecked={undefined}
-          onClick={undefined}
-          type="checkbox"
-        />
-        Caution (
-        6
-        )
-      </label>
-      <label
-        className="CrossingListFilterItem"
-      >
-        <input
-          className="CrossingListFilterCheckbox"
-          defaultChecked={undefined}
-          onClick={undefined}
-          type="checkbox"
-        />
-        Closed (
-        6
-        )
-      </label>
-      <label
-        className="CrossingListFilterItem"
-      >
-        <input
-          className="CrossingListFilterCheckbox"
-          defaultChecked={undefined}
-          onClick={undefined}
-          type="checkbox"
-        />
-        Long Term Closure (
-        6
-        )
-      </label>
-    </div>
-  </div>
+  
 </div>
 `;
 
-exports[`Storyshots Crossing List Header Width 900px 1`] = `
+exports[`Storyshots Crossing List Header Small Width 1`] = `
 <div
-  style={
-    Object {
-      "width": "900px",
-    }
-  }
+  className="storybook--sm"
 >
   <div
     className="CrossingListHeader"
@@ -1213,6 +1079,272 @@ exports[`Storyshots Crossing List Item DateTime DateTime 1`] = `
 </div>
 `;
 
+exports[`Storyshots Crossing List Item Large Width 1`] = `
+<div
+  className="storybook--lg"
+>
+  <div
+    className="CrossingListItem"
+  >
+    <div>
+      <div
+        className="CrossingListItemFlexContainer"
+      >
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <a
+            className="CrossingName"
+            href="/dashboard/crossing/1"
+          >
+            Spurlock Valley
+          </a>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="LocationContainer"
+          >
+            <div
+              className="MapIcon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-map-marker"
+              />
+            </div>
+            <div
+              className="LocationText"
+            >
+              <div>
+                605 Spurlock Valley · West Lake Hills, TX 78746
+              </div>
+              <div
+                style={
+                  Object {
+                    "fontStyle": "italic",
+                  }
+                }
+              >
+                E of Intersection w/ Clifford
+              </div>
+              <div>
+                All of Texas.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="DateTimeContainer"
+          >
+            <div
+              className="ClockIcon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
+            </div>
+            <div
+              className="DateTimeText"
+            >
+              <div>
+                10/10/17, 4:35 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexContainer"
+      >
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabel"
+          >
+            Status: 
+            Long Term Closure
+          </div>
+          <div
+            className="StatusToggleContainer"
+          >
+            <div
+              className="StatusToggle__open"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-circle-o"
+              />
+            </div>
+            <div
+              className="StatusToggle__caution"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-exclamation-triangle"
+              />
+            </div>
+            <div
+              className="StatusToggle__closed"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+              />
+            </div>
+            <div
+              className="StatusToggle__longterm--selected"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabelContainer"
+          >
+            <div
+              className="ControlLabel"
+            >
+              Reason
+            </div>
+            <div
+              className="required"
+            >
+              
+            </div>
+          </div>
+          <div
+            className="Dropdown"
+          >
+            <select
+              className="Dropdown__select"
+              defaultValue={2}
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                value={1}
+              >
+                Flooded
+              </option>
+              <option
+                value={2}
+              >
+                Bridge Broken
+              </option>
+            </select>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabel"
+          >
+            Notes to the public
+          </div>
+          <input
+            className="NotesTextBox"
+            onChange={[Function]}
+            type="text"
+            value="Gonna be a while"
+          />
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexContainer"
+      >
+        <div
+          className="CrossingListItemFlexItem--spacer"
+        />
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabelContainer"
+          >
+            <div
+              className="ControlLabel"
+            >
+              Duration
+            </div>
+            <div
+              className="required"
+            >
+              
+            </div>
+          </div>
+          <div
+            className="Dropdown"
+          >
+            <select
+              className="Dropdown__select"
+              defaultValue={2}
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                value={1}
+              >
+                A Minute
+              </option>
+              <option
+                value={2}
+              >
+                A Week
+              </option>
+            </select>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem--spacer"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Crossing List Item Location Location 1`] = `
 <div
   className="LocationContainer"
@@ -2168,6 +2300,272 @@ exports[`Storyshots Crossing List Item Open Dirty 1`] = `
 </div>
 `;
 
+exports[`Storyshots Crossing List Item Small Width 1`] = `
+<div
+  className="storybook--sm"
+>
+  <div
+    className="CrossingListItem"
+  >
+    <div>
+      <div
+        className="CrossingListItemFlexContainer"
+      >
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <a
+            className="CrossingName"
+            href="/dashboard/crossing/1"
+          >
+            Spurlock Valley
+          </a>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="LocationContainer"
+          >
+            <div
+              className="MapIcon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-map-marker"
+              />
+            </div>
+            <div
+              className="LocationText"
+            >
+              <div>
+                605 Spurlock Valley · West Lake Hills, TX 78746
+              </div>
+              <div
+                style={
+                  Object {
+                    "fontStyle": "italic",
+                  }
+                }
+              >
+                E of Intersection w/ Clifford
+              </div>
+              <div>
+                All of Texas.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="DateTimeContainer"
+          >
+            <div
+              className="ClockIcon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
+            </div>
+            <div
+              className="DateTimeText"
+            >
+              <div>
+                10/10/17, 4:35 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexContainer"
+      >
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabel"
+          >
+            Status: 
+            Long Term Closure
+          </div>
+          <div
+            className="StatusToggleContainer"
+          >
+            <div
+              className="StatusToggle__open"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-circle-o"
+              />
+            </div>
+            <div
+              className="StatusToggle__caution"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-exclamation-triangle"
+              />
+            </div>
+            <div
+              className="StatusToggle__closed"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+              />
+            </div>
+            <div
+              className="StatusToggle__longterm--selected"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabelContainer"
+          >
+            <div
+              className="ControlLabel"
+            >
+              Reason
+            </div>
+            <div
+              className="required"
+            >
+              
+            </div>
+          </div>
+          <div
+            className="Dropdown"
+          >
+            <select
+              className="Dropdown__select"
+              defaultValue={2}
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                value={1}
+              >
+                Flooded
+              </option>
+              <option
+                value={2}
+              >
+                Bridge Broken
+              </option>
+            </select>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabel"
+          >
+            Notes to the public
+          </div>
+          <input
+            className="NotesTextBox"
+            onChange={[Function]}
+            type="text"
+            value="Gonna be a while"
+          />
+        </div>
+      </div>
+      <div
+        className="CrossingListItemFlexContainer"
+      >
+        <div
+          className="CrossingListItemFlexItem--spacer"
+        />
+        <div
+          className="CrossingListItemFlexItem"
+        >
+          <div
+            className="ControlLabelContainer"
+          >
+            <div
+              className="ControlLabel"
+            >
+              Duration
+            </div>
+            <div
+              className="required"
+            >
+              
+            </div>
+          </div>
+          <div
+            className="Dropdown"
+          >
+            <select
+              className="Dropdown__select"
+              defaultValue={2}
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                value={1}
+              >
+                A Minute
+              </option>
+              <option
+                value={2}
+              >
+                A Week
+              </option>
+            </select>
+          </div>
+        </div>
+        <div
+          className="CrossingListItemFlexItem--spacer"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Crossing List Item Status Toggle Caution 1`] = `
 <div
   className="StatusToggleContainer"
@@ -2388,546 +2786,6 @@ exports[`Storyshots Crossing List Item Status Toggle Open 1`] = `
         }
       }
     />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Crossing List Item Width 400px 1`] = `
-<div
-  style={
-    Object {
-      "width": "400px",
-    }
-  }
->
-  <div
-    className="CrossingListItem"
-  >
-    <div>
-      <div
-        className="CrossingListItemFlexContainer"
-      >
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <a
-            className="CrossingName"
-            href="/dashboard/crossing/1"
-          >
-            Spurlock Valley
-          </a>
-        </div>
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <div
-            className="LocationContainer"
-          >
-            <div
-              className="MapIcon"
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-map-marker"
-              />
-            </div>
-            <div
-              className="LocationText"
-            >
-              <div>
-                605 Spurlock Valley · West Lake Hills, TX 78746
-              </div>
-              <div
-                style={
-                  Object {
-                    "fontStyle": "italic",
-                  }
-                }
-              >
-                E of Intersection w/ Clifford
-              </div>
-              <div>
-                All of Texas.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <div
-            className="DateTimeContainer"
-          >
-            <div
-              className="ClockIcon"
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-clock-o"
-              />
-            </div>
-            <div
-              className="DateTimeText"
-            >
-              <div>
-                10/10/17, 4:35 am
-              </div>
-              <div
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
-                }
-              >
-                S. Admin
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="CrossingListItemFlexContainer"
-      >
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <div
-            className="ControlLabel"
-          >
-            Status: 
-            Long Term Closure
-          </div>
-          <div
-            className="StatusToggleContainer"
-          >
-            <div
-              className="StatusToggle__open"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-circle-o"
-              />
-            </div>
-            <div
-              className="StatusToggle__caution"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-exclamation-triangle"
-              />
-            </div>
-            <div
-              className="StatusToggle__closed"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-              />
-            </div>
-            <div
-              className="StatusToggle__longterm--selected"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
-                }
-              />
-            </div>
-          </div>
-        </div>
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <div
-            className="ControlLabelContainer"
-          >
-            <div
-              className="ControlLabel"
-            >
-              Reason
-            </div>
-            <div
-              className="required"
-            >
-              
-            </div>
-          </div>
-          <div
-            className="Dropdown"
-          >
-            <select
-              className="Dropdown__select"
-              defaultValue={2}
-              id=""
-              name=""
-              onChange={[Function]}
-            >
-              <option
-                value={1}
-              >
-                Flooded
-              </option>
-              <option
-                value={2}
-              >
-                Bridge Broken
-              </option>
-            </select>
-          </div>
-        </div>
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <div
-            className="ControlLabel"
-          >
-            Notes to the public
-          </div>
-          <input
-            className="NotesTextBox"
-            onChange={[Function]}
-            type="text"
-            value="Gonna be a while"
-          />
-        </div>
-      </div>
-      <div
-        className="CrossingListItemFlexContainer"
-      >
-        <div
-          className="CrossingListItemFlexItem--spacer"
-        />
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <div
-            className="ControlLabelContainer"
-          >
-            <div
-              className="ControlLabel"
-            >
-              Duration
-            </div>
-            <div
-              className="required"
-            >
-              
-            </div>
-          </div>
-          <div
-            className="Dropdown"
-          >
-            <select
-              className="Dropdown__select"
-              defaultValue={2}
-              id=""
-              name=""
-              onChange={[Function]}
-            >
-              <option
-                value={1}
-              >
-                A Minute
-              </option>
-              <option
-                value={2}
-              >
-                A Week
-              </option>
-            </select>
-          </div>
-        </div>
-        <div
-          className="CrossingListItemFlexItem--spacer"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Crossing List Item Width 900px 1`] = `
-<div
-  style={
-    Object {
-      "width": "900px",
-    }
-  }
->
-  <div
-    className="CrossingListItem"
-  >
-    <div>
-      <div
-        className="CrossingListItemFlexContainer"
-      >
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <a
-            className="CrossingName"
-            href="/dashboard/crossing/1"
-          >
-            Spurlock Valley
-          </a>
-        </div>
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <div
-            className="LocationContainer"
-          >
-            <div
-              className="MapIcon"
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-map-marker"
-              />
-            </div>
-            <div
-              className="LocationText"
-            >
-              <div>
-                605 Spurlock Valley · West Lake Hills, TX 78746
-              </div>
-              <div
-                style={
-                  Object {
-                    "fontStyle": "italic",
-                  }
-                }
-              >
-                E of Intersection w/ Clifford
-              </div>
-              <div>
-                All of Texas.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <div
-            className="DateTimeContainer"
-          >
-            <div
-              className="ClockIcon"
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-clock-o"
-              />
-            </div>
-            <div
-              className="DateTimeText"
-            >
-              <div>
-                10/10/17, 4:35 am
-              </div>
-              <div
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
-                }
-              >
-                S. Admin
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="CrossingListItemFlexContainer"
-      >
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <div
-            className="ControlLabel"
-          >
-            Status: 
-            Long Term Closure
-          </div>
-          <div
-            className="StatusToggleContainer"
-          >
-            <div
-              className="StatusToggle__open"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-circle-o"
-              />
-            </div>
-            <div
-              className="StatusToggle__caution"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-exclamation-triangle"
-              />
-            </div>
-            <div
-              className="StatusToggle__closed"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-              />
-            </div>
-            <div
-              className="StatusToggle__longterm--selected"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
-                }
-              />
-            </div>
-          </div>
-        </div>
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <div
-            className="ControlLabelContainer"
-          >
-            <div
-              className="ControlLabel"
-            >
-              Reason
-            </div>
-            <div
-              className="required"
-            >
-              
-            </div>
-          </div>
-          <div
-            className="Dropdown"
-          >
-            <select
-              className="Dropdown__select"
-              defaultValue={2}
-              id=""
-              name=""
-              onChange={[Function]}
-            >
-              <option
-                value={1}
-              >
-                Flooded
-              </option>
-              <option
-                value={2}
-              >
-                Bridge Broken
-              </option>
-            </select>
-          </div>
-        </div>
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <div
-            className="ControlLabel"
-          >
-            Notes to the public
-          </div>
-          <input
-            className="NotesTextBox"
-            onChange={[Function]}
-            type="text"
-            value="Gonna be a while"
-          />
-        </div>
-      </div>
-      <div
-        className="CrossingListItemFlexContainer"
-      >
-        <div
-          className="CrossingListItemFlexItem--spacer"
-        />
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <div
-            className="ControlLabelContainer"
-          >
-            <div
-              className="ControlLabel"
-            >
-              Duration
-            </div>
-            <div
-              className="required"
-            >
-              
-            </div>
-          </div>
-          <div
-            className="Dropdown"
-          >
-            <select
-              className="Dropdown__select"
-              defaultValue={2}
-              id=""
-              name=""
-              onChange={[Function]}
-            >
-              <option
-                value={1}
-              >
-                A Minute
-              </option>
-              <option
-                value={2}
-              >
-                A Week
-              </option>
-            </select>
-          </div>
-        </div>
-        <div
-          className="CrossingListItemFlexItem--spacer"
-        />
-      </div>
-    </div>
   </div>
 </div>
 `;

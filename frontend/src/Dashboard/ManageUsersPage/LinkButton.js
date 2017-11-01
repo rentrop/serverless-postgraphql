@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import './LinkButton.css';
+import 'Dashboard/ManageUsersPage/LinkButton.css';
 
 class LinkButton extends Component {
 

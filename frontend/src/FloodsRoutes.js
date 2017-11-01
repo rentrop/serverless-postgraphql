@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import PrivateRoute from './PrivateRoute';
-import Header from './Dashboard/Header/Header';
-import ManageUsers from './Dashboard/ManageUsersPage/ManageUsers';
+import PrivateRoute from 'PrivateRoute';
+import Header from 'Dashboard/Header/Header';
+import ManageUsers from 'Dashboard/ManageUsersPage/ManageUsers';
 
-import CrossingMapPage from './Dashboard/CrossingMapPage/CrossingMapPage';
-import CrossingListPage from './Dashboard/CrossingListPage/CrossingListPage';
-import CrossingDetailPage from './Dashboard/CrossingDetailPage/CrossingDetailPage';
+import CrossingMapPage from 'Dashboard/CrossingMapPage/CrossingMapPage';
+import CrossingListPage from 'Dashboard/CrossingListPage/CrossingListPage';
+import CrossingDetailPage from 'Dashboard/CrossingDetailPage/CrossingDetailPage';
 
-import PublicHomepage from './PublicHomepage';
-import auth from './services/gqlAuth';
+import PublicHomepage from 'PublicHomepage';
+import auth from 'services/gqlAuth';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 

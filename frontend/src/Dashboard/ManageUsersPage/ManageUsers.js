@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LinkButton from 'LinkButton';
+import LinkButton from 'Dashboard/ManageUsersPage/LinkButton';
 import BulkActionsDropdown from 'Dashboard/Table/BulkActionsDropdown';
 import TableSearch from 'Dashboard/Table/TableSearch';
 import UserList from 'Dashboard/ManageUsersPage/UserList';

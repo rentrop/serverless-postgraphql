@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import DateTime from '../Dashboard/CrossingListPage/CrossingListItem/DateTime'
+import DateTime from 'Dashboard/CrossingListPage/CrossingListItem/DateTime'
 
 const crossing = {
   "statusUpdateByLatestStatusUpdateId": {
