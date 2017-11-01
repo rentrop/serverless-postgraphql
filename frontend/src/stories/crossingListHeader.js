@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import CrossingListHeader from 'Dashboard/CrossingListPage/CrossingListHeader/CrossingListHeader';
+import CrossingListHeader from 'components/Dashboard/CrossingListPage/CrossingListHeader/CrossingListHeader';
 import schema from 'stories/schema/schema';
 import { withApolloProvider } from 'storybook-addon-apollo-graphql';
 

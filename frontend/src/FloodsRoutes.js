@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import PrivateRoute from 'PrivateRoute';
-import Header from 'Dashboard/Header/Header';
-import ManageUsers from 'Dashboard/ManageUsersPage/ManageUsers';
+import Header from 'components/Dashboard/Header/Header';
+import ManageUsers from 'components/Dashboard/ManageUsersPage/ManageUsers';
 
-import CrossingMapPage from 'Dashboard/CrossingMapPage/CrossingMapPage';
-import CrossingListPage from 'Dashboard/CrossingListPage/CrossingListPage';
-import CrossingDetailPage from 'Dashboard/CrossingDetailPage/CrossingDetailPage';
+import CrossingMapPage from 'components/Dashboard/CrossingMapPage/CrossingMapPage';
+import CrossingListPage from 'components/Dashboard/CrossingListPage/CrossingListPage';
+import CrossingDetailPage from 'components/Dashboard/CrossingDetailPage/CrossingDetailPage';
 
 import PublicHomepage from 'PublicHomepage';
 import auth from 'services/gqlAuth';
