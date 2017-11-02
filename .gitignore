@@ -6,8 +6,8 @@ backend/.serverless
 frontend/.DS_Store
 frontend/src/.DS_Store
 frontend/**/*.css
-frontend/src/Map/mapboxstyle-undecorated.json
-frontend/src/Map/mapboxstyle.json
+frontend/src/components/Map/mapboxstyle-undecorated.json
+frontend/src/components/Map/mapboxstyle.json
 frontend/src/stories/schema/schema.graphql
 frontend/src/stories/schema/schema.js
 .DS_Store

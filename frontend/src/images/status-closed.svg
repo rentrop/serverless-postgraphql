@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="48px" viewBox="0 0 42 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>status-closed</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M10.3663866,8 L14.4,3.96638655 L12.0336134,1.6 L8,5.63361345 L3.96638655,1.6 L1.6,3.96638655 L5.63361345,8 L1.6,12.0336134 L3.96638655,14.4 L8,10.3663866 L12.0336134,14.4 L14.4,12.0336134 L10.3663866,8 Z" id="path-1"></path>
+    </defs>
+    <g id="_icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="status-closed">
+            <g id="status/closed" transform="translate(13.000000, 16.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#FF9159" fill-rule="nonzero" xlink:href="#path-1"></use>
+                <g id="status/fill/closed" mask="url(#mask-2)" fill-rule="evenodd" fill="#FF9159">
+                    <rect id="fill" x="0" y="0" width="16" height="16"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

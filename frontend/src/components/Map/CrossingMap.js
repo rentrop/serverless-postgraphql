@@ -3,9 +3,9 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import * as MapboxGl from 'mapbox-gl';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import mapboxstyle from 'components/Map/mapboxstyle.json';
 
 const Map = ReactMapboxGl({ accessToken: null });
-const mapboxstyle = require('./mapboxstyle.json');
 
 const STATUS_OPEN = 1;
 const STATUS_CLOSED = 2;
