@@ -1,0 +1,45 @@
+@import "css/mixins/flexbox";
+@import "css/mixins/colors";
+
+.CrossingDetails {
+  @include flexcontainer--column;
+
+  &.CrossingDetails--lg {
+    @include flexcontainer--row;   
+
+    .CrossingDetails__map {
+      order: 1;
+    } 
+
+    .CrossingDetails__details {
+      min-height: 350px;
+      order: 2;
+    }
+  }
+}
+
+.CrossingDetails__map {
+  @include flexitem;
+  order: 2;
+  min-height: 350px;
+}
+
+.CrossingDetails__details {
+  @include flexitem;  
+  order: 1;
+  @include flexcontainer--column;
+  justify-content: space-between; 
+
+  &.CrossingDetails__details--dirty {
+    border: 5px solid $color-highlight;
+  }
+}
+
+.CrossingDetails__communities button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+
+  &:last-of-type{
+    margin-right: 0;
+  }
+}

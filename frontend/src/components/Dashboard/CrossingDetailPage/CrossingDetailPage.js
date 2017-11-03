@@ -35,12 +35,14 @@ const CrossingByIdQuery = gql`
     crossingById(id:$crossingId) {
       id
       name
+      geojson
       humanCoordinates
       humanAddress
       description
       communityCrossingsByCrossingId {
         nodes {
           communityByCommunityId {
+            id
             name
           }
         }

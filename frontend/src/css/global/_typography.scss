@@ -1,22 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,200,200i,300,300i,400,400i,500,500i');
 @import "css/font-awesome/font-awesome.scss";
 
-@import "../mixins/colors";
-@import "../mixins/typography";
+@import "css/mixins/colors";
+@import "css/mixins/typography";
 
 html {
   font-family: $font-sans;
   font-size: $em-base;
+  font-weight: $font-normal;
+  line-height: 1.5;
 }
 
 p, span {
-  font-size: 1.7rem;
+  font-size: $base-font-size;
 }
 
-.link {
-  text-decoration: underline !important;
+.underline {
+  text-decoration: underline;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .strong {
   font-weight: bold;
 }
+
+.light {
+  font-weight: 300;
+}
+
+
+

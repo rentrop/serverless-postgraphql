@@ -20,7 +20,7 @@ class UserControlsBase extends React.Component {
           }
           &nbsp; | &nbsp;
           <button
-            className="button-reset link"
+            className="button-reset underline"
             onClick={() => auth.signout(() => window.location.reload())}
           >
             Sign out

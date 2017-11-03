@@ -1,0 +1,68 @@
+@import "css/mixins/typography";
+
+.button {
+  color: $color-white;
+  cursor: pointer;
+  background-color: $color-primary;
+  border: 2px solid $color-primary;
+  border-radius: 4px;
+  font-size: $base-font-size;
+  padding: 10px;
+  text-decoration: none;
+
+  &.button--secondary {
+    background-color: $color-white;
+    color: $color-primary;
+  }
+
+  &.button--confirm {
+    background-color: $color-highlight;
+    border-color: $color-highlight;
+    color: $color-white;
+  }
+
+  &.button--cancel {
+    background-color: $color-white;
+    border-color: $color-highlight;
+    color: $color-highlight;
+  }
+
+  &.button--plaintext {
+    background: none;
+    border: none;
+    color: $color-primary;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: left;
+    text-decoration: underline;
+  }
+}
+
+
+
+.button-reset {
+  background: none repeat scroll 0 0 transparent;
+  border: medium none;
+  border-spacing: 0;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  text-indent: 0;
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+.input {
+  height: 40px;
+  width: 100%;
+  font-size: $base-font-size;
+  text-indent: 5px;
+
+  &.input--lg {
+    font-size: $font-large;
+    font-weight: bold;  
+  }
+}

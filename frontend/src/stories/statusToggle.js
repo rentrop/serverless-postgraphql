@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import StatusToggle from 'components/Dashboard/CrossingListPage/CrossingListItem/StatusToggle'
-import * as statusConstants from 'components/Dashboard/CrossingListPage/CrossingListItem/StatusConstants'
+import StatusToggle from 'components/Dashboard/CrossingListPage/CrossingListItem/StatusToggle';
+import * as statusConstants from 'constants/StatusConstants';;
 
 
 storiesOf('Crossing List Item Status Toggle', module)

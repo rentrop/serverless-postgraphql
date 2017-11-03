@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import crossingFragment from 'components/Dashboard/CrossingListPage/queries/crossingFragment';
+import statusUpdateFragment from 'components/Dashboard/CrossingListPage/queries/statusUpdateFragment';
 
 const newStatusUpdateMutation = gql`
   mutation newStatusUpdate(
@@ -20,12 +20,12 @@ const newStatusUpdateMutation = gql`
       statusUpdate {
         crossingId
         crossingByCrossingId {
-          ...crossingInfo
+          ...statusUpdateInfo
         }
       }
     }
   }
-  ${crossingFragment}
+  ${statusUpdateFragment}
 `;
 
 export default newStatusUpdateMutation;

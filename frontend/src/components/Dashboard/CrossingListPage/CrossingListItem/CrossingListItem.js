@@ -8,7 +8,7 @@ import StatusToggle from 'components/Dashboard/CrossingListPage/CrossingListItem
 import Dropdown from 'components/Dashboard/CrossingListPage/CrossingListItem/Dropdown';
 import newStatusUpdateMutation from 'components/Dashboard/CrossingListPage/queries/newStatusUpdateMutation';
 import statusCountsQuery from 'components/Dashboard/CrossingListPage/queries/statusCountsQuery';
-import crossingFragment from 'components/Dashboard/CrossingListPage/queries/crossingFragment';
+import statusUpdateFragment from 'components/Dashboard/CrossingListPage/queries/statusUpdateFragment';
 import * as statusConstants from 'constants/StatusConstants';
 import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
 import 'components/Dashboard/CrossingListPage/CrossingListItem/CrossingListItem.css';
@@ -87,7 +87,7 @@ class CrossingListItem extends React.Component {
         // Write the updated crossing to the cache
         store.writeFragment({
           id: 'Crossing:' + updatedCrossing.id,
-          fragment: crossingFragment,
+          fragment: statusUpdateFragment,
           data: updatedCrossing
         });
       },

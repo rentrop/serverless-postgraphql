@@ -1,0 +1,53 @@
+$sizes: (lv1, 5), (lv2, 10);
+
+@each $name, $size in $sizes {
+  .m#{$name} {
+    margin: #{$size}px;
+  }
+  .m#{$name}--t {
+    margin-top: #{$size}px;
+  }
+  .m#{$name}--b {
+    margin-bottom: #{$size}px;
+  }
+  .m#{$name}--l {
+    margin-left: #{$size}px;
+  }
+  .m#{$name}--r {
+    margin-right: #{$size}px;
+  }
+  .m#{$name}--tb {
+    margin-top: #{$size}px;
+    margin-bottom: #{$size}px;
+  }
+  .m#{$name}--lr {
+    margin-left: #{$size}px;
+    margin-left: #{$size}px;
+  }
+}
+
+@each $name, $size in $sizes {
+  .p#{$name} {
+    padding: #{$size}px;
+  }
+  .p#{$name}--t {
+    padding-top: #{$size}px;
+  }
+  .p#{$name}--b {
+    padding-bottom: #{$size}px;
+  }
+  .p#{$name}--l {
+    padding-left: #{$size}px;
+  }
+  .p#{$name}--r {
+    padding-right: #{$size}px;
+  }
+  .p#{$name}--tb {
+    padding-top: #{$size}px;
+    padding-bottom: #{$size}px;
+  }
+  .p#{$name}--lr {
+    padding-left: #{$size}px;
+    padding-left: #{$size}px;
+  }
+}

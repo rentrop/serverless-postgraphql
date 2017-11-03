@@ -2,12 +2,7 @@
 @import "css/mixins/layout";
 @import "css/mixins/colors";
 
-.CrossingStatusHistory {
-  margin: auto 10%;
-}
-
 .CrossingStatusHistory--lg {
-  margin: auto 10%;
   .CrossingStatusHistory__item-details-flexcontainer {
     @include flexcontainer--row;
   }

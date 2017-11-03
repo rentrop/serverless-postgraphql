@@ -1,5 +1,8 @@
+@import "css/mixins/colors";
+
 $em-base:             10px;
-$base-font-size:      1.7rem !default;
+$base-font-size:      1.5rem !default;
 $font-sans:           'Roboto', sans-serif;
 $font-color:          $color-black;
 $font-normal:         400;
+$font-large:          2rem;
