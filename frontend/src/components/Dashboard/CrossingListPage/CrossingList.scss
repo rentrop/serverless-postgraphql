@@ -1,4 +1,5 @@
-.CrossingListContainer {
-	background-color: #F4F1F6;
-	border-top: 10px solid #F4F1F6;
+@import "css/mixins/layout";
+
+.CrossingList {
+	@include raised-container-wrapper;
 }

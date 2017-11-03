@@ -15,4 +15,9 @@ const crossing = {
 }
 
 storiesOf('Crossing List Item DateTime', module)
-  .add('DateTime', () => <DateTime update={ crossing.statusUpdateByLatestStatusUpdateId } />);
+  .add('DateTime', () => {
+    return <DateTime
+      user={crossing.statusUpdateByLatestStatusUpdateId.userByCreatorId}
+      datetime={crossing.statusUpdateByLatestStatusUpdateId.createdAt}
+    />
+  });

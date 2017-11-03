@@ -21,7 +21,7 @@ class CrossingDetailPage extends Component {
     const history = this.props.CrossingHistoryQuery.allStatusUpdates.nodes;
 
     return (
-      <div>
+      <div className="CrossingDetailPage">
         <CrossingDetails crossing={crossing} communities={communities}/>
         <CrossingStatusHistory history={history}/>
       </div>
@@ -50,13 +50,32 @@ const CrossingByIdQuery = gql`
 `;
 
 const CrossingHistoryQuery = gql`
-  query crossingHistory($crossingId:Int!) {
-    allStatusUpdates(condition:{crossingId:$crossingId}) {
-      nodes {
+query crossingHistory($crossingId:Int!) {
+  allStatusUpdates(
+    condition: { crossingId: $crossingId }
+    orderBy: CREATED_AT_DESC
+  ) {
+    nodes {
+      userByCreatorId {
         id
+        lastName
+        firstName
       }
+      statusByStatusId {
+        id
+        name
+      }
+      statusReasonByStatusReasonId {
+        name
+      }
+      statusDurationByStatusDurationId {
+         name
+       }
+      createdAt
+      notes
     }
   }
+}
 `;
 
 export default compose(

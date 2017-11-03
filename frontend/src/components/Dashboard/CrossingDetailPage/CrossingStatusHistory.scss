@@ -1,0 +1,57 @@
+@import "css/mixins/flexbox";
+@import "css/mixins/layout";
+@import "css/mixins/colors";
+
+.CrossingStatusHistory {
+  margin: auto 10%;
+}
+
+.CrossingStatusHistory--lg {
+  margin: auto 10%;
+  .CrossingStatusHistory__item-details-flexcontainer {
+    @include flexcontainer--row;
+  }
+}
+
+.CrossingStatusHistory__list-wrapper {
+  @include raised-container-wrapper;
+}
+
+.CrossingStatusHistory__section-header {
+  @include section-header;
+}
+
+.CrossingStatusHistory__item {
+  padding: 20px;
+  border-bottom: 1px solid $border-color-light;
+  @include flexcontainer--column;
+  @include raised-container;
+}
+
+.CrossingStatusHistory__item-details-flexcontainer {
+  @include flexitem;
+  @include flexcontainer--column;
+}
+
+.CrossingStatusHistory__item-details {
+  @include flexitem;
+  align-items: center;
+  padding: 10px 5px 0;
+  &:first-of-type {
+    @include flexcontainer;
+    padding-left: 0;
+  }
+}
+
+.CrossingStatusHistory__status-icon {
+  margin-right: 10px;
+}
+
+.CrossingStatusHistory__item-subdetails {
+  @include flexcontainer--column;
+  margin-bottom: 10px;
+  line-height: 2.2rem;
+  &:last-of-type {
+    margin-bottom: 0px;
+  }
+}

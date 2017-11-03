@@ -1,13 +1,13 @@
 import React from 'react';
 import { graphql, compose } from 'react-apollo';
+import {ContainerQuery} from 'react-container-query';
+import classnames from 'classnames';
 import CrossingListItem from 'components/Dashboard/CrossingListPage/CrossingListItem/CrossingListItem';
 import crossingsQuery from 'components/Dashboard/CrossingListPage/queries/crossingsQuery';
 import statusReasonsQuery from 'components/Dashboard/CrossingListPage/queries/statusReasonsQuery';
 import statusDurationsQuery from 'components/Dashboard/CrossingListPage/queries/statusDurationsQuery';
+import * as statusConstants from 'constants/StatusConstants';
 import 'components/Dashboard/CrossingListPage/CrossingList.css';
-import * as statusConstants from 'components/Dashboard/CrossingListPage/CrossingListItem/StatusConstants';
-import {ContainerQuery} from 'react-container-query';
-import classnames from 'classnames';
 
 const containerQuery = {
   'CrossingListItem--lg': {
@@ -19,7 +19,7 @@ class CrossingList extends React.Component {
   state = {}
 
   shouldHideCrossing (crossing, showOpen, showClosed, showCaution, showLongterm) {
-      return ( 
+      return (
         (crossing.latestStatusId === statusConstants.OPEN && !showOpen) ||
         (crossing.latestStatusId === statusConstants.CLOSED && !showClosed) ||
         (crossing.latestStatusId === statusConstants.CAUTION && !showCaution) ||
@@ -65,16 +65,16 @@ class CrossingList extends React.Component {
         {(params) => {
           const cqClassName = classnames(params);
           return (
-            <div className='CrossingListContainer'>
-              {crossings.map(crossing => 
+            <div className='CrossingList'>
+              {crossings.map(crossing =>
                 <CrossingListItem
                   key={crossing.id}
                   crossing={crossing}
-                  reasons={statusReasons} 
+                  reasons={statusReasons}
                   durations={statusDurations}
                   currentUser={currentUser}
                   hidden={this.shouldHideCrossing(crossing, showOpen, showClosed, showCaution, showLongterm)}
-                  cqClassName={cqClassName} 
+                  cqClassName={cqClassName}
                 />
               )}
             </div>

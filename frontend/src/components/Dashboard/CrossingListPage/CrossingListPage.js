@@ -22,8 +22,8 @@ class CrossingListPage extends Component {
 
   render() {
     return (
-      <div className="ManageCrossings">
-        <CrossingListHeader 
+      <div className="CrossingListPage">
+        <CrossingListHeader
           showOpen={this.state.showOpen}
           toggleShowOpen={this.toggleShowOpen}
           showClosed={this.state.showClosed}

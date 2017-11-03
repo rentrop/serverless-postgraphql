@@ -6,6 +6,16 @@
   flex: 1;
 }
 
+@mixin flexcontainer--column {
+  @include flexcontainer;
+  flex-direction: column;
+}
+
+@mixin flexcontainer--row {
+  @include flexcontainer;
+  flex-direction: row;
+}
+
 @mixin flexitem--pushed-right {
   @include flexitem;
   align-self: center;

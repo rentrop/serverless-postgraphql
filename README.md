@@ -5,7 +5,7 @@ Central Texas Floods
 💾 Install [Postgres](https://www.postgresql.org/) 🐘
   *  If you're using macOS I strongly recommend using [Postgres.app](http://postgresapp.com/)
 
-💾 [Install yarn](https://yarnpkg.com/en/docs/install) 
+💾 [Install yarn](https://yarnpkg.com/en/docs/install)
 
 👯 Clone the repo
 ```
@@ -35,6 +35,10 @@ yarn local-server
 ```
 yarn test
 ```
+
+_It might be necessary to install Watchman if you see errors running the `yarn test` command. See this Github Issue for more details: https://github.com/facebookincubator/create-react-app/issues/871_
+
+
 <img src="/README/backendtestspassed.png" align="middle" height="93" >
 
 🍻 Cheers! The backend should now be up and running!

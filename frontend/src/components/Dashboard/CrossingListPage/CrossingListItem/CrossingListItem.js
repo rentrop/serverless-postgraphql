@@ -1,21 +1,22 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
+import { ContainerQuery } from 'react-container-query';
+import classnames from 'classnames';
 import Location from 'components/Dashboard/CrossingListPage/CrossingListItem/Location';
 import DateTime from 'components/Dashboard/CrossingListPage/CrossingListItem/DateTime';
 import StatusToggle from 'components/Dashboard/CrossingListPage/CrossingListItem/StatusToggle';
 import Dropdown from 'components/Dashboard/CrossingListPage/CrossingListItem/Dropdown';
-import 'components/Dashboard/CrossingListPage/CrossingListItem/CrossingListItem.css';
-import * as statusConstants from 'components/Dashboard/CrossingListPage/CrossingListItem/StatusConstants';
 import newStatusUpdateMutation from 'components/Dashboard/CrossingListPage/queries/newStatusUpdateMutation';
-import crossingsQuery from 'components/Dashboard/CrossingListPage/queries/crossingsQuery';
 import statusCountsQuery from 'components/Dashboard/CrossingListPage/queries/statusCountsQuery';
 import crossingFragment from 'components/Dashboard/CrossingListPage/queries/crossingFragment';
-import {ContainerQuery} from 'react-container-query';
-import classnames from 'classnames';
+import * as statusConstants from 'constants/StatusConstants';
+import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
+import 'components/Dashboard/CrossingListPage/CrossingListItem/CrossingListItem.css';
+
 
 const containerQuery = {
   'CrossingListItem--lg': {
-    minWidth: 600,
+    minWidth: LARGE_ITEM_MIN_WIDTH,
   }
 };
 
@@ -157,6 +158,7 @@ class CrossingListItem extends React.Component {
 
   render () {
     const { crossing, reasons, durations, hidden } = this.props;
+    const { createdAt, userByCreatorId } = crossing.statusUpdateByLatestStatusUpdateId;
 
     if (hidden) return '';
 
@@ -186,7 +188,7 @@ class CrossingListItem extends React.Component {
             <Location crossing={ crossing } />
           </div>
           <div className="CrossingListItemFlexItem">
-            <DateTime update={ crossing.statusUpdateByLatestStatusUpdateId } />
+            <DateTime datetime={ createdAt } user={ userByCreatorId } />
           </div>
         </div>
         <div className="CrossingListItemFlexContainer">

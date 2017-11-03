@@ -1,22 +1,23 @@
 @import "css/mixins/flexbox";
+@import "css/mixins/colors";
 
 .Header {
   margin-top: 1rem;
   a {
-    color: #000000;
+    color: $color-black;
   }
 }
 
 .Header__small-text {
   @include flexcontainer;
   font-size: 1rem;
-  color: #4E4E4E;
+  color: $color-gray-75;
   align-items: center;
 }
 
 .Header__main {
   @include flexcontainer;
-  border-bottom: 2px solid #F5F4F7;
+  border-bottom: 2px solid $border-color-light;
   margin: 1.5rem 0;
   align-items: center;
 }
