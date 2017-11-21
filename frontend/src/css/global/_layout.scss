@@ -1,3 +1,30 @@
+@import "css/mixins/layout";
+@import "css/mixins/colors";
+
+.section-header {
+  @include section-header;
+}
+
+.raised-container {
+  @include raised-container;
+}
+
+.raised-container-wrapper {
+  @include raised-container-wrapper;
+}
+
+.overlay-container {
+  @include overlay-container;
+}
+
+.dirty-container {
+  outline: 4px solid $color-white;
+
+  &.dirty-container--dirty {
+    outline-color: $color-highlight;
+  }
+}
+
 $sizes: (lv1, 5), (lv2, 10);
 
 @each $name, $size in $sizes {

@@ -4,6 +4,10 @@
   @include flexcontainer;
 }
 
+.flexcontainer--center {
+  @include flexcontainer--center;
+}
+
 .flexitem {
   @include flexitem;
 }

@@ -10,6 +10,10 @@ body {
   padding: 0;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 .PageLayout {
     max-width: 1100px; 
     margin: 0 auto; 

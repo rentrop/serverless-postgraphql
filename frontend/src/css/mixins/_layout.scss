@@ -1,9 +1,9 @@
 @import "css/mixins/colors";
 
 @mixin section-header {
-  width: 100%;
   background-color: $color-primary;
   color: $color-white;
+  display: block;
   padding: 20px;
   text-transform: uppercase;
   font-weight: normal;
@@ -20,4 +20,13 @@
 @mixin raised-container-wrapper {
   background-color: $color-gray-lightest;
   border-top: 10px solid $color-gray-lightest;
+}
+
+@mixin overlay-container {
+  background-color: $color-white-translucent;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }

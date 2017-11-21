@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import CrossingStatusHistory from 'components/Dashboard/CrossingDetailPage/CrossingStatusHistory';
-import * as statusConstants from 'constants/StatusConstants';
 
 const history = [
 {
@@ -117,4 +116,12 @@ const history = [
 }];
 
 storiesOf('Crossing Status History', module)
-  .add('A crossing history', () => <CrossingStatusHistory history={history} />)
+  .add('Large Width', () => 
+    <div className="storybook--lg">
+      <CrossingStatusHistory history={history} />
+    </div>)
+  .add('Small Width', () => 
+    <div className="storybook--sm">
+      <CrossingStatusHistory history={history} />
+    </div>
+  );

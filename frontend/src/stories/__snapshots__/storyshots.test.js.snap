@@ -1,5 +1,95 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Crossing Details Small Width 1`] = `
+<div
+  className="storybook--sm"
+>
+  <div
+    className="CrossingDetails dirty-container mlv2 plv2"
+  >
+    <div
+      className="CrossingDetails__details"
+    >
+      <div>
+        <span
+          className="strong gray--75 mlv1--r"
+        >
+          ID#
+        </span>
+         
+        <span
+          className="italic light gray--50"
+        >
+          1
+        </span>
+      </div>
+      <div>
+        <span
+          className="strong gray--75 mlv1--r"
+        >
+          GPS
+        </span>
+         
+        <span
+          className="italic light gray--50"
+        >
+          30°16'1.200"N 97°46'4.800"W
+        </span>
+      </div>
+      <div>
+        <span
+          className="strong gray--75 mlv1--r"
+        >
+          Address
+        </span>
+         
+        <span
+          className="italic light gray--50"
+        >
+          at city hall
+        </span>
+      </div>
+      <input
+        className="input input--lg mlv2--t"
+        onChange={[Function]}
+        type="text"
+        value="Spurlock Valley"
+      />
+      <input
+        className="input mlv2--t"
+        onChange={[Function]}
+        type="text"
+        value="E of Intersection w/ Clifford"
+      />
+      <div
+        className="CrossingDetails__communities mlv2--t"
+      >
+        <button
+          className="button button--secondary mlv2--r mlv2--b"
+        >
+          All of Texas.
+           
+          <span
+            aria-hidden={true}
+            className="fa fa-times"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      className="CrossingDetails__buttons flexcontainer"
+    >
+      <button
+        className="button button--plaintext color-highlight"
+        onClick={[Function]}
+      >
+        Delete Crossing
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Crossing List Header Large Width 1`] = `
 <div
   className="storybook--lg"
@@ -2790,582 +2880,1174 @@ exports[`Storyshots Crossing List Item Status Toggle Open 1`] = `
 </div>
 `;
 
-exports[`Storyshots Crossing Status History A crossing history 1`] = `
+exports[`Storyshots Crossing Status History Large Width 1`] = `
 <div
-  className="CrossingStatusHistory"
+  className="storybook--lg"
 >
-  <h2
-    className="CrossingStatusHistory__section-header"
-  >
-    Crossing History
-  </h2>
   <div
-    className="CrossingStatusHistory__list-wrapper"
+    className="CrossingStatusHistory"
   >
+    <h2
+      className="CrossingStatusHistory__section-header"
+    >
+      Crossing History
+    </h2>
     <div
-      className="CrossingStatusHistory__item"
+      className="CrossingStatusHistory__list-wrapper"
     >
       <div
-        className="flexitem"
+        className="CrossingStatusHistory__item"
       >
         <div
-          className="DateTime"
+          className="flexitem"
         >
           <div
-            className="DateTime__clock-icon"
+            className="DateTime"
           >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
-          </div>
-          <div
-            className="DateTime__text"
-          >
-            <div>
-              06/04/17, 9:27 am
+            <div
+              className="DateTime__clock-icon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
             </div>
             <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
+              className="DateTime__text"
             >
-              S. Admin
+              <div>
+                06/04/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingStatusHistory__item-details-flexcontainer"
+        >
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-closed-small.svg"
+            />
+            <span>
+              Status: 
+              Closed
+            </span>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Reason
+              </span>
+              <span
+                className="strong"
+              >
+                Flooded
+              </span>
+            </div>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
             </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingStatusHistory__item-details-flexcontainer"
+        className="CrossingStatusHistory__item"
       >
         <div
-          className="CrossingStatusHistory__item-details"
-        >
-          <img
-            alt={undefined}
-            className="CrossingStatusHistory__status-icon"
-            src="marker-closed-small.svg"
-          />
-          <span>
-            Status: 
-            Closed
-          </span>
-        </div>
-        <div
-          className="CrossingStatusHistory__item-details"
+          className="flexitem"
         >
           <div
-            className="CrossingStatusHistory__item-subdetails"
+            className="DateTime"
           >
-            <span>
-              Reason
-            </span>
-            <span
-              className="strong"
+            <div
+              className="DateTime__clock-icon"
             >
-              Flooded
-            </span>
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
+            </div>
+            <div
+              className="DateTime__text"
+            >
+              <div>
+                05/28/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
           </div>
         </div>
         <div
-          className="CrossingStatusHistory__item-details"
+          className="CrossingStatusHistory__item-details-flexcontainer"
         >
           <div
-            className="CrossingStatusHistory__item-subdetails"
+            className="CrossingStatusHistory__item-details"
           >
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-open-small.svg"
+            />
             <span>
-              Notes to the public
+              Status: 
+              Open
             </span>
-            <span
-              className="strong"
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          />
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
             >
-              notes
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="CrossingStatusHistory__item"
+      >
+        <div
+          className="flexitem"
+        >
+          <div
+            className="DateTime"
+          >
+            <div
+              className="DateTime__clock-icon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
+            </div>
+            <div
+              className="DateTime__text"
+            >
+              <div>
+                05/25/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingStatusHistory__item-details-flexcontainer"
+        >
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-caution-small.svg"
+            />
+            <span>
+              Status: 
+              Caution
             </span>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Reason
+              </span>
+              <span
+                className="strong"
+              >
+                Flooded
+              </span>
+            </div>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="CrossingStatusHistory__item"
+      >
+        <div
+          className="flexitem"
+        >
+          <div
+            className="DateTime"
+          >
+            <div
+              className="DateTime__clock-icon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
+            </div>
+            <div
+              className="DateTime__text"
+            >
+              <div>
+                05/20/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingStatusHistory__item-details-flexcontainer"
+        >
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-long-term-small.svg"
+            />
+            <span>
+              Status: 
+              Long-Term Closure
+            </span>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Reason
+              </span>
+              <span
+                className="strong"
+              >
+                Unconfirmed
+              </span>
+            </div>
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Estimated re-open
+              </span>
+              <span
+                className="strong"
+              >
+                --
+              </span>
+            </div>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="CrossingStatusHistory__item"
+      >
+        <div
+          className="flexitem"
+        >
+          <div
+            className="DateTime"
+          >
+            <div
+              className="DateTime__clock-icon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
+            </div>
+            <div
+              className="DateTime__text"
+            >
+              <div>
+                05/19/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingStatusHistory__item-details-flexcontainer"
+        >
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-open-small.svg"
+            />
+            <span>
+              Status: 
+              Open
+            </span>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          />
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="CrossingStatusHistory__item"
+      >
+        <div
+          className="flexitem"
+        >
+          <div
+            className="DateTime"
+          >
+            <div
+              className="DateTime__clock-icon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
+            </div>
+            <div
+              className="DateTime__text"
+            >
+              <div>
+                05/17/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingStatusHistory__item-details-flexcontainer"
+        >
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-closed-small.svg"
+            />
+            <span>
+              Status: 
+              Closed
+            </span>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Reason
+              </span>
+              <span
+                className="strong"
+              >
+                Flooded
+              </span>
+            </div>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="CrossingStatusHistory__item"
+      >
+        <div
+          className="flexitem"
+        >
+          <div
+            className="DateTime"
+          >
+            <div
+              className="DateTime__clock-icon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
+            </div>
+            <div
+              className="DateTime__text"
+            >
+              <div>
+                05/11/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingStatusHistory__item-details-flexcontainer"
+        >
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-open-small.svg"
+            />
+            <span>
+              Status: 
+              Open
+            </span>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          />
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Crossing Status History Small Width 1`] = `
+<div
+  className="storybook--sm"
+>
+  <div
+    className="CrossingStatusHistory"
+  >
+    <h2
+      className="CrossingStatusHistory__section-header"
+    >
+      Crossing History
+    </h2>
     <div
-      className="CrossingStatusHistory__item"
+      className="CrossingStatusHistory__list-wrapper"
     >
       <div
-        className="flexitem"
+        className="CrossingStatusHistory__item"
       >
         <div
-          className="DateTime"
+          className="flexitem"
         >
           <div
-            className="DateTime__clock-icon"
+            className="DateTime"
           >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
-          </div>
-          <div
-            className="DateTime__text"
-          >
-            <div>
-              05/28/17, 9:27 am
+            <div
+              className="DateTime__clock-icon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
             </div>
             <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
+              className="DateTime__text"
             >
-              S. Admin
+              <div>
+                06/04/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingStatusHistory__item-details-flexcontainer"
+        >
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-closed-small.svg"
+            />
+            <span>
+              Status: 
+              Closed
+            </span>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Reason
+              </span>
+              <span
+                className="strong"
+              >
+                Flooded
+              </span>
+            </div>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
             </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingStatusHistory__item-details-flexcontainer"
+        className="CrossingStatusHistory__item"
       >
         <div
-          className="CrossingStatusHistory__item-details"
-        >
-          <img
-            alt={undefined}
-            className="CrossingStatusHistory__status-icon"
-            src="marker-open-small.svg"
-          />
-          <span>
-            Status: 
-            Open
-          </span>
-        </div>
-        <div
-          className="CrossingStatusHistory__item-details"
-        />
-        <div
-          className="CrossingStatusHistory__item-details"
+          className="flexitem"
         >
           <div
-            className="CrossingStatusHistory__item-subdetails"
+            className="DateTime"
           >
-            <span>
-              Notes to the public
-            </span>
-            <span
-              className="strong"
+            <div
+              className="DateTime__clock-icon"
             >
-              notes
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="CrossingStatusHistory__item"
-    >
-      <div
-        className="flexitem"
-      >
-        <div
-          className="DateTime"
-        >
-          <div
-            className="DateTime__clock-icon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
-          </div>
-          <div
-            className="DateTime__text"
-          >
-            <div>
-              05/25/17, 9:27 am
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
             </div>
             <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
+              className="DateTime__text"
             >
-              S. Admin
+              <div>
+                05/28/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingStatusHistory__item-details-flexcontainer"
+        >
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-open-small.svg"
+            />
+            <span>
+              Status: 
+              Open
+            </span>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          />
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
             </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingStatusHistory__item-details-flexcontainer"
+        className="CrossingStatusHistory__item"
       >
         <div
-          className="CrossingStatusHistory__item-details"
-        >
-          <img
-            alt={undefined}
-            className="CrossingStatusHistory__status-icon"
-            src="marker-caution-small.svg"
-          />
-          <span>
-            Status: 
-            Caution
-          </span>
-        </div>
-        <div
-          className="CrossingStatusHistory__item-details"
+          className="flexitem"
         >
           <div
-            className="CrossingStatusHistory__item-subdetails"
+            className="DateTime"
           >
-            <span>
-              Reason
-            </span>
-            <span
-              className="strong"
+            <div
+              className="DateTime__clock-icon"
             >
-              Flooded
-            </span>
-          </div>
-        </div>
-        <div
-          className="CrossingStatusHistory__item-details"
-        >
-          <div
-            className="CrossingStatusHistory__item-subdetails"
-          >
-            <span>
-              Notes to the public
-            </span>
-            <span
-              className="strong"
-            >
-              notes
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="CrossingStatusHistory__item"
-    >
-      <div
-        className="flexitem"
-      >
-        <div
-          className="DateTime"
-        >
-          <div
-            className="DateTime__clock-icon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
-          </div>
-          <div
-            className="DateTime__text"
-          >
-            <div>
-              05/20/17, 9:27 am
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
             </div>
             <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
+              className="DateTime__text"
             >
-              S. Admin
+              <div>
+                05/25/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingStatusHistory__item-details-flexcontainer"
+        >
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-caution-small.svg"
+            />
+            <span>
+              Status: 
+              Caution
+            </span>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Reason
+              </span>
+              <span
+                className="strong"
+              >
+                Flooded
+              </span>
+            </div>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
             </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingStatusHistory__item-details-flexcontainer"
+        className="CrossingStatusHistory__item"
       >
         <div
-          className="CrossingStatusHistory__item-details"
-        >
-          <img
-            alt={undefined}
-            className="CrossingStatusHistory__status-icon"
-            src="marker-long-term-small.svg"
-          />
-          <span>
-            Status: 
-            Long-Term Closure
-          </span>
-        </div>
-        <div
-          className="CrossingStatusHistory__item-details"
+          className="flexitem"
         >
           <div
-            className="CrossingStatusHistory__item-subdetails"
+            className="DateTime"
           >
-            <span>
-              Reason
-            </span>
-            <span
-              className="strong"
+            <div
+              className="DateTime__clock-icon"
             >
-              Unconfirmed
-            </span>
-          </div>
-          <div
-            className="CrossingStatusHistory__item-subdetails"
-          >
-            <span>
-              Estimated re-open
-            </span>
-            <span
-              className="strong"
-            >
-              --
-            </span>
-          </div>
-        </div>
-        <div
-          className="CrossingStatusHistory__item-details"
-        >
-          <div
-            className="CrossingStatusHistory__item-subdetails"
-          >
-            <span>
-              Notes to the public
-            </span>
-            <span
-              className="strong"
-            >
-              notes
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="CrossingStatusHistory__item"
-    >
-      <div
-        className="flexitem"
-      >
-        <div
-          className="DateTime"
-        >
-          <div
-            className="DateTime__clock-icon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
-          </div>
-          <div
-            className="DateTime__text"
-          >
-            <div>
-              05/19/17, 9:27 am
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
             </div>
             <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
+              className="DateTime__text"
             >
-              S. Admin
+              <div>
+                05/20/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="CrossingStatusHistory__item-details-flexcontainer"
-      >
         <div
-          className="CrossingStatusHistory__item-details"
-        >
-          <img
-            alt={undefined}
-            className="CrossingStatusHistory__status-icon"
-            src="marker-open-small.svg"
-          />
-          <span>
-            Status: 
-            Open
-          </span>
-        </div>
-        <div
-          className="CrossingStatusHistory__item-details"
-        />
-        <div
-          className="CrossingStatusHistory__item-details"
+          className="CrossingStatusHistory__item-details-flexcontainer"
         >
           <div
-            className="CrossingStatusHistory__item-subdetails"
+            className="CrossingStatusHistory__item-details"
           >
-            <span>
-              Notes to the public
-            </span>
-            <span
-              className="strong"
-            >
-              notes
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="CrossingStatusHistory__item"
-    >
-      <div
-        className="flexitem"
-      >
-        <div
-          className="DateTime"
-        >
-          <div
-            className="DateTime__clock-icon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-long-term-small.svg"
             />
+            <span>
+              Status: 
+              Long-Term Closure
+            </span>
           </div>
           <div
-            className="DateTime__text"
+            className="CrossingStatusHistory__item-details"
           >
-            <div>
-              05/17/17, 9:27 am
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Reason
+              </span>
+              <span
+                className="strong"
+              >
+                Unconfirmed
+              </span>
             </div>
             <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
+              className="CrossingStatusHistory__item-subdetails"
             >
-              S. Admin
+              <span>
+                Estimated re-open
+              </span>
+              <span
+                className="strong"
+              >
+                --
+              </span>
+            </div>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
             </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingStatusHistory__item-details-flexcontainer"
+        className="CrossingStatusHistory__item"
       >
         <div
-          className="CrossingStatusHistory__item-details"
-        >
-          <img
-            alt={undefined}
-            className="CrossingStatusHistory__status-icon"
-            src="marker-closed-small.svg"
-          />
-          <span>
-            Status: 
-            Closed
-          </span>
-        </div>
-        <div
-          className="CrossingStatusHistory__item-details"
+          className="flexitem"
         >
           <div
-            className="CrossingStatusHistory__item-subdetails"
+            className="DateTime"
           >
-            <span>
-              Reason
-            </span>
-            <span
-              className="strong"
+            <div
+              className="DateTime__clock-icon"
             >
-              Flooded
-            </span>
-          </div>
-        </div>
-        <div
-          className="CrossingStatusHistory__item-details"
-        >
-          <div
-            className="CrossingStatusHistory__item-subdetails"
-          >
-            <span>
-              Notes to the public
-            </span>
-            <span
-              className="strong"
-            >
-              notes
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="CrossingStatusHistory__item"
-    >
-      <div
-        className="flexitem"
-      >
-        <div
-          className="DateTime"
-        >
-          <div
-            className="DateTime__clock-icon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
-          </div>
-          <div
-            className="DateTime__text"
-          >
-            <div>
-              05/11/17, 9:27 am
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
             </div>
             <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
+              className="DateTime__text"
             >
-              S. Admin
+              <div>
+                05/19/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingStatusHistory__item-details-flexcontainer"
+        >
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-open-small.svg"
+            />
+            <span>
+              Status: 
+              Open
+            </span>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          />
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
             </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingStatusHistory__item-details-flexcontainer"
+        className="CrossingStatusHistory__item"
       >
         <div
-          className="CrossingStatusHistory__item-details"
-        >
-          <img
-            alt={undefined}
-            className="CrossingStatusHistory__status-icon"
-            src="marker-open-small.svg"
-          />
-          <span>
-            Status: 
-            Open
-          </span>
-        </div>
-        <div
-          className="CrossingStatusHistory__item-details"
-        />
-        <div
-          className="CrossingStatusHistory__item-details"
+          className="flexitem"
         >
           <div
-            className="CrossingStatusHistory__item-subdetails"
+            className="DateTime"
           >
-            <span>
-              Notes to the public
-            </span>
-            <span
-              className="strong"
+            <div
+              className="DateTime__clock-icon"
             >
-              notes
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
+            </div>
+            <div
+              className="DateTime__text"
+            >
+              <div>
+                05/17/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingStatusHistory__item-details-flexcontainer"
+        >
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-closed-small.svg"
+            />
+            <span>
+              Status: 
+              Closed
             </span>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Reason
+              </span>
+              <span
+                className="strong"
+              >
+                Flooded
+              </span>
+            </div>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="CrossingStatusHistory__item"
+      >
+        <div
+          className="flexitem"
+        >
+          <div
+            className="DateTime"
+          >
+            <div
+              className="DateTime__clock-icon"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-clock-o"
+              />
+            </div>
+            <div
+              className="DateTime__text"
+            >
+              <div>
+                05/11/17, 9:27 am
+              </div>
+              <div
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              >
+                S. Admin
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="CrossingStatusHistory__item-details-flexcontainer"
+        >
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <img
+              alt={undefined}
+              className="CrossingStatusHistory__status-icon"
+              src="marker-open-small.svg"
+            />
+            <span>
+              Status: 
+              Open
+            </span>
+          </div>
+          <div
+            className="CrossingStatusHistory__item-details"
+          />
+          <div
+            className="CrossingStatusHistory__item-details"
+          >
+            <div
+              className="CrossingStatusHistory__item-subdetails"
+            >
+              <span>
+                Notes to the public
+              </span>
+              <span
+                className="strong"
+              >
+                notes
+              </span>
+            </div>
           </div>
         </div>
       </div>

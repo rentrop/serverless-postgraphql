@@ -2,28 +2,17 @@ import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import crossingFragment from 'components/Dashboard/CrossingListPage/queries/crossingFragment';
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
-import mapboxstyle from 'components/Map/mapboxstyle.json';
 import FontAwesome from 'react-fontawesome';
 import classnames from 'classnames';
-import { ContainerQuery } from 'react-container-query';
-import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
 import 'components/Dashboard/CrossingDetailPage/CrossingDetails.css';
-
-const containerQuery = {
-  'CrossingDetails--lg': {
-    minWidth: LARGE_ITEM_MIN_WIDTH,
-  }
-};
-
-const Map = ReactMapboxGl({ accessToken: null, interactive: false });
 
 class CrossingDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: props.crossing.name,
-      description: props.crossing.description
+      description: props.crossing.description,
+      delete: false
     };
   }
 
@@ -51,6 +40,11 @@ class CrossingDetails extends Component {
     });
   }
 
+  deleteCrossing = (e) => {
+//TODO: add delete functionality    
+    console.log('DELETE CROSSING');
+  }
+
   nameChanged = (e) => { 
     this.setState({ 
       name: e.target.value
@@ -68,7 +62,10 @@ class CrossingDetails extends Component {
     });
   }
   deleteClicked = () => {
-    console.log('show delete overlay');
+    this.setState({delete: true});
+  }
+  deleteCancelClicked =() => {
+    this.setState({delete: false});
   }
 
   isDirty() {
@@ -82,76 +79,71 @@ class CrossingDetails extends Component {
     const { crossing, communities } = this.props;
 
     return (
-      <ContainerQuery query={containerQuery}>
-        {(params) => (
-          <div className={classnames(params, "CrossingDetails mlv2--b")}>
 
-            <Map
-              className="CrossingDetails__map mlv2"
-              center={JSON.parse(crossing.geojson).coordinates}
-              style={mapboxstyle}
-            >
-              <Layer
-                type="symbol"
-                id="marker"
-                layout={{'icon-image':'circle-15'}}
-              >
-                <Feature coordinates={JSON.parse(crossing.geojson).coordinates}/>
-              </Layer>
-            </Map>
+      <div className={classnames("CrossingDetails", {"dirty-container--dirty":this.isDirty()} ,"dirty-container mlv2 plv2")}>   
 
-            <div className={classnames({"CrossingDetails__details--dirty":this.isDirty()}, "CrossingDetails__details mlv2 plv2")}>   
-              <div>
-                <div>
-                  <span className="strong gray--75 mlv1--r">ID#</span> <span className="italic light gray--50">{crossing.id}</span>
-                </div>
-                <div>
-                  <span className="strong gray--75 mlv1--r">GPS</span> <span className="italic light gray--50">{crossing.humanCoordinates}</span>
-                </div>
-                <div>
-                  <span className="strong gray--75 mlv1--r">Address</span> <span className="italic light gray--50">{crossing.humanAddress}</span>
-                </div>
+        <div className="CrossingDetails__details">
+          <div><span className="strong gray--75 mlv1--r">ID#</span> <span className="italic light gray--50">{crossing.id}</span></div>
+          <div><span className="strong gray--75 mlv1--r">GPS</span> <span className="italic light gray--50">{crossing.humanCoordinates}</span></div>
+          <div><span className="strong gray--75 mlv1--r">Address</span> <span className="italic light gray--50">{crossing.humanAddress}</span></div>
 
-                <input className="input input--lg mlv2--t" type="text" value={this.state.name} onChange={this.nameChanged}/>
+          <input className="input input--lg mlv2--t" type="text" value={this.state.name} onChange={this.nameChanged}/>
+          <input className="input mlv2--t" type="text" value={this.state.description} onChange={this.descriptionChanged}/>
 
-                <input className="input mlv2--t" type="text" value={this.state.description} onChange={this.descriptionChanged}/>
+          <div className="CrossingDetails__communities mlv2--t">
+              {
+                communities.map((community) => {
+                  return (
+                    <button 
+                      key={community.id} 
+                      className="button button--secondary mlv2--r mlv2--b"
+                    >{community.name} <FontAwesome name="times" />
+                    </button>
+                  );
+                })
+              }
+          </div>
+        </div>
 
-                <div className="CrossingDetails__communities mlv2--t">
-                    {
-                      communities.map((community) => {
-                        return (
-                          <button 
-                            key={community.id} 
-                            className="button button--secondary"
-                          >{community.name} <FontAwesome name="times" />
-                          </button>
-                        );
-                      })
-                    }
-                </div>
-              </div>
+        {this.isDirty() ? (
+          <div className="CrossingDetails__buttons flexcontainer">
+            <button 
+              className="flexitem button button--cancel mlv2--r"
+              onClick={this.cancelClicked}
+            >Cancel</button>
+            <button 
+              className="flexitem button button--confirm mlv2--l" 
+              onClick={this.updateCrossing}
+            >Save</button>
+          </div>
+        ) : (
+          <div className="CrossingDetails__buttons flexcontainer">
+            <button 
+              className="button button--plaintext color-highlight"
+              onClick={this.deleteClicked}
+            >Delete Crossing</button>
+          </div>
+        )}
 
-              {this.isDirty() ? (
-                <div className="flexcontainer">
-                  <button 
-                    className="flexitem button button--cancel mlv2--r"
-                    onClick={this.cancelClicked}
-                  >Cancel</button>
-                  <button 
-                    className="flexitem button button--confirm mlv2--l" 
-                    onClick={this.updateCrossing}
-                  >Save</button>
-                </div>
-              ) : (
-                <div className="flexcontainer">
-                  <span className="button button--plaintext">Delete Crossing</span>
-                </div>
-              )}
-
+        { this.state.delete && (
+          <div className="CrossingDetails__delete overlay-container flexcontainer--center">
+            <div className="plv2">
+            <p>The historical data for this crossing will be saved, but you will no longer be able to view or change the change this crossing's status</p>
+            <p>Do you want to continue?</p>
+            <div className="flexcontainer">
+              <button 
+                className="flexitem button button--cancel mlv2--r"
+                onClick={this.deleteCancelClicked}
+              >No, Go Back</button>
+              <button 
+                className="flexitem button button--confirm mlv2--l" 
+                onClick={this.deleteCrossing}
+              >Yes, Delete</button>
+            </div>
             </div>
           </div>
         )}
-      </ContainerQuery>
+      </div>
     );
   }
 
