@@ -31,13 +31,13 @@ class CrossingListItem extends React.Component {
     };
   }
 
-  newStatusUpdate(e) {
+  newStatusUpdate = (e) => {
     const updateData = {
       id: Math.round(Math.random() * -1000000),
       crossingId: this.props.crossing.id,
       statusId: this.state.selectedStatus,
-      reasonId: (this.state.selectedStatus !== statusConstants.OPEN ? this.state.selectedReason : null),
-      durationId: (this.state.selectedStatus === statusConstants.LONGTERM ? this.state.selectedDuration : null),
+      reasonId: this.state.selectedReason,
+      durationId: this.state.selectedDuration,
       notes: this.state.notes,
       user: this.props.currentUser
     }
@@ -86,7 +86,7 @@ class CrossingListItem extends React.Component {
 
         // Write the updated crossing to the cache
         store.writeFragment({
-          id: 'Crossing:' + updatedCrossing.id,
+          id: `Crossing:${updatedCrossing.id}`,
           fragment: statusUpdateFragment,
           data: updatedCrossing
         });
@@ -96,14 +96,62 @@ class CrossingListItem extends React.Component {
     .then(({ data }) => {
       const update = data.newStatusUpdate.statusUpdate.crossingByCrossingId.statusUpdateByLatestStatusUpdateId;
 
-      this.setState({ selectedStatus: update.statusId });
-      this.setState({ selectedReason: update.statusReasonId });
-      this.setState({ selectedDuration: update.statusDurationId });
-      this.setState({ notes: update.notes });
+      this.setState({ 
+        selectedStatus: update.statusId,
+        selectedReason: update.statusReasonId,
+        selectedDuration: update.statusDurationId,
+        notes: update.notes 
+      });
     }).catch((error) => {
       console.log('there was an error sending the query', error);
     });
   }
+
+  openClicked = () => {
+    this.setState({ 
+      selectedStatus: statusConstants.OPEN,
+      notes: '',
+      selectedReason: null,
+      selectedDuration: null 
+    });
+  };
+  cautionClicked = () => {
+    this.setState({ 
+      selectedStatus: statusConstants.CAUTION,
+      notes: '',
+      selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.CAUTION).id,
+      selectedDuration: null
+    });
+  };
+  closedClicked = () => {
+    this.setState({ 
+      selectedStatus: statusConstants.CLOSED,
+      notes: '',
+      selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.CLOSED).id,
+      selectedDuration: null
+    });
+  };
+  longtermClicked = () => {
+    this.setState({ 
+      selectedStatus: statusConstants.LONGTERM,
+      notes: '',
+      selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.LONGTERM).id,
+      selectedDuration: this.props.durations[0].id
+    });
+  };
+
+  reasonChanged = (e) => { this.setState({ selectedReason: e.target.value }) };
+  durationChanged = (e) => { this.setState({ selectedDuration: e.target.value }) };
+  notesChanged = (e) => { this.setState({ notes: e.target.value }) };
+
+  cancelClicked = () => {
+    this.setState({ 
+      selectedStatus: this.props.crossing.statusUpdateByLatestStatusUpdateId.statusId,
+      selectedReason: this.props.crossing.statusUpdateByLatestStatusUpdateId.statusReasonId,
+      selectedDuration: this.props.crossing.statusUpdateByLatestStatusUpdateId.statusDurationId,
+      notes: this.props.crossing.statusUpdateByLatestStatusUpdateId.notes 
+    });
+  };
 
   isDirty() {
     // Temporary fix for storybook
@@ -119,42 +167,6 @@ class CrossingListItem extends React.Component {
             savedDuration !== this.state.selectedDuration ||
             savedNotes !== this.state.notes);
   }
-
-  openClicked = () => {
-    this.setState({ selectedStatus: statusConstants.OPEN });
-    this.setState({ notes: '' });
-    this.setState({ selectedReason: null });
-    this.setState({ selectedDuration: null });
-  };
-  cautionClicked = () => {
-    this.setState({ selectedStatus: statusConstants.CAUTION });
-    this.setState({ notes: '' });
-    this.setState({ selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.CAUTION).id });
-    this.setState({ selectedDuration: null });
-  };
-  closedClicked = () => {
-    this.setState({ selectedStatus: statusConstants.CLOSED });
-    this.setState({ notes: '' });
-    this.setState({ selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.CLOSED).id });
-    this.setState({ selectedDuration: null });
-  };
-  longtermClicked = () => {
-    this.setState({ selectedStatus: statusConstants.LONGTERM });
-    this.setState({ notes: '' });
-    this.setState({ selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.LONGTERM).id });
-    this.setState({ selectedDuration: this.props.durations[0].id });
-  };
-
-  reasonChanged = (e) => { this.setState({ selectedReason: e.target.value }) };
-  durationChanged = (e) => { this.setState({ selectedDuration: e.target.value }) };
-  notesChanged = (e) => { this.setState({ notes: e.target.value }) };
-
-  cancelClicked = () => {
-    this.setState({ selectedStatus: this.props.crossing.statusUpdateByLatestStatusUpdateId.statusId });
-    this.setState({ selectedReason: this.props.crossing.statusUpdateByLatestStatusUpdateId.statusReasonId });
-    this.setState({ selectedDuration: this.props.crossing.statusUpdateByLatestStatusUpdateId.statusDurationId });
-    this.setState({ notes: this.props.crossing.statusUpdateByLatestStatusUpdateId.notes });
-  };
 
   render () {
     const { crossing, reasons, durations, hidden } = this.props;
@@ -246,7 +258,7 @@ class CrossingListItem extends React.Component {
           <div className="CrossingListItemFlexItem">
             <div className="ButtonContainer">
               <div className="CancelButton" onClick={this.cancelClicked}>Cancel</div>
-              <div className="SaveButton" onClick={this.newStatusUpdate.bind(this)}>Save</div>
+              <div className="SaveButton" onClick={this.newStatusUpdate}>Save</div>
             </div>
           </div>
         ) : (
