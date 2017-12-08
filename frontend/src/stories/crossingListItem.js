@@ -121,20 +121,20 @@ const longtermCrossing = {
 }
 
 storiesOf('Crossing List Item', module)
-  .add('Open', () => <CrossingListItem reasons={reasons} durations={durations} crossing={openCrossing} />)
-  .add('Open Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={openCrossing} dirty="true" />)
-  .add('Caution', () => <CrossingListItem reasons={reasons} durations={durations} crossing={cautionCrossing} />)
-  .add('Caution Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={cautionCrossing} dirty="true" />)
-  .add('Closed', () => <CrossingListItem reasons={reasons} durations={durations} crossing={closedCrossing} />)
-  .add('Closed Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={closedCrossing} dirty="true" />)
-  .add('Long Term Closure', () => <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} />)
-  .add('Long Term Closure Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} dirty="true" />)
+  .add('Open', () => <CrossingListItem reasons={reasons} durations={durations} crossing={openCrossing} restoreDirtyState={() => null} saveDirtyState={() => null} />)
+  .add('Open Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={openCrossing} dirty="true" restoreDirtyState={() => null} saveDirtyState={() => null} />)
+  .add('Caution', () => <CrossingListItem reasons={reasons} durations={durations} crossing={cautionCrossing} restoreDirtyState={() => null} saveDirtyState={() => null} />)
+  .add('Caution Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={cautionCrossing} dirty="true" restoreDirtyState={() => null} saveDirtyState={() => null} />)
+  .add('Closed', () => <CrossingListItem reasons={reasons} durations={durations} crossing={closedCrossing} restoreDirtyState={() => null} saveDirtyState={() => null} />)
+  .add('Closed Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={closedCrossing} dirty="true" restoreDirtyState={() => null} saveDirtyState={() => null} />)
+  .add('Long Term Closure', () => <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} restoreDirtyState={() => null} saveDirtyState={() => null} />)
+  .add('Long Term Closure Dirty', () => <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} dirty="true" restoreDirtyState={() => null} saveDirtyState={() => null} />)
   .add('Large Width', () =>
     <div className="storybook--lg">
-      <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} />
+      <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} restoreDirtyState={() => null} saveDirtyState={() => null} />
     </div>)
   .add('Small Width', () =>
     <div className="storybook--sm">
-      <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} />
+      <CrossingListItem reasons={reasons} durations={durations} crossing={longtermCrossing} restoreDirtyState={() => null} saveDirtyState={() => null} />
     </div>
   );

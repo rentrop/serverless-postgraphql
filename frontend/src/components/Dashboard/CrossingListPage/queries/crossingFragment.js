@@ -5,6 +5,15 @@ const crossingFragment = gql`
   fragment crossingInfo on Crossing {
     name
     description
+    humanAddress
+    communityCrossingsByCrossingId {
+      nodes {
+        communityByCommunityId {
+          id
+          name
+        }
+      }
+    }
   }
 `;
 

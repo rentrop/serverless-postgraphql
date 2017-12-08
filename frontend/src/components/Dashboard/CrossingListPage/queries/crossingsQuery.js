@@ -3,21 +3,38 @@ import statusUpdateFragment from 'components/Dashboard/CrossingListPage/queries/
 import crossingFragment from 'components/Dashboard/CrossingListPage/queries/crossingFragment';
 
 const crossingsQuery = gql`
-  query allCrossings {
-    allCrossings {
-      nodes {
-        id
-        ...crossingInfo
-        humanAddress
-        communityCrossingsByCrossingId {
-          nodes {
-            communityByCommunityId {
-              id
-              name
-            }
-          }
+  query searchCrossings($search:String,
+                        $showOpen:Boolean,
+                        $showClosed:Boolean,
+                        $showCaution:Boolean,
+                        $showLongterm:Boolean,
+                        $pageCursor:Cursor,
+                        $orderAsc:Boolean) {
+    searchCrossings(
+      search: $search
+      showOpen: $showOpen
+      showClosed: $showClosed
+      showCaution: $showCaution
+      showLongterm: $showLongterm
+      first: 10
+      after: $pageCursor
+      orderAsc: $orderAsc
+    ) {
+      __typename
+      totalCount
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        cursor
+        node {
+          id
+          ...crossingInfo
+          ...statusUpdateInfo  
         }
-        ...statusUpdateInfo
       }
     }
   }

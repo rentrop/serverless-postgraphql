@@ -3,3 +3,12 @@
 .CrossingList {
 	@include raised-container-wrapper;
 }
+
+.ReactVirtualized__Grid {
+  outline: none;
+}
+
+.CrossingListItemMeasureContainer {
+  width: calc(100% - 8px) !important;
+  left: 4px !important;
+}

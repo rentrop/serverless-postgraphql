@@ -110,8 +110,10 @@ exports[`Storyshots Crossing List Header Small Width 1`] = `
     >
       <input
         className="CrossingListSearchInput"
+        onChange={undefined}
         placeholder="Search your crossings"
         type="text"
+        value={undefined}
       />
       <div
         className="CrossingListSearchButton"

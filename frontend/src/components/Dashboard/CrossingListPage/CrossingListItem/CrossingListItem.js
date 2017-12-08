@@ -7,6 +7,7 @@ import DateTime from 'components/Dashboard/CrossingListPage/CrossingListItem/Dat
 import StatusToggle from 'components/Dashboard/CrossingListPage/CrossingListItem/StatusToggle';
 import Dropdown from 'components/Dashboard/CrossingListPage/CrossingListItem/Dropdown';
 import newStatusUpdateMutation from 'components/Dashboard/CrossingListPage/queries/newStatusUpdateMutation';
+import crossingsQuery from 'components/Dashboard/CrossingListPage/queries/crossingsQuery';
 import statusCountsQuery from 'components/Dashboard/CrossingListPage/queries/statusCountsQuery';
 import statusUpdateFragment from 'components/Dashboard/CrossingListPage/queries/statusUpdateFragment';
 import * as statusConstants from 'constants/StatusConstants';
@@ -31,6 +32,98 @@ class CrossingListItem extends React.Component {
     };
   }
 
+  componentWillMount() {
+    const { restoreDirtyState, crossing } = this.props;
+    const savedState = restoreDirtyState(crossing.id);
+    if (savedState) {
+      this.setState({ selectedStatus: savedState.selectedStatus });
+      this.setState({ selectedReason: savedState.selectedReason });
+      this.setState({ selectedDuration: savedState.selectedDuration });
+      this.setState({ notes: savedState.notes });
+      this.props.clearMeasurerCache();
+    }
+  }
+
+  componentWillUnmount() {
+    const { saveDirtyState } = this.props;
+
+    const stateToSave = {
+      crossingId: this.props.crossing.id,
+      selectedStatus: this.state.selectedStatus,
+      selectedDuration: this.state.selectedDuration,
+      selectedReason: this.state.selectedReason,
+      notes: this.state.notes
+    };
+
+    if (this.isDirty()) {
+      saveDirtyState(stateToSave);  
+    }
+  }
+
+  fixSort(store, updatedCrossing) {
+    // Get the edge from the current query
+    const { crossingQueryVariables } = this.props;
+    const data = store.readQuery({ query: crossingsQuery, variables: crossingQueryVariables });
+    const edge = data.searchCrossings.edges.find(edge => edge.node.id == updatedCrossing.id);
+
+    // Get all the query variable combinations we have cached
+    const queryVariables = Object.keys(store.data.ROOT_QUERY)
+                            .filter(query => query.includes('searchCrossings'))
+                            .map(q => JSON.parse(q.replace(/(^\w*\()|(\)$)/g, '')));
+
+    // Update the sorting accordingly
+    for(var qv of queryVariables) {
+      const qvars = {
+        orderAsc: qv.orderAsc,
+        pageCursor: null,
+        search: qv.search,
+        showCaution: qv.showCaution,
+        showClosed: qv.showClosed,
+        showLongterm: qv.showLongterm,
+        showOpen: qv.showOpen
+      };
+      
+      this.doASortFix(store, updatedCrossing, qvars, edge);
+    }
+  }
+
+  doASortFix(store, updatedCrossing, queryVariables, edge) {
+    // Get the index of the updated crossing
+    let index = -1;
+    let data;
+    try {
+      data = store.readQuery({ query: crossingsQuery, variables: queryVariables });
+      index = data.searchCrossings.edges.findIndex(edge => edge.node.id == updatedCrossing.id);
+      
+    } catch(err) {
+      console.log(err);
+    }
+
+    // Remove it if it's on a list already
+    if (index != -1) {
+      data.searchCrossings.edges.splice(index, 1);
+    }
+
+    // Add it to a list if appropriate
+    if ((queryVariables.showOpen && updatedCrossing.latestStatusId == statusConstants.OPEN) ||
+        (queryVariables.showCaution && updatedCrossing.latestStatusId == statusConstants.CAUTION) ||
+        (queryVariables.showClosed && updatedCrossing.latestStatusId == statusConstants.CLOSED) ||
+        (queryVariables.showLongterm && updatedCrossing.latestStatusId == statusConstants.LONGTERM)) {
+      if (queryVariables.orderAsc) {
+        data.searchCrossings.edges.splice(-1, 0, edge);
+      } else {
+        data.searchCrossings.edges.splice(0, 0, edge);
+      }   
+    }
+
+    // write it to the apollo cache
+    store.writeQuery({
+      query: crossingsQuery,
+      variables: queryVariables,
+      data
+    });
+  }
+
   newStatusUpdate = (e) => {
     const updateData = {
       id: Math.round(Math.random() * -1000000),
@@ -40,7 +133,8 @@ class CrossingListItem extends React.Component {
       durationId: this.state.selectedDuration,
       notes: this.state.notes,
       user: this.props.currentUser
-    }
+    };
+    const { refreshList, clearMeasurerCache } = this.props;
 
     this.props.newStatusUpdateMutation({
       variables: {
@@ -58,6 +152,7 @@ class CrossingListItem extends React.Component {
               id: updateData.crossingId,
               latestStatusId: updateData.statusId,
               latestStatusUpdateId: updateData.id,
+              latestStatusCreatedAt: Date.now(),
               statusUpdateByLatestStatusUpdateId: {
                 id: updateData.id,
                 crossingId: updateData.crossingId,
@@ -90,6 +185,9 @@ class CrossingListItem extends React.Component {
           fragment: statusUpdateFragment,
           data: updatedCrossing
         });
+
+        // Fix the sort order
+        this.fixSort(store, updatedCrossing);
       },
       refetchQueries: [{query: statusCountsQuery}]
     })
@@ -102,6 +200,8 @@ class CrossingListItem extends React.Component {
         selectedDuration: update.statusDurationId,
         notes: update.notes 
       });
+      clearMeasurerCache(true);
+      refreshList();
     }).catch((error) => {
       console.log('there was an error sending the query', error);
     });
@@ -114,7 +214,9 @@ class CrossingListItem extends React.Component {
       selectedReason: null,
       selectedDuration: null 
     });
-  };
+    this.props.clearMeasurerCache();
+  }
+  
   cautionClicked = () => {
     this.setState({ 
       selectedStatus: statusConstants.CAUTION,
@@ -122,7 +224,9 @@ class CrossingListItem extends React.Component {
       selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.CAUTION).id,
       selectedDuration: null
     });
-  };
+    this.props.clearMeasurerCache();
+  }
+  
   closedClicked = () => {
     this.setState({ 
       selectedStatus: statusConstants.CLOSED,
@@ -130,7 +234,9 @@ class CrossingListItem extends React.Component {
       selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.CLOSED).id,
       selectedDuration: null
     });
-  };
+    this.props.clearMeasurerCache();
+  }
+  
   longtermClicked = () => {
     this.setState({ 
       selectedStatus: statusConstants.LONGTERM,
@@ -138,11 +244,23 @@ class CrossingListItem extends React.Component {
       selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.LONGTERM).id,
       selectedDuration: this.props.durations[0].id
     });
-  };
+    this.props.clearMeasurerCache();
+  }
 
-  reasonChanged = (e) => { this.setState({ selectedReason: e.target.value }) };
-  durationChanged = (e) => { this.setState({ selectedDuration: e.target.value }) };
-  notesChanged = (e) => { this.setState({ notes: e.target.value }) };
+  reasonChanged = (e) => {
+    this.setState({ selectedReason: e.target.value });
+    this.props.clearMeasurerCache();  
+  }
+  
+  durationChanged = (e) => {
+    this.setState({ selectedDuration: e.target.value });
+    this.props.clearMeasurerCache();
+  }
+  
+  notesChanged = (e) => {
+    this.setState({ notes: e.target.value });
+    this.props.clearMeasurerCache();
+  }
 
   cancelClicked = () => {
     this.setState({ 
@@ -151,7 +269,8 @@ class CrossingListItem extends React.Component {
       selectedDuration: this.props.crossing.statusUpdateByLatestStatusUpdateId.statusDurationId,
       notes: this.props.crossing.statusUpdateByLatestStatusUpdateId.notes 
     });
-  };
+    this.props.clearMeasurerCache();
+  }
 
   isDirty() {
     // Temporary fix for storybook
@@ -169,10 +288,8 @@ class CrossingListItem extends React.Component {
   }
 
   render () {
-    const { crossing, reasons, durations, hidden } = this.props;
+    const { crossing, reasons, durations } = this.props;
     const { createdAt, userByCreatorId } = crossing.statusUpdateByLatestStatusUpdateId;
-
-    if (hidden) return '';
 
     var show = [];
     switch(this.state.selectedStatus) {

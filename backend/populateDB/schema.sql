@@ -52,7 +52,8 @@ create table floods.crossing (
   human_address     text not null check (char_length(human_address) < 800),
   description       text not null check (char_length(description) < 800),
   coordinates       geometry not null,
-  geojson           text not null check (char_length(geojson) < 100)
+  geojson           text not null check (char_length(geojson) < 100),
+  latest_status_created_at timestamp 
 );
 
 comment on table floods.crossing is 'A road crossing that might flood.';
@@ -62,6 +63,13 @@ comment on column floods.crossing.human_address is 'The human readable address o
 comment on column floods.crossing.description is 'The description of the crossing.';
 comment on column floods.crossing.coordinates is 'The GIS coordinates of the crossing created with ST_MakePoint.';
 comment on column floods.crossing.geojson is 'The GeoJSON coordinates of the crossing.';
+comment on column floods.crossing.latest_status_created_at is 'The timestamp of the latest status update for the crossing.';
+
+-- Add trigrams for indexing
+create extension if not exists "pg_trgm";
+
+-- Add search index to crossings table
+create index crossing_search_index on floods.crossing using gin(name gin_trgm_ops, human_address gin_trgm_ops, description gin_trgm_ops);
 
 -- Create the Community Crossing relation table
 create table floods.community_crossing (
@@ -319,6 +327,39 @@ $$ language plpgsql strict security definer;
 
 comment on function floods.reactivate_user(integer, text, text, text) is 'Reactivates a user and creates an account.';
 
+-- Create function to search crossings
+create function floods.search_crossings(
+  search text default null,
+  show_open boolean default true,
+  show_closed boolean default true,
+  show_caution boolean default true,
+  show_longterm boolean default true,
+  order_asc boolean default false
+) returns setof floods.crossing as $$
+  select *
+  from floods.crossing
+  where (
+    (name ilike search) or
+    (description ilike search) or
+    (human_address ilike search)
+  ) and (
+  (latest_status_id = 1 and show_open) or
+  (latest_status_id = 2 and show_closed) or
+  (latest_status_id = 3 and show_caution) or
+  (latest_status_id = 4 and show_longterm)
+  )
+  order by 
+    case 
+      when order_asc
+        then latest_status_created_at end asc,
+    case
+      when order_asc = false
+        then latest_status_created_at end desc;
+$$ language sql stable security definer;
+
+comment on function floods.search_crossings(text, boolean, boolean, boolean, boolean, boolean) is 'Searches users.';
+
+
 -- Create function to search users
 -- TODO: plainto_tsquery probably won't do everything we need, so we'll need to implement something else to form a valid tsquery for search on the frontend
 create function floods.search_users(
@@ -425,6 +466,10 @@ begin
 
   update floods.crossing
     set latest_status_id = floods_status_update.status_id
+    where id = floods_status_update.crossing_id;
+
+  update floods.crossing
+    set latest_status_created_at = floods_status_update.created_at
     where id = floods_status_update.crossing_id;
 
   return floods_status_update;
@@ -816,6 +861,9 @@ grant execute on function floods.authenticate(text, text) to floods_anonymous;
 
 -- Allow all users to search users
 grant execute on function floods.search_users(text, integer) to floods_anonymous;
+
+-- Allow all users to search crossings
+grant execute on function floods.search_crossings(text, boolean, boolean, boolean, boolean, boolean) to floods_anonymous;
 
 -- Allow community admins and up to register new users
 -- NOTE: Extra logic around permissions in function

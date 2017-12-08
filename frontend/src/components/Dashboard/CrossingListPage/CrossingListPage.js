@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import CrossingList from 'components/Dashboard/CrossingListPage/CrossingList';
+import InfiniteCrossingPaginationContainer from 'components/Dashboard/CrossingListPage/InfiniteCrossingPaginationContainer';
 import CrossingListHeader from 'components/Dashboard/CrossingListPage/CrossingListHeader/CrossingListHeader';
+import 'components/Dashboard/CrossingListPage/CrossingList.css';
 
 class CrossingListPage extends Component {
   constructor(props) {
@@ -10,8 +11,14 @@ class CrossingListPage extends Component {
       showOpen: true,
       showClosed: true,
       showCaution: true,
-      showLongterm: true
+      showLongterm: true,
+      searchQuery: '',
+      formattedSearchQuery: '%%'
     };
+  }
+
+  formatSearchQuery(query) {
+    return `%${query.replace(/ /g,"%")}%`;
   }
 
   toggleShowOpen = () => { this.setState({ showOpen: !this.state.showOpen }) };
@@ -19,8 +26,15 @@ class CrossingListPage extends Component {
   toggleShowCaution = () => { this.setState({ showCaution: !this.state.showCaution }) };
   toggleShowLongterm = () => { this.setState({ showLongterm: !this.state.showLongterm }) };
   toggleSortByUpdated = () => { this.setState({sortByUpdatedAsc: !this.state.sortByUpdatedAsc }) };
+  searchQueryUpdated = (e) => {
+    this.setState({ searchQuery: e.target.value });
+    this.setState({ formattedSearchQuery: this.formatSearchQuery(e.target.value) });
+  };
+  
 
   render() {
+    const { currentUser } = this.props;
+
     return (
       <div className="CrossingListPage">
         <CrossingListHeader
@@ -33,18 +47,22 @@ class CrossingListPage extends Component {
           showLongterm={this.state.showLongterm}
           toggleShowLongterm={this.toggleShowLongterm}
           toggleSortByUpdated={this.toggleSortByUpdated} 
-          sortByUpdatedAsc={this.state.sortByUpdatedAsc} />
-        <CrossingList {...this.props}
+          sortByUpdatedAsc={this.state.sortByUpdatedAsc}
+          searchQuery={this.state.searchQuery}
+          searchQueryUpdated={this.searchQueryUpdated} />
+        <InfiniteCrossingPaginationContainer
+          {...this.props}
           showOpen={this.state.showOpen}
-          showCaution={this.state.showCaution}
           showClosed={this.state.showClosed}
-          showLongterm={this.state.showLongterm} 
-          sortByUpdatedAsc={this.state.sortByUpdatedAsc} />
+          showCaution={this.state.showCaution}
+          showLongterm={this.state.showLongterm}
+          sortByUpdatedAsc={this.state.sortByUpdatedAsc}
+          searchQuery={this.state.formattedSearchQuery}
+          currentUser={currentUser} /> 
       </div>
     );
   }
 
 }
-
 
 export default CrossingListPage;

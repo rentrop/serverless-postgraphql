@@ -137,4 +137,14 @@ update floods.crossing set latest_status_id = 2 where id = 6;
 update floods.crossing set latest_status_id = 1 where id = 7;
 update floods.crossing set latest_status_id = 1 where id = 8;
 
+-- Add latest status times
+update floods.crossing set latest_status_created_at = '2017-05-28T09:27:57Z' where id = 1;
+update floods.crossing set latest_status_created_at = '2017-06-02T09:27:57Z' where id = 2;
+update floods.crossing set latest_status_created_at = '2017-06-01T09:27:57Z' where id = 3;
+update floods.crossing set latest_status_created_at = '2017-05-23T09:27:57Z' where id = 4;
+update floods.crossing set latest_status_created_at = '2017-06-04T09:27:57Z' where id = 5;
+update floods.crossing set latest_status_created_at = '2017-05-31T09:27:57Z' where id = 6;
+update floods.crossing set latest_status_created_at = '2017-06-02T09:27:57Z' where id = 7;
+update floods.crossing set latest_status_created_at = '2017-06-02T09:27:57Z' where id = 8;
+
 commit;
