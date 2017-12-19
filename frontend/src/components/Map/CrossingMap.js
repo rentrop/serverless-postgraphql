@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import * as MapboxGl from 'mapbox-gl';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import mapboxstyle from 'components/Map/mapboxstyle.json';
+import { ZoomControl } from "react-mapbox-gl";
 
 const Map = ReactMapboxGl({ accessToken: null });
 
@@ -29,7 +30,7 @@ class CrossingMap extends React.Component {
   }
 
   addGeoLocateControl (map) {
-    map.addControl(new MapboxGl.GeolocateControl({
+    const geolocateControl = new MapboxGl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true
       },
@@ -38,7 +39,9 @@ class CrossingMap extends React.Component {
       },
       watchPosition: true,
       showUserLocation: true
-    }));
+    });
+
+    map.addControl(geolocateControl, 'top-left');
   }
 
   onCrossingClick (crossing) {
@@ -74,6 +77,7 @@ class CrossingMap extends React.Component {
         }}
         fitBounds={this.props.viewport}
         center={this.state.center}>
+        <ZoomControl />
         <Layer
           type="symbol"
           id="closedCrossings"
