@@ -21,11 +21,12 @@ class CrossingMap extends React.Component {
     ]
   }
 
-  onMapboxStyleLoad (map) {
+  onMapboxStyleLoad = (map) => {
     this.addGeoLocateControl(map);
+    this.addCrossingClickHandlers(map);
   }
 
-  onMapClick (map) {
+  onMapClick = (map) => {
     this.setState({ selectedCrossingId: -1 });
   }
 
@@ -44,9 +45,15 @@ class CrossingMap extends React.Component {
     map.addControl(geolocateControl, 'top-left');
   }
 
-  onCrossingClick (crossing) {
-    this.setState({ selectedCrossingId: crossing.feature.properties.id });
-    this.setState({ center: crossing.feature.geometry.coordinates });
+  addCrossingClickHandlers (map) {
+     map.on('click', 'closedCrossings', this.onCrossingClick);
+     map.on('click', 'openCrossings', this.onCrossingClick);
+  }
+
+  onCrossingClick = (e) => {
+    const crossing = e.features[0];
+    this.setState({ selectedCrossingId: crossing.properties.id });
+    this.setState({ center: crossing.geometry.coordinates });
   }
 
   render () {
@@ -67,8 +74,8 @@ class CrossingMap extends React.Component {
 
     return (
       <Map
-        onStyleLoad={this.onMapboxStyleLoad.bind(this)}
-        onClick={this.onMapClick.bind(this)}
+        onStyleLoad={this.onMapboxStyleLoad}
+        onClick={this.onMapClick}
         style={mapboxstyle}
         containerStyle={{
           height: this.props.mapHeight,
@@ -95,7 +102,6 @@ class CrossingMap extends React.Component {
               return(
                    <Feature key={i}
                             coordinates={JSON.parse(crossing.geojson).coordinates}
-                            onClick={this.onCrossingClick.bind(this)}
                             properties={{"crossingStatus": crossing.statusUpdateByLatestStatusUpdateId.statusId}}/>
               )}
             )
@@ -118,7 +124,6 @@ class CrossingMap extends React.Component {
               return(
                    <Feature key={i}
                             coordinates={JSON.parse(crossing.geojson).coordinates}
-                            onClick={this.onCrossingClick.bind(this)}
                             properties={{"crossingStatus": crossing.statusUpdateByLatestStatusUpdateId.statusId}}/>
               )}
             )
@@ -135,7 +140,7 @@ class CrossingMap extends React.Component {
               return(
                    <Feature key={i}
                             coordinates={JSON.parse(crossing.geojson).coordinates}
-                            onClick={this.onCrossingClick.bind(this)}/>
+                            onClick={this.onCrossingClick}/>
               )}
             )
           }
