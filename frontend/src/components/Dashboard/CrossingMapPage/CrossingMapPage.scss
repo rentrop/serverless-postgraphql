@@ -1,5 +1,14 @@
 @import "css/mixins/flexbox";
 
+.CrossingMapPage {
+  @include flexcontainer;
+}
+
 .CrossingMapPage__map-container {
+  @include flexitem;
   margin-top: 2%;
+}
+
+.CrossingMapSidebar {
+  width: 320px;
 }
