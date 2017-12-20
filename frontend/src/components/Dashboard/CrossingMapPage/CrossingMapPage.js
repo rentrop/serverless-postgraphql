@@ -15,24 +15,43 @@ class CrossingMapPage extends Component {
 
     this.state = {
       showSidebar: false,
-      viewport: viewport
+      keepSidebarHidden: false,
+      viewport: viewport,
+      selectedCrossingId: null
     };
   }
 
-  toggleSidebar = () => {
-    this.setState({showSidebar: !this.state.showSidebar});
+  hideSidebar = (keepHidden) => {
+    this.setState({
+      showSidebar: false,
+      keepSidebarHidden: keepHidden
+    })
+  }
+
+  showSidebar = (forceShow) => {
+    const keepHidden = (!forceShow && this.state.keepSidebarHidden);
+
+    this.setState({
+      showSidebar: (!keepHidden),
+      keepSidebarHidden: keepHidden
+    })
+  }
+
+  selectCrossing = (crossingId) => {
+    this.setState({selectedCrossingId: crossingId});
+    this.showSidebar();
   }
 
   render() {
-    const { showSidebar, viewport } = this.state;
+    const { showSidebar, keepSidebarHidden, viewport, selectedCrossingId } = this.state;
 
     return (
       <div>
-        <div onClick={this.toggleSidebar}> toggle sidebar </div>
+        {keepSidebarHidden ? <div onClick={() => this.showSidebar(true)}>Show Sidebar</div> : null}
         <div className="CrossingMapPage">
-          {showSidebar ? <CrossingMapSidebar/> : null}
+          {showSidebar ? <CrossingMapSidebar crossingId={selectedCrossingId} hideSidebar={this.hideSidebar}/> : null}
           <div className="CrossingMapPage__map-container">
-            <CrossingMap mapHeight="80vh" mapWidth="100%" viewport={viewport} sidebarVisible={showSidebar}/>
+            <CrossingMap mapHeight="80vh" mapWidth="100%" viewport={viewport} sidebarVisible={showSidebar} selectCrossing={this.selectCrossing}/>
           </div>
         </div>
       </div>
