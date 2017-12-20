@@ -32,7 +32,7 @@ class CrossingMapPage extends Component {
         <div className="CrossingMapPage">
           {showSidebar ? <CrossingMapSidebar/> : null}
           <div className="CrossingMapPage__map-container">
-            <CrossingMap mapHeight="80vh" mapWidth="100%" viewport={viewport}/>
+            <CrossingMap mapHeight="80vh" mapWidth="100%" viewport={viewport} sidebarVisible={showSidebar}/>
           </div>
         </div>
       </div>

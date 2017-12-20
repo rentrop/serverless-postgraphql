@@ -21,13 +21,24 @@ class CrossingMap extends React.Component {
     ]
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.sidebarVisible !== this.props.sidebarVisible && this.state.map) {
+       this.state.map.resize()
+    }
+  }
+
   onMapboxStyleLoad = (map) => {
+    this.setState({ map: map });
     this.addGeoLocateControl(map);
     this.addCrossingClickHandlers(map);
   }
 
   onMapClick = (map) => {
     this.setState({ selectedCrossingId: -1 });
+  }
+
+  resizeMap = () => {
+    this.state.map.resize();
   }
 
   addGeoLocateControl (map) {
