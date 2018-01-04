@@ -226,7 +226,10 @@ class CrossingListItem extends React.Component {
       selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.CAUTION).id,
       selectedDuration: null
     });
-    this.props.clearMeasurerCache();
+
+    if(this.props.clearMeasurerCache) {
+      this.props.clearMeasurerCache();  
+    }
   }
   
   closedClicked = () => {
@@ -236,7 +239,10 @@ class CrossingListItem extends React.Component {
       selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.CLOSED).id,
       selectedDuration: null
     });
-    this.props.clearMeasurerCache();
+    
+    if(this.props.clearMeasurerCache) {
+      this.props.clearMeasurerCache();  
+    }
   }
   
   longtermClicked = () => {
@@ -246,22 +252,34 @@ class CrossingListItem extends React.Component {
       selectedReason: this.props.reasons.find(reason => reason.statusId === statusConstants.LONGTERM).id,
       selectedDuration: this.props.durations[0].id
     });
-    this.props.clearMeasurerCache();
+    
+    if(this.props.clearMeasurerCache) {
+      this.props.clearMeasurerCache();  
+    }
   }
 
   reasonChanged = (e) => {
     this.setState({ selectedReason: e.target.value });
-    this.props.clearMeasurerCache();  
+    
+    if(this.props.clearMeasurerCache) {
+      this.props.clearMeasurerCache();  
+    }
   }
   
   durationChanged = (e) => {
     this.setState({ selectedDuration: e.target.value });
-    this.props.clearMeasurerCache();
+    
+    if(this.props.clearMeasurerCache) {
+      this.props.clearMeasurerCache();  
+    }
   }
   
   notesChanged = (e) => {
     this.setState({ notes: e.target.value });
-    this.props.clearMeasurerCache();
+    
+    if(this.props.clearMeasurerCache) {
+      this.props.clearMeasurerCache();  
+    }
   }
 
   cancelClicked = () => {
@@ -271,7 +289,10 @@ class CrossingListItem extends React.Component {
       selectedDuration: this.props.crossing.statusUpdateByLatestStatusUpdateId.statusDurationId,
       notes: this.props.crossing.statusUpdateByLatestStatusUpdateId.notes 
     });
-    this.props.clearMeasurerCache();
+    
+    if(this.props.clearMeasurerCache) {
+      this.props.clearMeasurerCache();  
+    }
   }
 
   isDirty() {

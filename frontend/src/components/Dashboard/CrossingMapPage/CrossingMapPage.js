@@ -44,12 +44,13 @@ class CrossingMapPage extends Component {
 
   render() {
     const { showSidebar, keepSidebarHidden, viewport, selectedCrossingId } = this.state;
+    const { currentUser } = this.props;
 
     return (
       <div>
         {keepSidebarHidden ? <div onClick={() => this.showSidebar(true)}>Show Sidebar</div> : null}
         <div className="CrossingMapPage">
-          {showSidebar ? <CrossingMapSidebar crossingId={selectedCrossingId} hideSidebar={this.hideSidebar}/> : null}
+          {showSidebar ? <CrossingMapSidebar crossingId={selectedCrossingId} hideSidebar={this.hideSidebar} currentUser={currentUser}/> : null}
           <div className="CrossingMapPage__map-container">
             <CrossingMap mapHeight="80vh" mapWidth="100%" viewport={viewport} sidebarVisible={showSidebar} selectCrossing={this.selectCrossing}/>
           </div>
