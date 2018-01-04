@@ -15,6 +15,8 @@ const STATUS_CLOSED = 2;
 class CrossingMap extends React.Component {
   state = {
     selectedCrossingId: -1, // Mapbox filters don't support null values
+    selectedCrossingCoordinates: null,
+    justClickedACrossing: false,
     center: [
       (this.props.viewport[0][0]+this.props.viewport[1][0])/2,
       (this.props.viewport[0][1]+this.props.viewport[1][1])/2
@@ -23,7 +25,8 @@ class CrossingMap extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.sidebarVisible !== this.props.sidebarVisible && this.state.map) {
-       this.state.map.resize()
+      this.state.map.resize();
+      return;
     }
   }
 
@@ -31,14 +34,6 @@ class CrossingMap extends React.Component {
     this.setState({ map: map });
     this.addGeoLocateControl(map);
     this.addCrossingClickHandlers(map);
-  }
-
-  onMapClick = (map) => {
-    this.setState({ selectedCrossingId: -1 });
-  }
-
-  resizeMap = () => {
-    this.state.map.resize();
   }
 
   addGeoLocateControl (map) {
@@ -59,13 +54,31 @@ class CrossingMap extends React.Component {
   addCrossingClickHandlers (map) {
      map.on('click', 'closedCrossings', this.onCrossingClick);
      map.on('click', 'openCrossings', this.onCrossingClick);
+     map.on('click', this.onMapClick);
   }
 
   onCrossingClick = (e) => {
     const crossing = e.features[0];
     this.setState({ selectedCrossingId: crossing.properties.id });
+    this.setState({ selectedCrossingCoordinates: crossing.geometry.coordinates });
     this.setState({ center: crossing.geometry.coordinates });
     this.props.selectCrossing(crossing.properties.id);
+
+    // slightly ugly fix for multiple events
+    this.setState({justClickedACrossing: true});
+  }
+
+  onMapClick = (e) => {
+    // slightly ugly fix for multiple events
+    // if we already clicked a crossing, we don't want to do the click off stuff
+    if(this.state.justClickedACrossing) {
+      this.setState({justClickedACrossing: false});
+      return;
+    }
+
+    this.setState({ selectedCrossingId: -1 });
+    this.setState({ selectedCrossingCoordinates: null });
+    this.props.selectCrossing(null);
   }
 
   render () {
@@ -87,7 +100,6 @@ class CrossingMap extends React.Component {
     return (
       <Map
         onStyleLoad={this.onMapboxStyleLoad}
-        onClick={this.onMapClick}
         style={mapboxstyle}
         containerStyle={{
           height: this.props.mapHeight,

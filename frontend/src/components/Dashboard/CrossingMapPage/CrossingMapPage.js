@@ -38,8 +38,8 @@ class CrossingMapPage extends Component {
   }
 
   selectCrossing = (crossingId) => {
+    if (crossingId) this.showSidebar();
     this.setState({selectedCrossingId: crossingId});
-    this.showSidebar();
   }
 
   render() {
