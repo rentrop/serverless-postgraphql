@@ -34,13 +34,15 @@ class CrossingListItem extends React.Component {
 
   componentWillMount() {
     const { restoreDirtyState, crossing } = this.props;
-    const savedState = restoreDirtyState(crossing.id);
-    if (savedState) {
-      this.setState({ selectedStatus: savedState.selectedStatus });
-      this.setState({ selectedReason: savedState.selectedReason });
-      this.setState({ selectedDuration: savedState.selectedDuration });
-      this.setState({ notes: savedState.notes });
-      this.props.clearMeasurerCache();
+    if(restoreDirtyState) {
+      const savedState = restoreDirtyState(crossing.id);
+      if (savedState) {
+        this.setState({ selectedStatus: savedState.selectedStatus });
+        this.setState({ selectedReason: savedState.selectedReason });
+        this.setState({ selectedDuration: savedState.selectedDuration });
+        this.setState({ notes: savedState.notes });
+        this.props.clearMeasurerCache();
+      }
     }
   }
 
