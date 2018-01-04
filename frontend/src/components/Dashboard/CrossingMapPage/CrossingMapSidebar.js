@@ -30,12 +30,14 @@ class CrossingMapSidebar extends Component {
         <div onClick={() => hideSidebar(true)}> hide sidebar </div>
         { crossingId ?
           (
-            <CrossingListItem
-              key={crossing.id}
-              crossing={crossing}
-              reasons={statusReasons} 
-              durations={statusDurations}
-              currentUser={currentUser} />
+            <div className="CrossingMapSidebar__detail-container">
+              <CrossingListItem
+                key={crossing.id}
+                crossing={crossing}
+                reasons={statusReasons} 
+                durations={statusDurations}
+                currentUser={currentUser} />
+            </div>
           ) :
           (<div>NOPE</div>)
         }

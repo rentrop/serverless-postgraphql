@@ -202,8 +202,10 @@ class CrossingListItem extends React.Component {
         selectedDuration: update.statusDurationId,
         notes: update.notes 
       });
-      clearMeasurerCache(true);
-      refreshList();
+      if(clearMeasurerCache) {
+        clearMeasurerCache(true);
+        refreshList();
+      }
     }).catch((error) => {
       console.log('there was an error sending the query', error);
     });
@@ -216,7 +218,9 @@ class CrossingListItem extends React.Component {
       selectedReason: null,
       selectedDuration: null 
     });
-    this.props.clearMeasurerCache();
+    if(this.props.clearMeasurerCache) {
+      this.props.clearMeasurerCache();  
+    }
   }
   
   cautionClicked = () => {
