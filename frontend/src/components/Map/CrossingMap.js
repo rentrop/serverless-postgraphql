@@ -59,10 +59,10 @@ class CrossingMap extends React.Component {
 
   onCrossingClick = (e) => {
     const crossing = e.features[0];
-    this.setState({ selectedCrossingId: crossing.properties.id });
+    this.setState({ selectedCrossingId: crossing.properties.crossingId });
     this.setState({ selectedCrossingCoordinates: crossing.geometry.coordinates });
     this.setState({ center: crossing.geometry.coordinates });
-    this.props.selectCrossing(crossing.properties.id);
+    this.props.selectCrossing(crossing.properties.crossingId);
 
     // slightly ugly fix for multiple events
     this.setState({justClickedACrossing: true});
@@ -116,7 +116,7 @@ class CrossingMap extends React.Component {
           layerOptions={{"filter":
             [
               "all",
-              ["!=", "id", this.state.selectedCrossingId],
+              ["!=", "crossingId", this.state.selectedCrossingId],
               ["==", "crossingStatus", STATUS_CLOSED]
             ]
           }}
@@ -126,7 +126,7 @@ class CrossingMap extends React.Component {
               return(
                    <Feature key={i}
                             coordinates={JSON.parse(crossing.geojson).coordinates}
-                            properties={{"crossingStatus": crossing.statusUpdateByLatestStatusUpdateId.statusId}}/>
+                            properties={{"crossingStatus": crossing.latestStatusId, "crossingId": crossing.id}}/>
               )}
             )
           }
@@ -138,7 +138,7 @@ class CrossingMap extends React.Component {
           layerOptions={{"filter":
             [
               "all",
-              ["!=", "id", this.state.selectedCrossingId],
+              ["!=", "crossingId", this.state.selectedCrossingId],
               ["==", "crossingStatus", STATUS_OPEN]
             ]
           }}
@@ -148,7 +148,7 @@ class CrossingMap extends React.Component {
               return(
                    <Feature key={i}
                             coordinates={JSON.parse(crossing.geojson).coordinates}
-                            properties={{"crossingStatus": crossing.statusUpdateByLatestStatusUpdateId.statusId}}/>
+                            properties={{"crossingStatus": crossing.latestStatusId, "crossingId": crossing.id}}/>
               )}
             )
           }
@@ -157,14 +157,14 @@ class CrossingMap extends React.Component {
           type="symbol"
           id="selectedCrossing"
           layout={{ 'icon-image': 'marker-15', 'icon-allow-overlap': true }}
-          layerOptions={{"filter": ["==", "id", this.state.selectedCrossingId]}}
+          layerOptions={{"filter": ["==", "crossingId", this.state.selectedCrossingId]}}
           >
           {
             allCrossings.map((crossing, i) => {
               return(
                    <Feature key={i}
                             coordinates={JSON.parse(crossing.geojson).coordinates}
-                            onClick={this.onCrossingClick}/>
+                            properties={{"crossingId": crossing.id}}/>
               )}
             )
           }
@@ -182,9 +182,7 @@ const allCrossings = gql`
         id
         name
         geojson
-        statusUpdateByLatestStatusUpdateId {
-          statusId
-        }
+        latestStatusId
       }
     }
   }

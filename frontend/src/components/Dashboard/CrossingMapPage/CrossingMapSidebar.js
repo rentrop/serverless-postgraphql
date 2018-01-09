@@ -15,7 +15,8 @@ class CrossingMapSidebar extends Component {
 
     const isLoading = (
       !this.props.data ||
-       this.props.data.loading
+       this.props.data.loading ||
+      !this.props.data.crossingById
     );
 
     if ( isLoading ) { return (<div>Loading</div>) };
