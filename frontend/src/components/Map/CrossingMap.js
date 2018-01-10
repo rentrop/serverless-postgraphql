@@ -10,7 +10,8 @@ const Map = ReactMapboxGl({ accessToken: null });
 
 const STATUS_OPEN = 1;
 const STATUS_CLOSED = 2;
-
+const STATUS_CAUTION = 3;
+const STATUS_LONGTERM = 4;
 
 class CrossingMap extends React.Component {
   state = {
@@ -109,6 +110,50 @@ class CrossingMap extends React.Component {
         fitBounds={this.props.viewport}
         center={this.state.center}>
         <ZoomControl />
+        <Layer
+          type="symbol"
+          id="longtermCrossings"
+          layout={{ 'icon-image': 'cross-15', 'icon-allow-overlap': true }}
+          layerOptions={{"filter":
+            [
+              "all",
+              ["!=", "crossingId", this.state.selectedCrossingId],
+              ["==", "crossingStatus", STATUS_LONGTERM]
+            ]
+          }}
+          >
+          {
+            allCrossings.map((crossing, i) => {
+              return(
+                   <Feature key={i}
+                            coordinates={JSON.parse(crossing.geojson).coordinates}
+                            properties={{"crossingStatus": crossing.latestStatusId, "crossingId": crossing.id}}/>
+              )}
+            )
+          }
+        </Layer>
+        <Layer
+          type="symbol"
+          id="cautionCrossings"
+          layout={{ 'icon-image': 'triangle-stroked-15', 'icon-allow-overlap': true }}
+          layerOptions={{"filter":
+            [
+              "all",
+              ["!=", "crossingId", this.state.selectedCrossingId],
+              ["==", "crossingStatus", STATUS_CAUTION]
+            ]
+          }}
+          >
+          {
+            allCrossings.map((crossing, i) => {
+              return(
+                   <Feature key={i}
+                            coordinates={JSON.parse(crossing.geojson).coordinates}
+                            properties={{"crossingStatus": crossing.latestStatusId, "crossingId": crossing.id}}/>
+              )}
+            )
+          }
+        </Layer>
         <Layer
           type="symbol"
           id="closedCrossings"

@@ -31,13 +31,27 @@
     "height": 15,
     "pixelRatio": 1,
     "width": 15,
-    "x": 79,
+    "x": 125,
     "y": 37
   },
   "marker-15": {
     "height": 19,
     "pixelRatio": 1,
     "width": 19,
+    "x": 106,
+    "y": 37
+  },
+  "triangle-stroked-11": {
+    "height": 21,
+    "pixelRatio": 1,
+    "width": 21,
+    "x": 85,
+    "y": 37
+  },
+  "triangle-stroked-15": {
+    "height": 25,
+    "pixelRatio": 1,
+    "width": 25,
     "x": 60,
     "y": 37
   }
