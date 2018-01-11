@@ -30,8 +30,8 @@ class Header extends React.Component {
             <li className={pathname.endsWith('crossings/map') ? 'Header__tab--active' : 'Header__tab'}>
               <Link to="/dashboard/crossings/map">Crossing Map</Link>
             </li>
-            <li className={pathname.endsWith('addcrossing') ? 'Header__tab' : 'Header__tab'}>
-              <Link to="#">Add Crossing</Link>
+            <li className={pathname.endsWith('crossings/add') ? 'Header__tab--active' : 'Header__tab'}>
+              <Link to="/dashboard/crossings/add">Add Crossing</Link>
             </li>
             <li className={pathname.endsWith('users') ? 'Header__tab--active' : 'Header__tab'}>
               <Link to="/dashboard/users">Manage Users</Link>

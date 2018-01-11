@@ -53,7 +53,8 @@ create table floods.crossing (
   description       text not null check (char_length(description) < 800),
   coordinates       geometry not null,
   geojson           text not null check (char_length(geojson) < 100),
-  latest_status_created_at timestamp 
+  latest_status_created_at timestamp,
+  active            boolean default true
 );
 
 comment on table floods.crossing is 'A road crossing that might flood.';
@@ -64,6 +65,7 @@ comment on column floods.crossing.description is 'The description of the crossin
 comment on column floods.crossing.coordinates is 'The GIS coordinates of the crossing created with ST_MakePoint.';
 comment on column floods.crossing.geojson is 'The GeoJSON coordinates of the crossing.';
 comment on column floods.crossing.latest_status_created_at is 'The timestamp of the latest status update for the crossing.';
+comment on column floods.crossing.active is 'If the crossing is active or not.';
 
 -- Add trigrams for indexing
 create extension if not exists "pg_trgm";
@@ -489,6 +491,7 @@ create function floods.new_crossing(
 ) returns floods.crossing as $$
 declare
   floods_crossing floods.crossing;
+  floods_status_update floods.status_update;
 begin
   -- If we aren't a super admin
   if current_setting('jwt.claims.role') != 'floods_super_admin' then
@@ -509,6 +512,23 @@ begin
   update floods.community
     set viewportgeojson = (select ST_AsGeoJSON(ST_Extent(c.coordinates)) from floods.crossing c, floods.community_crossing cc where cc.crossing_id = c.id and cc.community_id = new_crossing.community_id)
     where id = new_crossing.community_id;
+
+  -- Give it an inital status
+  insert into floods.status_update (status_id, creator_id, crossing_id, notes) values
+    (1, current_setting('jwt.claims.user_id')::integer, floods_crossing.id, 'Crossing Added')
+    returning * into floods_status_update;
+
+  update floods.crossing
+    set latest_status_update_id = floods_status_update.id
+    where id = floods_status_update.crossing_id;
+
+  update floods.crossing
+    set latest_status_id = floods_status_update.status_id
+    where id = floods_status_update.crossing_id;
+
+  update floods.crossing
+    set latest_status_created_at = floods_status_update.created_at
+    where id = floods_status_update.crossing_id;
 
   return floods_crossing;
 end;
@@ -546,6 +566,12 @@ begin
       raise exception 'Only administrators can delete crossings';
     end if;
   end if;
+
+  update floods.crossing
+    set latest_status_update_id = null
+    where id = remove_crossing.crossing_id;
+
+  delete from floods.status_update where floods.status_update.crossing_id = remove_crossing.crossing_id;
 
   delete from floods.community_crossing where floods.community_crossing.crossing_id = remove_crossing.crossing_id;
 

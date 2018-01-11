@@ -3970,6 +3970,10 @@ form-data@~2.1.1:
     combined-stream "^1.0.5"
     mime-types "^2.1.12"
 
+formatcoords@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/formatcoords/-/formatcoords-1.1.3.tgz#752f056ab2fe34c1d4ae8a19048ce0c38e16ed03"
+
 forwarded@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.0.tgz#19ef9874c4ae1c297bcf078fde63a09b66a84363"
@@ -7346,6 +7350,10 @@ react-container-query@^0.9.1:
     container-query-toolkit "0.1.1"
     lodash "4.*"
     resize-observer-lite "0.2.2"
+
+react-csv@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-csv/-/react-csv-1.0.8.tgz#92bacdb5edbc52cd2ed50f31bbd1d946e8e32acf"
 
 react-dev-utils@^4.0.1:
   version "4.0.1"

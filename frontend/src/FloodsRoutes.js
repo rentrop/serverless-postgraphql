@@ -7,6 +7,8 @@ import ManageUsers from 'components/Dashboard/ManageUsersPage/ManageUsers';
 import CrossingMapPage from 'components/Dashboard/CrossingMapPage/CrossingMapPage';
 import CrossingListPage from 'components/Dashboard/CrossingListPage/CrossingListPage';
 import CrossingDetailPage from 'components/Dashboard/CrossingDetailPage/CrossingDetailPage';
+import AddCrossingPage from 'components/Dashboard/AddCrossingPage/AddCrossingPage';
+import CrossingStatusHistoryPage from 'components/Dashboard/CrossingStatusHistoryPage/CrossingStatusHistoryPage';
 
 import PublicHomepage from 'PublicHomepage';
 import auth from 'services/gqlAuth';
@@ -45,6 +47,16 @@ class FloodsRoutes extends Component {
           authorized={auth.roleAuthorized(['floods_community_editor','floods_community_admin', 'floods_super_admin'])}
           currentUser={currentUser}
         />
+        <PrivateRoute path="/dashboard/crossings/add" component={AddCrossingPage}
+          authenticated={auth.isAuthenticated()}
+          authorized={auth.roleAuthorized(['floods_community_admin', 'floods_super_admin'])}
+          currentUser={currentUser}
+        />
+        <PrivateRoute path="/dashboard/crossings/history" component={CrossingStatusHistoryPage}
+          authenticated={auth.isAuthenticated()}
+          authorized={auth.roleAuthorized(['floods_community_admin', 'floods_super_admin'])}
+          currentUser={currentUser}
+        />
 
       </div>
     );
@@ -57,7 +69,9 @@ const currentUser = gql`
       id
       communityId
       communityByCommunityId {
+        id
         viewportgeojson
+        name
       }
       role
       firstName
