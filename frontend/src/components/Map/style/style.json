@@ -4,6 +4,19 @@
     "metadata": {
         "mapbox:autocomposite": true,
         "mapbox:type": "template",
+        "mapbox:groups": {
+          "b6371a3f2f5a9932464fa3867530a2e5": {
+            "name": "Transportation",
+            "collapsed": false
+          },
+          "a14c9607bc7954ba1df7205bf660433f": {
+            "name": "Boundaries"
+          },
+          "101da9f13b64a08fa4b6ac1168e89e5f": {
+            "name": "Places",
+            "collapsed": false
+          }
+        },
         "openmaptiles:version": "3.x",
         "openmaptiles:mapbox:owner": "openmaptiles",
         "openmaptiles:mapbox:source:url": "mapbox://openmaptiles.4qljc88t"
@@ -36,11 +49,9 @@
             "id": "landuse_overlay_national_park",
             "type": "fill",
             "source": "openmaptiles",
-            "source-layer": "landuse_overlay",
+            "source-layer": "park",
             "filter": [
-                "==",
-                "class",
-                "national_park"
+            "all"
             ],
             "paint": {
                 "fill-color": "#C7FFC8",
@@ -48,18 +59,40 @@
             }
         },
         {
-            "id": "landuse_park",
-            "type": "fill",
-            "source": "openmaptiles",
-            "source-layer": "landuse",
-            "filter": [
-                "==",
-                "class",
-                "park"
-            ],
-            "paint": {
-                "fill-color": "#C7FFC8"
-            }
+          "id": "landcover_wood",
+          "type": "fill",
+          "metadata": {},
+          "source": "openmaptiles",
+          "source-layer": "landcover",
+          "filter": [
+            "all",
+            [
+              "==",
+              "class",
+              "wood"
+            ]
+          ],
+          "paint": {
+            "fill-color": "#C7FFC8"
+          }
+        },
+        {
+          "id": "landcover_grass",
+          "type": "fill",
+          "metadata": {},
+          "source": "openmaptiles",
+          "source-layer": "landcover",
+          "filter": [
+            "all",
+            [
+              "==",
+              "class",
+              "grass"
+            ]
+          ],
+          "paint": {
+              "fill-color": "#C7FFC8"
+          }
         },
         {
             "id": "waterway",
@@ -119,7 +152,7 @@
             "id": "tunnel_minor",
             "type": "line",
             "source": "openmaptiles",
-            "source-layer": "road",
+            "source-layer": "transportation",
             "filter": [
                 "all",
                 [
@@ -177,7 +210,7 @@
             "id": "tunnel_major",
             "type": "line",
             "source": "openmaptiles",
-            "source-layer": "road",
+            "source-layer": "transportation",
             "filter": [
                 "all",
                 [
@@ -232,7 +265,7 @@
             "id": "road_minor",
             "type": "line",
             "source": "openmaptiles",
-            "source-layer": "road",
+            "source-layer": "transportation",
             "filter": [
                 "all",
                 [
@@ -287,7 +320,7 @@
             "id": "road_major",
             "type": "line",
             "source": "openmaptiles",
-            "source-layer": "road",
+            "source-layer": "transportation",
             "filter": [
                 "all",
                 [
@@ -339,7 +372,7 @@
             "id": "bridge_minor case",
             "type": "line",
             "source": "openmaptiles",
-            "source-layer": "road",
+            "source-layer": "transportation",
             "filter": [
                 "all",
                 [
@@ -406,7 +439,7 @@
             "id": "bridge_major case",
             "type": "line",
             "source": "openmaptiles",
-            "source-layer": "road",
+            "source-layer": "transportation",
             "filter": [
                 "all",
                 [
@@ -470,7 +503,7 @@
             "id": "bridge_minor",
             "type": "line",
             "source": "openmaptiles",
-            "source-layer": "road",
+            "source-layer": "transportation",
             "filter": [
                 "all",
                 [
@@ -524,7 +557,7 @@
             "id": "bridge_major",
             "type": "line",
             "source": "openmaptiles",
-            "source-layer": "road",
+            "source-layer": "transportation",
             "filter": [
                 "all",
                 [
@@ -575,7 +608,7 @@
             "id": "admin_country",
             "type": "line",
             "source": "openmaptiles",
-            "source-layer": "admin",
+            "source-layer": "boundary",
             "filter": [
                 "all",
                 [
@@ -622,7 +655,7 @@
             "id": "poi_label",
             "type": "symbol",
             "source": "openmaptiles",
-            "source-layer": "poi_label",
+            "source-layer": "poi",
             "minzoom": 5,
             "filter": [
                 "all",
@@ -672,7 +705,7 @@
             "id": "road_major_label",
             "type": "symbol",
             "source": "openmaptiles",
-            "source-layer": "road_label",
+            "source-layer": "transportation_name",
             "filter": [
                 "all",
                 [
@@ -724,7 +757,7 @@
             "id": "place_label_other",
             "type": "symbol",
             "source": "openmaptiles",
-            "source-layer": "place_label",
+            "source-layer": "place",
             "minzoom": 8,
             "filter": [
                 "all",
@@ -775,7 +808,7 @@
             "id": "place_label_city",
             "type": "symbol",
             "source": "openmaptiles",
-            "source-layer": "place_label",
+            "source-layer": "place",
             "maxzoom": 16,
             "filter": [
                 "all",
@@ -821,7 +854,7 @@
             "id": "country_label",
             "type": "symbol",
             "source": "openmaptiles",
-            "source-layer": "country_label",
+            "source-layer": "place",
             "maxzoom": 12,
             "filter": [
                 "==",
