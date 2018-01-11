@@ -11,17 +11,32 @@ exports[`Storyshots Crossing Details Small Width 1`] = `
       className="CrossingDetails__details"
     >
       <div>
-        <span
-          className="strong gray--75 mlv1--r"
-        >
-          ID#
-        </span>
-         
-        <span
-          className="italic light gray--50"
-        >
-          1
-        </span>
+        <div>
+          <span
+            className="strong gray--75 mlv1--r"
+          >
+            ID#
+          </span>
+           
+          <span
+            className="italic light gray--50"
+          >
+            1
+          </span>
+        </div>
+        <div>
+          <span
+            className="strong gray--75 mlv1--r"
+          >
+            Address
+          </span>
+           
+          <span
+            className="italic light gray--50"
+          >
+            at city hall
+          </span>
+        </div>
       </div>
       <div>
         <span
@@ -36,31 +51,56 @@ exports[`Storyshots Crossing Details Small Width 1`] = `
           30°16'1.200"N 97°46'4.800"W
         </span>
       </div>
-      <div>
-        <span
-          className="strong gray--75 mlv1--r"
-        >
-          Address
-        </span>
-         
-        <span
-          className="italic light gray--50"
-        >
-          at city hall
-        </span>
+      <div
+        className="mlv2--t"
+      >
+        <div>
+          <div>
+            <span
+              className="gray--75 mlv1--r"
+            >
+              Display Name*
+            </span>
+          </div>
+          <span
+            className="light gray--25 mlv1--r"
+          >
+            Name your crossings by intersections (ie, Onion Creek Blvd. & 5th Ave) or waypoints (5th Ave. Denny's)
+          </span>
+        </div>
+        <input
+          className="input input--lg"
+          id="crossingName"
+          onChange={[Function]}
+          type="text"
+          value="Spurlock Valley"
+        />
       </div>
-      <input
-        className="input input--lg mlv2--t"
-        onChange={[Function]}
-        type="text"
-        value="Spurlock Valley"
-      />
-      <input
-        className="input mlv2--t"
-        onChange={[Function]}
-        type="text"
-        value="E of Intersection w/ Clifford"
-      />
+      <div
+        className="mlv2--t"
+      >
+        <div>
+          <div>
+            <span
+              className="gray--75 mlv1--r"
+            >
+              Additional Description (optional)
+            </span>
+          </div>
+          <span
+            className="light gray--25 mlv1--r"
+          >
+            Does the location need additional clarification? ie, "Southbound lane only"
+          </span>
+        </div>
+        <input
+          className="input"
+          id="crossingDescription"
+          onChange={[Function]}
+          type="text"
+          value="E of Intersection w/ Clifford"
+        />
+      </div>
       <div
         className="CrossingDetails__communities mlv2--t"
       >
@@ -69,10 +109,6 @@ exports[`Storyshots Crossing Details Small Width 1`] = `
         >
           All of Texas.
            
-          <span
-            aria-hidden={true}
-            className="fa fa-times"
-          />
         </button>
       </div>
     </div>

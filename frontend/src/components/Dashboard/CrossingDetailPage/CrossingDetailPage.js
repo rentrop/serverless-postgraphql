@@ -36,7 +36,7 @@ class CrossingDetailPage extends Component {
           <div className="CrossingDetailPage">
             <div className={classnames(params, "CrossingDetails__container mlv2--b")}>
               <CrossingStaticMap crossing={crossing}/>
-              <CrossingDetails crossing={crossing} communities={communities}/>
+              <CrossingDetails crossing={crossing} communities={communities} addMode={false}/>
             </div>
             <CrossingStatusHistory history={history}/>
           </div>
