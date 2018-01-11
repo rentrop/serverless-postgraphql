@@ -3,7 +3,7 @@ import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import AddCrossingMap from 'components/Map/AddCrossingMap';
 import CrossingDetails from 'components/Dashboard/CrossingDetailPage/CrossingDetails';
-import CrossingStatusHistory from 'components/Dashboard/CrossingDetailPage/CrossingStatusHistory';
+import CrossingStatusHistory from 'components/Dashboard/CrossingStatusHistory/CrossingStatusHistory';
 import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';
 import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
