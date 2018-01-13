@@ -109,7 +109,8 @@ export default class InfiniteCrossingList extends React.Component{
               refreshList={() => this.refreshList()}
               crossingQueryVariables={crossingQueryVariables}
               saveDirtyState={(dirtyState) => this.saveDirtyUnmountedListItemState(dirtyState)}
-              restoreDirtyState={(crossingId) => this.restoreDirtyUnmountedListItemState(crossingId)} />
+              restoreDirtyState={(crossingId) => this.restoreDirtyUnmountedListItemState(crossingId)}
+              listOrMap="list" />
           </div>
         )}
       </CellMeasurer>

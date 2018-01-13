@@ -6,6 +6,7 @@ const crossingFragment = gql`
     name
     description
     humanAddress
+    geojson
     communityCrossingsByCrossingId {
       nodes {
         communityByCommunityId {

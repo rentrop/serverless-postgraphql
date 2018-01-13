@@ -3,3 +3,19 @@
 .CrossingMapPage__map-container {
   margin-top: 2%;
 }
+
+.CrossingMapOverlay__close-button {
+  position: absolute;
+  z-index: 1;
+  margin-left: 290px;
+  margin-top: 5px;
+  font-size: 2em;
+}
+
+.CrossingMapOverlay {
+  width: 320px;
+  position: absolute;
+  z-index: 1;
+  margin-left: 10px;
+  margin-top: 50px;
+}
