@@ -1,22 +1,16 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-
 import InfiniteCrossingStatusHistoryList from 'components/Dashboard/CrossingStatusHistory/InfiniteCrossingStatusHistoryList';
-
 import { graphql } from 'react-apollo';
-
-import {InfiniteLoader, AutoSizer, List} from 'react-virtualized';
 import 'react-virtualized/styles.css';
-
 import statusHistoryQuery from 'components/Dashboard/CrossingListPage/queries/statusHistoryQuery';
-
 import {ContainerQuery} from 'react-container-query';
 import classnames from 'classnames';
 
 import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
 
-let infiniteCrossingListRef;
-let crossingQueryVariables;
+// The linter can't figure out how we're using this ref so I'm just gonna...
+// eslint-disable-next-line
+let infiniteStatusHistoryListRef;
 
 const containerQuery = {
   'CrossingStatusHistory--lg' : {
@@ -74,7 +68,7 @@ const configObject = {
 export class InfiniteCrossingStatusHistoryPaginationContainer extends Component {
   
   render() {
-    const {dispatch, loading, allStatusUpdates, loadMoreRows, currentUser, showNames} = this.props;
+    const { loading, allStatusUpdates, loadMoreRows, showNames } = this.props;
      
     if (loading) {
       return (<div>Loading</div>);
@@ -88,7 +82,7 @@ export class InfiniteCrossingStatusHistoryPaginationContainer extends Component 
             <div>
               <InfiniteCrossingStatusHistoryList
                 {...this.props}
-                ref={(ref) => infiniteCrossingListRef = ref} 
+                ref={(ref) => infiniteStatusHistoryListRef = ref} 
                 loadMoreRows={loadMoreRows}
                 allStatusUpdates={allStatusUpdates}
                 showNames={showNames}

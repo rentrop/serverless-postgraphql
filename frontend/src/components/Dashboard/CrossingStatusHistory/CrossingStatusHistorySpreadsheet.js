@@ -3,6 +3,7 @@ import statusHistoryQuery from 'components/Dashboard/CrossingListPage/queries/st
 import React, { Component } from 'react';
 import { get } from 'lodash';
 import { CSVLink } from 'react-csv';
+import FontAwesome from 'react-fontawesome';
 
 class CrossingStatusHistorySpreadsheet extends Component {
   
@@ -42,7 +43,9 @@ class CrossingStatusHistorySpreadsheet extends Component {
     };
     
     return (
-      <CSVLink filename={'statusHistory.csv'} data={this.generateCsv()} >Download spreadsheet</CSVLink>
+      <CSVLink className='CrossingStatusHistory__spreadsheet-link' filename={'statusHistory.csv'} data={this.generateCsv()} >
+        <FontAwesome size="lg" className="CrossingStatusHistory__spreadsheet-download-link" name='download' /><FontAwesome size="lg" name='file-excel-o' />
+      </CSVLink>
     );
   }
 }

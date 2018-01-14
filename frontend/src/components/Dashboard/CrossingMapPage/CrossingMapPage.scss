@@ -4,6 +4,10 @@
   margin-top: 2%;
 }
 
+.CrossingMapPage__map-container--fullscreen {
+  margin-top: 0%;
+}
+
 .CrossingMapOverlay__close-button {
   position: absolute;
   z-index: 1;
@@ -18,4 +22,13 @@
   z-index: 1;
   margin-left: 10px;
   margin-top: 50px;
+}
+
+.CrossingMapPage__fullscreen-toggle {
+  position: absolute;
+  margin-left: 50px;
+  margin-top: 10px;
+  z-index: 1;
+  background: white;
+  padding: 5px;
 }

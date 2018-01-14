@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import mapboxstyle from 'components/Map/mapboxstyle.json';
-import { statusIcons } from 'constants/StatusConstants';
 
 const Map = ReactMapboxGl({ accessToken: null });
 
@@ -23,8 +22,8 @@ class AddCrossingMap extends Component {
         >
           <Layer
             type="symbol"
-            id="openCrossings"
-            layout={{ 'icon-image': 'circle-15', 'icon-allow-overlap': true }}
+            id="newCrossing"
+            layout={{ 'icon-image': 'open', 'icon-allow-overlap': true }}
             >            
              <Feature coordinates={crossingCoordinates} draggable={true} onDragEnd={crossingMoved}/>
           </Layer>

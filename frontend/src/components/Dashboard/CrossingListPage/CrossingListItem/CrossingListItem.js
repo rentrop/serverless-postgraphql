@@ -67,7 +67,7 @@ class CrossingListItem extends React.Component {
     // Get the edge from the current query
     const { crossingQueryVariables } = this.props;
     const data = store.readQuery({ query: crossingsQuery, variables: crossingQueryVariables });
-    const edge = data.searchCrossings.edges.find(edge => edge.node.id == updatedCrossing.id);
+    const edge = data.searchCrossings.edges.find(edge => edge.node.id === updatedCrossing.id);
 
     // Get all the query variable combinations we have cached
     const queryVariables = Object.keys(store.data.ROOT_QUERY)
@@ -96,22 +96,22 @@ class CrossingListItem extends React.Component {
     let data;
     try {
       data = store.readQuery({ query: crossingsQuery, variables: queryVariables });
-      index = data.searchCrossings.edges.findIndex(edge => edge.node.id == updatedCrossing.id);
+      index = data.searchCrossings.edges.findIndex(edge => edge.node.id === updatedCrossing.id);
       
     } catch(err) {
       console.log(err);
     }
 
     // Remove it if it's on a list already
-    if (index != -1) {
+    if (index !== -1) {
       data.searchCrossings.edges.splice(index, 1);
     }
 
     // Add it to a list if appropriate
-    if ((queryVariables.showOpen && updatedCrossing.latestStatusId == statusConstants.OPEN) ||
-        (queryVariables.showCaution && updatedCrossing.latestStatusId == statusConstants.CAUTION) ||
-        (queryVariables.showClosed && updatedCrossing.latestStatusId == statusConstants.CLOSED) ||
-        (queryVariables.showLongterm && updatedCrossing.latestStatusId == statusConstants.LONGTERM)) {
+    if ((queryVariables.showOpen && updatedCrossing.latestStatusId === statusConstants.OPEN) ||
+        (queryVariables.showCaution && updatedCrossing.latestStatusId === statusConstants.CAUTION) ||
+        (queryVariables.showClosed && updatedCrossing.latestStatusId === statusConstants.CLOSED) ||
+        (queryVariables.showLongterm && updatedCrossing.latestStatusId === statusConstants.LONGTERM)) {
       if (queryVariables.orderAsc) {
         data.searchCrossings.edges.splice(-1, 0, edge);
       } else {
@@ -137,18 +137,18 @@ class CrossingListItem extends React.Component {
       let data;  
       try {
         data = store.readQuery({ query: allCrossings, variables: {statusId: statusId} });
-        index = data.allCrossings.nodes.findIndex(node => node.id == updatedCrossing.id);
+        index = data.allCrossings.nodes.findIndex(node => node.id === updatedCrossing.id);
       } catch(err) {
         console.log(err);
       }
 
       // Remove it if it's on a layer already
-      if (index != -1) {
+      if (index !== -1) {
         data.allCrossings.nodes.splice(index, 1);
       }
 
       // Add it to a layer if appropriate
-      if(updatedCrossing.latestStatusId == statusId) {
+      if(updatedCrossing.latestStatusId === statusId) {
         data.allCrossings.nodes.push({
           id: updatedCrossing.id,
           geojson: updatedCrossing.geojson,
@@ -179,7 +179,7 @@ class CrossingListItem extends React.Component {
     };
     const { refreshList, clearMeasurerCache } = this.props;
     const queriesToRefetch = 
-      (this.props.listOrMap == 'map') ? [
+      (this.props.listOrMap === 'map') ? [
         {query: statusCountsQuery},
         {
           query: crossingsQuery,
@@ -253,12 +253,12 @@ class CrossingListItem extends React.Component {
         });
 
         // If we're in a list view, fix the sort order
-        if(this.props.listOrMap == "list") {
+        if(this.props.listOrMap === "list") {
           this.fixSort(store, updatedCrossing);  
         }
 
         // If we're on the map, update the map queries
-        if(this.props.listOrMap == "map") {
+        if(this.props.listOrMap === "map") {
           this.updateMap(store, updatedCrossing);  
         }
 

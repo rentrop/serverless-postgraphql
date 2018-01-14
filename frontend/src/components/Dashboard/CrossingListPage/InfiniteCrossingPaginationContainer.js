@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-
 import InfiniteCrossingList from 'components/Dashboard/CrossingListPage/InfiniteCrossingList';
-
 import { graphql, compose } from 'react-apollo';
-
-import {InfiniteLoader, AutoSizer, List} from 'react-virtualized';
 import 'react-virtualized/styles.css';
-
 import crossingsQuery from 'components/Dashboard/CrossingListPage/queries/crossingsQuery';
 import statusReasonsQuery from 'components/Dashboard/CrossingListPage/queries/statusReasonsQuery';
 import statusDurationsQuery from 'components/Dashboard/CrossingListPage/queries/statusDurationsQuery';
-
 import {ContainerQuery} from 'react-container-query';
 import classnames from 'classnames';
 
+// The linter can't figure out how we're using this ref so I'm just gonna...
+// eslint-disable-next-line
 let infiniteCrossingListRef;
 let crossingQueryVariables;
 
@@ -88,7 +83,7 @@ export class InfiniteCrossingPaginationContainer extends Component {
       this.props.statusDurationsQuery.loading
     );
 
-    const {dispatch, loading, searchCrossings, loadMoreRows, currentUser, sortByUpdatedAsc} = this.props;
+    const { loading, searchCrossings, loadMoreRows, currentUser, sortByUpdatedAsc} = this.props;
      
     if (loading || isLoading) {
       return (<div>Loading</div>);

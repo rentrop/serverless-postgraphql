@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import CrossingListItem from 'components/Dashboard/CrossingListPage/CrossingListItem/CrossingListItem';
 import {InfiniteLoader, AutoSizer, List, WindowScroller, CellMeasurer, CellMeasurerCache} from 'react-virtualized';
 import 'components/Dashboard/CrossingListPage/CrossingList.css';
@@ -20,7 +19,6 @@ export default class InfiniteCrossingList extends React.Component{
       dirtyCrossings: [],
     };
 
-    const {loadMoreRows,crossingsQuery} = this.props;
     this._isRowLoaded = this._isRowLoaded.bind(this);
     this._rowRenderer = this._rowRenderer.bind(this);
     this._noRowsRenderer = this._noRowsRenderer.bind(this);
@@ -84,7 +82,7 @@ export default class InfiniteCrossingList extends React.Component{
       crossing = virtualizingList[index].node
     } else {
       return (
-        <div key={key}>Loading.....</div>       
+        <div style={style} key={key}>Loading.....</div>       
       )
     }
 

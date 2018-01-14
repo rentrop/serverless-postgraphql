@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import { graphql, compose } from 'react-apollo';
-import gql from 'graphql-tag';
-import CrossingStaticMap from 'components/Map/CrossingStaticMap';
-import CrossingDetails from 'components/Dashboard/CrossingDetailPage/CrossingDetails';
+import { graphql } from 'react-apollo';
 import CrossingStatusHistory from 'components/Dashboard/CrossingStatusHistory/CrossingStatusHistory';
 import statusHistoryQuery from 'components/Dashboard/CrossingListPage/queries/statusHistoryQuery';
 import { ContainerQuery } from 'react-container-query';
-import classnames from 'classnames';
 import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
 import 'components/Dashboard/CrossingDetailPage/CrossingDetailPage.css';
 

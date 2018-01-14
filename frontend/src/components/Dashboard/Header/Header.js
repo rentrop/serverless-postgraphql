@@ -25,16 +25,19 @@ class Header extends React.Component {
           <h1 className="Header__h1">{"CTXfloods Dashboard"}</h1>
           <ul className="Header__tabs">
             <li className={pathname.endsWith('crossings/list') ? 'Header__tab--active' : 'Header__tab'}>
-              <Link to="/dashboard/crossings/list">Crossing List</Link>
+              <Link to="/dashboard/crossings/list">List</Link>
             </li>
             <li className={pathname.endsWith('crossings/map') ? 'Header__tab--active' : 'Header__tab'}>
-              <Link to="/dashboard/crossings/map">Crossing Map</Link>
+              <Link to="/dashboard/crossings/map">Map</Link>
             </li>
             <li className={pathname.endsWith('crossings/add') ? 'Header__tab--active' : 'Header__tab'}>
-              <Link to="/dashboard/crossings/add">Add Crossing</Link>
+              <Link to="/dashboard/crossings/add">Add</Link>
+            </li>
+            <li className={pathname.endsWith('crossings/history') ? 'Header__tab--active' : 'Header__tab'}>
+              <Link to="/dashboard/crossings/history">History</Link>
             </li>
             <li className={pathname.endsWith('users') ? 'Header__tab--active' : 'Header__tab'}>
-              <Link to="/dashboard/users">Manage Users</Link>
+              <Link to="/dashboard/users">Users</Link>
             </li>
           </ul>
         </div>

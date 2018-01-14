@@ -14,6 +14,7 @@
 
 .CrossingStatusHistory__section-header {
   @include section-header;
+  @include flexcontainer;
 }
 
 .CrossingStatusHistory__item {
@@ -49,4 +50,20 @@
   &:last-of-type {
     margin-bottom: 0px;
   }
+}
+
+.CrossingStatusHistory__section-header--title {
+  @include flexitem;
+}
+
+.CrossingStatusHistory__spreadsheet-link {
+  @include flexitem;
+  text-align: right;
+  color: white;
+  text-decoration: none;
+  letter-spacing: .6em;
+}
+
+.CrossingStatusHistory__spreadsheet-download-link {
+  color: #7affaf 
 }

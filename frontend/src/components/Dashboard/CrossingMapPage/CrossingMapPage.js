@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import CrossingMap from 'components/Map/CrossingMap';
 import CrossingMapOverlay from 'components/Dashboard/CrossingMapPage/CrossingMapOverlay';
 import 'components/Dashboard/CrossingMapPage/CrossingMapPage.css';
+import Fullscreen from 'react-full-screen';
+import FontAwesome from 'react-fontawesome';
 
 class CrossingMapPage extends Component {
   constructor(props) {
@@ -14,11 +16,10 @@ class CrossingMapPage extends Component {
     ];
 
     this.state = {
-      showSidebar: false,
-      keepSidebarHidden: false,
       viewport: viewport,
       selectedCrossingId: null,
-      selectedCrossingStatus: null
+      selectedCrossingStatus: null,
+      fullscreen: false
     };
   }
 
@@ -27,24 +28,31 @@ class CrossingMapPage extends Component {
     this.setState({selectedCrossingStatus: crossingStatus});
   }
 
+  toggleFull = () => {
+    this.setState({fullscreen: !this.state.fullscreen});
+  }
+
   render() {
     const { viewport, selectedCrossingId, selectedCrossingStatus } = this.state;
     const { currentUser } = this.props;
 
     return (
-      <div>
-        <div className="CrossingMapPage">
-          {selectedCrossingId ? <CrossingMapOverlay crossingId={selectedCrossingId} currentUser={currentUser} selectCrossing={this.selectCrossing}/> : null}
-          <div className="CrossingMapPage__map-container">
-            <CrossingMap 
-              mapHeight="80vh"
-              mapWidth="100%"
-              viewport={viewport}
-              selectedCrossingId={selectedCrossingId}
-              selectedCrossingStatus={selectedCrossingStatus}
-              selectCrossing={this.selectCrossing} />
+      <div>        
+        <Fullscreen enabled={this.state.fullscreen} onChange={fullscreen => this.setState({fullscreen})}>
+          <div className="CrossingMapPage">
+            <FontAwesome name='arrows-alt' size='2x' onClick={this.toggleFull} className='CrossingMapPage__fullscreen-toggle'/>
+            {selectedCrossingId ? <CrossingMapOverlay crossingId={selectedCrossingId} currentUser={currentUser} selectCrossing={this.selectCrossing}/> : null}
+            <div className={this.state.fullscreen ? "CrossingMapPage__map-container--fullscreen" : "CrossingMapPage__map-container"}>
+              <CrossingMap 
+                mapHeight={this.state.fullscreen ? "100vh" : "80vh"}
+                mapWidth="100%"
+                viewport={viewport}
+                selectedCrossingId={selectedCrossingId}
+                selectedCrossingStatus={selectedCrossingStatus}
+                selectCrossing={this.selectCrossing} />
+            </div>
           </div>
-        </div>
+        </Fullscreen>
       </div>
     );
   }

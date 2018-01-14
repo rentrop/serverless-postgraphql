@@ -26,6 +26,7 @@
     "react-csv": "^1.0.8",
     "react-dom": "^16.0.0-rc.3",
     "react-fontawesome": "^1.6.1",
+    "react-full-screen": "^0.2.2",
     "react-mapbox-gl": "^2.5.0",
     "react-router-dom": "^4.1.1",
     "react-test-renderer": "^16.0.0-rc.3",

@@ -1,4 +1,5 @@
 import CrossingStatusHistorySpreadsheet from 'components/Dashboard/CrossingStatusHistory/CrossingStatusHistorySpreadsheet';
+import FontAwesome from 'react-fontawesome';
 import React, { Component } from 'react';
 
 class CrossingStatusHistorySpreadsheetLink extends Component {
@@ -17,7 +18,11 @@ class CrossingStatusHistorySpreadsheetLink extends Component {
     const variables = crossingId ? { crossingId: crossingId } : {};
 
     return (
-      loadSpreadsheet ? <CrossingStatusHistorySpreadsheet variables={variables} /> : <a onClick={this.generateSpreadsheet}>Generate Spreadsheet</a>
+      loadSpreadsheet ? 
+        <CrossingStatusHistorySpreadsheet variables={variables} /> :
+        <a className="CrossingStatusHistory__spreadsheet-link" onClick={this.generateSpreadsheet}>
+          <FontAwesome size="lg" name='file-excel-o' />
+        </a>
     );
   }
 }

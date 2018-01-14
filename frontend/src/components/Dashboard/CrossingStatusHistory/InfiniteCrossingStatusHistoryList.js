@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import CrossingStatusHistoryItem from 'components/Dashboard/CrossingStatusHistory/CrossingStatusHistoryItem';
 import {InfiniteLoader, AutoSizer, List, WindowScroller, CellMeasurer, CellMeasurerCache} from 'react-virtualized';
 import 'components/Dashboard/CrossingListPage/CrossingList.css';
@@ -17,7 +16,6 @@ export default class InfiniteCrossingStatusHistoryList extends React.Component{
   constructor(props) {
     super(props);
 
-    const {loadMoreRows,statusHistoryQuery} = this.props;
     this._isRowLoaded = this._isRowLoaded.bind(this);
     this._rowRenderer = this._rowRenderer.bind(this);
     this._noRowsRenderer = this._noRowsRenderer.bind(this);

@@ -1,19 +1,8 @@
 import React, { Component } from 'react';
 import { get } from 'lodash';
-import classnames from 'classnames';
-import { ContainerQuery } from 'react-container-query';
 import { displayedInputs, statusIcons } from 'constants/StatusConstants';
-import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
 import DateTime from 'components/Dashboard/CrossingListPage/CrossingListItem/DateTime';
-import 'components/Dashboard/CrossingDetailPage/CrossingStatusHistory.css';
-import InfiniteCrossingStatusHistoryPaginationContainer from 'components/Dashboard/CrossingStatusHistory/InfiniteCrossingStatusHistoryPaginationContainer';
-import { CSVLink } from 'react-csv';
-
-const containerQuery = {
-  'CrossingStatusHistory--lg' : {
-    minWidth: LARGE_ITEM_MIN_WIDTH,
-  }
-}
+import 'components/Dashboard/CrossingStatusHistory/CrossingStatusHistory.css';
 
 class CrossingStatusHistoryItem extends Component {
 
@@ -30,8 +19,6 @@ class CrossingStatusHistoryItem extends Component {
     const crossingName = get(update, 'crossingByCrossingId.name');
     const notes = update.notes ? update.notes : '--';
     const shouldDisplay = displayedInputs[statusId];
-
-// key={i}
 
     return (
       <div className="CrossingStatusHistory__item" >
