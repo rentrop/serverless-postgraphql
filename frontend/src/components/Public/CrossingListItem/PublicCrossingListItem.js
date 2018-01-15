@@ -17,7 +17,7 @@ const containerQuery = {
 class PublicCrossingListItem extends React.Component {
 
   render () {
-    const { crossing, reasons, durations } = this.props;
+    const { crossing } = this.props;
     const { createdAt, userByCreatorId } = crossing.statusUpdateByLatestStatusUpdateId;
 
     var show = [];

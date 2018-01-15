@@ -1,6 +1,4 @@
-// This is used to generate the style.json for the map, 
-// for now it's just pointing to localhost for the sprites,
-// but in the future it will be updated to work correctly with AWS hosting
+// This is used to generate the style.json for the map
 
 // Forked from https://github.com/klokantech/gl-style-package-spec/blob/master/task/deploy.js
 // and https://github.com/klokantech/gl-style-package-spec/blob/master/task/transform.js
@@ -24,8 +22,16 @@ var adjustStyle = function(opts) {
     }
   }
 
+  console.log(process.env);
+
   if(opts.needSprite) {
-    style.sprite = "http://localhost:3000/mapboxstyle/sprite";
+    if(process.env.CI) {
+      // We're building to host it, don't use localhost here
+      // This will need to be updated when we get DNS set up.
+      style.sprite = `http://${process.env.S3_BUCKET}.s3-website-us-east-1.amazonaws.com/mapboxstyle/sprite`;
+    } else {
+      style.sprite = "http://localhost:3000/mapboxstyle/sprite";  
+    }
   } else {
     delete style.sprite;
   }
