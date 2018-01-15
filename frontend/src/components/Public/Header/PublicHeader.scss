@@ -1,0 +1,57 @@
+@import "css/mixins/flexbox";
+@import "css/mixins/colors";
+
+.Header {
+  margin-top: 1rem;
+  a {
+    color: $color-black;
+  }
+}
+
+.Header__small-text {
+  @include flexcontainer;
+  font-size: 1rem;
+  color: $color-gray-75;
+  align-items: center;
+}
+
+.Header__main {
+  @include flexcontainer;
+  border-bottom: 2px solid $border-color-light;
+  margin: 1.5rem 0;
+  align-items: center;
+}
+
+.Header__link-icon {
+  height: 1rem;
+}
+
+.Header__h1 {
+  font-size: 3rem;
+  margin: 0 0 0.5rem;
+}
+
+.Header__tabs {
+  @include flexcontainer;
+  @include flexitem--pushed-right;
+  justify-content: flex-end;
+  list-style: none;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+@mixin Header__tab {
+  font-size: 1.4rem;
+  padding: .5rem 1rem;
+  a {
+    text-decoration: none;
+  }
+}
+.Header__tab {
+  @include Header__tab;
+}
+
+.Header__tab--active {
+  @include Header__tab;
+  font-weight: bold;
+}

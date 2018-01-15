@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import PrivateRoute from 'PrivateRoute';
 import Header from 'components/Dashboard/Header/Header';
 import ManageUsers from 'components/Dashboard/ManageUsersPage/ManageUsers';
@@ -10,7 +10,9 @@ import CrossingDetailPage from 'components/Dashboard/CrossingDetailPage/Crossing
 import AddCrossingPage from 'components/Dashboard/AddCrossingPage/AddCrossingPage';
 import CrossingStatusHistoryPage from 'components/Dashboard/CrossingStatusHistoryPage/CrossingStatusHistoryPage';
 
-import PublicHomepage from 'PublicHomepage';
+import PublicHeader from 'components/Public/Header/PublicHeader';
+import PublicMapPage from 'components/Public/MapPage/PublicMapPage';
+
 import auth from 'services/gqlAuth';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -25,8 +27,16 @@ class FloodsRoutes extends Component {
 
     return (
       <div className="PageLayout">
-        <Route path="/" exact component={PublicHomepage} />
-        <Route path="/dashboard" render={(props) => <Header currentUser={currentUser} {...props} />} />
+        <Route path="/" exact render={() => <Redirect to='/map' />} />
+        <Route path="/dashboard" exact render={() => <Redirect to='/dashboard/crossings/list' />} />
+
+        <Switch>
+          <Route path="/dashboard" render={(props) => <Header currentUser={currentUser} {...props} />} />
+          <Route component={PublicHeader} />
+        </Switch>
+
+        <Route path='/map' component={PublicMapPage} />
+
         <PrivateRoute path="/dashboard/users" component={ManageUsers}
           authenticated={auth.isAuthenticated()}
           authorized={auth.roleAuthorized(['floods_community_admin', 'floods_super_admin'])}
