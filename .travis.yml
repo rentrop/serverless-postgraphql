@@ -27,7 +27,7 @@ jobs:
     - if [ -z "$AWS_ACCESS_KEY_ID" ]; then echo "AWS Credentials not set. Skipping
       tests."; travis_terminate 0; else npm install -g serverless; fi
     script: cd backend; yarn; yarn test-on-aws
-    after_script: cd backend; yarn; yarn rebuild-and-deploy
+    after_script: cd backend; yarn; yarn rebuild-and-deploy-with-tons-of-crossings
   - stage: Deploy frontend to s3
     before_script:
     - if [ -z "$AWS_ACCESS_KEY_ID" ]; then echo "AWS Credentials not set. Skipping

@@ -20,6 +20,7 @@
   border-bottom: 2px solid $border-color-light;
   margin: 1.5rem 0;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .Header__link-icon {
@@ -28,16 +29,37 @@
 
 .Header__h1 {
   font-size: 3rem;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.5rem;  
 }
 
-.Header__tabs {
+.Header__h1.smallsize {
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem;  
+}
+
+.Header__h1-container.smallsize {
+  width: 100%;
+  text-align: center;
+  display: flex;
+}
+
+@mixin Header__tabs {
   @include flexcontainer;
   @include flexitem--pushed-right;
   justify-content: flex-end;
   list-style: none;
   text-transform: uppercase;
-  margin: 0;
+  margin: 0;  
+}
+
+.Header__tabs {
+  @include Header__tabs;
+}
+
+.Header__tabs.smallsize {
+  @include Header__tabs;
+  padding-left: 0;
+  justify-content: center; 
 }
 
 @mixin Header__tab {

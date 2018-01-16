@@ -1,11 +1,10 @@
 @import "css/mixins/flexbox";
 
 .CrossingMapPage__map-container {
-  margin-top: 2%;
-}
-
-.CrossingMapPage__map-container--fullscreen {
-  margin-top: 0%;
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
 
 .CrossingMapOverlay__close-button {
@@ -17,11 +16,23 @@
 }
 
 .CrossingMapOverlay {
-  width: 320px;
   position: absolute;
-  z-index: 1;
+  width: 100%;
+}
+
+.CrossingMapOverlay__detail-container {
+  width: 320px;
+  z-index: 11;
   margin-left: 10px;
   margin-top: 50px;
+  position: absolute;
+}
+
+.CrossingMapOverlay__detail-container.smallsize {
+  width: 100%;
+  position: absolute;
+  z-index: 11;
+  margin: 0;
 }
 
 .CrossingMapPage__fullscreen-toggle {
@@ -31,4 +42,48 @@
   z-index: 1;
   background: white;
   padding: 5px;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.RootContainer {
+    height: 100%;
+}
+
+.PageLayout {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Header {
+  flex: none;
+}
+
+.CrossingMapPage__page-container {
+  flex: auto;
+  display: flex;
+  flex-direction: column;  
+}
+
+.fullscreen {
+  flex: auto;
+  display: flex;
+  flex-direction: column; 
+}
+
+.CrossingMapPage {
+  flex: auto;
+  display: flex;
+  flex-direction: column; 
+}
+
+.mapboxgl-map {
+  flex: auto;
 }

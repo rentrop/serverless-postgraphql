@@ -7,7 +7,14 @@ import statusUpdateFragment from 'components/Dashboard/CrossingListPage/queries/
 import statusReasonsQuery from 'components/Dashboard/CrossingListPage/queries/statusReasonsQuery';
 import statusDurationsQuery from 'components/Dashboard/CrossingListPage/queries/statusDurationsQuery';
 import crossingFragment from 'components/Dashboard/CrossingListPage/queries/crossingFragment';
-import 'components/Public/MapPage/PublicMapPage.css';
+import 'components/Dashboard/CrossingMapPage/CrossingMapPage.css';
+import {ContainerQuery} from 'react-container-query';
+import classnames from 'classnames';
+
+const containerQuery = {
+  'fullsize': { minWidth: 380 },
+  'smallsize': { maxWidth: 379 }
+};
 
 class CrossingMapOverlay extends Component {
 
@@ -30,25 +37,28 @@ class CrossingMapOverlay extends Component {
     const statusReasons = this.props.statusReasonsQuery.allStatusReasons.nodes;
     const statusDurations = this.props.statusDurationsQuery.allStatusDurations.nodes;
 
-
     return (
-      <div className="CrossingMapOverlay">
-        { crossingId ?
-          (
-            <div className="CrossingMapOverlay__detail-container">
-              <div className="CrossingMapOverlay__close-button" onClick={() => selectCrossing(null, null)}>
-                <FontAwesome name='times' />
-              </div>
-              <PublicCrossingListItem
-                key={crossing.id}
-                crossing={crossing}
-                reasons={statusReasons} 
-                durations={statusDurations} />
-            </div>
-          ) : null
-        }
-        
-      </div>
+      <ContainerQuery query={containerQuery}>
+        {(params) => (
+          <div className={classnames(params, "CrossingMapOverlay")}>
+            { crossingId ?
+              (
+                <div className="CrossingMapOverlay__detail-container">
+                  <div className="CrossingMapOverlay__close-button" onClick={() => selectCrossing(null, null)}>
+                    <FontAwesome name='times' />
+                  </div>
+                  <PublicCrossingListItem
+                    key={crossing.id}
+                    crossing={crossing}
+                    reasons={statusReasons} 
+                    durations={statusDurations} />
+                </div>
+              ) : null
+            }
+            
+          </div>
+        )}
+      </ContainerQuery>
     );
   }
 }

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { gql, graphql } from 'react-apollo';
 
-class Login extends Component {
+import 'components/Dashboard/LoginPage/LoginPage.css';
+
+class LoginPage extends Component {
   state = {
     redirectToReferrer: false,
     email: '',
@@ -35,18 +37,23 @@ class Login extends Component {
 
   render() {    
     return (
-      <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input type="text"
-                 value={this.state.email}
-                 placeholder="Email"
-                 onChange={this.handleEmailChange.bind(this)}/>
-          <input type="password"
-                 value={this.state.password}
-                 placeholder="Password"
-                 onChange={this.handlePasswordChange.bind(this)}/>
-          <input type="submit"/>
-        </form>
+      <div className="LoginPage">
+        <div className="LoginPage__form-controls">
+          <h1 className="LoginPage__h1"> Log in to the CTXFloods Dashboard </h1>
+          <form className="LoginPage__form" onSubmit={this.handleSubmit.bind(this)}>
+            <input className="LoginPage__input"
+                   type="text"
+                   value={this.state.email}
+                   placeholder="Email"
+                   onChange={this.handleEmailChange.bind(this)}/>
+            <input className="LoginPage__input"
+                   type="password"
+                   value={this.state.password}
+                   placeholder="Password"
+                   onChange={this.handlePasswordChange.bind(this)}/>
+            <input type="submit" className="LoginPage__submit"/>
+          </form>
+        </div>
       </div>
     )
   }
@@ -60,4 +67,4 @@ const logInUser = gql `
   }
 `;
 
-export default graphql(logInUser)(Login);
+export default graphql(logInUser)(LoginPage);

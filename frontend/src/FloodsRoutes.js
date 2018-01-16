@@ -3,6 +3,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import PrivateRoute from 'PrivateRoute';
 import Header from 'components/Dashboard/Header/Header';
 import ManageUsers from 'components/Dashboard/ManageUsersPage/ManageUsers';
+import LoginPage from 'components/Dashboard/LoginPage/LoginPage';
 
 import CrossingMapPage from 'components/Dashboard/CrossingMapPage/CrossingMapPage';
 import CrossingListPage from 'components/Dashboard/CrossingListPage/CrossingListPage';
@@ -31,7 +32,7 @@ class FloodsRoutes extends Component {
         <Route path="/dashboard" exact render={() => <Redirect to='/dashboard/crossings/list' />} />
 
         <Switch>
-          <Route path="/dashboard" render={(props) => <Header currentUser={currentUser} {...props} />} />
+          <Route path="/dashboard" render={(props) => currentUser ? <Header currentUser={currentUser} {...props} /> : <LoginPage />} />
           <Route component={PublicHeader} />
         </Switch>
 

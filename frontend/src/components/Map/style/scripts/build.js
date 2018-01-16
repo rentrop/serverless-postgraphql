@@ -22,8 +22,6 @@ var adjustStyle = function(opts) {
     }
   }
 
-  console.log(process.env);
-
   if(opts.needSprite) {
     if(process.env.CI) {
       // We're building to host it, don't use localhost here

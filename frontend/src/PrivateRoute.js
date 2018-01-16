@@ -14,7 +14,7 @@ class PrivateRoute extends Component {
             <div>Not Authorized</div>
           )
         ) : (
-          <div>Not Authenticated</div>
+          null
         )
       )}/>
     );

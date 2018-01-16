@@ -37,14 +37,14 @@ class CrossingMapPage extends Component {
     const { currentUser } = this.props;
 
     return (
-      <div>        
+      <div className="CrossingMapPage__page-container">        
         <Fullscreen enabled={this.state.fullscreen} onChange={fullscreen => this.setState({fullscreen})}>
           <div className="CrossingMapPage">
             <FontAwesome name='arrows-alt' size='2x' onClick={this.toggleFull} className='CrossingMapPage__fullscreen-toggle'/>
             {selectedCrossingId ? <CrossingMapOverlay crossingId={selectedCrossingId} currentUser={currentUser} selectCrossing={this.selectCrossing}/> : null}
-            <div className={this.state.fullscreen ? "CrossingMapPage__map-container--fullscreen" : "CrossingMapPage__map-container"}>
+            <div className="CrossingMapPage__map-container">
               <CrossingMap 
-                mapHeight={this.state.fullscreen ? "100vh" : "80vh"}
+                mapHeight="100%"
                 mapWidth="100%"
                 viewport={viewport}
                 selectedCrossingId={selectedCrossingId}

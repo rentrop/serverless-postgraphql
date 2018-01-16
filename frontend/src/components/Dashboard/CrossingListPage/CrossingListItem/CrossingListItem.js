@@ -58,7 +58,7 @@ class CrossingListItem extends React.Component {
       notes: this.state.notes
     };
 
-    if (this.isDirty()) {
+    if (this.isDirty() && this.saveDirtyState) {
       saveDirtyState(stateToSave);  
     }
   }

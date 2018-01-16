@@ -1,29 +1,39 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import 'components/Dashboard/Header/Header.css';
-import externalLinkSvg from 'images/external-link.svg';
 import UserControls from 'components/Dashboard/Header/UserControls';
+import {ContainerQuery} from 'react-container-query';
+import classnames from 'classnames';
+
+const containerQuery = {
+  'fullsize': { minWidth: 650 },
+  'smallsize': { maxWidth: 649 }
+};
 
 class Header extends React.Component {
+
+  componentDidMount() {
+    const { pathname } = this.props.location;
+    document.title = `CTXFloods Dashboard - ${pathname}`;
+  }  
 
   render() {
     const { pathname } = this.props.location;
     return (
+      <ContainerQuery query={containerQuery}>
+      {(params) => (
+
       <div className="Header">
         <div className="flexcontainer">
-          <span className="Header__small-text">
-            This site is a work in progress. If you can't find what you need, visit
-            &nbsp;
-            <a href="#whatever">placeholder.gov</a>
-            &nbsp;
-            <img src={externalLinkSvg} alt="External Link" className="Header__link-icon" />.
-          </span>
-          <UserControls {...this.props} />
+          
         </div>
 
         <div className="Header__main">
-          <h1 className="Header__h1">{"CTXfloods Dashboard"}</h1>
-          <ul className="Header__tabs">
+          <div className={classnames(params, "Header__h1-container")}>
+            <h1 className={classnames(params,"Header__h1")}>{"CTXfloods Dashboard"}</h1>
+            <UserControls cqParams={params} {...this.props} />
+          </div>
+          <ul className={classnames(params,"Header__tabs")}>
             <li className={pathname.endsWith('crossings/list') ? 'Header__tab--active' : 'Header__tab'}>
               <Link to="/dashboard/crossings/list">List</Link>
             </li>
@@ -42,6 +52,9 @@ class Header extends React.Component {
           </ul>
         </div>
       </div>
+
+      )}
+      </ContainerQuery>
     );
   }
 

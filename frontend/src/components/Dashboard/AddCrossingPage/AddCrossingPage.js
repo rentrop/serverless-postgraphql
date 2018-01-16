@@ -6,12 +6,15 @@ import classnames from 'classnames';
 import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
 import 'components/Dashboard/CrossingDetailPage/CrossingDetailPage.css';
 import formatcoords from 'formatcoords';
+import MobileDetect from 'mobile-detect';
 
 const containerQuery = {
   'CrossingDetails__container--lg': {
     minWidth: LARGE_ITEM_MIN_WIDTH,
   }
 };
+
+const md = new MobileDetect(window.navigator.userAgent);
 
 class AddCrossingPage extends Component {
   state = {
@@ -24,6 +27,12 @@ class AddCrossingPage extends Component {
   }
 
   render() {
+    if(md.mobile()) {
+      return (
+        <div>Adding crossings is not yet supported on mobile.</div>
+      );
+    }
+
     const crossing = {
       name: null,
       description: null,
