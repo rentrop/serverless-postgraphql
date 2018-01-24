@@ -5,3 +5,5 @@ exports[`As a community admin should fail to delete a crossing from another comm
 exports[`As a community admin should fail to delete a user from another community 1`] = `[Error: GraphQL Error: Cannot query field "removeUser" on type "Mutation". Did you mean "registerUser", "reactivateUser", "deactivateUser", or "removeCrossing"?]`;
 
 exports[`As a community admin should fail to register a new admin 1`] = `[Error: GraphQL Error: Community administrators can only add editors to the communities they administrate]`;
+
+exports[`As a community admin should fail to update the status of a crossing from another community 1`] = `[Error: GraphQL Error: Users can only update the status of crossings within their communities]`;

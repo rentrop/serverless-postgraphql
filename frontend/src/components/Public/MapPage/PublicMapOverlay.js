@@ -40,10 +40,10 @@ class CrossingMapOverlay extends Component {
     return (
       <ContainerQuery query={containerQuery}>
         {(params) => (
-          <div className={classnames(params, "CrossingMapOverlay")}>
+          <div className="CrossingMapOverlay">
             { crossingId ?
               (
-                <div className="CrossingMapOverlay__detail-container">
+                <div className={classnames(params,"CrossingMapOverlay__detail-container")}>
                   <div className="CrossingMapOverlay__close-button" onClick={() => selectCrossing(null, null)}>
                     <FontAwesome name='times' />
                   </div>

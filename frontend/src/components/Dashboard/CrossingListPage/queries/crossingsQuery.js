@@ -8,6 +8,7 @@ const crossingsQuery = gql`
                         $showClosed:Boolean,
                         $showCaution:Boolean,
                         $showLongterm:Boolean,
+                        $communityId:Int,
                         $pageCursor:Cursor,
                         $orderAsc:Boolean) {
     searchCrossings(
@@ -16,6 +17,7 @@ const crossingsQuery = gql`
       showClosed: $showClosed
       showCaution: $showCaution
       showLongterm: $showLongterm
+      communityId: $communityId
       first: 10
       after: $pageCursor
       orderAsc: $orderAsc

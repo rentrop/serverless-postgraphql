@@ -3,10 +3,10 @@
 exports[`When adding a new crossing as admin@community.floods  the new crossing should show up in the DB 1`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 1,
+          "id": 1,
         },
       ],
     },
@@ -22,10 +22,10 @@ Object {
 exports[`When adding a new crossing as editor@community.floods  the new crossing should show up in the DB 1`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 1,
+          "id": 1,
         },
       ],
     },
@@ -41,10 +41,10 @@ Object {
 exports[`When adding a new crossing as superadmin@flo.ods  the new crossing should show up in the DB 1`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 1,
+          "id": 1,
         },
       ],
     },
@@ -60,10 +60,10 @@ Object {
 exports[`When adding a new crossing as superadmin@flo.ods  the new crossing should show up in the DB 2`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 2,
+          "id": 2,
         },
       ],
     },

@@ -49,7 +49,9 @@ class CrossingListPage extends Component {
           toggleSortByUpdated={this.toggleSortByUpdated} 
           sortByUpdatedAsc={this.state.sortByUpdatedAsc}
           searchQuery={this.state.searchQuery}
-          searchQueryUpdated={this.searchQueryUpdated} />
+          formattedSearchQuery={this.state.formattedSearchQuery}
+          searchQueryUpdated={this.searchQueryUpdated}
+          currentUser={currentUser} />
         <InfiniteCrossingPaginationContainer
           {...this.props}
           showOpen={this.state.showOpen}

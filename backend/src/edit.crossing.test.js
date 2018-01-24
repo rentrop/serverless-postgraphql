@@ -72,9 +72,9 @@ function shouldWork(email, password, communityId, coordinates, extra_description
             name
             humanAddress
             description
-            communityCrossingsByCrossingId {
+            communities {
               nodes {
-                communityId
+                id
               }
             }
           }
@@ -115,9 +115,9 @@ function shouldWork(email, password, communityId, coordinates, extra_description
             name
             humanAddress
             description
-            communityCrossingsByCrossingId {
+            communities {
               nodes {
-                communityId
+                id
               }
             }
           }

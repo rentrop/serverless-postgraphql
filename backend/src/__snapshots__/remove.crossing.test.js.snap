@@ -3,10 +3,10 @@
 exports[`When removing a crossing as admin@community.floods  the new crossing should show up in the DB 1`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 1,
+          "id": 1,
         },
       ],
     },
@@ -22,10 +22,10 @@ exports[`When removing a crossing as editor@community.floods  should fail to del
 exports[`When removing a crossing as editor@community.floods  the new crossing should show up in the DB 1`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 1,
+          "id": 1,
         },
       ],
     },
@@ -39,10 +39,10 @@ Object {
 exports[`When removing a crossing as superadmin@flo.ods  the new crossing should show up in the DB 1`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 1,
+          "id": 1,
         },
       ],
     },
@@ -56,10 +56,10 @@ Object {
 exports[`When removing a crossing as superadmin@flo.ods  the new crossing should show up in the DB 2`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 2,
+          "id": 2,
         },
       ],
     },

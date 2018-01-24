@@ -3,10 +3,10 @@
 exports[`When editing a crossing as admin@community.floods  the edited crossing should show up in the DB 1`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 1,
+          "id": 1,
         },
       ],
     },
@@ -20,10 +20,10 @@ Object {
 exports[`When editing a crossing as admin@community.floods  the new crossing should show up in the DB 1`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 1,
+          "id": 1,
         },
       ],
     },
@@ -37,10 +37,10 @@ Object {
 exports[`When editing a crossing as editor@community.floods  the edited crossing should show up in the DB 1`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 1,
+          "id": 1,
         },
       ],
     },
@@ -54,10 +54,10 @@ Object {
 exports[`When editing a crossing as editor@community.floods  the new crossing should show up in the DB 1`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 1,
+          "id": 1,
         },
       ],
     },
@@ -71,10 +71,10 @@ Object {
 exports[`When editing a crossing as superadmin@flo.ods  the edited crossing should show up in the DB 1`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 1,
+          "id": 1,
         },
       ],
     },
@@ -88,10 +88,10 @@ Object {
 exports[`When editing a crossing as superadmin@flo.ods  the new crossing should show up in the DB 1`] = `
 Object {
   "crossingById": Object {
-    "communityCrossingsByCrossingId": Object {
+    "communities": Object {
       "nodes": Array [
         Object {
-          "communityId": 1,
+          "id": 1,
         },
       ],
     },

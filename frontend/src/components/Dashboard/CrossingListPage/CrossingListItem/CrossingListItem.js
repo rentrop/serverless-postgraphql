@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';
+import moment from 'moment';
 import Location from 'components/Dashboard/CrossingListPage/CrossingListItem/Location';
 import DateTime from 'components/Dashboard/CrossingListPage/CrossingListItem/DateTime';
 import StatusToggle from 'components/Dashboard/CrossingListPage/CrossingListItem/StatusToggle';
@@ -76,6 +77,9 @@ class CrossingListItem extends React.Component {
 
     // Update the sorting accordingly
     for(var qv of queryVariables) {
+      // Hacky fix for status counts
+      if(qv.orderAsc === undefined) continue;
+
       const qvars = {
         orderAsc: qv.orderAsc,
         pageCursor: null,
@@ -83,7 +87,8 @@ class CrossingListItem extends React.Component {
         showCaution: qv.showCaution,
         showClosed: qv.showClosed,
         showLongterm: qv.showLongterm,
-        showOpen: qv.showOpen
+        showOpen: qv.showOpen,
+        communityId: qv.communityId
       };
       
       this.doASortFix(store, updatedCrossing, qvars, edge);
@@ -100,6 +105,7 @@ class CrossingListItem extends React.Component {
       
     } catch(err) {
       console.log(err);
+      return;
     }
 
     // Remove it if it's on a list already
@@ -131,39 +137,66 @@ class CrossingListItem extends React.Component {
     // Update the selected crossing
     this.props.selectCrossing(updatedCrossing.id, updatedCrossing.latestStatusId);
 
-    for (var statusId of [1, 2, 3, 4]) {
-      // Get the index of the updated crossing
-      let index = -1;
-      let data;  
-      try {
-        data = store.readQuery({ query: allCrossings, variables: {statusId: statusId} });
-        index = data.allCrossings.nodes.findIndex(node => node.id === updatedCrossing.id);
-      } catch(err) {
-        console.log(err);
-      }
+    // Get all the query variable combinations we have cached
+    const queryVariables = Object.keys(store.data.ROOT_QUERY)
+                            .filter(query => query.includes('searchCrossings'))
+                            .map(q => JSON.parse(q.replace(/(^\w*\()|(\)$)/g, '')));
 
-      // Remove it if it's on a layer already
-      if (index !== -1) {
-        data.allCrossings.nodes.splice(index, 1);
-      }
+    // Update the sorting accordingly
+    for(var qv of queryVariables) {
+      // Hacky fix for status counts
+      if(qv.orderAsc !== undefined) continue;
 
-      // Add it to a layer if appropriate
-      if(updatedCrossing.latestStatusId === statusId) {
-        data.allCrossings.nodes.push({
-          id: updatedCrossing.id,
-          geojson: updatedCrossing.geojson,
-          latestStatusId: updatedCrossing.latestStatusId,
-          __typename: "Crossing"
-        })
-      }
-
-      // write it to the apollo cache
-      store.writeQuery({
-        query: allCrossings,
-        variables: {statusId: statusId},
-        data
-      });
+      const qvars = {
+        search: qv.search,
+        showCaution: qv.showCaution,
+        showClosed: qv.showClosed,
+        showLongterm: qv.showLongterm,
+        showOpen: qv.showOpen,
+        communityId: qv.communityId
+      };
+      
+      this.doAMapFix(store, updatedCrossing, qvars);
     }
+  }
+
+  doAMapFix(store, updatedCrossing, qvars) {
+    // Get the index of the updated crossing
+    let index = -1;
+    let data;  
+    try {
+      data = store.readQuery({ query: allCrossings, variables: qvars });
+      index = data.searchCrossings.nodes.findIndex(node => node.id === updatedCrossing.id);
+    } catch(err) {
+      console.log(err);
+      return;
+    }
+
+    // Remove it if it's on a layer already
+    if (index !== -1) {
+      data.searchCrossings.nodes.splice(index, 1);
+    }
+
+    // Add it to a layer if appropriate
+    if ((qvars.showOpen && updatedCrossing.latestStatusId === statusConstants.OPEN) ||
+        (qvars.showCaution && updatedCrossing.latestStatusId === statusConstants.CAUTION) ||
+        (qvars.showClosed && updatedCrossing.latestStatusId === statusConstants.CLOSED) ||
+        (qvars.showLongterm && updatedCrossing.latestStatusId === statusConstants.LONGTERM)) {
+      data.searchCrossings.nodes.push({
+        id: updatedCrossing.id,
+        geojson: updatedCrossing.geojson,
+        latestStatusId: updatedCrossing.latestStatusId,
+        communityIds: updatedCrossing.communityIds,
+        __typename: "Crossing"
+      })
+    }
+
+    // write it to the apollo cache
+    store.writeQuery({
+      query: allCrossings,
+      variables: qvars,
+      data
+    });
   }
 
   newStatusUpdate = (e) => {
@@ -171,6 +204,7 @@ class CrossingListItem extends React.Component {
       id: Math.round(Math.random() * -1000000),
       crossingId: this.props.crossing.id,
       geojson: this.props.crossing.geojson,
+      communityIds: this.props.crossing.communityIds,
       statusId: this.state.selectedStatus,
       reasonId: this.state.selectedReason,
       durationId: this.state.selectedDuration,
@@ -178,6 +212,7 @@ class CrossingListItem extends React.Component {
       user: this.props.currentUser
     };
     const { refreshList, clearMeasurerCache } = this.props;
+
     const queriesToRefetch = 
       (this.props.listOrMap === 'map') ? [
         {query: statusCountsQuery},
@@ -217,15 +252,16 @@ class CrossingListItem extends React.Component {
               id: updateData.crossingId,
               geojson: updateData.geojson,
               latestStatusId: updateData.statusId,
+              communityIds: updateData.communityIds,
               latestStatusUpdateId: updateData.id,
-              latestStatusCreatedAt: Date.now(),
+              latestStatusCreatedAt: moment().format(),
               statusUpdateByLatestStatusUpdateId: {
                 id: updateData.id,
                 crossingId: updateData.crossingId,
                 statusId: updateData.statusId,
                 statusReasonId: updateData.reasonId,
                 statusDurationId: updateData.durationId,
-                createdAt: Date.now(),
+                createdAt: moment().format(),
                 notes: updateData.notes,
                 userByCreatorId: {
                   firstName: updateData.user.firstName,

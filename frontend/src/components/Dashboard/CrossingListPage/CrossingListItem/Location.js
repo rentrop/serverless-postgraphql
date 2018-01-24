@@ -5,7 +5,7 @@ import 'components/Dashboard/CrossingListPage/CrossingListItem/Location.css';
 class Location extends React.Component {
   render () {
     const { crossing } = this.props;
-    const communityNames = crossing.communityCrossingsByCrossingId.nodes.map(community => community.communityByCommunityId.name);
+    const communityNames = crossing.communities.nodes.map(community => community.name);
     
     return (
       <div className="LocationContainer">

@@ -16,12 +16,10 @@ const crossing = {
       "lastName": "Admin",
     },
   },
-  "communityCrossingsByCrossingId": {
+  "communities": {
     "nodes": [
       {
-        "communityByCommunityId": {
           "name": "All of Texas.",
-        },
       }
     ],
   },

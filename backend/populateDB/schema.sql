@@ -54,7 +54,8 @@ create table floods.crossing (
   coordinates       geometry not null,
   geojson           text not null check (char_length(geojson) < 100),
   latest_status_created_at timestamp,
-  active            boolean default true
+  active            boolean default true,
+  community_ids     integer[]
 );
 
 comment on table floods.crossing is 'A road crossing that might flood.';
@@ -66,24 +67,13 @@ comment on column floods.crossing.coordinates is 'The GIS coordinates of the cro
 comment on column floods.crossing.geojson is 'The GeoJSON coordinates of the crossing.';
 comment on column floods.crossing.latest_status_created_at is 'The timestamp of the latest status update for the crossing.';
 comment on column floods.crossing.active is 'If the crossing is active or not.';
+comment on column floods.crossing.community_ids is 'The ids of the communities the crossing belongs to.';
 
 -- Add trigrams for indexing
 create extension if not exists "pg_trgm";
 
 -- Add search index to crossings table
 create index crossing_search_index on floods.crossing using gin(name gin_trgm_ops, human_address gin_trgm_ops, description gin_trgm_ops);
-
--- Create the Community Crossing relation table
-create table floods.community_crossing (
-  id               serial primary key,
-  community_id     integer not null references floods.community(id),
-  crossing_id      integer not null references floods.crossing(id)
-);
-
-comment on table floods.community_crossing is 'A relation between a crossing and a community.';
-comment on column floods.community_crossing.id is 'The primary key for the community crossing relation.';
-comment on column floods.community_crossing.community_id is 'The id of the community.';
-comment on column floods.community_crossing.crossing_id is 'The id of the crossing.';
 
 -- Create the Status table
 create table floods.status (
@@ -336,7 +326,8 @@ create function floods.search_crossings(
   show_closed boolean default true,
   show_caution boolean default true,
   show_longterm boolean default true,
-  order_asc boolean default false
+  order_asc boolean default false,
+  community_id integer default null
 ) returns setof floods.crossing as $$
   select *
   from floods.crossing
@@ -345,10 +336,13 @@ create function floods.search_crossings(
     (description ilike search) or
     (human_address ilike search)
   ) and (
-  (latest_status_id = 1 and show_open) or
-  (latest_status_id = 2 and show_closed) or
-  (latest_status_id = 3 and show_caution) or
-  (latest_status_id = 4 and show_longterm)
+    (latest_status_id = 1 and show_open) or
+    (latest_status_id = 2 and show_closed) or
+    (latest_status_id = 3 and show_caution) or
+    (latest_status_id = 4 and show_longterm)
+  ) and (
+    (community_id is null) or
+    (array_position(community_ids, community_id) >= 0)
   )
   order by 
     case 
@@ -359,7 +353,7 @@ create function floods.search_crossings(
         then latest_status_created_at end desc;
 $$ language sql stable security definer;
 
-comment on function floods.search_crossings(text, boolean, boolean, boolean, boolean, boolean) is 'Searches users.';
+comment on function floods.search_crossings(text, boolean, boolean, boolean, boolean, boolean, integer) is 'Searches crossings.';
 
 
 -- Create function to search users
@@ -396,6 +390,7 @@ create function floods.new_status_update(
   status_duration_id integer
 ) returns floods.status_update as $$
 declare
+  crossing_to_update floods.crossing;
   floods_status_update floods.status_update;
 begin
   -- TODO: Remove this hacky fix and redefine as strict after
@@ -408,10 +403,12 @@ begin
     raise exception 'Crossing is required';
   end if;
 
+  select * from floods.crossing where id = crossing_id into crossing_to_update;
+
   -- If we aren't a super admin
   if current_setting('jwt.claims.role') != 'floods_super_admin' then
     -- and we're trying to update the status of a crossing in a different community
-    if current_setting('jwt.claims.community_id')::integer != (select community_id from floods.community_crossing where floods.community_crossing.crossing_id = new_status_update.crossing_id) then
+    if (array_position(crossing_to_update.community_ids, current_setting('jwt.claims.community_id')::integer) is null) then
       raise exception 'Users can only update the status of crossings within their communities';
     end if;
   end if;
@@ -505,12 +502,13 @@ begin
     (name, human_address, description, ST_MakePoint(longitude, latitude), ST_AsGeoJSON(ST_MakePoint(longitude, latitude)))
     returning * into floods_crossing;
 
-  insert into floods.community_crossing (community_id, crossing_id) values
-    (community_id, floods_crossing.id);
+  update floods.crossing
+    set community_ids = array_append(community_ids, community_id)
+    where id = floods_crossing.id;
 
   -- Update the community viewport
   update floods.community
-    set viewportgeojson = (select ST_AsGeoJSON(ST_Extent(c.coordinates)) from floods.crossing c, floods.community_crossing cc where cc.crossing_id = c.id and cc.community_id = new_crossing.community_id)
+    set viewportgeojson = (select ST_AsGeoJSON(ST_Extent(c.coordinates)) from floods.crossing c where array_position(c.community_ids, community_id) >= 0)
     where id = new_crossing.community_id;
 
   -- Give it an inital status
@@ -542,23 +540,23 @@ $$ language sql stable security definer;
 
 comment on function floods.crossing_human_coordinates(floods.crossing) is 'Adds a human readable coordinates as a string in the Degrees, Minutes, Seconds representation.';
 
--- Create function to delete crossings
+--- Create function to delete crossings
 create function floods.remove_crossing(
   crossing_id integer
 ) returns floods.crossing as $$
 declare
-  floods_community_crossing floods.community_crossing;
+  crossing_to_delete floods.crossing;
   deleted_crossing floods.crossing;
 begin
-  -- Get the community from the crossing
-  select * from floods.community_crossing where floods.community_crossing.crossing_id = remove_crossing.crossing_id into floods_community_crossing;
+  -- Get the crossing
+  select * from floods.crossing where id = remove_crossing.crossing_id into crossing_to_delete;
 
   -- If we aren't a super admin
   if current_setting('jwt.claims.role') != 'floods_super_admin' then
     -- and we are a community admin
     if current_setting('jwt.claims.role') = 'floods_community_admin' then
       -- and we're trying to delete a user in a different community
-      if current_setting('jwt.claims.community_id')::integer != floods_community_crossing.community_id then
+      if (array_position(crossing_to_delete.community_ids, current_setting('jwt.claims.community_id')::integer) is null) then
         raise exception 'Community administrators can only delete crossings in their community';
       end if;
     -- all other roles shouldn't be here
@@ -573,15 +571,20 @@ begin
 
   delete from floods.status_update where floods.status_update.crossing_id = remove_crossing.crossing_id;
 
-  delete from floods.community_crossing where floods.community_crossing.crossing_id = remove_crossing.crossing_id;
-
-  delete from floods.crossing where id = crossing_id returning * into deleted_crossing;
+  delete from floods.crossing c where c.id = remove_crossing.crossing_id returning * into deleted_crossing;
 
   return deleted_crossing;
 end;
 $$ language plpgsql strict security definer;
 
 comment on function floods.remove_crossing(integer) is 'Removes a crossing from the database.';
+
+create function floods.crossing_communities(crossing floods.crossing) returns setof floods.community as $$
+  select * from floods.community com
+  where array_position(crossing.community_ids, com.id) >= 0;
+$$ language sql stable security definer;
+
+comment on function floods.crossing_communities(floods.crossing) is 'Get all the communities for a crossing.';
 
 -- Create function to edit crossing
 create function floods.edit_crossing(
@@ -880,7 +883,6 @@ grant select on table floods.status_reason to floods_anonymous;
 grant select on table floods.status_duration to floods_anonymous;
 grant select on table floods.status_association to floods_anonymous;
 grant select on table floods.crossing to floods_anonymous;
-grant select on table floods.community_crossing to floods_anonymous;
 
 -- Allow all users to log in and get an auth token
 grant execute on function floods.authenticate(text, text) to floods_anonymous;
@@ -889,7 +891,7 @@ grant execute on function floods.authenticate(text, text) to floods_anonymous;
 grant execute on function floods.search_users(text, integer) to floods_anonymous;
 
 -- Allow all users to search crossings
-grant execute on function floods.search_crossings(text, boolean, boolean, boolean, boolean, boolean) to floods_anonymous;
+grant execute on function floods.search_crossings(text, boolean, boolean, boolean, boolean, boolean, integer) to floods_anonymous;
 
 -- Allow community admins and up to register new users
 -- NOTE: Extra logic around permissions in function
@@ -941,5 +943,6 @@ grant execute on function floods.delete_status_duration(integer) to floods_super
 
 -- Allow all users to get the human coordinates of a crossing
 grant execute on function floods.crossing_human_coordinates(floods.crossing) to floods_anonymous;
+grant execute on function floods.crossing_communities(floods.crossing) to floods_anonymous;
 
 commit;

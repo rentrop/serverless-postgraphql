@@ -20,7 +20,7 @@ class LoginPage extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    var email = this.state.email.trim();
+    var email = this.state.email.trim().toLowerCase();
     var password = this.state.password.trim();
 
     this.props.mutate({

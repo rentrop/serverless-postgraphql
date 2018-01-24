@@ -21,6 +21,7 @@ const newStatusUpdateMutation = gql`
         crossingId
         crossingByCrossingId {
           geojson
+          communityIds
           ...statusUpdateInfo
         }
       }

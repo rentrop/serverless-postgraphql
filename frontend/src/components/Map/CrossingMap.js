@@ -100,18 +100,18 @@ class CrossingMap extends React.Component {
       return (<div>Loading</div>)
     }
 
-    if (this.props.openCrossings.allCrossings == null ||
-        this.props.closedCrossings.allCrossings == null ||
-        this.props.cautionCrossings.allCrossings == null ||
-        this.props.longtermCrossings.allCrossings == null) {
+    if (this.props.openCrossings.searchCrossings == null ||
+        this.props.closedCrossings.searchCrossings == null ||
+        this.props.cautionCrossings.searchCrossings == null ||
+        this.props.longtermCrossings.searchCrossings == null) {
       // TODO: add error logging
       return (<div>Error Loading Crossings</div>);
     }
 
-    const openCrossings = this.props.openCrossings.allCrossings.nodes;
-    const closedCrossings = this.props.closedCrossings.allCrossings.nodes;
-    const cautionCrossings = this.props.cautionCrossings.allCrossings.nodes;
-    const longtermCrossings = this.props.longtermCrossings.allCrossings.nodes;
+    const openCrossings = this.props.openCrossings.searchCrossings.nodes;
+    const closedCrossings = this.props.closedCrossings.searchCrossings.nodes;
+    const cautionCrossings = this.props.cautionCrossings.searchCrossings.nodes;
+    const longtermCrossings = this.props.longtermCrossings.searchCrossings.nodes;
 
     return (
       <Map
@@ -267,34 +267,50 @@ class CrossingMap extends React.Component {
 export default compose(
   graphql(allCrossings, {
     name: 'openCrossings',
-    options: {
+    options: (ownProps) => ({
       variables: {
-        statusId: STATUS_OPEN
+        showOpen: true,
+        showClosed: false,
+        showCaution: false,
+        showLongterm: false,
+        communityId: (ownProps.currentUser && ownProps.currentUser.role !== "floods_super_admin") ? ownProps.currentUser.communityId : null
       }
-    }
+    })
   }),
   graphql(allCrossings, {
     name: 'closedCrossings',
-    options: {
+    options: (ownProps) => ({
       variables: {
-        statusId: STATUS_CLOSED
+        showOpen: false,
+        showClosed: true,
+        showCaution: false,
+        showLongterm: false,
+        communityId: (ownProps.currentUser && ownProps.currentUser.role !== "floods_super_admin") ? ownProps.currentUser.communityId : null
       }
-    }
+    })
   }),
   graphql(allCrossings, {
     name: 'cautionCrossings',
-    options: {
+    options: (ownProps) => ({
       variables: {
-        statusId: STATUS_CAUTION
+        showOpen: false,
+        showClosed: false,
+        showCaution: true,
+        showLongterm: false,
+        communityId: (ownProps.currentUser && ownProps.currentUser.role !== "floods_super_admin") ? ownProps.currentUser.communityId : null
       }
-    }
+    })
   }),
   graphql(allCrossings, {
     name: 'longtermCrossings',
-    options: {
+    options: (ownProps) => ({
       variables: {
-        statusId: STATUS_LONGTERM
+        showOpen: false,
+        showClosed: false,
+        showCaution: false,
+        showLongterm: true,
+        communityId: (ownProps.currentUser && ownProps.currentUser.role !== "floods_super_admin") ? ownProps.currentUser.communityId : null
       }
-    }
+    })
   })
 )(CrossingMap);

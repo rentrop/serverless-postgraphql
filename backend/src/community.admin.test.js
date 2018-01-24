@@ -94,4 +94,17 @@ describe('As a community admin', async () => {
     }
   });
 
+  it('should fail to update the status of a crossing from another community', async () => {
+    try {
+      const response = await lokka.send(`
+        mutation {
+          newStatusUpdate(input:{crossingId:8,statusId:1}) {
+            clientMutationId
+          }
+        }     
+      `);
+    } catch(e) {
+      expect(e).toMatchSnapshot();
+    }
+  });
 });

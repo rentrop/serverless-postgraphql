@@ -1,17 +1,17 @@
 import gql from 'graphql-tag';
 
 const stausCountsQuery = gql`
-  {
-    openCrossings: allCrossings(condition: {latestStatusId: 1}) {
+  query crossingCounts($search: String, $communityId: Int) {
+    openCrossings: searchCrossings(search: $search, showOpen: true, showClosed: false, showCaution: false, showLongterm: false, communityId: $communityId) {
       totalCount
     }
-    closedCrossings: allCrossings(condition: {latestStatusId: 2}) {
+    closedCrossings: searchCrossings(search: $search, showOpen: false, showClosed: true, showCaution: false, showLongterm: false, communityId: $communityId) {
       totalCount
     }
-    cautionCrossings: allCrossings(condition: {latestStatusId: 3}) {
+    cautionCrossings: searchCrossings(search: $search, showOpen: false, showClosed: false, showCaution: true, showLongterm: false, communityId: $communityId) {
       totalCount
     }
-    longtermCrossings: allCrossings(condition: {latestStatusId: 4}) {
+    longtermCrossings: searchCrossings(search: $search, showOpen: false, showClosed: false, showCaution: false, showLongterm: true, communityId: $communityId) {
       totalCount
     }
   }

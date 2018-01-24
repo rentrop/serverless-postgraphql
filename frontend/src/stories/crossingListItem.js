@@ -30,12 +30,10 @@ const openCrossing = {
       "lastName": "Admin",
     },
   },
-  "communityCrossingsByCrossingId": {
+  "communities": {
     "nodes": [
       {
-        "communityByCommunityId": {
           "name": "All of Texas.",
-        },
       }
     ],
   },
@@ -56,12 +54,10 @@ const closedCrossing = {
       "lastName": "Admin",
     },
   },
-  "communityCrossingsByCrossingId": {
+  "communities": {
     "nodes": [
       {
-        "communityByCommunityId": {
           "name": "All of Texas.",
-        },
       }
     ],
   },
@@ -82,12 +78,10 @@ const cautionCrossing = {
       "lastName": "Admin",
     },
   },
-  "communityCrossingsByCrossingId": {
+  "communities": {
     "nodes": [
       {
-        "communityByCommunityId": {
           "name": "All of Texas.",
-        },
       }
     ],
   },
@@ -109,12 +103,10 @@ const longtermCrossing = {
       "lastName": "Admin",
     },
   },
-  "communityCrossingsByCrossingId": {
+  "communities": {
     "nodes": [
       {
-        "communityByCommunityId": {
           "name": "All of Texas.",
-        },
       }
     ],
   },

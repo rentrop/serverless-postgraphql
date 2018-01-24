@@ -26,7 +26,7 @@ export default class InfiniteCrossingList extends React.Component{
     this.refreshList = this.refreshList.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate() {
     if(listRef) {
       this.refreshList();
       this.clearMeasurerCache();
@@ -82,7 +82,7 @@ export default class InfiniteCrossingList extends React.Component{
       crossing = virtualizingList[index].node
     } else {
       return (
-        <div style={style} key={key}>Loading.....</div>       
+        <div style={style} key={key}/>       
       )
     }
 
@@ -124,7 +124,7 @@ export default class InfiniteCrossingList extends React.Component{
     const {loadMoreRows,crossingsQuery} = this.props;
 
     if(!crossingsQuery) {
-      return (<div>Loading</div>);
+      return '';
     }
 
     virtualizingList = crossingsQuery.edges;

@@ -10,9 +10,10 @@ class CrossingMapPage extends Component {
     super(props);
 
     const envelope = JSON.parse(this.props.currentUser.communityByCommunityId.viewportgeojson);
+    // I actually like doing the padding here because it keeps the data/view separation
     const viewport = [
-      [Math.min(...envelope.coordinates[0].map(arr => arr[0])), Math.min(...envelope.coordinates[0].map(arr => arr[1]))],
-      [Math.max(...envelope.coordinates[0].map(arr => arr[0])), Math.max(...envelope.coordinates[0].map(arr => arr[1]))]
+      [Math.min(...envelope.coordinates[0].map(arr => arr[0])) - 0.1, Math.min(...envelope.coordinates[0].map(arr => arr[1])) - 0.1],
+      [Math.max(...envelope.coordinates[0].map(arr => arr[0])) + 0.1, Math.max(...envelope.coordinates[0].map(arr => arr[1])) + 0.1]
     ];
 
     this.state = {
@@ -49,7 +50,8 @@ class CrossingMapPage extends Component {
                 viewport={viewport}
                 selectedCrossingId={selectedCrossingId}
                 selectedCrossingStatus={selectedCrossingStatus}
-                selectCrossing={this.selectCrossing} />
+                selectCrossing={this.selectCrossing}
+                currentUser={currentUser} />
             </div>
           </div>
         </Fullscreen>

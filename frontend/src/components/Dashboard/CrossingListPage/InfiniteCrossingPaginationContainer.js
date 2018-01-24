@@ -27,6 +27,7 @@ const configObject = {
       showClosed: props.showClosed,
       showCaution: props.showCaution,
       showLongterm: props.showLongterm,
+      communityId: props.currentUser.role !== "floods_super_admin" ? props.currentUser.communityId : null,
       orderAsc: props.sortByUpdatedAsc,
       pageCursor: null
     };
@@ -80,13 +81,14 @@ export class InfiniteCrossingPaginationContainer extends Component {
      !this.props.statusReasonsQuery ||
       this.props.statusReasonsQuery.loading ||
      !this.props.statusDurationsQuery ||
-      this.props.statusDurationsQuery.loading
+      this.props.statusDurationsQuery.loading ||
+      this.props.loading
     );
 
-    const { loading, searchCrossings, loadMoreRows, currentUser, sortByUpdatedAsc} = this.props;
+    const { searchCrossings, loadMoreRows, currentUser, sortByUpdatedAsc} = this.props;
      
-    if (loading || isLoading) {
-      return (<div>Loading</div>);
+    if (isLoading) {
+      return '';
     };
     
     const statusReasons = this.props.statusReasonsQuery.allStatusReasons.nodes;

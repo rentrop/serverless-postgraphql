@@ -87,11 +87,6 @@ async function shouldWork(email="", password="", extra_description) {
               id
             }
           }
-          allCommunityCrossings {
-            nodes {
-              id
-            }
-          }
           allCrossings {
             nodes {
               statusUpdateByLatestStatusUpdateId {
