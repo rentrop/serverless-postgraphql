@@ -6,7 +6,7 @@ import moment from 'moment';
 import Location from 'components/Dashboard/CrossingListPage/CrossingListItem/Location';
 import DateTime from 'components/Dashboard/CrossingListPage/CrossingListItem/DateTime';
 import StatusToggle from 'components/Dashboard/CrossingListPage/CrossingListItem/StatusToggle';
-import Dropdown from 'components/Dashboard/CrossingListPage/CrossingListItem/Dropdown';
+import Dropdown from 'components/Dashboard/Dropdown/Dropdown';
 import newStatusUpdateMutation from 'components/Dashboard/CrossingListPage/queries/newStatusUpdateMutation';
 import crossingsQuery from 'components/Dashboard/CrossingListPage/queries/crossingsQuery';
 import allCrossings from 'components/Map/queries/allCrossingsQuery';

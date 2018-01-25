@@ -580,6 +580,49 @@ $$ language plpgsql strict security definer;
 
 comment on function floods.remove_crossing(integer) is 'Removes a crossing from the database.';
 
+--- Create function to add crossing to community
+create function floods.add_crossing_to_community(
+  crossing_id integer,
+  community_id integer
+) returns floods.crossing as $$
+declare
+  crossing_to_update floods.crossing;
+  updated_crossing floods.crossing;
+begin
+  -- Get the crossing
+  select * from floods.crossing where id = add_crossing_to_community.crossing_id into crossing_to_update;
+
+  -- If we aren't a super admin
+  if current_setting('jwt.claims.role') != 'floods_super_admin' then
+    -- and we are a community admin
+    if current_setting('jwt.claims.role') = 'floods_community_admin' then
+      -- and we're trying to delete a user in a different community
+      if (array_position(crossing_to_update.community_ids, current_setting('jwt.claims.community_id')::integer) is null) then
+        raise exception 'Community administrators can only add crossings in their community to other communites';
+      end if;
+    -- all other roles shouldn't be here
+    else
+      raise exception 'Only administrators can add crossings to communities';
+    end if;
+  end if;
+
+  if (array_position(crossing_to_update.community_ids, add_crossing_to_community.community_id) >= 0) then
+    raise exception 'The crossing is already in that community';
+  end if;
+
+  update floods.crossing
+    set community_ids = array_append(crossing_to_update.community_ids, add_crossing_to_community.community_id)
+    where id = add_crossing_to_community.crossing_id;
+
+  -- Get the crossing
+  select * from floods.crossing where id = add_crossing_to_community.crossing_id into updated_crossing;
+
+  return updated_crossing;
+end;
+$$ language plpgsql strict security definer;
+
+comment on function floods.remove_crossing(integer) is 'Removes a crossing from the database.';
+
 create function floods.crossing_communities(crossing floods.crossing) returns setof floods.community as $$
   select * from floods.community com
   where array_position(crossing.community_ids, com.id) >= 0;
@@ -921,6 +964,11 @@ grant execute on function floods.edit_crossing(integer, text, text) to floods_co
 -- Allow community admins and up to remove crossings
 -- NOTE: Extra logic around permissions in function
 grant execute on function floods.remove_crossing(integer) to floods_community_admin;
+
+-- Allow community admins and up to add crossings to communities
+-- NOTE: Extra logic around permissions in function
+grant execute on function floods.add_crossing_to_community(integer, integer) to floods_community_admin;
+
 
 -- Allow super admins to create/edit/delete communities
 grant execute on function floods.new_community(text) to floods_super_admin;

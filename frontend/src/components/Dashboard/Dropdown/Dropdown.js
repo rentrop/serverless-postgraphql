@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'components/Dashboard/CrossingListPage/CrossingListItem/Dropdown.css'
+import 'components/Dashboard/Dropdown/Dropdown.css'
 
 class Dropdown extends Component {
 

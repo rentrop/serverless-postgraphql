@@ -1,6 +1,7 @@
 import gql from 'graphql-tag';
 import updateCrossingFragment from 'components/Dashboard/CrossingListPage/queries/updateCrossingFragment';
 import deleteCrossingFragment from 'components/Dashboard/CrossingListPage/queries/deleteCrossingFragment';
+import addCrossingToCommunityFragment from 'components/Dashboard/CrossingListPage/queries/addCrossingToCommunityFragment';
 
 // Save the fragment into a variable
 const crossingFragment = gql`
@@ -11,17 +12,12 @@ const crossingFragment = gql`
     description
     humanAddress
     geojson
-    communityIds
+    ...addCrossingToCommunityInfo
     ...deleteCrossingInfo
-    communities {
-      nodes {
-        id
-        name
-      }
-    }
   }
   ${updateCrossingFragment}
   ${deleteCrossingFragment}
+  ${addCrossingToCommunityFragment}
 `;
 
 export default crossingFragment;

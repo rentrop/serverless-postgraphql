@@ -3,18 +3,29 @@ import gql from 'graphql-tag';
 import { graphql, compose } from 'react-apollo';
 import updateCrossingFragment from 'components/Dashboard/CrossingListPage/queries/updateCrossingFragment';
 import deleteCrossingFragment from 'components/Dashboard/CrossingListPage/queries/deleteCrossingFragment';
+import addCrossingToCommunityFragment from 'components/Dashboard/CrossingListPage/queries/addCrossingToCommunityFragment';
 import classnames from 'classnames';
 import 'components/Dashboard/CrossingDetailPage/CrossingDetails.css';
 import { Redirect } from 'react-router';
+import Dropdown from 'components/Dashboard/Dropdown/Dropdown';
+import _ from 'lodash';
 
 class CrossingDetails extends Component {
   constructor(props) {
     super(props);
+
+    const { crossing, allCommunities, crossingCommunities } = props;
+    var dropdownCommunities = allCommunities.slice();
+    _.pullAllBy(dropdownCommunities, crossingCommunities, 'id');
+
     this.state = {
-      name: props.crossing.name,
-      description: props.crossing.description,
+      name: crossing.name,
+      description: crossing.description,
       delete: false,
-      redirectToNewCrossingId: null
+      addCommunity: false,
+      selectedCommunityId: dropdownCommunities.length > 0 ? dropdownCommunities[0].id : null,
+      redirectToNewCrossingId: null,
+      dropdownCommunities: dropdownCommunities
     };
   }
 
@@ -85,6 +96,36 @@ class CrossingDetails extends Component {
     });
   }
 
+  addCommunity = (e) => {
+
+    this.props.addCrossingToCommunityMutation({
+      variables: {
+        crossingId: this.props.crossing.id,
+        communityId: this.state.selectedCommunityId
+      },
+      update: (store, {data: {addCrossingToCommunity}}) => {
+        const updatedCrossing = addCrossingToCommunity.crossing;        
+        store.writeFragment({
+          id: 'Crossing:' + updatedCrossing.id,
+          fragment: addCrossingToCommunityFragment,
+          data: updatedCrossing
+        });
+      },  
+    })
+    .then(({ data }) => {
+      console.log('success', data);
+
+      const { allCommunities, crossingCommunities } = this.props;
+      var dropdownCommunities = allCommunities.slice();
+      _.pullAllBy(dropdownCommunities, crossingCommunities, 'id');
+
+      this.setState({addCommunity: false, dropdownCommunities: dropdownCommunities});
+    }).catch((error) => {
+      console.log('there was an error sending the query', error);
+    });
+
+  }
+
   nameChanged = (e) => { 
     this.setState({ 
       name: e.target.value
@@ -114,6 +155,17 @@ class CrossingDetails extends Component {
     this.setState({delete: false});
   }
 
+  addCommunityClicked = () => {
+    this.setState({addCommunity: true});
+  }
+  addCommunityCancelClicked = () => {
+    this.setState({addCommunity: false});
+  }
+
+  selectedCommunityChanged = (e) => {
+    this.setState({selectedCommunityId: e.target.value});
+  }
+
   isDirty() {
     return (
       this.props.crossing.name !== this.state.name ||
@@ -127,8 +179,8 @@ class CrossingDetails extends Component {
       return <Redirect push to={`/dashboard/crossing/${this.state.redirectToNewCrossingId}`} />
     }
 
-    const { crossing, communities, addMode } = this.props;
-    const { name, humanAddress, description } = this.state;
+    const { crossing, crossingCommunities, addMode } = this.props;
+    const { dropdownCommunities, name, humanAddress, description } = this.state;
 
     return (
 
@@ -177,7 +229,7 @@ class CrossingDetails extends Component {
 
           <div className="CrossingDetails__communities mlv2--t">
               {
-                communities.map((community) => {
+                crossingCommunities.map((community) => {
                   return (
                     <button 
                       key={community.id} 
@@ -186,8 +238,35 @@ class CrossingDetails extends Component {
                   );
                 })
               }
+              { !this.state.addCommunity && dropdownCommunities.length > 0 && (
+                <button
+                  className="button button--secondary mlv2--r mlv2--b"
+                  onClick={this.addCommunityClicked}
+                  >Add Community +</button>
+              )}
           </div>
         </div>
+
+        { this.state.addCommunity && (
+          <div>
+            <Dropdown
+              options={dropdownCommunities}
+              selected={this.state.selectedCommunityId}
+              onChange={this.selectedCommunityChanged} />
+
+            <div className="CrossingDetails__addCommunityButtons flexcontainer">
+              <button 
+                className="flexitem button button--cancel mlv2--r"
+                onClick={this.addCommunityCancelClicked}
+              >Cancel</button>
+              <button 
+                className="flexitem button button--confirm mlv2--l" 
+                onClick={this.addCommunity}
+              >Save</button>
+            </div>
+          </div>
+          )
+        }
 
         {!addMode ? (
           this.isDirty() ? (
@@ -278,6 +357,24 @@ const deleteCrossingMutation = gql`
   }
 `;
 
+const addCrossingToCommunityMutation = gql`
+  mutation addCrossingToCommunityMutation($crossingId:Int!, $communityId:Int!) {
+    addCrossingToCommunity(input:{crossingId:$crossingId, communityId:$communityId}) {
+      crossing {
+        id
+        communityIds
+        communities {
+          nodes {
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+`;
+
+
 export default compose(
   graphql(updateCrossingMutation, {
     name: 'updateCrossingMutation'
@@ -287,5 +384,8 @@ export default compose(
   }),
   graphql(deleteCrossingMutation, {
     name: 'deleteCrossingMutation'
+  }),
+  graphql(addCrossingToCommunityMutation, {
+    name: 'addCrossingToCommunityMutation'
   })
 )(CrossingDetails);
