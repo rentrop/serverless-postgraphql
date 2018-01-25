@@ -32,6 +32,7 @@ class CrossingDetailPage extends Component {
     const allCommunities = this.props.AllCommunitiesQuery.allCommunities.nodes;
     const crossingCommunities = crossing.communities.nodes;
     const history = this.props.StatusHistoryQuery.allStatusUpdates.nodes;
+    const { currentUser } = this.props;
 
     return (
       <ContainerQuery query={containerQuery}>
@@ -39,7 +40,7 @@ class CrossingDetailPage extends Component {
           <div className="CrossingDetailPage">
             <div className={classnames(params, "CrossingDetails__container mlv2--b")}>
               <CrossingStaticMap crossing={crossing}/>
-              <CrossingDetails crossing={crossing} crossingCommunities={crossingCommunities} allCommunities={allCommunities} addMode={false}/>
+              <CrossingDetails crossing={crossing} crossingCommunities={crossingCommunities} allCommunities={allCommunities} currentUser={currentUser} addMode={false}/>
             </div>
             <CrossingStatusHistory crossingId={crossing.id} history={history}/>
           </div>

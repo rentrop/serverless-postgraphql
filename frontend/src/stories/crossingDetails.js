@@ -23,11 +23,15 @@ const crossing = {
   }
 };
 
+const user = {
+  "role": "floods_community_admin"
+}
+
 const communities = crossing.communityCrossingsByCrossingId.nodes.map(n => n.communityByCommunityId);
 
 storiesOf('Crossing Details', module)
   .add('Small Width', () => 
     <div className="storybook--sm">
-      <CrossingDetails crossing={crossing} allCommunities={communities} crossingCommunities={communities}/>
+      <CrossingDetails crossing={crossing} allCommunities={communities} crossingCommunities={communities} currentUser={user}/>
     </div>
   );

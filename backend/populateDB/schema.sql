@@ -621,7 +621,36 @@ begin
 end;
 $$ language plpgsql strict security definer;
 
-comment on function floods.remove_crossing(integer) is 'Removes a crossing from the database.';
+comment on function floods.add_crossing_to_community(integer, integer) is 'Adds a crossing to a community.';
+
+--- Create function to remove crossings from communities
+create function floods.remove_crossing_from_community(
+  crossing_id integer,
+  community_id integer
+) returns floods.crossing as $$
+declare
+  crossing_to_update floods.crossing;
+  updated_crossing floods.crossing;
+begin
+  -- Get the crossing
+  select * from floods.crossing where id = remove_crossing_from_community.crossing_id into crossing_to_update;
+
+  if (array_length(crossing_to_update.community_ids, 1) <= 1) then
+    raise exception 'Crossings must belong to at least one community';
+  end if;
+
+  update floods.crossing
+    set community_ids = array_remove(crossing_to_update.community_ids, remove_crossing_from_community.community_id)
+    where id = remove_crossing_from_community.crossing_id;
+
+  -- Get the crossing
+  select * from floods.crossing where id = remove_crossing_from_community.crossing_id into updated_crossing;
+
+  return updated_crossing;
+end;
+$$ language plpgsql strict security definer;
+
+comment on function floods.remove_crossing_from_community(integer, integer) is 'Removes a crossing from a community.';
 
 create function floods.crossing_communities(crossing floods.crossing) returns setof floods.community as $$
   select * from floods.community com
@@ -969,6 +998,7 @@ grant execute on function floods.remove_crossing(integer) to floods_community_ad
 -- NOTE: Extra logic around permissions in function
 grant execute on function floods.add_crossing_to_community(integer, integer) to floods_community_admin;
 
+grant execute on function floods.remove_crossing_from_community(integer, integer) to floods_super_admin;
 
 -- Allow super admins to create/edit/delete communities
 grant execute on function floods.new_community(text) to floods_super_admin;
