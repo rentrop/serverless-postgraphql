@@ -57,6 +57,7 @@ const CrossingByIdQuery = gql`
       humanCoordinates
       humanAddress
       description
+      active
       statusByLatestStatusId {
         id
         name

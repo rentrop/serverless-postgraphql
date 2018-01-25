@@ -10,6 +10,7 @@ const crossing = {
   "geojson":"{\"type\":\"Point\",\"coordinates\":[-97.768,30.267]}",
   "humanAddress":"at city hall",
   "humanCoordinates":"30°16'1.200\"N 97°46'4.800\"W",
+  "active":true,
   "communityCrossingsByCrossingId": {
     "nodes": [
       {

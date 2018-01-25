@@ -33,7 +33,6 @@ const crossingsQuery = gql`
       edges {
         cursor
         node {
-          id
           ...crossingInfo
           ...statusUpdateInfo  
         }

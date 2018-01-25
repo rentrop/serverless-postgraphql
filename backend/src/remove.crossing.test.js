@@ -104,11 +104,12 @@ function shouldWork(email, password, communityId, coordinates, extra_description
       expect(response.removeCrossing.crossing.id).toEqual(newCrossingId);
     });
 
-    it('the new crossing should no longer show up in the DB', async () => {
+    it('the new crossing should no longer show up as active', async () => {
       const response = await lokka.send(`
         query ($id: Int!) {
           crossingById(id: $id) {
             id
+            active
           }
         }
       `,
@@ -116,7 +117,7 @@ function shouldWork(email, password, communityId, coordinates, extra_description
         id: newCrossingId
       });
 
-      expect(response.crossingById).toBeNull();
+      expect(response.crossingById.active).toBeFalsy();
     });
   });
 }

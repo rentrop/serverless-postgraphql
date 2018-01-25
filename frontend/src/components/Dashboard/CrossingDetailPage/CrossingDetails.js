@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql, compose } from 'react-apollo';
-import crossingFragment from 'components/Dashboard/CrossingListPage/queries/crossingFragment';
+import updateCrossingFragment from 'components/Dashboard/CrossingListPage/queries/updateCrossingFragment';
+import deleteCrossingFragment from 'components/Dashboard/CrossingListPage/queries/deleteCrossingFragment';
 import classnames from 'classnames';
 import 'components/Dashboard/CrossingDetailPage/CrossingDetails.css';
 import { Redirect } from 'react-router';
@@ -29,7 +30,7 @@ class CrossingDetails extends Component {
         const updatedCrossing = editCrossing.crossing;        
         store.writeFragment({
           id: 'Crossing:' + updatedCrossing.id,
-          fragment: crossingFragment,
+          fragment: updateCrossingFragment,
           data: updatedCrossing
         });
       },  
@@ -63,8 +64,25 @@ class CrossingDetails extends Component {
   }
 
   deleteCrossing = (e) => {
-//TODO: add delete functionality    
-    console.log('DELETE CROSSING');
+    this.props.deleteCrossingMutation({
+      variables: {
+        crossingId: this.props.crossing.id
+      },
+      update: (store, {data: {removeCrossing}}) => {
+        const deletedCrossing = removeCrossing.crossing;
+        store.writeFragment({
+          id: 'Crossing:' + deletedCrossing.id,
+          fragment: deleteCrossingFragment,
+          data: deletedCrossing
+        });
+      },  
+    })
+    .then(({ data }) => {
+      console.log('success', data);
+      this.setState({delete: false});
+    }).catch((error) => {
+      console.log('there was an error sending the query', error);
+    });
   }
 
   nameChanged = (e) => { 
@@ -119,6 +137,7 @@ class CrossingDetails extends Component {
         <div className="CrossingDetails__details">
           { !addMode ? (
               <div>
+                { !crossing.active ? (<div><span className="strong gray--75 mlv1--r">INACTIVE</span></div>) : null }
                 <div><span className="strong gray--75 mlv1--r">ID#</span> <span className="italic light gray--50">{crossing.id}</span></div>
                 <div><span className="strong gray--75 mlv1--r">Address</span> <span className="italic light gray--50">{crossing.humanAddress}</span></div>
               </div>
@@ -183,12 +202,13 @@ class CrossingDetails extends Component {
               >Save</button>
             </div>
           ) : (
+            crossing.active ? (
             <div className="CrossingDetails__buttons flexcontainer">
               <button 
                 className="button button--plaintext color-highlight"
                 onClick={this.deleteClicked}
               >Delete Crossing</button>
-            </div>
+            </div> ) : null
           )
         ) : (
           <div className="CrossingDetails__buttons flexcontainer">
@@ -247,11 +267,25 @@ const addCrossingMutation = gql`
   }
 `;
 
+const deleteCrossingMutation = gql`
+  mutation deleteCrossingMutation($crossingId: Int!) {
+    removeCrossing(input: {crossingId: $crossingId}) {
+      crossing {
+        id
+        active
+      }
+    }
+  }
+`;
+
 export default compose(
   graphql(updateCrossingMutation, {
     name: 'updateCrossingMutation'
   }),
   graphql(addCrossingMutation, {
     name: 'addCrossingMutation'
+  }),
+  graphql(deleteCrossingMutation, {
+    name: 'deleteCrossingMutation'
   })
 )(CrossingDetails);
