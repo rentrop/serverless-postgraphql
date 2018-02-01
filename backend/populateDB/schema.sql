@@ -557,7 +557,12 @@ begin
   if current_setting('jwt.claims.role') != 'floods_super_admin' then
     -- and we are a community admin
     if current_setting('jwt.claims.role') = 'floods_community_admin' then
-      -- and we're trying to delete a user in a different community
+      -- and we're trying to delete a crossing that belongs to multiple communities
+      if (array_length(crossing_to_delete.community_ids, 1) > 1) then
+        raise exception 'Community administrators cannot delete crossings that belong to multiple communities';
+      end if;
+
+      -- and we're trying to delete a crossing in a different community
       if (array_position(crossing_to_delete.community_ids, current_setting('jwt.claims.community_id')::integer) is null) then
         raise exception 'Community administrators can only delete crossings in their community';
       end if;

@@ -332,7 +332,9 @@ class CrossingDetails extends Component {
               >Save</button>
             </div>
           ) : (
-            crossing.active && currentUser.role !== 'floods_community_editor' && (
+            crossing.active &&
+            currentUser.role !== 'floods_community_editor' &&
+            crossingCommunities.length === 1 && (
             <div className="CrossingDetails__buttons flexcontainer">
               <button 
                 className="button button--plaintext color-highlight"
