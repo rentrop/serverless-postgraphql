@@ -14,7 +14,7 @@
     "local-server": "yarn run local-drop-rebuild;yarn run postgraphql-local",
     "local-server-with-tons-of-crossings": "yarn run local-drop-rebuild-with-tons-of-crossings;yarn run postgraphql-local",
     "rebuild-and-deploy": "yarn run drop-data;yarn run populate-schema;yarn run populate-data;yarn run build-schema;sls deploy -v",
-    "rebuild-and-deploy-with-tons-of-crossings": "yarn run drop-data;yarn run populate-schema;yarn run add-tons-of-crossings-to-local-db;yarn run build-schema;sls deploy -v",
+    "rebuild-and-deploy-with-tons-of-crossings": "yarn run drop-data;yarn run populate-schema;yarn run add-tons-of-crossings-to-db;yarn run build-schema;sls deploy -v",
     "test": "react-scripts test",
     "test-on-aws": "USE_AWS_ENDPOINT=true react-scripts test",
     "populate-schema": "psql $npm_config_PGCON -f ./populateDB/schema.sql",

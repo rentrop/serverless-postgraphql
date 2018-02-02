@@ -20,12 +20,12 @@ jobs:
   - stage: Deploy Backend to AWS
     before_script:
     - if [ -z "$AWS_ACCESS_KEY_ID" ]; then echo "AWS Credentials not set. Skipping
-      deployment."; travis_terminate 0; else npm install -g serverless; fi
+      deployment."; travis_terminate 0; else npm install -g serverless@1.25.0; fi
     script: cd backend; yarn; yarn rebuild-and-deploy
   - stage: Test backend against AWS endpoint
     before_script:
     - if [ -z "$AWS_ACCESS_KEY_ID" ]; then echo "AWS Credentials not set. Skipping
-      tests."; travis_terminate 0; else npm install -g serverless; fi
+      tests."; travis_terminate 0; else npm install -g serverless@1.25.0; fi
     script: cd backend; yarn; yarn test-on-aws
     after_script: cd backend; yarn; yarn rebuild-and-deploy-with-tons-of-crossings
   - stage: Deploy frontend to s3
