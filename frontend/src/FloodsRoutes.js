@@ -5,14 +5,13 @@ import Header from 'components/Dashboard/Header/Header';
 import ManageUsers from 'components/Dashboard/ManageUsersPage/ManageUsers';
 import LoginPage from 'components/Dashboard/LoginPage/LoginPage';
 
-import CrossingMapPage from 'components/Dashboard/CrossingMapPage/CrossingMapPage';
+import CrossingMapPage from 'components/Shared/CrossingMapPage/CrossingMapPage';
 import CrossingListPage from 'components/Dashboard/CrossingListPage/CrossingListPage';
 import CrossingDetailPage from 'components/Dashboard/CrossingDetailPage/CrossingDetailPage';
 import AddCrossingPage from 'components/Dashboard/AddCrossingPage/AddCrossingPage';
 import CrossingStatusHistoryPage from 'components/Dashboard/CrossingStatusHistoryPage/CrossingStatusHistoryPage';
 
 import PublicHeader from 'components/Public/Header/PublicHeader';
-import PublicMapPage from 'components/Public/MapPage/PublicMapPage';
 
 import auth from 'services/gqlAuth';
 import { graphql } from 'react-apollo';
@@ -36,7 +35,7 @@ class FloodsRoutes extends Component {
           <Route component={PublicHeader} />
         </Switch>
 
-        <Route path='/map' component={PublicMapPage} />
+        <Route path='/map' component={CrossingMapPage} />
 
         <PrivateRoute path="/dashboard/users" component={ManageUsers}
           authenticated={auth.isAuthenticated()}

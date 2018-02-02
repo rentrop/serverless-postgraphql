@@ -1,0 +1,64 @@
+@import "css/mixins/flexbox";
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}  
+}
+
+.CrossingMapSearchBar__header {
+  background: #004D90;
+  color: white;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  letter-spacing: .11em;
+}
+
+.CrossingMapSearchBar__container {
+  background: #006CB5;
+  color: #8BBADB;
+  height: 50px;
+  @include flexcontainer;
+}
+
+.CrossingMapSearchBar__location-icon {
+  padding-left: 20px;
+  padding-top: 13px;
+}
+
+.CrossingMapSearchBar__glass-icon {
+  padding-top: 13px;
+  padding-right: 10px;
+}
+
+.CrossingMapSearchBar__cancel-icon {
+  padding-top: 13px;
+  padding-right: 10px;  
+}
+
+.CrossingMapSearchBar__text-entry {
+  width: 100%;
+  margin: auto;
+  input {
+    font-size: medium;
+    color: white;
+    margin-left: 3%;
+    margin-right: 3%;
+    width: 94%;
+    border: none;
+    background: none;
+    @include placeholder {
+      color: white;
+    }
+  }
+}
+
+.CrossingMapSearchBar__selected-item {
+  width: 100%;
+  margin-top: 12px;
+  font-size: medium;
+  color: white;
+  text-align: center;
+}

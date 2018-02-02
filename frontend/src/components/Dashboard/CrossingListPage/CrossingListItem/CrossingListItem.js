@@ -9,7 +9,7 @@ import StatusToggle from 'components/Dashboard/CrossingListPage/CrossingListItem
 import Dropdown from 'components/Dashboard/Dropdown/Dropdown';
 import newStatusUpdateMutation from 'components/Dashboard/CrossingListPage/queries/newStatusUpdateMutation';
 import crossingsQuery from 'components/Dashboard/CrossingListPage/queries/crossingsQuery';
-import allCrossings from 'components/Map/queries/allCrossingsQuery';
+import allCrossings from 'components/Shared/Map/queries/allCrossingsQuery';
 import statusCountsQuery from 'components/Dashboard/CrossingListPage/queries/statusCountsQuery';
 import statusUpdateFragment from 'components/Dashboard/CrossingListPage/queries/statusUpdateFragment';
 import * as statusConstants from 'constants/StatusConstants';
@@ -168,7 +168,6 @@ class CrossingListItem extends React.Component {
       data = store.readQuery({ query: allCrossings, variables: qvars });
       index = data.searchCrossings.nodes.findIndex(node => node.id === updatedCrossing.id);
     } catch(err) {
-      console.log(err);
       return;
     }
 
@@ -187,6 +186,8 @@ class CrossingListItem extends React.Component {
         geojson: updatedCrossing.geojson,
         latestStatusId: updatedCrossing.latestStatusId,
         communityIds: updatedCrossing.communityIds,
+        name: updatedCrossing.name,
+        latestStatusCreatedAt: updatedCrossing.latestStatusCreatedAt,
         __typename: "Crossing"
       })
     }
@@ -203,6 +204,7 @@ class CrossingListItem extends React.Component {
     const updateData = {
       id: Math.round(Math.random() * -1000000),
       crossingId: this.props.crossing.id,
+      name: this.props.crossing.name,
       geojson: this.props.crossing.geojson,
       communityIds: this.props.crossing.communityIds,
       statusId: this.state.selectedStatus,
@@ -255,6 +257,7 @@ class CrossingListItem extends React.Component {
               communityIds: updateData.communityIds,
               latestStatusUpdateId: updateData.id,
               latestStatusCreatedAt: moment().format(),
+              name: updateData.name,
               statusUpdateByLatestStatusUpdateId: {
                 id: updateData.id,
                 crossingId: updateData.crossingId,

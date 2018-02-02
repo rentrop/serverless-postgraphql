@@ -1,5 +1,38 @@
 begin;
 
+-- Add statuses
+insert into floods.status (id, name) values
+  (1, 'Open'),
+  (2, 'Closed'),
+  (3, 'Caution'),
+  (4, 'Long-Term Closure');
+alter sequence floods.status_id_seq restart with 5;
+
+-- Add status reasons
+insert into floods.status_reason (id, status_id, name) values
+  (1, 2, 'Flooded'),
+  (2, 4, 'Bridge Broken'),
+  (3, 3, 'Unconfirmed Flooding');
+alter sequence floods.status_reason_id_seq restart with 4;
+
+-- Add status durations
+insert into floods.status_duration (id, name, timespan) values
+  (1, 'A Minute', interval '1 minute'),
+  (2, 'A Week', interval '1 week');
+alter sequence floods.status_duration_id_seq restart with 3;
+
+-- Add status associations
+insert into floods.status_association (id, status_id, detail, rule) values
+  (1, 1, 'reason', 'disabled'),
+  (2, 1, 'duration', 'disabled'),
+  (3, 2, 'reason', 'required'),
+  (4, 2, 'duration', 'disabled'),
+  (5, 3, 'reason', 'required'),
+  (6, 3, 'duration', 'disabled'),
+  (7, 4, 'reason', 'required'),
+  (8, 4, 'duration', 'required');
+alter sequence floods.status_association_id_seq restart with 9;
+
 -- Add crossings
 insert into floods.crossing (community_ids, id, name, human_address, description, coordinates, geojson) values
 
@@ -1948,48 +1981,50 @@ insert into floods.crossing (community_ids, id, name, human_address, description
 alter sequence floods.crossing_id_seq restart with 2391;
 
 -- Add communities for the tons of crossings
-insert into floods.community (id, name, viewportgeojson) values (9001, 'LEA', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9001, 'Leander', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
 insert into floods.community (id, name, viewportgeojson) values (9002, 'ALL', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9003, 'CPK', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9004, 'RRK', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9005, 'WLH', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9006, 'MBF', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9007, 'SSV', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9008, 'pfl', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9009, 'COA', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9010, 'TCO', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9011, 'CCO', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9012, 'BCO', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9013, 'LEECO', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9014, 'ROL', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9015, 'GEO', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9016, 'HCO', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9017, 'WCO', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
-insert into floods.community (id, name, viewportgeojson) values (9018, 'FCO', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9003, 'Cedar Park', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9004, 'Round Rock', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9005, 'West Lake Hills', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9006, 'Marble Falls', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9007, 'Sunset Valley', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9008, 'Pflugerville', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9009, 'City of Austin', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9010, 'Travis County', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9011, 'Caldwell County', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9012, 'Bastrop County', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9013, 'Lee County', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9014, 'Rollingwood', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9015, 'Georgetown', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9016, 'Hays County', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9017, 'Williamson County', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
+insert into floods.community (id, name, viewportgeojson) values (9018, 'Fayette County', ST_AsGeoJSON(ST_MakeEnvelope(-97.785240, 30.259219, -97.753574, 30.276096)));
 
 -- Set the jwt claim settings so the register user function works
 -- Make sure they're local so we actually use the token outside of this script
 select set_config('jwt.claims.community_id', '1', true);
 select set_config('jwt.claims.role', 'floods_super_admin', true);
+-- Add super admin
+select floods.register_user(text 'Super', text 'Admin', text 'Superhero, Administrator', integer '9009', text '867-5309', text 'superadmin@flo.ods', text 'texasfloods', text 'floods_super_admin');
 -- Add community admins to each new community
-select floods.register_user(text 'LEA', text 'Admin', text 'Community Administrator', integer '9001', text '867-5309', text 'admin@lea.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Leander', text 'Admin', text 'Community Administrator', integer '9001', text '867-5309', text 'admin@lea.floods', text 'texasfloods', text 'floods_community_admin');
 select floods.register_user(text 'ALL', text 'Admin', text 'Community Administrator', integer '9002', text '867-5309', text 'admin@all.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'CPK', text 'Admin', text 'Community Administrator', integer '9003', text '867-5309', text 'admin@cpk.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'RRK', text 'Admin', text 'Community Administrator', integer '9004', text '867-5309', text 'admin@rrk.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'WLH', text 'Admin', text 'Community Administrator', integer '9005', text '867-5309', text 'admin@wlh.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'MBF', text 'Admin', text 'Community Administrator', integer '9006', text '867-5309', text 'admin@mbf.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'SSV', text 'Admin', text 'Community Administrator', integer '9007', text '867-5309', text 'admin@ssv.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'pfl', text 'Admin', text 'Community Administrator', integer '9008', text '867-5309', text 'admin@pfl.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'COA', text 'Admin', text 'Community Administrator', integer '9009', text '867-5309', text 'admin@coa.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'TCO', text 'Admin', text 'Community Administrator', integer '9010', text '867-5309', text 'admin@tco.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'CCO', text 'Admin', text 'Community Administrator', integer '9011', text '867-5309', text 'admin@cco.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'BCO', text 'Admin', text 'Community Administrator', integer '9012', text '867-5309', text 'admin@bco.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'LEECO', text 'Admin', text 'Community Administrator', integer '9013', text '867-5309', text 'admin@leeco.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'ROL', text 'Admin', text 'Community Administrator', integer '9014', text '867-5309', text 'admin@rol.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'GEO', text 'Admin', text 'Community Administrator', integer '9015', text '867-5309', text 'admin@geo.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'HCO', text 'Admin', text 'Community Administrator', integer '9016', text '867-5309', text 'admin@hco.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'WCO', text 'Admin', text 'Community Administrator', integer '9017', text '867-5309', text 'admin@wco.floods', text 'texasfloods', text 'floods_community_admin');
-select floods.register_user(text 'FCO', text 'Admin', text 'Community Administrator', integer '9018', text '867-5309', text 'admin@fco.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Cedar Park', text 'Admin', text 'Community Administrator', integer '9003', text '867-5309', text 'admin@cpk.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Round Rock', text 'Admin', text 'Community Administrator', integer '9004', text '867-5309', text 'admin@rrk.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'West Lake Hills', text 'Admin', text 'Community Administrator', integer '9005', text '867-5309', text 'admin@wlh.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Marble Falls', text 'Admin', text 'Community Administrator', integer '9006', text '867-5309', text 'admin@mbf.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Sunset Valley', text 'Admin', text 'Community Administrator', integer '9007', text '867-5309', text 'admin@ssv.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Pflugerville', text 'Admin', text 'Community Administrator', integer '9008', text '867-5309', text 'admin@pfl.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'City of Austin', text 'Admin', text 'Community Administrator', integer '9009', text '867-5309', text 'admin@coa.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Travis County', text 'Admin', text 'Community Administrator', integer '9010', text '867-5309', text 'admin@tco.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Caldwell County', text 'Admin', text 'Community Administrator', integer '9011', text '867-5309', text 'admin@cco.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Bastrop County', text 'Admin', text 'Community Administrator', integer '9012', text '867-5309', text 'admin@bco.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Lee County', text 'Admin', text 'Community Administrator', integer '9013', text '867-5309', text 'admin@leeco.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Rollingwood', text 'Admin', text 'Community Administrator', integer '9014', text '867-5309', text 'admin@rol.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Georgetown', text 'Admin', text 'Community Administrator', integer '9015', text '867-5309', text 'admin@geo.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Hays County', text 'Admin', text 'Community Administrator', integer '9016', text '867-5309', text 'admin@hco.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Williamson County', text 'Admin', text 'Community Administrator', integer '9017', text '867-5309', text 'admin@wco.floods', text 'texasfloods', text 'floods_community_admin');
+select floods.register_user(text 'Fayette County', text 'Admin', text 'Community Administrator', integer '9018', text '867-5309', text 'admin@fco.floods', text 'texasfloods', text 'floods_community_admin');
 
 update floods.community
   set viewportgeojson = (select ST_AsGeoJSON(ST_Envelope(ST_Extent(c.coordinates))) from floods.crossing c where array_position(c.community_ids, 9001) >= 0)

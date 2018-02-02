@@ -1,7 +1,13 @@
+.CrossingListHeader-background {
+  background: #0C0333;
+}
+
 .CrossingListHeader.fullsize {
   height: 65px;
   background: #0C0333;
   display: flex;
+  max-width: 1100px;
+  margin: auto;
 }
 
 .CrossingListHeader.smallsize {

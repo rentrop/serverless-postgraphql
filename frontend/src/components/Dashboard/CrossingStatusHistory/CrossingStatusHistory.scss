@@ -6,15 +6,24 @@
   .CrossingStatusHistory__item-details-flexcontainer {
     @include flexcontainer--row;
   }
+  background: #EFEFEF;
 }
 
 .CrossingStatusHistory__list-wrapper {
   @include raised-container-wrapper;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.CrossingStatusHistory_header-background {
+  background: $color-primary;
 }
 
 .CrossingStatusHistory__section-header {
   @include section-header;
   @include flexcontainer;
+  max-width: 1100px;
+  margin: auto;
 }
 
 .CrossingStatusHistory__item {

@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
+import CrossingListItem from 'components/Dashboard/CrossingListPage/CrossingListItem/CrossingListItem';
 import PublicCrossingListItem from 'components/Public/CrossingListItem/PublicCrossingListItem';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
-import FontAwesome from 'react-fontawesome';
 import statusUpdateFragment from 'components/Dashboard/CrossingListPage/queries/statusUpdateFragment';
 import statusReasonsQuery from 'components/Dashboard/CrossingListPage/queries/statusReasonsQuery';
 import statusDurationsQuery from 'components/Dashboard/CrossingListPage/queries/statusDurationsQuery';
 import crossingFragment from 'components/Dashboard/CrossingListPage/queries/crossingFragment';
-import 'components/Dashboard/CrossingMapPage/CrossingMapPage.css';
-import {ContainerQuery} from 'react-container-query';
-import classnames from 'classnames';
 
-const containerQuery = {
-  'fullsize': { minWidth: 380 },
-  'smallsize': { maxWidth: 379 }
-};
-
-class CrossingMapOverlay extends Component {
+class SelectedCrossingContainer extends Component {
 
   render() {
-    const { crossingId, selectCrossing } = this.props;
+    const { currentUser, selectCrossing } = this.props;
 
     const isLoading = (
       !this.props.data ||
@@ -37,28 +29,22 @@ class CrossingMapOverlay extends Component {
     const statusReasons = this.props.statusReasonsQuery.allStatusReasons.nodes;
     const statusDurations = this.props.statusDurationsQuery.allStatusDurations.nodes;
 
+
     return (
-      <ContainerQuery query={containerQuery}>
-        {(params) => (
-          <div className="CrossingMapOverlay">
-            { crossingId ?
-              (
-                <div className={classnames(params,"CrossingMapOverlay__detail-container")}>
-                  <div className="CrossingMapOverlay__close-button" onClick={() => selectCrossing(null, null)}>
-                    <FontAwesome name='times' />
-                  </div>
-                  <PublicCrossingListItem
-                    key={crossing.id}
-                    crossing={crossing}
-                    reasons={statusReasons} 
-                    durations={statusDurations} />
-                </div>
-              ) : null
-            }
-            
-          </div>
-        )}
-      </ContainerQuery>
+        currentUser ? 
+          <CrossingListItem
+            key={crossing.id}
+            crossing={crossing}
+            reasons={statusReasons} 
+            durations={statusDurations}
+            currentUser={currentUser}
+            listOrMap="map"
+            selectCrossing={selectCrossing} /> :
+          <PublicCrossingListItem
+            key={crossing.id}
+            crossing={crossing}
+            reasons={statusReasons} 
+            durations={statusDurations} />
     );
   }
 }
@@ -85,4 +71,4 @@ export default compose(
   }),
   graphql(statusReasonsQuery, { name: 'statusReasonsQuery' }),
   graphql(statusDurationsQuery, { name: 'statusDurationsQuery' })
-)(CrossingMapOverlay);
+)(SelectedCrossingContainer);

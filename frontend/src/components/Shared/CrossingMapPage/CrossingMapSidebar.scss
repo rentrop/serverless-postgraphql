@@ -1,0 +1,121 @@
+@import "css/mixins/flexbox";
+
+.CrossingMapSidebar__overlay-container {
+  @include flexcontainer;
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+}
+
+.CrossingMapSidebar__content {
+  background: #F8F8F9;
+  width: 430px;
+  @include flexcontainer;
+  flex-direction: column;
+
+  .CrossingListItem {
+    margin-bottom: 0px;
+  }
+
+  .CrossingListItem--dirty {
+    outline: none;
+    box-shadow: 0 4px #40B3FF inset, 0 -4px #40B3FF inset;
+  }
+}
+
+.CrossingMapPage_sidebar-toggle {
+  background: white;
+  height: 52px;
+  padding: 10px;
+  margin-top: 24px;
+  border-radius: 0px 5px 5px 0px;
+  border: 1px solid #046bb6;
+  border-left: none;
+  .fa {
+    margin-top: 5px;
+  }
+}
+
+.CrossingMapPage_sidebar-filter-sort-toggle-container {
+  background: #004D90;
+  height: 30px;
+}
+
+.CrossingMapPage_sidebar-filter-toggle-text {
+  color: white;
+  padding: 5px;
+  padding-left: 15px;
+  font-size: small;
+}
+
+.CrossingMapPage_sidebar-filter-container {
+  background: #006CB5;
+  height: 60px;
+}
+
+.CrossingMapPage_sidebar-filter {
+  color: white;
+  line-height: 60px;
+  font-size: small;
+  margin: 20px;
+}
+
+.CrossingMapPage_sidebar-search-result-container {
+  @include flexcontainer;
+  background: white;
+  margin-bottom: 4px;
+}
+
+.CrossingMapPage_sidebar-search-result-status-icon {
+  min-width: 60px;
+  img {
+    margin-left: 5px;
+  }
+}
+
+.CrossingMapPage_sidebar-search-result-details {
+  flex: auto;
+}
+
+.CrossingMapPage_sidebar-search-result-details-status {
+  font-size: x-small;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #757575;
+  padding-top: 10px;
+}
+
+.CrossingMapPage_sidebar-search-result-details-name {
+  font-size: small;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.CrossingMapPage_sidebar-search-result-update-datetime {
+  margin-right: 10px;
+  text-align: right;
+}
+
+.CrossingMapPage_sidebar-search-result-update-datetime-date {
+  font-size: x-small;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #757575;
+  padding-top: 10px;
+}
+
+.CrossingMapPage_sidebar-search-result-update-datetime-time {
+  font-size: small;
+  font-weight: 300;
+}
+
+.CrossingMapPage_sidebar-search-result-details-communities {
+  font-size: small;
+  font-weight: 300;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.CrossingMapPage_sidebar-searchresults {
+  overflow: hidden;
+}

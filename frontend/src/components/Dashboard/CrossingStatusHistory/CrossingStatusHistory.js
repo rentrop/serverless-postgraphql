@@ -23,10 +23,12 @@ class CrossingStatusHistory extends Component {
       <ContainerQuery query={containerQuery}>
         {(params) => (
           <div className={classnames(params, "CrossingStatusHistory")}>
-            <h2 className="CrossingStatusHistory__section-header">
-              <div className="CrossingStatusHistory__section-header--title">Crossing Status History</div>
-              <CrossingStatusHistorySpreadsheetLink crossingId={crossingId} />
-            </h2>
+            <div className="CrossingStatusHistory_header-background">
+              <h2 className="CrossingStatusHistory__section-header">
+                <div className="CrossingStatusHistory__section-header--title">Crossing Status History</div>
+                <CrossingStatusHistorySpreadsheetLink crossingId={crossingId} />
+              </h2>
+            </div>
             <div className="CrossingStatusHistory__list-wrapper">
               <InfiniteCrossingStatusHistoryPaginationContainer crossingId={crossingId} showNames={showNames}/>
             </div>

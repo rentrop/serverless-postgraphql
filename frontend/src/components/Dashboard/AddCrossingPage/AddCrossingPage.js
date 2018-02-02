@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AddCrossingMap from 'components/Map/AddCrossingMap';
+import AddCrossingMap from 'components/Shared/Map/AddCrossingMap';
 import CrossingDetails from 'components/Dashboard/CrossingDetailPage/CrossingDetails';
 import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';

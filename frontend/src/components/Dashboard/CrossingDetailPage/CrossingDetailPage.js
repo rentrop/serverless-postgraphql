@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
-import CrossingStaticMap from 'components/Map/CrossingStaticMap';
+import CrossingStaticMap from 'components/Shared/Map/CrossingStaticMap';
 import CrossingDetails from 'components/Dashboard/CrossingDetailPage/CrossingDetails';
 import CrossingStatusHistory from 'components/Dashboard/CrossingStatusHistory/CrossingStatusHistory';
 import statusHistoryQuery from 'components/Dashboard/CrossingListPage/queries/statusHistoryQuery';
@@ -38,7 +38,7 @@ class CrossingDetailPage extends Component {
       <ContainerQuery query={containerQuery}>
         {(params) => (
           <div className="CrossingDetailPage">
-            <div className={classnames(params, "CrossingDetails__container mlv2--b")}>
+            <div className={classnames(params, "CrossingDetails__container")}>
               <CrossingStaticMap crossing={crossing}/>
               <CrossingDetails crossing={crossing} crossingCommunities={crossingCommunities} allCommunities={allCommunities} currentUser={currentUser} addMode={false}/>
             </div>

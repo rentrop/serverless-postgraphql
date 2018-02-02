@@ -130,130 +130,134 @@ exports[`Storyshots Crossing List Header Large Width 1`] = `
   className="storybook--lg"
 >
   <div
-    className="CrossingListHeader"
+    className="CrossingListHeader-background"
   >
     <div
-      className="CrossingListSearch"
-    >
-      <input
-        className="CrossingListSearchInput"
-        onChange={undefined}
-        placeholder="Search your crossings"
-        type="text"
-        value={undefined}
-      />
-      <div
-        className="CrossingListSearchButton"
-      >
-        <span
-          aria-hidden={true}
-          className="fa fa-search"
-        >
-          <span
-            style={
-              Object {
-                "border": "0px",
-                "clip": "rect(0px, 0px, 0px, 0px)",
-                "height": "1px",
-                "margin": "-1px",
-                "overflow": "hidden",
-                "padding": "0px",
-                "position": "absolute",
-                "width": "1px",
-              }
-            }
-          >
-            Search
-          </span>
-        </span>
-      </div>
-    </div>
-    <div
-      className="CrossingListSortToggle"
-      onClick={undefined}
+      className="CrossingListHeader"
     >
       <div
-        className="CrossingListSortToggleText"
+        className="CrossingListSearch"
       >
-        LAST UPDATED 
-        <span
-          aria-hidden={true}
-          className="fa fa-caret-down"
+        <input
+          className="CrossingListSearchInput"
+          onChange={undefined}
+          placeholder="Search your crossings"
+          type="text"
+          value={undefined}
+        />
+        <div
+          className="CrossingListSearchButton"
         >
           <span
-            style={
-              Object {
-                "border": "0px",
-                "clip": "rect(0px, 0px, 0px, 0px)",
-                "height": "1px",
-                "margin": "-1px",
-                "overflow": "hidden",
-                "padding": "0px",
-                "position": "absolute",
-                "width": "1px",
-              }
-            }
+            aria-hidden={true}
+            className="fa fa-search"
           >
-            Descending
+            <span
+              style={
+                Object {
+                  "border": "0px",
+                  "clip": "rect(0px, 0px, 0px, 0px)",
+                  "height": "1px",
+                  "margin": "-1px",
+                  "overflow": "hidden",
+                  "padding": "0px",
+                  "position": "absolute",
+                  "width": "1px",
+                }
+              }
+            >
+              Search
+            </span>
           </span>
-        </span>
+        </div>
       </div>
-    </div>
-    <div
-      className="CrossingListFilter"
-    >
-      <label
-        className="CrossingListFilterItem"
+      <div
+        className="CrossingListSortToggle"
+        onClick={undefined}
       >
-        <input
-          className="CrossingListFilterCheckbox"
-          defaultChecked={undefined}
-          onClick={undefined}
-          type="checkbox"
-        />
-        Open (
-         ... 
-        )
-      </label>
-      <label
-        className="CrossingListFilterItem"
+        <div
+          className="CrossingListSortToggleText"
+        >
+          LAST UPDATED 
+          <span
+            aria-hidden={true}
+            className="fa fa-caret-down"
+          >
+            <span
+              style={
+                Object {
+                  "border": "0px",
+                  "clip": "rect(0px, 0px, 0px, 0px)",
+                  "height": "1px",
+                  "margin": "-1px",
+                  "overflow": "hidden",
+                  "padding": "0px",
+                  "position": "absolute",
+                  "width": "1px",
+                }
+              }
+            >
+              Descending
+            </span>
+          </span>
+        </div>
+      </div>
+      <div
+        className="CrossingListFilter"
       >
-        <input
-          className="CrossingListFilterCheckbox"
-          defaultChecked={undefined}
-          onClick={undefined}
-          type="checkbox"
-        />
-        Caution (
-         ... 
-        )
-      </label>
-      <label
-        className="CrossingListFilterItem"
-      >
-        <input
-          className="CrossingListFilterCheckbox"
-          defaultChecked={undefined}
-          onClick={undefined}
-          type="checkbox"
-        />
-        Closed (
-         ... 
-        )
-      </label>
-      <label
-        className="CrossingListFilterItem"
-      >
-        <input
-          className="CrossingListFilterCheckbox"
-          defaultChecked={undefined}
-          onClick={undefined}
-          type="checkbox"
-        />
-        Long Term Closure (
-         ... 
-        )
-      </label>
+        <label
+          className="CrossingListFilterItem"
+        >
+          <input
+            className="CrossingListFilterCheckbox"
+            defaultChecked={undefined}
+            onClick={undefined}
+            type="checkbox"
+          />
+          Open (
+           ... 
+          )
+        </label>
+        <label
+          className="CrossingListFilterItem"
+        >
+          <input
+            className="CrossingListFilterCheckbox"
+            defaultChecked={undefined}
+            onClick={undefined}
+            type="checkbox"
+          />
+          Caution (
+           ... 
+          )
+        </label>
+        <label
+          className="CrossingListFilterItem"
+        >
+          <input
+            className="CrossingListFilterCheckbox"
+            defaultChecked={undefined}
+            onClick={undefined}
+            type="checkbox"
+          />
+          Closed (
+           ... 
+          )
+        </label>
+        <label
+          className="CrossingListFilterItem"
+        >
+          <input
+            className="CrossingListFilterCheckbox"
+            defaultChecked={undefined}
+            onClick={undefined}
+            type="checkbox"
+          />
+          Long Term Closure (
+           ... 
+          )
+        </label>
+      </div>
     </div>
   </div>
 </div>
@@ -264,130 +268,134 @@ exports[`Storyshots Crossing List Header Small Width 1`] = `
   className="storybook--sm"
 >
   <div
-    className="CrossingListHeader"
+    className="CrossingListHeader-background"
   >
     <div
-      className="CrossingListSearch"
-    >
-      <input
-        className="CrossingListSearchInput"
-        onChange={undefined}
-        placeholder="Search your crossings"
-        type="text"
-        value={undefined}
-      />
-      <div
-        className="CrossingListSearchButton"
-      >
-        <span
-          aria-hidden={true}
-          className="fa fa-search"
-        >
-          <span
-            style={
-              Object {
-                "border": "0px",
-                "clip": "rect(0px, 0px, 0px, 0px)",
-                "height": "1px",
-                "margin": "-1px",
-                "overflow": "hidden",
-                "padding": "0px",
-                "position": "absolute",
-                "width": "1px",
-              }
-            }
-          >
-            Search
-          </span>
-        </span>
-      </div>
-    </div>
-    <div
-      className="CrossingListSortToggle"
-      onClick={undefined}
+      className="CrossingListHeader"
     >
       <div
-        className="CrossingListSortToggleText"
+        className="CrossingListSearch"
       >
-        LAST UPDATED 
-        <span
-          aria-hidden={true}
-          className="fa fa-caret-down"
+        <input
+          className="CrossingListSearchInput"
+          onChange={undefined}
+          placeholder="Search your crossings"
+          type="text"
+          value={undefined}
+        />
+        <div
+          className="CrossingListSearchButton"
         >
           <span
-            style={
-              Object {
-                "border": "0px",
-                "clip": "rect(0px, 0px, 0px, 0px)",
-                "height": "1px",
-                "margin": "-1px",
-                "overflow": "hidden",
-                "padding": "0px",
-                "position": "absolute",
-                "width": "1px",
-              }
-            }
+            aria-hidden={true}
+            className="fa fa-search"
           >
-            Descending
+            <span
+              style={
+                Object {
+                  "border": "0px",
+                  "clip": "rect(0px, 0px, 0px, 0px)",
+                  "height": "1px",
+                  "margin": "-1px",
+                  "overflow": "hidden",
+                  "padding": "0px",
+                  "position": "absolute",
+                  "width": "1px",
+                }
+              }
+            >
+              Search
+            </span>
           </span>
-        </span>
+        </div>
       </div>
-    </div>
-    <div
-      className="CrossingListFilter"
-    >
-      <label
-        className="CrossingListFilterItem"
+      <div
+        className="CrossingListSortToggle"
+        onClick={undefined}
       >
-        <input
-          className="CrossingListFilterCheckbox"
-          defaultChecked={undefined}
-          onClick={undefined}
-          type="checkbox"
-        />
-        Open (
-        6
-        )
-      </label>
-      <label
-        className="CrossingListFilterItem"
+        <div
+          className="CrossingListSortToggleText"
+        >
+          LAST UPDATED 
+          <span
+            aria-hidden={true}
+            className="fa fa-caret-down"
+          >
+            <span
+              style={
+                Object {
+                  "border": "0px",
+                  "clip": "rect(0px, 0px, 0px, 0px)",
+                  "height": "1px",
+                  "margin": "-1px",
+                  "overflow": "hidden",
+                  "padding": "0px",
+                  "position": "absolute",
+                  "width": "1px",
+                }
+              }
+            >
+              Descending
+            </span>
+          </span>
+        </div>
+      </div>
+      <div
+        className="CrossingListFilter"
       >
-        <input
-          className="CrossingListFilterCheckbox"
-          defaultChecked={undefined}
-          onClick={undefined}
-          type="checkbox"
-        />
-        Caution (
-        6
-        )
-      </label>
-      <label
-        className="CrossingListFilterItem"
-      >
-        <input
-          className="CrossingListFilterCheckbox"
-          defaultChecked={undefined}
-          onClick={undefined}
-          type="checkbox"
-        />
-        Closed (
-        6
-        )
-      </label>
-      <label
-        className="CrossingListFilterItem"
-      >
-        <input
-          className="CrossingListFilterCheckbox"
-          defaultChecked={undefined}
-          onClick={undefined}
-          type="checkbox"
-        />
-        Long Term Closure (
-        6
-        )
-      </label>
+        <label
+          className="CrossingListFilterItem"
+        >
+          <input
+            className="CrossingListFilterCheckbox"
+            defaultChecked={undefined}
+            onClick={undefined}
+            type="checkbox"
+          />
+          Open (
+          6
+          )
+        </label>
+        <label
+          className="CrossingListFilterItem"
+        >
+          <input
+            className="CrossingListFilterCheckbox"
+            defaultChecked={undefined}
+            onClick={undefined}
+            type="checkbox"
+          />
+          Caution (
+          6
+          )
+        </label>
+        <label
+          className="CrossingListFilterItem"
+        >
+          <input
+            className="CrossingListFilterCheckbox"
+            defaultChecked={undefined}
+            onClick={undefined}
+            type="checkbox"
+          />
+          Closed (
+          6
+          )
+        </label>
+        <label
+          className="CrossingListFilterItem"
+        >
+          <input
+            className="CrossingListFilterCheckbox"
+            defaultChecked={undefined}
+            onClick={undefined}
+            type="checkbox"
+          />
+          Long Term Closure (
+          6
+          )
+        </label>
+      </div>
     </div>
   </div>
 </div>
@@ -1431,7 +1439,7 @@ exports[`Storyshots Crossing List Item Large Width 1`] = `
             className="ControlLabel"
           >
             Status: 
-            Long Term Closure
+            Closed Longterm
           </div>
           <div
             className="StatusToggleContainer"
@@ -1728,7 +1736,7 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
           className="ControlLabel"
         >
           Status: 
-          Long Term Closure
+          Closed Longterm
         </div>
         <div
           className="StatusToggleContainer"
@@ -1990,7 +1998,7 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
           className="ControlLabel"
         >
           Status: 
-          Long Term Closure
+          Closed Longterm
         </div>
         <div
           className="StatusToggleContainer"
@@ -2652,7 +2660,7 @@ exports[`Storyshots Crossing List Item Small Width 1`] = `
             className="ControlLabel"
           >
             Status: 
-            Long Term Closure
+            Closed Longterm
           </div>
           <div
             className="StatusToggleContainer"

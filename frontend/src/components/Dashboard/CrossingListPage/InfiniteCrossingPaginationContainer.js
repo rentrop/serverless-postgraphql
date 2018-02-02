@@ -99,7 +99,7 @@ export class InfiniteCrossingPaginationContainer extends Component {
         {(params) => {
           const cqClassName = classnames(params);
           return (
-            <div>
+            <div className="CrossingListPage_crossing-list-container">
               <InfiniteCrossingList
                 {...this.props}
                 ref={(ref) => infiniteCrossingListRef = ref} 

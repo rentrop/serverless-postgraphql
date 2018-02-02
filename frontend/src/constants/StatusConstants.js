@@ -16,7 +16,7 @@ export const strings = {
   1: 'Open',
   2: 'Closed',
   3: 'Caution',
-  4: 'Long Term Closure'
+  4: 'Closed Longterm'
 };
 
 export const statusIcons = {
