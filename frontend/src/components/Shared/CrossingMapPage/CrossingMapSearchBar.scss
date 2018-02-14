@@ -62,3 +62,13 @@
   color: white;
   text-align: center;
 }
+
+.react-autosuggest__suggestions-container {
+  color: black;
+  background: white;
+  position: absolute;
+}
+
+.react-autosuggest__suggestion--highlighted {
+  background: red;
+}
