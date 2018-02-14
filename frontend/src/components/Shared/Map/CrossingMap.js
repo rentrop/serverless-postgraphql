@@ -19,11 +19,7 @@ class CrossingMap extends React.Component {
     selectedCrossingId: -1, // Mapbox filters don't support null values
     selectedCrossing: null,
     selectedCrossingCoordinates: null,
-    firstLoadComplete: false,
-    center: [
-      (this.props.viewport[0][0]+this.props.viewport[1][0])/2,
-      (this.props.viewport[0][1]+this.props.viewport[1][1])/2
-    ]
+    firstLoadComplete: false
   }
 
   componentWillReceiveProps(nextProps) {
@@ -63,6 +59,10 @@ class CrossingMap extends React.Component {
     this.addGeoLocateControl(map);
     this.addCrossingClickHandlers(map);
     this.addUpdateVisibleCrossingHandlers(map);
+    
+    // update the map page center on map move
+    map.on('moveend', this.getMapCenter);
+
     // disable map rotation using right click + drag
     map.dragRotate.disable();
 
@@ -93,6 +93,13 @@ class CrossingMap extends React.Component {
   addUpdateVisibleCrossingHandlers (map) {
     map.on('moveend', this.updateVisibleCrossings);
     map.on('data', this.updateVisibleCrossings);
+  }
+
+  getMapCenter = () => {
+    const { map } = this.state;
+    const center = map.getCenter();
+
+    this.props.getMapCenter(center);
   }
 
   updateVisibleCrossings = (e) => {
@@ -176,7 +183,7 @@ class CrossingMap extends React.Component {
     const cautionCrossings = !isLoading ? this.props.cautionCrossings.searchCrossings.nodes : null;
     const longtermCrossings = !isLoading ? this.props.longtermCrossings.searchCrossings.nodes : null;
 
-    const { showOpen, showClosed, showCaution, showLongterm } = this.props;
+    const { showOpen, showClosed, showCaution, showLongterm, center } = this.props;
 
     return (
       <Map
@@ -188,7 +195,7 @@ class CrossingMap extends React.Component {
           display: "block"
         }}
         fitBounds={this.props.viewport}
-        center={this.state.center} >
+        center={center} >
         {!isLoading && showOpen && (
           <Layer
             type="symbol"

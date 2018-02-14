@@ -44,7 +44,11 @@ class CrossingMapPage extends Component {
       showClosed: true,
       showCaution: true,
       showLongterm: true,
-      visibleCrossings: []
+      visibleCrossings: [],
+      center: [
+        (viewport[0][0]+viewport[1][0])/2,
+        (viewport[0][1]+viewport[1][1])/2
+      ]
     };
   }
 
@@ -76,8 +80,12 @@ class CrossingMapPage extends Component {
   toggleShowCaution = () => { this.setState({ showCaution: !this.state.showCaution }) }
   toggleShowLongterm = () => { this.setState({ showLongterm: !this.state.showLongterm }) }
 
+  getMapCenter = (center) => {
+    this.setState({center: center});
+  }
+
   render() {
-    const { viewport, selectedCrossingId, selectedCrossingStatus, searchQuery, formattedSearchQuery, visibleCrossings, selectedCrossingName } = this.state;
+    const { viewport, center, selectedCrossingId, selectedCrossingStatus, searchQuery, formattedSearchQuery, visibleCrossings, selectedCrossingName } = this.state;
     const { currentUser } = this.props;
     const allCommunities = 
       (this.props.data && !this.props.data.loading && this.props.data.allCommunities) ?
@@ -117,13 +125,15 @@ class CrossingMapPage extends Component {
                   showLongterm={this.state.showLongterm}
                   toggleShowLongterm={this.toggleShowLongterm}
                   visibleCrossings={visibleCrossings}
-                  allCommunities={allCommunities} />
+                  allCommunities={allCommunities}
+                  center={center} />
               }
               <div className={classnames("CrossingMapPage__map-container", {"CrossingMapPage__map-container--hidden": (!params.fullsize && selectedCrossingId)})}>
                 <CrossingMap 
                   mapHeight="100%"
                   mapWidth="100%"
                   viewport={viewport}
+                  getMapCenter={this.getMapCenter}
                   selectedCrossingId={selectedCrossingId}
                   selectedCrossingStatus={selectedCrossingStatus}
                   selectCrossing={this.selectCrossing}

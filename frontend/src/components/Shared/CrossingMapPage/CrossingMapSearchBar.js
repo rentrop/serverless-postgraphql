@@ -44,12 +44,15 @@ class CrossingMapSearchBar extends Component {
   // Autosuggest will call this function every time you need to update suggestions.
   onSuggestionsFetchRequested = ({ value }) => {
     console.log(value);
+    const { center } = this.props;
 
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
 
     if(inputLength > 2) {
-      mapboxClient.geocodeForward(inputValue, (err, res) => {
+      mapboxClient.geocodeForward(inputValue, {
+        proximity: { latitude: center[1], longitude: center[0] }
+      }, (err, res) => {
         this.setState({suggestions: res.features});
       });
     } else {

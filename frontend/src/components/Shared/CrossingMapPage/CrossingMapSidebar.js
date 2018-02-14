@@ -41,7 +41,8 @@ class CrossingMapSidebar extends Component {
             currentUser,
             visibleCrossings,
             allCommunities,
-            selectedCrossingName } = this.props;
+            selectedCrossingName,
+            center } = this.props;
 
     return (
       <div className="CrossingMapSidebar__overlay-container">{visible && (
@@ -50,7 +51,8 @@ class CrossingMapSidebar extends Component {
                                 selectCrossing={selectCrossing}
                                 searchQuery={searchQuery}
                                 searchQueryUpdated={searchQueryUpdated}
-                                selectedCrossingName={selectedCrossingName} />
+                                selectedCrossingName={selectedCrossingName}
+                                center={center} />
           {selectedCrossingId && <SelectedCrossingContainer crossingId={selectedCrossingId} currentUser={currentUser} selectCrossing={selectCrossing} /> }
           <div className="CrossingMapPage_sidebar-filter-sort-toggle-container">
             <div className={classnames('CrossingMapPage_sidebar-filter-toggle', {'selected': this.state.showFilters})} onClick={this.toggleFilters}>
