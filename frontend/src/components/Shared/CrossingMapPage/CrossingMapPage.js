@@ -45,10 +45,10 @@ class CrossingMapPage extends Component {
       showCaution: true,
       showLongterm: true,
       visibleCrossings: [],
-      center: [
-        (viewport[0][0]+viewport[1][0])/2,
-        (viewport[0][1]+viewport[1][1])/2
-      ]
+      center: {
+        lng: (viewport[0][0]+viewport[1][0])/2,
+        lat: (viewport[0][1]+viewport[1][1])/2
+      }
     };
   }
 

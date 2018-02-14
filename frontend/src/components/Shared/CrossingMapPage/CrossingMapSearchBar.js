@@ -51,7 +51,7 @@ class CrossingMapSearchBar extends Component {
 
     if(inputLength > 2) {
       mapboxClient.geocodeForward(inputValue, {
-        proximity: { latitude: center[1], longitude: center[0] }
+        proximity: { latitude: center.lat, longitude: center.lng }
       }, (err, res) => {
         this.setState({suggestions: res.features});
       });
