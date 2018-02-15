@@ -102,6 +102,14 @@ class CrossingMap extends React.Component {
     this.props.getMapCenter(center);
   }
 
+  flyTo = (point) => {
+    const { map } = this.state;
+
+    map.flyTo({
+      center: point
+    });
+  }
+
   updateVisibleCrossings = (e) => {
     if (e.type === 'data' && !e.isSourceLoaded ) return;
 
@@ -140,7 +148,7 @@ class CrossingMap extends React.Component {
     this.setState({ selectedCrossingId: crossing.properties.crossingId });
     this.setState({ selectedCrossing: crossing.properties });
     this.setState({ selectedCrossingCoordinates: crossing.geometry.coordinates });
-    this.setState({ center: crossing.geometry.coordinates });
+    this.flyTo(crossing.geometry.coordinates);
     this.props.selectCrossing(crossing.properties.crossingId, crossing.properties.crossingStatus, crossing.properties.crossingName);
   }
 

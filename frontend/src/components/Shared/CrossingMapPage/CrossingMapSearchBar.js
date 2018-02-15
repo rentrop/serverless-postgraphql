@@ -20,7 +20,6 @@ const renderSuggestion = suggestion => (
 
 class CrossingMapSearchBar extends Component {
 
-
   constructor() {
     super();
 
@@ -40,6 +39,10 @@ class CrossingMapSearchBar extends Component {
       value: newValue
     });
   };
+
+  onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
+    debugger;
+  }
 
   // Autosuggest will call this function every time you need to update suggestions.
   onSuggestionsFetchRequested = ({ value }) => {
@@ -101,6 +104,7 @@ class CrossingMapSearchBar extends Component {
               suggestions={suggestions}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
               onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+              onSuggestionSelected={this.onSuggestionSelected}
               getSuggestionValue={getSuggestionValue}
               renderSuggestion={renderSuggestion}
               inputProps={inputProps}
