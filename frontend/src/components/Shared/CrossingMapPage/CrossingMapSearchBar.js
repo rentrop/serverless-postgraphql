@@ -41,7 +41,7 @@ class CrossingMapSearchBar extends Component {
   };
 
   onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
-    debugger;
+    this.props.setCenter(suggestion.center);
   }
 
   // Autosuggest will call this function every time you need to update suggestions.
