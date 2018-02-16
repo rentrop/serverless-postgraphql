@@ -10,7 +10,9 @@ const mapboxClient = new MapboxClient('pk.eyJ1IjoiY3Jvd2VhdHgiLCJhIjoiY2o1NDFvYm
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
-const getSuggestionValue = suggestion => suggestion.place_name;
+const getSuggestionValue = suggestion => {
+  return (suggestion.place_name || suggestion.name);
+};
 
 // Use your imagination to render suggestions.
 const renderSuggestion = suggestion => (
@@ -30,6 +32,7 @@ const getSectionSuggestions = section => {
 }
 
 const formatSearchQuery = query => {
+  // debugger;
   if(!query) return '';
   return `%${query.replace(/ /g,"%")}%`;
 }
