@@ -3,6 +3,7 @@ import 'components/Shared/CrossingMapPage/CrossingMapSearchBar.css';
 import FontAwesome from 'react-fontawesome';
 import Autosuggest from 'react-autosuggest';
 import MapboxClient from 'mapbox';
+import CrossingMapSearchCrossingSuggestions from 'components/Shared/CrossingMapPage/CrossingMapSearchCrossingSuggestions';
 
 const mapboxClient = new MapboxClient('pk.eyJ1IjoiY3Jvd2VhdHgiLCJhIjoiY2o1NDFvYmxkMHhkcDMycDF2a3pseDFpZiJ9.UcnizcFDleMpv5Vbv8Rngw');
 
@@ -14,7 +15,7 @@ const getSuggestionValue = suggestion => suggestion.place_name;
 // Use your imagination to render suggestions.
 const renderSuggestion = suggestion => (
   <div>
-    {suggestion.place_name}
+    {suggestion.place_name || suggestion.name}
   </div>
 );
 
@@ -26,6 +27,11 @@ const renderSectionTitle = section => {
 
 const getSectionSuggestions = section => {
   return section.suggestions;
+}
+
+const formatSearchQuery = query => {
+  if(!query) return '';
+  return `%${query.replace(/ /g,"%")}%`;
 }
 
 class CrossingMapSearchBar extends Component {
@@ -40,7 +46,8 @@ class CrossingMapSearchBar extends Component {
     // and they are initially empty because the Autosuggest is closed.
     this.state = {
       value: '',
-      mapboxSuggestions: []
+      mapboxSuggestions: [],
+      crossingSuggestions: []
     };
   }
 
@@ -62,6 +69,7 @@ class CrossingMapSearchBar extends Component {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
 
+    // Get the suggestions from the mapbox geocoder
     if(inputLength > 2) {
       mapboxClient.geocodeForward(inputValue, {
         proximity: { latitude: center.lat, longitude: center.lng }
@@ -86,15 +94,22 @@ class CrossingMapSearchBar extends Component {
     this.setState({value: ''});
   }
 
-  render() {
-    const { searchQuery, selectedCrossingId, searchQueryUpdated, selectedCrossingName } = this.props;
+  updateCrossingSuggestions = (suggestions) => {
+    console.log(suggestions);
+    this.setState({
+      crossingSuggestions: suggestions
+    })
+  }
 
-    const { value, mapboxSuggestions } = this.state;
+  render() {
+    const { selectedCrossingId, searchQueryUpdated, selectedCrossingName } = this.props;
+
+    const { value, mapboxSuggestions, crossingSuggestions } = this.state;
 
     const suggestions = [
       {
         title: 'Crossings',
-        suggestions: []
+        suggestions: crossingSuggestions
       },
       {
         title: 'Communities',
@@ -113,8 +128,13 @@ class CrossingMapSearchBar extends Component {
       onChange: this.onChange
     };
 
+    const formattedQuery = formatSearchQuery(value);
+
     return (
       <div>
+        <CrossingMapSearchCrossingSuggestions
+          searchQuery={formattedQuery}
+          updateSuggestions={this.updateCrossingSuggestions} />
         <div className="CrossingMapSearchBar__header">
           SEARCH FOR A PLACE, AREA, OR CROSSING
         </div>
