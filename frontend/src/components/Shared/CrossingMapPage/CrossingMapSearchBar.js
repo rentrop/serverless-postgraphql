@@ -18,6 +18,16 @@ const renderSuggestion = suggestion => (
   </div>
 );
 
+const renderSectionTitle = section => {
+  return (
+    <strong>{section.title}</strong>
+  );
+}
+
+const getSectionSuggestions = section => {
+  return section.suggestions;
+}
+
 class CrossingMapSearchBar extends Component {
 
   constructor() {
@@ -30,7 +40,7 @@ class CrossingMapSearchBar extends Component {
     // and they are initially empty because the Autosuggest is closed.
     this.state = {
       value: '',
-      suggestions: []
+      mapboxSuggestions: []
     };
   }
 
@@ -56,17 +66,17 @@ class CrossingMapSearchBar extends Component {
       mapboxClient.geocodeForward(inputValue, {
         proximity: { latitude: center.lat, longitude: center.lng }
       }, (err, res) => {
-        this.setState({suggestions: res.features});
+        this.setState({mapboxSuggestions: res.features});
       });
     } else {
-      this.setState({suggestions: []});
+      this.setState({mapboxSuggestions: []});
     }
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequested = () => {
     this.setState({
-      suggestions: []
+      mapboxSuggestions: []
     });
   };
 
@@ -79,7 +89,22 @@ class CrossingMapSearchBar extends Component {
   render() {
     const { searchQuery, selectedCrossingId, searchQueryUpdated, selectedCrossingName } = this.props;
 
-    const { value, suggestions } = this.state;
+    const { value, mapboxSuggestions } = this.state;
+
+    const suggestions = [
+      {
+        title: 'Crossings',
+        suggestions: []
+      },
+      {
+        title: 'Communities',
+        suggestions: []
+      },
+      {
+        title: 'Locations',
+        suggestions: mapboxSuggestions
+      }
+    ];
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
@@ -102,6 +127,9 @@ class CrossingMapSearchBar extends Component {
           { !selectedCrossingId &&
             <Autosuggest
               suggestions={suggestions}
+              multiSection={true}
+              getSectionSuggestions={getSectionSuggestions}
+              renderSectionTitle={renderSectionTitle}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
               onSuggestionsClearRequested={this.onSuggestionsClearRequested}
               onSuggestionSelected={this.onSuggestionSelected}
