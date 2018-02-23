@@ -4,7 +4,7 @@
   &::-webkit-input-placeholder {@content}
   &:-moz-placeholder           {@content}
   &::-moz-placeholder          {@content}
-  &:-ms-input-placeholder      {@content}  
+  &:-ms-input-placeholder      {@content}
 }
 
 .CrossingMapSearchBar__header {
@@ -14,6 +14,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   letter-spacing: .11em;
+  font-weight: 600;
 }
 
 .CrossingMapSearchBar__container {
@@ -35,7 +36,7 @@
 
 .CrossingMapSearchBar__cancel-icon {
   padding-top: 13px;
-  padding-right: 10px;  
+  padding-right: 10px;
 }
 
 .CrossingMapSearchBar__text-entry {

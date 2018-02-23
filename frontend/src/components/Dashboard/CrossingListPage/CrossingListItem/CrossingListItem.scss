@@ -32,7 +32,6 @@
   font-size: 12pt;
   color: #055eff;
   text-decoration: underline;
-  font-family: "Roboto";
   letter-spacing: .2pt;
 }
 
@@ -43,7 +42,7 @@
 .ControlLabel {
   @include flexitem;
   font-size: 11pt;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 2em;
 }
 
@@ -68,7 +67,6 @@
   line-height: 40px;
   border-radius: 5px;
   font-size: 11pt;
-  font-family: "Roboto";
   text-align: center;
   border: 2px solid #0054FF;
   cursor: pointer;
@@ -89,7 +87,6 @@
 
 .required {
   @include flexitem;
-  font-family: "Roboto";
   text-align: right;
   font-size: 9pt;
   font-weight: 300;
