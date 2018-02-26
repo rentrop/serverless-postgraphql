@@ -2,7 +2,7 @@ import HttpTransport from 'lokka-transport-http';
 import Lokka from 'lokka';
 import { endpoint } from './endpoints';
 
-const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
+const anonLokka = new Lokka({ transport: new HttpTransport(endpoint) });
 
 describe('As an anonymous user', () => {
   it('should fail to register a new user', async () => {
@@ -25,7 +25,7 @@ describe('As an anonymous user', () => {
           }
         }
     `);
-    } catch(e) {
+    } catch (e) {
       expect(e).toMatchSnapshot();
     }
   });
@@ -36,7 +36,6 @@ describe('As an anonymous user', () => {
 // should be able to connect to the server
 
 // for anon/edit/admin/super
-
 
 // REGISTER USERS
 // THIS PART WILL BE TRICKY SO I'M GONNA CHECK IN BEFORE BREAKING THE SCHEMA

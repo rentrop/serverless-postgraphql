@@ -3,22 +3,24 @@ import Lokka from 'lokka';
 import _ from 'lodash';
 import { endpoint } from './endpoints';
 
-const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
+const anonLokka = new Lokka({ transport: new HttpTransport(endpoint) });
 const communityAdminEmail = 'admin@community.floods';
 const communityAdminPassword = 'texasfloods';
 
 async function getToken(email, password) {
-  const response = await anonLokka.send(`
+  const response = await anonLokka.send(
+    `
     mutation($email:String!, $password:String!) {
       authenticate(input: {email: $email, password: $password}) {
         jwtToken
       }
     }
   `,
-  {
-    email: email,
-    password: password
-  });
+    {
+      email: email,
+      password: password,
+    },
+  );
 
   return response.authenticate.jwtToken;
 }
@@ -27,12 +29,14 @@ describe('As a community admin', async () => {
   var lokka, superlokka;
   var newUserIds = [];
 
-  beforeAll(async (done) => {
-    getToken(communityAdminEmail, communityAdminPassword).then((token) => {
+  beforeAll(async done => {
+    getToken(communityAdminEmail, communityAdminPassword).then(token => {
       const headers = {
-        'Authorization': 'Bearer '+ token
+        Authorization: 'Bearer ' + token,
       };
-      lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+      lokka = new Lokka({
+        transport: new HttpTransport(endpoint, { headers }),
+      });
       done();
     });
   });
@@ -57,7 +61,7 @@ describe('As a community admin', async () => {
           }
         }
     `);
-    } catch(e) {
+    } catch (e) {
       expect(e).toMatchSnapshot();
     }
   });
@@ -73,7 +77,7 @@ describe('As a community admin', async () => {
         }
       }      
       `);
-    } catch(e) {
+    } catch (e) {
       expect(e).toMatchSnapshot();
     }
   });
@@ -89,7 +93,7 @@ describe('As a community admin', async () => {
         }
       }      
       `);
-    } catch(e) {
+    } catch (e) {
       expect(e).toMatchSnapshot();
     }
   });
@@ -103,7 +107,7 @@ describe('As a community admin', async () => {
           }
         }     
       `);
-    } catch(e) {
+    } catch (e) {
       expect(e).toMatchSnapshot();
     }
   });

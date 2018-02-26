@@ -3,23 +3,25 @@ import Lokka from 'lokka';
 import uuidv4 from 'uuid';
 import { endpoint } from './endpoints';
 
-const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
+const anonLokka = new Lokka({ transport: new HttpTransport(endpoint) });
 const communityAdminEmail = 'admin@community.floods';
 const communityAdminPassword = 'texasfloods';
 const newUserPassword = 'texasfloods';
 
 async function getToken(email, password) {
-  const response = await anonLokka.send(`
+  const response = await anonLokka.send(
+    `
     mutation($email:String!, $password:String!) {
       authenticate(input: {email: $email, password: $password}) {
         jwtToken
       }
     }
   `,
-  {
-    email: email,
-    password: password
-  });
+    {
+      email: email,
+      password: password,
+    },
+  );
 
   return response.authenticate.jwtToken;
 }
@@ -28,12 +30,14 @@ describe('When registering a super admin', () => {
   describe('As a community admin', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(communityAdminEmail, communityAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(communityAdminEmail, communityAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
@@ -58,7 +62,7 @@ describe('When registering a super admin', () => {
             }
           }
         `);
-      } catch(e) {
+      } catch (e) {
         expect(e).toMatchSnapshot();
       }
     });
@@ -69,12 +73,14 @@ describe('When registering a community admin', () => {
   describe('As a community admin', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(communityAdminEmail, communityAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(communityAdminEmail, communityAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
@@ -99,7 +105,7 @@ describe('When registering a community admin', () => {
             }
           }
         `);
-      } catch(e) {
+      } catch (e) {
         expect(e).toMatchSnapshot();
       }
     });
@@ -113,18 +119,21 @@ describe('When registering a community editor', () => {
   describe('As a community admin', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(communityAdminEmail, communityAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(communityAdminEmail, communityAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
 
     it('should register a new community editor in the same community', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation($email:String!) {
           registerUser(input: {
             firstName: "New",
@@ -142,9 +151,10 @@ describe('When registering a community editor', () => {
           }
         }
       `,
-      {
-        email: newUserEmail
-      });
+        {
+          email: newUserEmail,
+        },
+      );
 
       newUserId = response.registerUser.user.id;
       expect(response).not.toBeNull();
@@ -170,14 +180,15 @@ describe('When registering a community editor', () => {
             }
           }
         `);
-      } catch(e) {
+      } catch (e) {
         expect(e).toMatchSnapshot();
       }
     });
   });
 
   it('the new user should show up in the DB', async () => {
-    const response = await anonLokka.send(`
+    const response = await anonLokka.send(
+      `
       query ($id: Int!) {
         userById(id: $id) {
           firstName
@@ -186,9 +197,10 @@ describe('When registering a community editor', () => {
         }
       }
     `,
-    {
-      id: newUserId
-    });
+      {
+        id: newUserId,
+      },
+    );
 
     expect(response).toMatchSnapshot();
   });
@@ -196,12 +208,14 @@ describe('When registering a community editor', () => {
   describe('As the new community editor', async () => {
     var lokka;
 
-    beforeEach(async (done) => {
-      getToken(newUserEmail, newUserPassword).then((token) => {
+    beforeEach(async done => {
+      getToken(newUserEmail, newUserPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });

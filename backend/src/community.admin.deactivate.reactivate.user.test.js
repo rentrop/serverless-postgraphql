@@ -3,24 +3,26 @@ import Lokka from 'lokka';
 import uuidv4 from 'uuid';
 import { endpoint } from './endpoints';
 
-const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
+const anonLokka = new Lokka({ transport: new HttpTransport(endpoint) });
 const superAdminEmail = 'superadmin@flo.ods';
 const communityAdminEmail = 'admin@community.floods';
 const superAdminPassword = 'texasfloods';
 const newUserPassword = 'texasfloods';
 
 async function getToken(email, password) {
-  const response = await anonLokka.send(`
+  const response = await anonLokka.send(
+    `
     mutation($email:String!, $password:String!) {
       authenticate(input: {email: $email, password: $password}) {
         jwtToken
       }
     }
   `,
-  {
-    email: email,
-    password: password
-  });
+    {
+      email: email,
+      password: password,
+    },
+  );
 
   return response.authenticate.jwtToken;
 }
@@ -34,18 +36,21 @@ describe('When registering, deactivating, and reactivating a user as a community
   describe('As a community admin', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(communityAdminEmail, superAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(communityAdminEmail, superAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
 
     it('should register a new user', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation($email:String!) {
           registerUser(input: {
             firstName: "New",
@@ -64,9 +69,10 @@ describe('When registering, deactivating, and reactivating a user as a community
           }
         }
       `,
-      {
-        email: newUserEmail
-      });
+        {
+          email: newUserEmail,
+        },
+      );
 
       expect(response).not.toBeNull();
       expect(response.registerUser.user.active).toBeTruthy();
@@ -76,18 +82,21 @@ describe('When registering, deactivating, and reactivating a user as a community
   describe('As a super admin', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(superAdminEmail, superAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(superAdminEmail, superAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
 
     it('should register a new other community user', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation($email:String!) {
           registerUser(input: {
             firstName: "New",
@@ -106,9 +115,10 @@ describe('When registering, deactivating, and reactivating a user as a community
           }
         }
       `,
-      {
-        email: newOtherCommunityUserEmail
-      });
+        {
+          email: newOtherCommunityUserEmail,
+        },
+      );
 
       expect(response).not.toBeNull();
       expect(response.registerUser.user.active).toBeTruthy();
@@ -118,12 +128,14 @@ describe('When registering, deactivating, and reactivating a user as a community
   describe('As the new user', async () => {
     var lokka;
 
-    beforeEach(async (done) => {
-      getToken(newUserEmail, newUserPassword).then((token) => {
+    beforeEach(async done => {
+      getToken(newUserEmail, newUserPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
@@ -146,12 +158,14 @@ describe('When registering, deactivating, and reactivating a user as a community
   describe('As the new other community user', async () => {
     var lokka;
 
-    beforeEach(async (done) => {
-      getToken(newOtherCommunityUserEmail, newUserPassword).then((token) => {
+    beforeEach(async done => {
+      getToken(newOtherCommunityUserEmail, newUserPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
@@ -174,18 +188,21 @@ describe('When registering, deactivating, and reactivating a user as a community
   describe('As a community admin again', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(communityAdminEmail, superAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(communityAdminEmail, superAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
 
     it('should deactivate the user', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation($userID:Int!) {
           deactivateUser(input: {userId: $userID}) {
             user {
@@ -194,16 +211,18 @@ describe('When registering, deactivating, and reactivating a user as a community
           }
         }
       `,
-      {
-        userID: newUserId
-      });
+        {
+          userID: newUserId,
+        },
+      );
 
       expect(response).not.toBeNull();
     });
 
     it('should fail to deactivate the other community user', async () => {
       try {
-        const response = await lokka.send(`
+        const response = await lokka.send(
+          `
           mutation($userID:Int!) {
             deactivateUser(input: {userId: $userID}) {
               user {
@@ -212,17 +231,19 @@ describe('When registering, deactivating, and reactivating a user as a community
             }
           }
         `,
-        {
-          userID: newOtherCommunityUserId
-        });
-      } catch(e) {
+          {
+            userID: newOtherCommunityUserId,
+          },
+        );
+      } catch (e) {
         expect(e).toMatchSnapshot();
       }
     });
   });
 
   it('should see the user is deactivated', async () => {
-    const response = await anonLokka.send(`
+    const response = await anonLokka.send(
+      `
       query($userId:Int!){
         userById(id:$userId) {
           firstName
@@ -231,9 +252,10 @@ describe('When registering, deactivating, and reactivating a user as a community
         }
       }
     `,
-    {
-      userId: newUserId
-    });
+      {
+        userId: newUserId,
+      },
+    );
 
     expect(response).toMatchSnapshot();
   });
@@ -241,12 +263,14 @@ describe('When registering, deactivating, and reactivating a user as a community
   describe('As the new other community user again', async () => {
     var lokka;
 
-    beforeEach(async (done) => {
-      getToken(newOtherCommunityUserEmail, newUserPassword).then((token) => {
+    beforeEach(async done => {
+      getToken(newOtherCommunityUserEmail, newUserPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
@@ -266,7 +290,8 @@ describe('When registering, deactivating, and reactivating a user as a community
   });
 
   it('should see the other community user is active', async () => {
-    const response = await anonLokka.send(`
+    const response = await anonLokka.send(
+      `
       query($userId:Int!){
         userById(id:$userId) {
           firstName
@@ -275,9 +300,10 @@ describe('When registering, deactivating, and reactivating a user as a community
         }
       }
     `,
-    {
-      userId: newOtherCommunityUserId
-    });
+      {
+        userId: newOtherCommunityUserId,
+      },
+    );
 
     expect(response).toMatchSnapshot();
   });
@@ -285,18 +311,21 @@ describe('When registering, deactivating, and reactivating a user as a community
   describe('As a community admin once more', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(communityAdminEmail, superAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(communityAdminEmail, superAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
 
     it('should reactivate the user', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation($userId:Int!, $email:String!) {
           reactivateUser(input: {
             userId: $userId,
@@ -312,10 +341,11 @@ describe('When registering, deactivating, and reactivating a user as a community
           }
         }
       `,
-      {
-        userId: newUserId,
-        email: newUserEmail
-      });
+        {
+          userId: newUserId,
+          email: newUserEmail,
+        },
+      );
 
       expect(response).toMatchSnapshot();
     });
@@ -324,12 +354,14 @@ describe('When registering, deactivating, and reactivating a user as a community
   describe('As the reactivated user', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(newUserEmail, newUserPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(newUserEmail, newUserPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
