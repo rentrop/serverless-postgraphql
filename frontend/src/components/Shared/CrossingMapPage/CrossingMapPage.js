@@ -43,11 +43,6 @@ class CrossingMapPage extends Component {
       ],
     ];
 
-    const center = {
-      lng: (viewport[0][0] + viewport[1][0]) / 2,
-      lat: (viewport[0][1] + viewport[1][1]) / 2,
-    };
-
     this.state = {
       viewport: viewport,
       selectedCrossingId: null,
@@ -60,8 +55,6 @@ class CrossingMapPage extends Component {
       showCaution: true,
       showLongterm: true,
       visibleCrossings: [],
-      mapCenter: center,
-      center: center,
     };
   }
 
@@ -105,19 +98,9 @@ class CrossingMapPage extends Component {
     this.setState({ showLongterm: !this.state.showLongterm });
   };
 
-  getMapCenter = center => {
-    this.setState({ mapCenter: center });
-  };
-
-  setCenter = center => {
-    this.setState({ center: center });
-  };
-
   render() {
     const {
       viewport,
-      mapCenter,
-      center,
       selectedCrossingId,
       selectedCrossingStatus,
       searchQuery,
@@ -179,8 +162,6 @@ class CrossingMapPage extends Component {
                     toggleShowLongterm={this.toggleShowLongterm}
                     visibleCrossings={visibleCrossings}
                     allCommunities={allCommunities}
-                    center={mapCenter}
-                    setCenter={this.setCenter}
                   />
                 )}
                 <div
@@ -193,8 +174,6 @@ class CrossingMapPage extends Component {
                     mapHeight="100%"
                     mapWidth="100%"
                     viewport={viewport}
-                    getMapCenter={this.getMapCenter}
-                    center={center}
                     selectedCrossingId={selectedCrossingId}
                     selectedCrossingStatus={selectedCrossingStatus}
                     selectCrossing={this.selectCrossing}

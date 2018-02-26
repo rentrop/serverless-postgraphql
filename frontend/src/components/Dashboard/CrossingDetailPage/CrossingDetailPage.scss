@@ -1,19 +1,19 @@
-@import "css/mixins/flexbox";
+@import 'css/mixins/flexbox';
 
 .CrossingDetails__container {
   @include flexcontainer--column;
 
   &.CrossingDetails__container--lg {
-    @include flexcontainer--row;   
+    @include flexcontainer--row;
 
     .CrossingStaticMap {
       order: 1;
-    } 
+    }
 
     .CrossingDetails {
       order: 2;
       @include flexcontainer--column;
-      justify-content: space-between; 
+      justify-content: space-between;
       min-height: 350px;
     }
   }
@@ -25,7 +25,7 @@
   }
 
   .CrossingDetails {
-    @include flexitem;  
+    @include flexitem;
     order: 1;
   }
 }

@@ -1,4 +1,4 @@
-@import "css/mixins/colors";
+@import 'css/mixins/colors';
 
 .white {
   color: $color-white;
@@ -6,25 +6,25 @@
 .black {
   color: $color-black;
 }
-.gray { 
+.gray {
   color: $color-gray-lightest;
 }
-.gray { 
+.gray {
   color: $color-gray;
 }
-.gray--5 { 
+.gray--5 {
   color: $color-gray-5;
 }
-.gray--15 { 
+.gray--15 {
   color: $color-gray-15;
 }
-.gray--25 { 
+.gray--25 {
   color: $color-gray-25;
 }
-.gray--50 { 
+.gray--50 {
   color: $color-gray-50;
 }
-.gray--75 { 
+.gray--75 {
   color: $color-gray-75;
 }
 .color-highlight {

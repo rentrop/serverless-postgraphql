@@ -1,15 +1,25 @@
 .Dropdown {
   height: 40px;
-  overflow: hidden;
-  background: url("../../../images/chevron-down-light.svg");
-  background-color: #ffffff;
-  background-repeat: no-repeat;
+  background-color: #f9f9fa;
   border: 1px solid #d6d4dc;
-  background-size: 22px; 
-  background-position: 96% 60%;
+  background-size: 22px;
+  border-radius: 5px;
+  display: flex;
+  overflow: hidden;
+}
+
+.Chevron {
+  background: #5f7d8c;
+  color: #fff;
+  font-size: 1.3em;
+  display: flex;
+  padding: 18px;
+  align-items: center;
+  justify-content: center;
 }
 
 .Dropdown__select {
+  flex: 1;
   background: transparent;
   padding: 10px;
   font-size: 1.5rem;

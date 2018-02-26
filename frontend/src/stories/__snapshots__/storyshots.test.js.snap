@@ -178,7 +178,8 @@ exports[`Storyshots Crossing List Header Large Width 1`] = `
         <div
           className="CrossingListSortToggleText"
         >
-          LAST UPDATED 
+          LAST UPDATED
+           
           <span
             aria-hidden={true}
             className="fa fa-caret-down"
@@ -316,7 +317,8 @@ exports[`Storyshots Crossing List Header Small Width 1`] = `
         <div
           className="CrossingListSortToggleText"
         >
-          LAST UPDATED 
+          LAST UPDATED
+           
           <span
             aria-hidden={true}
             className="fa fa-caret-down"
@@ -591,6 +593,14 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
               Bridge Broken
             </option>
           </select>
+          <div
+            className="Chevron"
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-chevron-down"
+            />
+          </div>
         </div>
       </div>
       <div
@@ -803,6 +813,14 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
               Bridge Broken
             </option>
           </select>
+          <div
+            className="Chevron"
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-chevron-down"
+            />
+          </div>
         </div>
       </div>
       <div
@@ -1045,6 +1063,14 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
               Bridge Broken
             </option>
           </select>
+          <div
+            className="Chevron"
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-chevron-down"
+            />
+          </div>
         </div>
       </div>
       <div
@@ -1257,6 +1283,14 @@ exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
               Bridge Broken
             </option>
           </select>
+          <div
+            className="Chevron"
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-chevron-down"
+            />
+          </div>
         </div>
       </div>
       <div
@@ -1533,6 +1567,14 @@ exports[`Storyshots Crossing List Item Large Width 1`] = `
                 Bridge Broken
               </option>
             </select>
+            <div
+              className="Chevron"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-down"
+              />
+            </div>
           </div>
         </div>
         <div
@@ -1595,6 +1637,14 @@ exports[`Storyshots Crossing List Item Large Width 1`] = `
                 A Week
               </option>
             </select>
+            <div
+              className="Chevron"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-down"
+              />
+            </div>
           </div>
         </div>
         <div
@@ -1830,6 +1880,14 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
               Bridge Broken
             </option>
           </select>
+          <div
+            className="Chevron"
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-chevron-down"
+            />
+          </div>
         </div>
       </div>
       <div
@@ -1892,6 +1950,14 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
               A Week
             </option>
           </select>
+          <div
+            className="Chevron"
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-chevron-down"
+            />
+          </div>
         </div>
       </div>
       <div
@@ -2092,6 +2158,14 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
               Bridge Broken
             </option>
           </select>
+          <div
+            className="Chevron"
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-chevron-down"
+            />
+          </div>
         </div>
       </div>
       <div
@@ -2154,6 +2228,14 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
               A Week
             </option>
           </select>
+          <div
+            className="Chevron"
+          >
+            <span
+              aria-hidden={true}
+              className="fa fa-chevron-down"
+            />
+          </div>
         </div>
       </div>
       <div
@@ -2754,6 +2836,14 @@ exports[`Storyshots Crossing List Item Small Width 1`] = `
                 Bridge Broken
               </option>
             </select>
+            <div
+              className="Chevron"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-down"
+              />
+            </div>
           </div>
         </div>
         <div
@@ -2816,6 +2906,14 @@ exports[`Storyshots Crossing List Item Small Width 1`] = `
                 A Week
               </option>
             </select>
+            <div
+              className="Chevron"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-down"
+              />
+            </div>
           </div>
         </div>
         <div

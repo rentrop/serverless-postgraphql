@@ -6,7 +6,7 @@ var execSync = require('child_process').execSync;
 var checkFonts = require('./check-fonts');
 var langFallback = require('./lang-fallback.js');
 
-var stylePath = 'src/components/Map/style/style.json';
+var stylePath = 'src/components/Shared/Map/style/style.json';
 var styleString = fs.readFileSync(stylePath, 'utf8');
 var style = JSON.parse(styleString);
 

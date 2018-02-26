@@ -1,9 +1,9 @@
-@import "css/global/forms";
-@import "css/global/flexbox";
-@import "css/global/typography";
-@import "css/global/layout";
-@import "css/global/colors";
-@import "css/mixins/colors";
+@import 'css/global/forms';
+@import 'css/global/flexbox';
+@import 'css/global/typography';
+@import 'css/global/layout';
+@import 'css/global/colors';
+@import 'css/mixins/colors';
 
 body {
   margin: 0;
@@ -11,72 +11,84 @@ body {
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .PageLayout {
-    margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .Header {
-    padding: 0 5%;
+  padding: 0 5%;
 }
 
 .mapboxgl-user-location-dot {
-    background-color: #1DA1F2;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    box-shadow: 0 0 2px rgba(0,0,0,0.25);
-    border: 2px solid #fff;
+  background-color: #1da1f2;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+  border: 2px solid #fff;
 }
 .mapboxgl-user-location-dot:after {
-    content: '';
-    display: block;
-    box-shadow: #1DA1F2 0 0 0 2px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    position: relative;
-    z-index: -1;
+  content: '';
+  display: block;
+  box-shadow: #1da1f2 0 0 0 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  position: relative;
+  z-index: -1;
 
-    -webkit-animation: mapboxgl-user-location-dot-pulse 2s;
-    -moz-animation: mapboxgl-user-location-dot-pulse 2s;
-    -ms-animation: mapboxgl-user-location-dot-pulse 2s;
-    animation: mapboxgl-user-location-dot-pulse 2s;
+  -webkit-animation: mapboxgl-user-location-dot-pulse 2s;
+  -moz-animation: mapboxgl-user-location-dot-pulse 2s;
+  -ms-animation: mapboxgl-user-location-dot-pulse 2s;
+  animation: mapboxgl-user-location-dot-pulse 2s;
 
-    -webkit-animation-iteration-count: infinite;
-    -moz-animation-iteration-count: infinite;
-    -ms-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
 @-webkit-keyframes mapboxgl-user-location-dot-pulse {
-    0%   {   -webkit-box-shadow: 0 0 0 0 rgba(29, 161, 242, 0.8); }
-    70%  {   -webkit-box-shadow: 0 0 0 15px rgba(29, 161, 242, 0); }
-    242% {   -webkit-box-shadow: 0 0 0 0 rgba(29, 161, 242, 0); }
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(29, 161, 242, 0.8);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 15px rgba(29, 161, 242, 0);
+  }
+  242% {
+    -webkit-box-shadow: 0 0 0 0 rgba(29, 161, 242, 0);
+  }
 }
 @-ms-keyframes mapboxgl-user-location-dot-pulse {
-    0%   {   -ms-box-shadow: 0 0 0 0 rgba(29, 161, 242, 0.8); }
-    70%  {   -ms-box-shadow: 0 0 0 15px rgba(29, 161, 242, 0); }
-    242% {   -ms-box-shadow: 0 0 0 0 rgba(29, 161, 242, 0); }
+  0% {
+    -ms-box-shadow: 0 0 0 0 rgba(29, 161, 242, 0.8);
+  }
+  70% {
+    -ms-box-shadow: 0 0 0 15px rgba(29, 161, 242, 0);
+  }
+  242% {
+    -ms-box-shadow: 0 0 0 0 rgba(29, 161, 242, 0);
+  }
 }
 @keyframes mapboxgl-user-location-dot-pulse {
-    0% {
-        -moz-box-shadow: 0 0 0 0 rgba(29, 161, 242, 0.8);
-             box-shadow: 0 0 0 0 rgba(29, 161, 242, 0.4);
-    }
-    70% {
-        -moz-box-shadow: 0 0 0 15px rgba(29, 161, 242, 0);
-             box-shadow: 0 0 0 15px rgba(29, 161, 242, 0);
-    }
-    100% {
-        -moz-box-shadow: 0 0 0 0 rgba(29, 161, 242, 0);
-             box-shadow: 0 0 0 0 rgba(29, 161, 242, 0);
-    }
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(29, 161, 242, 0.8);
+    box-shadow: 0 0 0 0 rgba(29, 161, 242, 0.4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 15px rgba(29, 161, 242, 0);
+    box-shadow: 0 0 0 15px rgba(29, 161, 242, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(29, 161, 242, 0);
+    box-shadow: 0 0 0 0 rgba(29, 161, 242, 0);
+  }
 }
 .mapboxgl-user-location-dot-stale {
-    background-color: #aaa;
+  background-color: #aaa;
 }
 .mapboxgl-user-location-dot-stale:after {
-    display: none
+  display: none;
 }

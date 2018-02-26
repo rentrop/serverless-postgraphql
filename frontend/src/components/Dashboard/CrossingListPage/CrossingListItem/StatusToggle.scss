@@ -1,22 +1,28 @@
-@import "css/mixins/flexbox";
+@import 'css/mixins/flexbox';
 
 $container-height: 40px;
 
-$border-color: #D0CED7;
-$text-color: #D0CED7;
-$selected-text-color: #11022F;
+$container-background-color: #f9f9fa;
+$border-color: #b0bec5;
+$text-color: #5f7d8c;
+$selected-text-color: #ffffff;
+$selected-text-bright-color: #000000;
+$hover-text-color: #11022f;
 
-$open-color: #ACF6EA;
-$caution-color: #F6F3AC;
-$closed-color: #FFCEC6;
+$open-color: #00bfa5;
+$caution-color: #ffc108;
+$closed-color: #f44336;
 
 .StatusToggleContainer {
   @include flexcontainer;
   height: $container-height;
+  background-color: $container-background-color;
 }
 
 .StatusToggle {
   @include flexitem;
+  @include flexcontainer--center;
+  justify-content: center;
   text-align: center;
   vertical-align: bottom;
   line-height: $container-height;
@@ -52,6 +58,7 @@ $closed-color: #FFCEC6;
   @extend .StatusToggle__caution;
   @extend .StatusToggle--selected;
   background-color: $caution-color;
+  color: $selected-text-bright-color;
 }
 
 .StatusToggle__closed {
@@ -81,5 +88,11 @@ $closed-color: #FFCEC6;
 }
 
 .hover {
+  color: $hover-text-color;
+}
+.StatusToggle--selected.hover {
   color: $selected-text-color;
+}
+.StatusToggle__caution--selected.hover {
+  color: $selected-text-bright-color;
 }

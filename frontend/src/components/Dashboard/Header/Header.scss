@@ -1,8 +1,8 @@
-@import "css/mixins/flexbox";
-@import "css/mixins/colors";
+@import 'css/mixins/flexbox';
+@import 'css/mixins/colors';
 
 .Header {
-  background: #111D23;
+  background: #111d23;
   color: $color-white;
   a {
     color: $color-white;
@@ -30,12 +30,12 @@
 
 .Header__h1 {
   font-size: 3rem;
-  margin: 0 0 0.5rem;  
+  margin: 0 0 0.5rem;
 }
 
 .Header__h1.smallsize {
   font-size: 2.5rem;
-  margin: 0 0 0.5rem;  
+  margin: 0 0 0.5rem;
 }
 
 .Header__h1-container.smallsize {
@@ -50,7 +50,7 @@
   justify-content: flex-end;
   list-style: none;
   text-transform: uppercase;
-  margin: 0;  
+  margin: 0;
 }
 
 .Header__tabs {
@@ -60,12 +60,12 @@
 .Header__tabs.smallsize {
   @include Header__tabs;
   padding-left: 0;
-  justify-content: center; 
+  justify-content: center;
 }
 
 @mixin Header__tab {
   font-size: 1.4rem;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 .Header__tab {
   @include Header__tab;

@@ -16,7 +16,7 @@ async function getToken(email, password) {
         jwtToken
       }
     }
-  `,
+    `,
     {
       email: email,
       password: password,
