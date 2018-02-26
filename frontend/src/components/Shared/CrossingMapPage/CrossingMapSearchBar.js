@@ -55,13 +55,28 @@ class CrossingMapSearchBar extends Component {
   }
 
   onChange = (event, { newValue }) => {
-    this.setState({
-      value: newValue
-    });
+    console.log(event.type);
+    // If we're typing in the search bar, the event type is change
+    // we should update the suggestions accordingly
+    if(event.type === 'change') {
+      this.setState({
+        value: newValue
+      });
+    }
+
+
+
   };
 
   onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
+    this.setState({
+      value: suggestionValue
+    });
     this.props.setCenter(suggestion.center);
+  }
+
+  onSuggestionHighlighted = (suggestion) => {
+    console.log(suggestion);
   }
 
   // Autosuggest will call this function every time you need to update suggestions.
@@ -156,6 +171,7 @@ class CrossingMapSearchBar extends Component {
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
               onSuggestionsClearRequested={this.onSuggestionsClearRequested}
               onSuggestionSelected={this.onSuggestionSelected}
+              onSuggestionHighlighted={this.onSuggestionHighlighted}
               getSuggestionValue={getSuggestionValue}
               renderSuggestion={renderSuggestion}
               inputProps={inputProps}
