@@ -60,6 +60,10 @@
 
   &.input--lg {
     font-size: $font-large;
-    font-weight: bold;  
+    font-weight: bold;
   }
+}
+
+form, input, select {
+  font-family: $font-sans;
 }

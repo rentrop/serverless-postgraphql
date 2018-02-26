@@ -2,21 +2,27 @@
 
 $container-height: 40px;
 
-$border-color: #D0CED7;
-$text-color: #D0CED7;
-$selected-text-color: #11022F;
+$container-background-color: #F9F9FA;
+$border-color: #B0BEC5;
+$text-color: #5F7D8C;
+$selected-text-color: #FFFFFF;
+$selected-text-bright-color: #000000;
+$hover-text-color: #11022F;
 
-$open-color: #ACF6EA;
-$caution-color: #F6F3AC;
-$closed-color: #FFCEC6;
+$open-color: #00BFA5;
+$caution-color: #FFC108;
+$closed-color: #F44336;
 
 .StatusToggleContainer {
   @include flexcontainer;
   height: $container-height;
+  background-color: $container-background-color;
 }
 
 .StatusToggle {
   @include flexitem;
+  @include flexcontainer--center;
+  justify-content: center;
   text-align: center;
   vertical-align: bottom;
   line-height: $container-height;
@@ -52,6 +58,7 @@ $closed-color: #FFCEC6;
   @extend .StatusToggle__caution;
   @extend .StatusToggle--selected;
   background-color: $caution-color;
+  color: $selected-text-bright-color;
 }
 
 .StatusToggle__closed {
@@ -81,5 +88,11 @@ $closed-color: #FFCEC6;
 }
 
 .hover {
+  color: $hover-text-color;
+}
+.StatusToggle--selected.hover  {
   color: $selected-text-color;
+}
+.StatusToggle__caution--selected.hover {
+  color: $selected-text-bright-color;
 }

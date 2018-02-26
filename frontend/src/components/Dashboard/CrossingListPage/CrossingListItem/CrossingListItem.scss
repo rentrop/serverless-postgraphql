@@ -29,10 +29,10 @@
 }
 
 .CrossingName {
-  font-size: 12pt;
-  color: #055eff;
-  text-decoration: underline;
-  letter-spacing: .2pt;
+  color: #000;
+  font-size: 14pt;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .ControlLabelContainer {
@@ -41,9 +41,10 @@
 
 .ControlLabel {
   @include flexitem;
-  font-size: 11pt;
+  font-size: 10pt;
   font-weight: 600;
   line-height: 2em;
+  text-transform: uppercase;
 }
 
 .NotesTextBox {
@@ -52,7 +53,9 @@
   text-indent: 12px;
   height: 40px;
   overflow: hidden;
-  border: 1px solid #d6d4dc;
+  border: 1px solid #B0BEC5;
+  background: #F9F9FA;
+  border-radius: 5px;
 }
 
 .ButtonContainer {
@@ -89,7 +92,8 @@
   @include flexitem;
   text-align: right;
   font-size: 9pt;
-  font-weight: 300;
+  font-weight: 400;
   font-style: italic;
   align-self: center;
+  text-transform: uppercase;
 }
