@@ -16,7 +16,7 @@ export const strings = {
   1: 'Open',
   2: 'Closed',
   3: 'Caution',
-  4: 'Closed Longterm'
+  4: 'Closed Longterm',
 };
 
 export const statusIcons = {
@@ -24,27 +24,27 @@ export const statusIcons = {
   2: closedIcon,
   3: cautionIcon,
   4: longTermIcon,
-}
+};
 
 export const displayedInputs = {
   1: {
-    'notes': true,
-    'reason': false,
-    'duration': false,
+    notes: true,
+    reason: false,
+    duration: false,
   },
   2: {
-    'notes': true,
-    'reason': true,
-    'duration': false,
+    notes: true,
+    reason: true,
+    duration: false,
   },
   3: {
-    'notes': true,
-    'reason': true,
-    'duration': false,
+    notes: true,
+    reason: true,
+    duration: false,
   },
   4: {
-    'notes': true,
-    'reason': true,
-    'duration': true,
+    notes: true,
+    reason: true,
+    duration: true,
   },
-}
+};

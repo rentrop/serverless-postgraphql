@@ -21,10 +21,8 @@ class ManageUsers extends Component {
   }
 
   render() {
-    if(md.mobile()) {
-      return (
-        <div>Managing users is not yet supported on mobile.</div>
-      );
+    if (md.mobile()) {
+      return <div>Managing users is not yet supported on mobile.</div>;
     }
 
     return (
@@ -45,8 +43,6 @@ class ManageUsers extends Component {
       </div>
     );
   }
-
 }
-
 
 export default ManageUsers;

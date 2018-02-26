@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 const suggestCrossings = gql`
-  query suggestCrossings($search:String) {
-    searchCrossings(search: $search, first:5) {
+  query suggestCrossings($search: String) {
+    searchCrossings(search: $search, first: 5) {
       nodes {
         id
         name

@@ -5,40 +5,37 @@ import Autosuggest from 'react-autosuggest';
 import MapboxClient from 'mapbox';
 import CrossingMapSearchCrossingSuggestions from 'components/Shared/CrossingMapPage/CrossingMapSearchCrossingSuggestions';
 
-const mapboxClient = new MapboxClient('pk.eyJ1IjoiY3Jvd2VhdHgiLCJhIjoiY2o1NDFvYmxkMHhkcDMycDF2a3pseDFpZiJ9.UcnizcFDleMpv5Vbv8Rngw');
+const mapboxClient = new MapboxClient(
+  'pk.eyJ1IjoiY3Jvd2VhdHgiLCJhIjoiY2o1NDFvYmxkMHhkcDMycDF2a3pseDFpZiJ9.UcnizcFDleMpv5Vbv8Rngw',
+);
 
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
 const getSuggestionValue = suggestion => {
-  return (suggestion.place_name || suggestion.name);
+  return suggestion.place_name || suggestion.name;
 };
 
 // Use your imagination to render suggestions.
 const renderSuggestion = suggestion => (
-  <div>
-    {suggestion.place_name || suggestion.name}
-  </div>
+  <div>{suggestion.place_name || suggestion.name}</div>
 );
 
 const renderSectionTitle = section => {
-  return (
-    <strong>{section.title}</strong>
-  );
-}
+  return <strong>{section.title}</strong>;
+};
 
 const getSectionSuggestions = section => {
   return section.suggestions;
-}
+};
 
 const formatSearchQuery = query => {
   // debugger;
-  if(!query) return '';
-  return `%${query.replace(/ /g,"%")}%`;
-}
+  if (!query) return '';
+  return `%${query.replace(/ /g, '%')}%`;
+};
 
 class CrossingMapSearchBar extends Component {
-
   constructor() {
     super();
 
@@ -50,7 +47,7 @@ class CrossingMapSearchBar extends Component {
     this.state = {
       value: '',
       mapboxSuggestions: [],
-      crossingSuggestions: []
+      crossingSuggestions: [],
     };
   }
 
@@ -58,26 +55,26 @@ class CrossingMapSearchBar extends Component {
     console.log(event.type);
     // If we're typing in the search bar, the event type is change
     // we should update the suggestions accordingly
-    if(event.type === 'change') {
+    if (event.type === 'change') {
       this.setState({
-        value: newValue
+        value: newValue,
       });
     }
-
-
-
   };
 
-  onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
+  onSuggestionSelected = (
+    event,
+    { suggestion, suggestionValue, suggestionIndex, sectionIndex, method },
+  ) => {
     this.setState({
-      value: suggestionValue
+      value: suggestionValue,
     });
     this.props.setCenter(suggestion.center);
-  }
+  };
 
-  onSuggestionHighlighted = (suggestion) => {
+  onSuggestionHighlighted = suggestion => {
     console.log(suggestion);
-  }
+  };
 
   // Autosuggest will call this function every time you need to update suggestions.
   onSuggestionsFetchRequested = ({ value }) => {
@@ -88,62 +85,70 @@ class CrossingMapSearchBar extends Component {
     const inputLength = inputValue.length;
 
     // Get the suggestions from the mapbox geocoder
-    if(inputLength > 2) {
-      mapboxClient.geocodeForward(inputValue, {
-        proximity: { latitude: center.lat, longitude: center.lng }
-      }, (err, res) => {
-        this.setState({mapboxSuggestions: res.features});
-      });
+    if (inputLength > 2) {
+      mapboxClient.geocodeForward(
+        inputValue,
+        {
+          proximity: { latitude: center.lat, longitude: center.lng },
+        },
+        (err, res) => {
+          this.setState({ mapboxSuggestions: res.features });
+        },
+      );
     } else {
-      this.setState({mapboxSuggestions: []});
+      this.setState({ mapboxSuggestions: [] });
     }
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequested = () => {
     this.setState({
-      mapboxSuggestions: []
+      mapboxSuggestions: [],
     });
   };
 
   clearSearch = () => {
-    this.props.searchQueryUpdated({target:{value:''}});
-    this.props.selectCrossing(null,null);
-    this.setState({value: ''});
-  }
+    this.props.searchQueryUpdated({ target: { value: '' } });
+    this.props.selectCrossing(null, null);
+    this.setState({ value: '' });
+  };
 
-  updateCrossingSuggestions = (suggestions) => {
+  updateCrossingSuggestions = suggestions => {
     console.log(suggestions);
     this.setState({
-      crossingSuggestions: suggestions
-    })
-  }
+      crossingSuggestions: suggestions,
+    });
+  };
 
   render() {
-    const { selectedCrossingId, searchQueryUpdated, selectedCrossingName } = this.props;
+    const {
+      selectedCrossingId,
+      searchQueryUpdated,
+      selectedCrossingName,
+    } = this.props;
 
     const { value, mapboxSuggestions, crossingSuggestions } = this.state;
 
     const suggestions = [
       {
         title: 'Crossings',
-        suggestions: crossingSuggestions
+        suggestions: crossingSuggestions,
       },
       {
         title: 'Communities',
-        suggestions: []
+        suggestions: [],
       },
       {
         title: 'Locations',
-        suggestions: mapboxSuggestions
-      }
+        suggestions: mapboxSuggestions,
+      },
     ];
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
       placeholder: 'Search...',
       value,
-      onChange: this.onChange
+      onChange: this.onChange,
     };
 
     const formattedQuery = formatSearchQuery(value);
@@ -152,34 +157,42 @@ class CrossingMapSearchBar extends Component {
       <div>
         <CrossingMapSearchCrossingSuggestions
           searchQuery={formattedQuery}
-          updateSuggestions={this.updateCrossingSuggestions} />
+          updateSuggestions={this.updateCrossingSuggestions}
+        />
         <div className="CrossingMapSearchBar__header">
           SEARCH FOR A PLACE, AREA, OR CROSSING
         </div>
         <div className="CrossingMapSearchBar__container">
           <div className="CrossingMapSearchBar__location-icon">
-            <FontAwesome name='map-marker' size='2x'/>  
+            <FontAwesome name="map-marker" size="2x" />
           </div>
           <div className="CrossingMapSearchBar__text-entry">
-          { selectedCrossingId && <div className="CrossingMapSearchBar__selected-item">{selectedCrossingName}</div> }
-          { !selectedCrossingId &&
-            <Autosuggest
-              suggestions={suggestions}
-              multiSection={true}
-              getSectionSuggestions={getSectionSuggestions}
-              renderSectionTitle={renderSectionTitle}
-              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-              onSuggestionSelected={this.onSuggestionSelected}
-              onSuggestionHighlighted={this.onSuggestionHighlighted}
-              getSuggestionValue={getSuggestionValue}
-              renderSuggestion={renderSuggestion}
-              inputProps={inputProps}
-            />
-          }    
+            {selectedCrossingId && (
+              <div className="CrossingMapSearchBar__selected-item">
+                {selectedCrossingName}
+              </div>
+            )}
+            {!selectedCrossingId && (
+              <Autosuggest
+                suggestions={suggestions}
+                multiSection={true}
+                getSectionSuggestions={getSectionSuggestions}
+                renderSectionTitle={renderSectionTitle}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                onSuggestionSelected={this.onSuggestionSelected}
+                onSuggestionHighlighted={this.onSuggestionHighlighted}
+                getSuggestionValue={getSuggestionValue}
+                renderSuggestion={renderSuggestion}
+                inputProps={inputProps}
+              />
+            )}
           </div>
-          <div className="CrossingMapSearchBar__cancel-icon" onClick={this.clearSearch}>
-            <FontAwesome name='times' size='2x'/>  
+          <div
+            className="CrossingMapSearchBar__cancel-icon"
+            onClick={this.clearSearch}
+          >
+            <FontAwesome name="times" size="2x" />
           </div>
         </div>
       </div>

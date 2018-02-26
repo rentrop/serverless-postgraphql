@@ -1,6 +1,13 @@
 import React from 'react';
 import CrossingStatusHistoryItem from 'components/Dashboard/CrossingStatusHistory/CrossingStatusHistoryItem';
-import {InfiniteLoader, AutoSizer, List, WindowScroller, CellMeasurer, CellMeasurerCache} from 'react-virtualized';
+import {
+  InfiniteLoader,
+  AutoSizer,
+  List,
+  WindowScroller,
+  CellMeasurer,
+  CellMeasurerCache,
+} from 'react-virtualized';
 import 'components/Dashboard/CrossingListPage/CrossingList.css';
 
 let virtualizingList = [];
@@ -8,11 +15,10 @@ let listRef;
 
 const cache = new CellMeasurerCache({
   defaultHeight: 400,
-  fixedWidth: true
+  fixedWidth: true,
 });
 
-export default class InfiniteCrossingStatusHistoryList extends React.Component{
-
+export default class InfiniteCrossingStatusHistoryList extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,10 +28,10 @@ export default class InfiniteCrossingStatusHistoryList extends React.Component{
   }
 
   componentWillReceiveProps(nextProps) {
-    if(listRef) {
+    if (listRef) {
       this.refreshList();
       this.clearMeasurerCache();
-    };
+    }
   }
 
   componentDidMount() {
@@ -44,20 +50,18 @@ export default class InfiniteCrossingStatusHistoryList extends React.Component{
     listRef.forceUpdateGrid();
   }
 
-  _isRowLoaded ({ index }) {
+  _isRowLoaded({ index }) {
     return !!virtualizingList[index];
   }
 
-  _rowRenderer({ key, index, style, parent}) {
+  _rowRenderer({ key, index, style, parent }) {
     const { showNames } = this.props;
     let statusUpdate;
 
-    if (index<virtualizingList.length) {
-      statusUpdate = virtualizingList[index].node
+    if (index < virtualizingList.length) {
+      statusUpdate = virtualizingList[index].node;
     } else {
-      return (
-        <div key={key}>Loading.....</div>       
-      )
+      return <div key={key}>Loading.....</div>;
     }
 
     return (
@@ -66,26 +70,34 @@ export default class InfiniteCrossingStatusHistoryList extends React.Component{
         columnIndex={0}
         key={key}
         parent={parent}
-        rowIndex={index} >
+        rowIndex={index}
+      >
         {({ measure }) => (
-          <div className='CrossingStatusHistoryItemMeasureContainer' style={style}>
-            <CrossingStatusHistoryItem measure={measure} key={key} update={statusUpdate} showNames={showNames}/>
+          <div
+            className="CrossingStatusHistoryItemMeasureContainer"
+            style={style}
+          >
+            <CrossingStatusHistoryItem
+              measure={measure}
+              key={key}
+              update={statusUpdate}
+              showNames={showNames}
+            />
           </div>
         )}
       </CellMeasurer>
-    )
+    );
   }
 
-  _noRowsRenderer(){
-      return <h1>No Rows returned from GraphQL fetch....</h1>
+  _noRowsRenderer() {
+    return <h1>No Rows returned from GraphQL fetch....</h1>;
   }
 
   render() {
+    const { loadMoreRows, allStatusUpdates } = this.props;
 
-    const {loadMoreRows,allStatusUpdates} = this.props;
-
-    if(!allStatusUpdates) {
-      return (<div>Loading</div>);
+    if (!allStatusUpdates) {
+      return <div>Loading</div>;
     }
 
     virtualizingList = allStatusUpdates.edges;
@@ -96,14 +108,15 @@ export default class InfiniteCrossingStatusHistoryList extends React.Component{
           isRowLoaded={this._isRowLoaded}
           loadMoreRows={loadMoreRows}
           rowCount={allStatusUpdates.totalCount}
-          threshold={10}>
+          threshold={10}
+        >
           {({ onRowsRendered, registerChild }) => (
             <WindowScroller>
               {({ height, isScrolling, scrollTop }) => (
                 <AutoSizer disableHeight>
                   {({ width }) => (
                     <List
-                      ref={ref => registerChild = listRef = ref}
+                      ref={ref => (registerChild = listRef = ref)}
                       className="List"
                       autoHeight
                       deferredMeasurementCache={cache}
@@ -113,7 +126,8 @@ export default class InfiniteCrossingStatusHistoryList extends React.Component{
                       onRowsRendered={onRowsRendered}
                       rowCount={allStatusUpdates.totalCount}
                       rowRenderer={this._rowRenderer}
-                      scrollTop={scrollTop} />
+                      scrollTop={scrollTop}
+                    />
                   )}
                 </AutoSizer>
               )}

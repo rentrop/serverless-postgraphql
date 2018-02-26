@@ -14,19 +14,20 @@ import crossingFragment from 'components/Dashboard/CrossingListPage/queries/cros
 const containerQuery = {
   'CrossingDetails__container--lg': {
     minWidth: LARGE_ITEM_MIN_WIDTH,
-  }
+  },
 };
 
 class CrossingDetailPage extends Component {
   render() {
-    const isLoading = (
+    const isLoading =
       !this.props.CrossingByIdQuery ||
-       this.props.CrossingByIdQuery.loading ||
+      this.props.CrossingByIdQuery.loading ||
       !this.props.StatusHistoryQuery ||
-       this.props.StatusHistoryQuery.loading
-    );
+      this.props.StatusHistoryQuery.loading;
 
-    if ( isLoading ) { return (<div>Loading</div>) };
+    if (isLoading) {
+      return <div>Loading</div>;
+    }
 
     const crossing = this.props.CrossingByIdQuery.crossingById;
     const allCommunities = this.props.AllCommunitiesQuery.allCommunities.nodes;
@@ -36,24 +37,29 @@ class CrossingDetailPage extends Component {
 
     return (
       <ContainerQuery query={containerQuery}>
-        {(params) => (
+        {params => (
           <div className="CrossingDetailPage">
-            <div className={classnames(params, "CrossingDetails__container")}>
-              <CrossingStaticMap crossing={crossing}/>
-              <CrossingDetails crossing={crossing} crossingCommunities={crossingCommunities} allCommunities={allCommunities} currentUser={currentUser} addMode={false}/>
+            <div className={classnames(params, 'CrossingDetails__container')}>
+              <CrossingStaticMap crossing={crossing} />
+              <CrossingDetails
+                crossing={crossing}
+                crossingCommunities={crossingCommunities}
+                allCommunities={allCommunities}
+                currentUser={currentUser}
+                addMode={false}
+              />
             </div>
-            <CrossingStatusHistory crossingId={crossing.id} history={history}/>
+            <CrossingStatusHistory crossingId={crossing.id} history={history} />
           </div>
         )}
       </ContainerQuery>
     );
   }
-
 }
 
 const CrossingByIdQuery = gql`
-  query crossingById($crossingId:Int!) {
-    crossingById(id:$crossingId) {
+  query crossingById($crossingId: Int!) {
+    crossingById(id: $crossingId) {
       ...crossingInfo
       statusByLatestStatusId {
         id
@@ -78,21 +84,21 @@ const allCommunitiesQuery = gql`
 export default compose(
   graphql(CrossingByIdQuery, {
     name: 'CrossingByIdQuery',
-    options: (ownProps) => ({
+    options: ownProps => ({
       variables: {
-        crossingId: ownProps.match.params.id
-      }
-    })
+        crossingId: ownProps.match.params.id,
+      },
+    }),
   }),
   graphql(statusHistoryQuery, {
     name: 'StatusHistoryQuery',
-    options: (ownProps) => ({
+    options: ownProps => ({
       variables: {
-        crossingId: ownProps.match.params.id
-      }
-    })
+        crossingId: ownProps.match.params.id,
+      },
+    }),
   }),
   graphql(allCommunitiesQuery, {
-    name: 'AllCommunitiesQuery'
-  })
+    name: 'AllCommunitiesQuery',
+  }),
 )(CrossingDetailPage);

@@ -4,13 +4,13 @@ import { isTokenExpired } from './jwtHelper';
 const auth = {
   isAuthenticated() {
     var token = localStorage.getItem('jwt_user_token');
-    if(token === null || token === "null") return false;
+    if (token === null || token === 'null') return false;
     return !isTokenExpired(token);
   },
 
   getRole() {
     var token = localStorage.getItem('jwt_user_token');
-    if(token === null || token === "null") return false;
+    if (token === null || token === 'null') return false;
     return isTokenExpired(token) ? false : decode(token).role;
   },
 
@@ -21,7 +21,7 @@ const auth = {
   signout(cb) {
     localStorage.removeItem('jwt_user_token');
     cb.call();
-  }
-}
+  },
+};
 
 export default auth;

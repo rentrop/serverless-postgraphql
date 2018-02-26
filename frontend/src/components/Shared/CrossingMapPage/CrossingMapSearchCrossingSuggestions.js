@@ -3,11 +3,14 @@ import suggestCrossings from 'components/Shared/CrossingMapPage/queries/suggestC
 import { graphql } from 'react-apollo';
 
 class CrossingMapSearchCrossingSuggestions extends Component {
-
   componentDidUpdate() {
     const { updateSuggestions, suggestCrossings } = this.props;
 
-    if(suggestCrossings && !suggestCrossings.loading && suggestCrossings.searchCrossings) {
+    if (
+      suggestCrossings &&
+      !suggestCrossings.loading &&
+      suggestCrossings.searchCrossings
+    ) {
       updateSuggestions(suggestCrossings.searchCrossings.nodes);
     }
   }
@@ -21,9 +24,9 @@ class CrossingMapSearchCrossingSuggestions extends Component {
 
 export default graphql(suggestCrossings, {
   name: 'suggestCrossings',
-  options: (ownProps) => ({
+  options: ownProps => ({
     variables: {
       search: ownProps.searchQuery,
-    }
-  })
+    },
+  }),
 })(CrossingMapSearchCrossingSuggestions);

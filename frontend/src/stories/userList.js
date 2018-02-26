@@ -9,23 +9,23 @@ import schema from 'stories/schema/schema';
 const userNodes = {
   1: {
     id: 1,
-    firstName: "Test",
-    lastName: "User",
-    role: "floods_super_admin",
+    firstName: 'Test',
+    lastName: 'User',
+    role: 'floods_super_admin',
     communityByCommunityId: {
-      name: "all of texas",
+      name: 'all of texas',
       id: '1',
-    }
-  }
+    },
+  },
 };
 
 const superAdmin = {
   communityId: 1,
-  firstName: "Super",
+  firstName: 'Super',
   id: 1,
-  lastName: "Admin",
-  role: "floods_super_admin",
-}
+  lastName: 'Admin',
+  role: 'floods_super_admin',
+};
 
 const root = {
   searchUsers: () => ({ nodes: Object.values(userNodes) }),
