@@ -1,12 +1,12 @@
-@import "css/mixins/flexbox";
-@import "css/mixins/colors";
+@import 'css/mixins/flexbox';
+@import 'css/mixins/colors';
 
 .CrossingDetails {
-    position: relative;
+  position: relative;
 }
 
 .CrossingDetails__communities button {
-  &:last-of-type{
+  &:last-of-type {
     margin-right: 0;
   }
 }

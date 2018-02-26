@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import "components/Dashboard/Dropdown/Dropdown.css";
+import React, { Component } from 'react';
+import 'components/Dashboard/Dropdown/Dropdown.css';
 
-import FontAwesome from "react-fontawesome";
+import FontAwesome from 'react-fontawesome';
 
 class Dropdown extends Component {
   render() {

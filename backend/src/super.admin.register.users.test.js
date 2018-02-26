@@ -3,23 +3,25 @@ import Lokka from 'lokka';
 import uuidv4 from 'uuid';
 import { endpoint } from './endpoints';
 
-const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
+const anonLokka = new Lokka({ transport: new HttpTransport(endpoint) });
 const superAdminEmail = 'superadmin@flo.ods';
 const superAdminPassword = 'texasfloods';
 const newUserPassword = 'texasfloods';
 
 async function getToken(email, password) {
-  const response = await anonLokka.send(`
+  const response = await anonLokka.send(
+    `
     mutation($email:String!, $password:String!) {
       authenticate(input: {email: $email, password: $password}) {
         jwtToken
       }
     }
   `,
-  {
-    email: email,
-    password: password
-  });
+    {
+      email: email,
+      password: password,
+    },
+  );
 
   return response.authenticate.jwtToken;
 }
@@ -31,18 +33,21 @@ describe('When registering a super admin', () => {
   describe('As a super admin', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(superAdminEmail, superAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(superAdminEmail, superAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
 
     it('should register a new super admin', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation($email:String!) {
           registerUser(input: {
             firstName: "New",
@@ -60,18 +65,19 @@ describe('When registering a super admin', () => {
           }
         }
       `,
-      {
-        email: newUserEmail
-      });
+        {
+          email: newUserEmail,
+        },
+      );
 
       newUserId = response.registerUser.user.id;
       expect(response).not.toBeNull();
     });
-
   });
 
   it('the new user should show up in the DB', async () => {
-    const response = await anonLokka.send(`
+    const response = await anonLokka.send(
+      `
       query ($id: Int!) {
         userById(id: $id) {
           firstName
@@ -80,9 +86,10 @@ describe('When registering a super admin', () => {
         }
       }
     `,
-    {
-      id: newUserId
-    });
+      {
+        id: newUserId,
+      },
+    );
 
     expect(response).toMatchSnapshot();
   });
@@ -90,12 +97,14 @@ describe('When registering a super admin', () => {
   describe('As the new super admin', async () => {
     var lokka;
 
-    beforeEach(async (done) => {
-      getToken(newUserEmail, newUserPassword).then((token) => {
+    beforeEach(async done => {
+      getToken(newUserEmail, newUserPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
@@ -123,18 +132,21 @@ describe('When registering a community admin', () => {
   describe('As a super admin', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(superAdminEmail, superAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(superAdminEmail, superAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
 
     it('should register a new community admin', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation($email:String!) {
           registerUser(input: {
             firstName: "New",
@@ -152,18 +164,19 @@ describe('When registering a community admin', () => {
           }
         }
       `,
-      {
-        email: newUserEmail
-      });
+        {
+          email: newUserEmail,
+        },
+      );
 
       newUserId = response.registerUser.user.id;
       expect(response).not.toBeNull();
     });
-
   });
 
   it('the new user should show up in the DB', async () => {
-    const response = await anonLokka.send(`
+    const response = await anonLokka.send(
+      `
       query ($id: Int!) {
         userById(id: $id) {
           firstName
@@ -172,9 +185,10 @@ describe('When registering a community admin', () => {
         }
       }
     `,
-    {
-      id: newUserId
-    });
+      {
+        id: newUserId,
+      },
+    );
 
     expect(response).toMatchSnapshot();
   });
@@ -182,12 +196,14 @@ describe('When registering a community admin', () => {
   describe('As the new community admin', async () => {
     var lokka;
 
-    beforeEach(async (done) => {
-      getToken(newUserEmail, newUserPassword).then((token) => {
+    beforeEach(async done => {
+      getToken(newUserEmail, newUserPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
@@ -215,18 +231,21 @@ describe('When registering a community editor', () => {
   describe('As a super admin', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(superAdminEmail, superAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(superAdminEmail, superAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
 
     it('should register a new community editor', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation($email:String!) {
           registerUser(input: {
             firstName: "New",
@@ -244,18 +263,19 @@ describe('When registering a community editor', () => {
           }
         }
       `,
-      {
-        email: newUserEmail
-      });
+        {
+          email: newUserEmail,
+        },
+      );
 
       newUserId = response.registerUser.user.id;
       expect(response).not.toBeNull();
     });
-
   });
 
   it('the new user should show up in the DB', async () => {
-    const response = await anonLokka.send(`
+    const response = await anonLokka.send(
+      `
       query ($id: Int!) {
         userById(id: $id) {
           firstName
@@ -264,9 +284,10 @@ describe('When registering a community editor', () => {
         }
       }
     `,
-    {
-      id: newUserId
-    });
+      {
+        id: newUserId,
+      },
+    );
 
     expect(response).toMatchSnapshot();
   });
@@ -274,12 +295,14 @@ describe('When registering a community editor', () => {
   describe('As the new community editor', async () => {
     var lokka;
 
-    beforeEach(async (done) => {
-      getToken(newUserEmail, newUserPassword).then((token) => {
+    beforeEach(async done => {
+      getToken(newUserEmail, newUserPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });

@@ -1,17 +1,17 @@
 .CrossingListHeader-background {
-  background: #0C0333;
+  background: #0c0333;
 }
 
 .CrossingListHeader.fullsize {
   height: 65px;
-  background: #0C0333;
+  background: #0c0333;
   display: flex;
   max-width: 1100px;
   margin: auto;
 }
 
 .CrossingListHeader.smallsize {
-  background: #0C0333;
+  background: #0c0333;
   min-width: 240px;
 }
 
@@ -25,7 +25,7 @@
 .CrossingListSearch.smallsize {
   display: flex;
   margin-left: 5%;
-  margin-right: 5%
+  margin-right: 5%;
 }
 
 .CrossingListSearchInput {
@@ -39,7 +39,7 @@
 }
 
 .CrossingListSearchButton {
-  background: #1764F6;
+  background: #1764f6;
   width: 15%;
   min-width: 30px;
   height: 45px;
@@ -83,7 +83,7 @@
 }
 
 .CrossingListFilterToggle.smallsize.selected {
-  background-color: #3C298D;
+  background-color: #3c298d;
 }
 
 .CrossingListFilter.fullsize {
@@ -97,7 +97,7 @@
 }
 
 .CrossingListFilter.smallsize {
-  background-color: #3C298D;
+  background-color: #3c298d;
   color: white;
   padding-left: 5%;
   padding-top: 2%;

@@ -9,25 +9,24 @@ import 'components/Dashboard/CrossingDetailPage/CrossingDetailPage.css';
 const containerQuery = {
   'CrossingDetails__container--lg': {
     minWidth: LARGE_ITEM_MIN_WIDTH,
-  }
+  },
 };
 
 class CrossingStatusHistoryPage extends Component {
   render() {
-    const isLoading = (
-      !this.props.data ||
-       this.props.data.loading
-    );
+    const isLoading = !this.props.data || this.props.data.loading;
 
-    if ( isLoading ) { return (<div>Loading</div>) };
+    if (isLoading) {
+      return <div>Loading</div>;
+    }
 
     const history = this.props.data.allStatusUpdates.nodes;
 
     return (
       <ContainerQuery query={containerQuery}>
-        {(params) => (
+        {params => (
           <div className="CrossingDetailPage">
-            <CrossingStatusHistory history={history} showNames/>
+            <CrossingStatusHistory history={history} showNames />
           </div>
         )}
       </ContainerQuery>
@@ -36,7 +35,7 @@ class CrossingStatusHistoryPage extends Component {
 }
 
 export default graphql(statusHistoryQuery, {
-  options: (ownProps) => ({
-    variables: {}
-  })
+  options: ownProps => ({
+    variables: {},
+  }),
 })(CrossingStatusHistoryPage);

@@ -1,12 +1,12 @@
-@import "css/mixins/flexbox";
-@import "css/mixins/layout";
+@import 'css/mixins/flexbox';
+@import 'css/mixins/layout';
 
 .CrossingListItem {
   @include raised-container;
 }
 
 .CrossingListItem.CrossingListItem--dirty {
-  outline: 4px solid #40B3FF;
+  outline: 4px solid #40b3ff;
 }
 
 .CrossingListItemFlexContainer {
@@ -14,7 +14,7 @@
   flex-direction: column;
 }
 
-.CrossingListItem.CrossingListItem--lg .CrossingListItemFlexContainer{
+.CrossingListItem.CrossingListItem--lg .CrossingListItemFlexContainer {
   flex-direction: row;
 }
 
@@ -53,8 +53,8 @@
   text-indent: 12px;
   height: 40px;
   overflow: hidden;
-  border: 1px solid #B0BEC5;
-  background: #F9F9FA;
+  border: 1px solid #b0bec5;
+  background: #f9f9fa;
   border-radius: 5px;
 }
 
@@ -71,20 +71,20 @@
   border-radius: 5px;
   font-size: 11pt;
   text-align: center;
-  border: 2px solid #0054FF;
+  border: 2px solid #0054ff;
   cursor: pointer;
 }
 
 .CancelButton {
   @include button;
-  color: #0054FF;
+  color: #0054ff;
   margin-right: 15px;
 }
 
 .SaveButton {
   @include button;
   color: white;
-  background-color: #0054FF;
+  background-color: #0054ff;
   margin-left: 15px;
 }
 

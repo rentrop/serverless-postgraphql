@@ -2,22 +2,24 @@ import HttpTransport from 'lokka-transport-http';
 import Lokka from 'lokka';
 import { endpoint } from './endpoints';
 
-const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
+const anonLokka = new Lokka({ transport: new HttpTransport(endpoint) });
 const superAdminEmail = 'superadmin@flo.ods';
 const superAdminPassword = 'texasfloods';
 
 async function getToken(email, password) {
-  const response = await anonLokka.send(`
+  const response = await anonLokka.send(
+    `
     mutation($email:String!, $password:String!) {
       authenticate(input: {email: $email, password: $password}) {
         jwtToken
       }
     }
   `,
-  {
-    email: email,
-    password: password
-  });
+    {
+      email: email,
+      password: password,
+    },
+  );
 
   return response.authenticate.jwtToken;
 }
@@ -25,12 +27,14 @@ async function getToken(email, password) {
 describe('As a super admin', async () => {
   var lokka;
 
-  beforeAll(async (done) => {
-    getToken(superAdminEmail, superAdminPassword).then((token) => {
+  beforeAll(async done => {
+    getToken(superAdminEmail, superAdminPassword).then(token => {
       const headers = {
-        'Authorization': 'Bearer '+ token
+        Authorization: 'Bearer ' + token,
       };
-      lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+      lokka = new Lokka({
+        transport: new HttpTransport(endpoint, { headers }),
+      });
       done();
     });
   });
@@ -56,22 +60,25 @@ describe('As a super admin', async () => {
     });
 
     it('the new community should show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           communityById(id: $id) {
             name
           }
         }
       `,
-      {
-        id: newCommunityId
-      });
+        {
+          id: newCommunityId,
+        },
+      );
 
       expect(response).toMatchSnapshot();
     });
 
     it('should rename the community', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation ($id: Int!) {
           changeCommunityName(input: {
             communityId: $id
@@ -83,30 +90,34 @@ describe('As a super admin', async () => {
           }
         }
       `,
-      {
-        id: newCommunityId
-      });
+        {
+          id: newCommunityId,
+        },
+      );
 
       expect(response).not.toBeNull();
     });
 
     it('the renamed community should show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           communityById(id: $id) {
             name
           }
         }
       `,
-      {
-        id: newCommunityId
-      });
+        {
+          id: newCommunityId,
+        },
+      );
 
       expect(response).toMatchSnapshot();
     });
 
     it('should delete the new community', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
       mutation ($id: Int!) {
         deleteCommunity(input: {communityId: $id}) {
           community {
@@ -115,24 +126,27 @@ describe('As a super admin', async () => {
         }
       }      
       `,
-      {
-        id: newCommunityId
-      });
+        {
+          id: newCommunityId,
+        },
+      );
 
       expect(response.deleteCommunity.community.id).toEqual(newCommunityId);
     });
 
     it('the new community should no longer show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           communityById(id: $id) {
             name
           }
         }
       `,
-      {
-        id: newCommunityId
-      });
+        {
+          id: newCommunityId,
+        },
+      );
 
       expect(response.communityById).toBeNull();
     });
@@ -159,22 +173,25 @@ describe('As a super admin', async () => {
     });
 
     it('the new status should show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           statusById(id: $id) {
             name
           }
         }
       `,
-      {
-        id: newStatusId
-      });
+        {
+          id: newStatusId,
+        },
+      );
 
       expect(response).toMatchSnapshot();
     });
 
     it('should rename the status', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation ($id: Int!) {
           changeStatusName(input: {
             statusId: $id
@@ -186,30 +203,34 @@ describe('As a super admin', async () => {
           }
         }
       `,
-      {
-        id: newStatusId
-      });
+        {
+          id: newStatusId,
+        },
+      );
 
       expect(response).not.toBeNull();
     });
 
     it('the renamed status should show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           statusById(id: $id) {
             name
           }
         }
       `,
-      {
-        id: newStatusId
-      });
+        {
+          id: newStatusId,
+        },
+      );
 
       expect(response).toMatchSnapshot();
     });
 
     it('should delete the new status', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
       mutation ($id: Int!) {
         deleteStatus(input: {statusId: $id}) {
           status {
@@ -218,24 +239,27 @@ describe('As a super admin', async () => {
         }
       }      
       `,
-      {
-        id: newStatusId
-      });
+        {
+          id: newStatusId,
+        },
+      );
 
       expect(response.deleteStatus.status.id).toEqual(newStatusId);
     });
 
     it('the new status should no longer show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           statusById(id: $id) {
             name
           }
         }
       `,
-      {
-        id: newStatusId
-      });
+        {
+          id: newStatusId,
+        },
+      );
 
       expect(response.statusById).toBeNull();
     });
@@ -263,22 +287,25 @@ describe('As a super admin', async () => {
     });
 
     it('the new status reason should show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           statusReasonById(id: $id) {
             name
           }
         }
       `,
-      {
-        id: newStatusReasonId
-      });
+        {
+          id: newStatusReasonId,
+        },
+      );
 
       expect(response).toMatchSnapshot();
     });
 
     it('should rename the status reason', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation ($id: Int!) {
           changeStatusReasonName(input: {
             statusReasonId: $id
@@ -290,30 +317,34 @@ describe('As a super admin', async () => {
           }
         }
       `,
-      {
-        id: newStatusReasonId
-      });
+        {
+          id: newStatusReasonId,
+        },
+      );
 
       expect(response).not.toBeNull();
     });
 
     it('the renamed status reason should show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           statusReasonById(id: $id) {
             name
           }
         }
       `,
-      {
-        id: newStatusReasonId
-      });
+        {
+          id: newStatusReasonId,
+        },
+      );
 
       expect(response).toMatchSnapshot();
     });
 
     it('should delete the new status reason', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
       mutation ($id: Int!) {
         deleteStatusReason(input: {statusReasonId: $id}) {
           statusReason {
@@ -322,24 +353,29 @@ describe('As a super admin', async () => {
         }
       }      
       `,
-      {
-        id: newStatusReasonId
-      });
+        {
+          id: newStatusReasonId,
+        },
+      );
 
-      expect(response.deleteStatusReason.statusReason.id).toEqual(newStatusReasonId);
+      expect(response.deleteStatusReason.statusReason.id).toEqual(
+        newStatusReasonId,
+      );
     });
 
     it('the new status reason should no longer show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           statusReasonById(id: $id) {
             name
           }
         }
       `,
-      {
-        id: newStatusReasonId
-      });
+        {
+          id: newStatusReasonId,
+        },
+      );
 
       expect(response.statusReasonById).toBeNull();
     });
@@ -369,22 +405,25 @@ describe('As a super admin', async () => {
     });
 
     it('the new status duration should show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           statusDurationById(id: $id) {
             name
           }
         }
       `,
-      {
-        id: newStatusDurationId
-      });
+        {
+          id: newStatusDurationId,
+        },
+      );
 
       expect(response).toMatchSnapshot();
     });
 
     it('should rename the status duration', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation ($id: Int!) {
           changeStatusDurationName(input: {
             statusDurationId: $id
@@ -396,30 +435,34 @@ describe('As a super admin', async () => {
           }
         }
       `,
-      {
-        id: newStatusDurationId
-      });
+        {
+          id: newStatusDurationId,
+        },
+      );
 
       expect(response).not.toBeNull();
     });
 
     it('the renamed status duration should show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           statusDurationById(id: $id) {
             name
           }
         }
       `,
-      {
-        id: newStatusDurationId
-      });
+        {
+          id: newStatusDurationId,
+        },
+      );
 
       expect(response).toMatchSnapshot();
     });
 
     it('should delete the new status duration', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
       mutation ($id: Int!) {
         deleteStatusDuration(input: {statusDurationId: $id}) {
           statusDuration {
@@ -428,27 +471,31 @@ describe('As a super admin', async () => {
         }
       }      
       `,
-      {
-        id: newStatusDurationId
-      });
+        {
+          id: newStatusDurationId,
+        },
+      );
 
-      expect(response.deleteStatusDuration.statusDuration.id).toEqual(newStatusDurationId);
+      expect(response.deleteStatusDuration.statusDuration.id).toEqual(
+        newStatusDurationId,
+      );
     });
 
     it('the new status duration should no longer show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           statusDurationById(id: $id) {
             name
           }
         }
       `,
-      {
-        id: newStatusDurationId
-      });
+        {
+          id: newStatusDurationId,
+        },
+      );
 
       expect(response.statusDurationById).toBeNull();
     });
   });
-
 });

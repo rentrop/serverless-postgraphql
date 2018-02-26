@@ -2,7 +2,10 @@ import gql from 'graphql-tag';
 
 const statusHistoryQuery = gql`
   query crossingHistory($crossingId: Int) {
-    allStatusUpdates(condition: {crossingId: $crossingId}, orderBy: CREATED_AT_DESC) {
+    allStatusUpdates(
+      condition: { crossingId: $crossingId }
+      orderBy: CREATED_AT_DESC
+    ) {
       totalCount
       pageInfo {
         startCursor
@@ -42,4 +45,3 @@ const statusHistoryQuery = gql`
 `;
 
 export default statusHistoryQuery;
-

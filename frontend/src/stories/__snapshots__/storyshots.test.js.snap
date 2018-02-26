@@ -178,7 +178,8 @@ exports[`Storyshots Crossing List Header Large Width 1`] = `
         <div
           className="CrossingListSortToggleText"
         >
-          LAST UPDATED 
+          LAST UPDATED
+           
           <span
             aria-hidden={true}
             className="fa fa-caret-down"
@@ -316,7 +317,8 @@ exports[`Storyshots Crossing List Header Small Width 1`] = `
         <div
           className="CrossingListSortToggleText"
         >
-          LAST UPDATED 
+          LAST UPDATED
+           
           <span
             aria-hidden={true}
             className="fa fa-caret-down"

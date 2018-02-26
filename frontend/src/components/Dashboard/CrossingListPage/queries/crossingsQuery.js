@@ -3,14 +3,16 @@ import statusUpdateFragment from 'components/Dashboard/CrossingListPage/queries/
 import crossingFragment from 'components/Dashboard/CrossingListPage/queries/crossingFragment';
 
 const crossingsQuery = gql`
-  query searchCrossings($search:String,
-                        $showOpen:Boolean,
-                        $showClosed:Boolean,
-                        $showCaution:Boolean,
-                        $showLongterm:Boolean,
-                        $communityId:Int,
-                        $pageCursor:Cursor,
-                        $orderAsc:Boolean) {
+  query searchCrossings(
+    $search: String
+    $showOpen: Boolean
+    $showClosed: Boolean
+    $showCaution: Boolean
+    $showLongterm: Boolean
+    $communityId: Int
+    $pageCursor: Cursor
+    $orderAsc: Boolean
+  ) {
     searchCrossings(
       search: $search
       showOpen: $showOpen
@@ -34,7 +36,7 @@ const crossingsQuery = gql`
         cursor
         node {
           ...crossingInfo
-          ...statusUpdateInfo  
+          ...statusUpdateInfo
         }
       }
     }

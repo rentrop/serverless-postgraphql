@@ -2,38 +2,48 @@ import HttpTransport from 'lokka-transport-http';
 import Lokka from 'lokka';
 import { endpoint } from './endpoints';
 
-const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
+const anonLokka = new Lokka({ transport: new HttpTransport(endpoint) });
 const superAdminEmail = 'superadmin@flo.ods';
 const communityAdminEmail = 'admin@community.floods';
 const communityEditorEmail = 'editor@community.floods';
 const everyPassword = 'texasfloods';
 
 async function getToken(email, password) {
-  const response = await anonLokka.send(`
+  const response = await anonLokka.send(
+    `
     mutation($email:String!, $password:String!) {
       authenticate(input: {email: $email, password: $password}) {
         jwtToken
       }
     }
   `,
-  {
-    email: email,
-    password: password
-  });
+    {
+      email: email,
+      password: password,
+    },
+  );
 
   return response.authenticate.jwtToken;
 }
 
-function shouldWork(email, password, communityId, coordinates, extra_description) {
+function shouldWork(
+  email,
+  password,
+  communityId,
+  coordinates,
+  extra_description,
+) {
   describe('as ' + email + ' ' + (extra_description || ''), () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(email, password).then((token) => {
+    beforeAll(async done => {
+      getToken(email, password).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
@@ -41,7 +51,8 @@ function shouldWork(email, password, communityId, coordinates, extra_description
     var newCrossingId;
 
     it('should add a new crossing', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation($communityId:Int!) {
           newCrossing(input: {
             name: "New Crossing"
@@ -57,16 +68,18 @@ function shouldWork(email, password, communityId, coordinates, extra_description
           }
         }
       `,
-      {
-        communityId: communityId,
-      });
+        {
+          communityId: communityId,
+        },
+      );
 
       newCrossingId = response.newCrossing.crossing.id;
       expect(response).not.toBeNull();
     });
 
     it('the new crossing should show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           crossingById(id: $id) {
             name
@@ -80,15 +93,17 @@ function shouldWork(email, password, communityId, coordinates, extra_description
           }
         }
       `,
-      {
-        id: newCrossingId
-      });
+        {
+          id: newCrossingId,
+        },
+      );
 
       expect(response).toMatchSnapshot();
     });
 
     it('should edit the crossing', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation editCrossing($id: Int!, $name: String!, $description: String!) {
           editCrossing(input: {crossingId: $id, name: $name, description: $description}) {
             crossing {
@@ -99,17 +114,19 @@ function shouldWork(email, password, communityId, coordinates, extra_description
           }
         }
       `,
-      {
-        id: newCrossingId,
-        name: "Edited Crossing Name",
-        description: "Edited Description"
-      });
+        {
+          id: newCrossingId,
+          name: 'Edited Crossing Name',
+          description: 'Edited Description',
+        },
+      );
 
       expect(response).not.toBeNull();
     });
 
     it('the edited crossing should show up in the DB', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         query ($id: Int!) {
           crossingById(id: $id) {
             name
@@ -123,13 +140,13 @@ function shouldWork(email, password, communityId, coordinates, extra_description
           }
         }
       `,
-      {
-        id: newCrossingId
-      });
+        {
+          id: newCrossingId,
+        },
+      );
 
       expect(response).toMatchSnapshot();
     });
-
   });
 }
 

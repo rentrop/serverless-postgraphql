@@ -8,8 +8,8 @@ class CrossingStatusHistorySpreadsheetLink extends Component {
   };
 
   generateSpreadsheet = () => {
-    this.setState({loadSpreadsheet: true});
-  }
+    this.setState({ loadSpreadsheet: true });
+  };
 
   render() {
     const { loadSpreadsheet } = this.state;
@@ -17,12 +17,15 @@ class CrossingStatusHistorySpreadsheetLink extends Component {
 
     const variables = crossingId ? { crossingId: crossingId } : {};
 
-    return (
-      loadSpreadsheet ? 
-        <CrossingStatusHistorySpreadsheet variables={variables} /> :
-        <a className="CrossingStatusHistory__spreadsheet-link" onClick={this.generateSpreadsheet}>
-          <FontAwesome size="lg" name='file-excel-o' />
-        </a>
+    return loadSpreadsheet ? (
+      <CrossingStatusHistorySpreadsheet variables={variables} />
+    ) : (
+      <a
+        className="CrossingStatusHistory__spreadsheet-link"
+        onClick={this.generateSpreadsheet}
+      >
+        <FontAwesome size="lg" name="file-excel-o" />
+      </a>
     );
   }
 }

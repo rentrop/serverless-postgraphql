@@ -1,5 +1,5 @@
-@import "css/mixins/flexbox";
-@import "css/mixins/colors";
+@import 'css/mixins/flexbox';
+@import 'css/mixins/colors';
 
 .Header {
   a {
@@ -41,7 +41,7 @@
 
 @mixin Header__tab {
   font-size: 1.4rem;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   a {
     text-decoration: none;
   }

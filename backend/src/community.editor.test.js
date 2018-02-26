@@ -2,22 +2,24 @@ import HttpTransport from 'lokka-transport-http';
 import Lokka from 'lokka';
 import { endpoint } from './endpoints';
 
-const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
+const anonLokka = new Lokka({ transport: new HttpTransport(endpoint) });
 const communityEditorEmail = 'editor@community.floods';
 const communityEditorPassword = 'texasfloods';
 
 async function getToken(email, password) {
-  const response = await anonLokka.send(`
+  const response = await anonLokka.send(
+    `
     mutation($email:String!, $password:String!) {
       authenticate(input: {email: $email, password: $password}) {
         jwtToken
       }
     }
   `,
-  {
-    email: email,
-    password: password
-  });
+    {
+      email: email,
+      password: password,
+    },
+  );
 
   return response.authenticate.jwtToken;
 }
@@ -25,12 +27,14 @@ async function getToken(email, password) {
 describe('As a community editor', async () => {
   var lokka;
 
-  beforeAll(async (done) => {
-    getToken(communityEditorEmail, communityEditorPassword).then((token) => {
+  beforeAll(async done => {
+    getToken(communityEditorEmail, communityEditorPassword).then(token => {
       const headers = {
-        'Authorization': 'Bearer '+ token
+        Authorization: 'Bearer ' + token,
       };
-      lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+      lokka = new Lokka({
+        transport: new HttpTransport(endpoint, { headers }),
+      });
       done();
     });
   });
@@ -55,7 +59,7 @@ describe('As a community editor', async () => {
           }
         }
     `);
-    } catch(e) {
+    } catch (e) {
       expect(e).toMatchSnapshot();
     }
   });

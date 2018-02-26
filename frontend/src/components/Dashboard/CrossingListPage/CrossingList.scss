@@ -1,7 +1,7 @@
-@import "css/mixins/layout";
+@import 'css/mixins/layout';
 
 .CrossingList {
-	@include raised-container-wrapper;
+  @include raised-container-wrapper;
 }
 
 .ReactVirtualized__Grid {
@@ -19,5 +19,5 @@
 }
 
 .CrossingListPage {
-  background: #F8F8F9;
+  background: #f8f8f9;
 }

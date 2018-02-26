@@ -9,26 +9,40 @@
     "PGLOCALINITCON": "postgresql://postgres@localhost:5432/"
   },
   "scripts": {
-    "local-drop-rebuild": "yarn run drop-local-data;yarn run populate-local-schema;yarn run populate-local-data;yarn run build-local-schema;",
-    "local-drop-rebuild-with-tons-of-crossings":"yarn run drop-local-data;yarn run populate-local-schema;yarn run add-tons-of-crossings-to-local-db;yarn run build-local-schema;",
+    "local-drop-rebuild":
+      "yarn run drop-local-data;yarn run populate-local-schema;yarn run populate-local-data;yarn run build-local-schema;",
+    "local-drop-rebuild-with-tons-of-crossings":
+      "yarn run drop-local-data;yarn run populate-local-schema;yarn run add-tons-of-crossings-to-local-db;yarn run build-local-schema;",
     "local-server": "yarn run local-drop-rebuild;yarn run postgraphql-local",
-    "local-server-with-tons-of-crossings": "yarn run local-drop-rebuild-with-tons-of-crossings;yarn run postgraphql-local",
-    "rebuild-and-deploy": "yarn run drop-data;yarn run populate-schema;yarn run populate-data;yarn run build-schema;sls deploy -v",
-    "rebuild-and-deploy-with-tons-of-crossings": "yarn run drop-data;yarn run populate-schema;yarn run add-tons-of-crossings-to-db;yarn run build-schema;sls deploy -v",
+    "local-server-with-tons-of-crossings":
+      "yarn run local-drop-rebuild-with-tons-of-crossings;yarn run postgraphql-local",
+    "rebuild-and-deploy":
+      "yarn run drop-data;yarn run populate-schema;yarn run populate-data;yarn run build-schema;sls deploy -v",
+    "rebuild-and-deploy-with-tons-of-crossings":
+      "yarn run drop-data;yarn run populate-schema;yarn run add-tons-of-crossings-to-db;yarn run build-schema;sls deploy -v",
     "test": "react-scripts test",
     "test-on-aws": "USE_AWS_ENDPOINT=true react-scripts test",
     "populate-schema": "psql $npm_config_PGCON -f ./populateDB/schema.sql",
-    "populate-local-schema": "psql $npm_package_config_PGLOCALCON -f ./populateDB/schema.sql",
+    "populate-local-schema":
+      "psql $npm_package_config_PGLOCALCON -f ./populateDB/schema.sql",
     "populate-data": "psql $npm_config_PGCON -f ./populateDB/data.sql",
-    "populate-local-data": "psql $npm_package_config_PGLOCALCON -f ./populateDB/data.sql",
+    "populate-local-data":
+      "psql $npm_package_config_PGLOCALCON -f ./populateDB/data.sql",
     "drop-data": "psql $npm_config_PGCON -f ./populateDB/drop.sql",
-    "drop-local-data": "psql $npm_package_config_PGLOCALCON -f ./populateDB/drop.sql",
-    "init-local-db": "psql $npm_package_config_PGLOCALINITCON -f ./populateDB/initLocal.sql",
-    "add-tons-of-crossings-to-db": "psql $npm_config_PGCON -f ./populateDB/addTonsOfCrossings.sql",
-    "add-tons-of-crossings-to-local-db": "psql $npm_package_config_PGLOCALCON -f ./populateDB/addTonsOfCrossings.sql",
-    "build-schema": "node ./pgCatalog/buildPgCatalog.js $npm_config_PGCON floods",
-    "build-local-schema": "node ./pgCatalog/buildPgCatalog.js $npm_package_config_PGLOCALCON floods",
-    "postgraphql-local": "postgraphql --connection $npm_package_config_PGLOCALRUNCON --schema floods --default-role floods_anonymous --secret keyboard_kitten --token floods.jwt_token --cors --disable-default-mutations"
+    "drop-local-data":
+      "psql $npm_package_config_PGLOCALCON -f ./populateDB/drop.sql",
+    "init-local-db":
+      "psql $npm_package_config_PGLOCALINITCON -f ./populateDB/initLocal.sql",
+    "add-tons-of-crossings-to-db":
+      "psql $npm_config_PGCON -f ./populateDB/addTonsOfCrossings.sql",
+    "add-tons-of-crossings-to-local-db":
+      "psql $npm_package_config_PGLOCALCON -f ./populateDB/addTonsOfCrossings.sql",
+    "build-schema":
+      "node ./pgCatalog/buildPgCatalog.js $npm_config_PGCON floods",
+    "build-local-schema":
+      "node ./pgCatalog/buildPgCatalog.js $npm_package_config_PGLOCALCON floods",
+    "postgraphql-local":
+      "postgraphql --connection $npm_package_config_PGLOCALRUNCON --schema floods --default-role floods_anonymous --secret keyboard_kitten --token floods.jwt_token --cors --disable-default-mutations"
   },
   "author": "Richard",
   "license": "MIT",
@@ -38,7 +52,13 @@
     "lokka-transport-http": "^1.6.1",
     "pg-minify": "^0.4.2",
     "postgraphql": "^2.5.0",
+    "prettier": "^1.10.2",
     "react-scripts": "^1.0.10",
     "uuid": "^3.1.0"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all"
   }
 }

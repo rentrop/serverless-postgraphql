@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import './LinkButton.css';
 
 class LinkButton extends Component {
-
   render() {
     return (
       <Link to={this.props.url} className="LinkButton">
@@ -12,7 +11,6 @@ class LinkButton extends Component {
       </Link>
     );
   }
-
 }
 
 export default LinkButton;

@@ -1,4 +1,4 @@
-@import "css/mixins/typography";
+@import 'css/mixins/typography';
 
 .button {
   color: $color-white;
@@ -64,6 +64,8 @@
   }
 }
 
-form, input, select {
+form,
+input,
+select {
   font-family: $font-sans;
 }

@@ -3,24 +3,26 @@ import Lokka from 'lokka';
 import uuidv4 from 'uuid';
 import { endpoint } from './endpoints';
 
-const anonLokka = new Lokka({transport: new HttpTransport(endpoint)});
+const anonLokka = new Lokka({ transport: new HttpTransport(endpoint) });
 const superAdminEmail = 'superadmin@flo.ods';
 const communityEditorEmail = 'editor@community.floods';
 const superAdminPassword = 'texasfloods';
 const newUserPassword = 'texasfloods';
 
 async function getToken(email, password) {
-  const response = await anonLokka.send(`
+  const response = await anonLokka.send(
+    `
     mutation($email:String!, $password:String!) {
       authenticate(input: {email: $email, password: $password}) {
         jwtToken
       }
     }
   `,
-  {
-    email: email,
-    password: password
-  });
+    {
+      email: email,
+      password: password,
+    },
+  );
 
   return response.authenticate.jwtToken;
 }
@@ -32,18 +34,21 @@ describe('When deactivating, and reactivating a user as a community editor', () 
   describe('As a super admin', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(superAdminEmail, superAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(superAdminEmail, superAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
 
     it('should register a new community editor', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation($email:String!) {
           registerUser(input: {
             firstName: "New",
@@ -61,9 +66,10 @@ describe('When deactivating, and reactivating a user as a community editor', () 
           }
         }
       `,
-      {
-        email: newUserEmail
-      });
+        {
+          email: newUserEmail,
+        },
+      );
 
       newUserId = response.registerUser.user.id;
       expect(response).not.toBeNull();
@@ -73,19 +79,22 @@ describe('When deactivating, and reactivating a user as a community editor', () 
   describe('As a community editor', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(communityEditorEmail, superAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(communityEditorEmail, superAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
 
     it('should fail to deactivate the new community editor', async () => {
       try {
-        const response = await lokka.send(`
+        const response = await lokka.send(
+          `
           mutation($userID:Int!) {
             deactivateUser(input: {userId: $userID}) {
               user {
@@ -94,10 +103,11 @@ describe('When deactivating, and reactivating a user as a community editor', () 
             }
           }
         `,
-        {
-          userID: newUserId
-        });
-      } catch(e) {
+          {
+            userID: newUserId,
+          },
+        );
+      } catch (e) {
         expect(e).toMatchSnapshot();
       }
     });
@@ -106,18 +116,21 @@ describe('When deactivating, and reactivating a user as a community editor', () 
   describe('As a super admin again', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(superAdminEmail, superAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(superAdminEmail, superAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
 
     it('should deactivate the user', async () => {
-      const response = await lokka.send(`
+      const response = await lokka.send(
+        `
         mutation($userID:Int!) {
           deactivateUser(input: {userId: $userID}) {
             user {
@@ -126,9 +139,10 @@ describe('When deactivating, and reactivating a user as a community editor', () 
           }
         }
       `,
-      {
-        userID: newUserId
-      });
+        {
+          userID: newUserId,
+        },
+      );
 
       expect(response).not.toBeNull();
     });
@@ -137,19 +151,22 @@ describe('When deactivating, and reactivating a user as a community editor', () 
   describe('As a community editor again', async () => {
     var lokka;
 
-    beforeAll(async (done) => {
-      getToken(communityEditorEmail, superAdminPassword).then((token) => {
+    beforeAll(async done => {
+      getToken(communityEditorEmail, superAdminPassword).then(token => {
         const headers = {
-          'Authorization': 'Bearer '+ token
+          Authorization: 'Bearer ' + token,
         };
-        lokka = new Lokka({transport: new HttpTransport(endpoint, {headers})});
+        lokka = new Lokka({
+          transport: new HttpTransport(endpoint, { headers }),
+        });
         done();
       });
     });
 
     it('should fail to reactivate the new community editor', async () => {
       try {
-      const response = await lokka.send(`
+        const response = await lokka.send(
+          `
           mutation($userId:Int!, $email:String!) {
             reactivateUser(input: {
               userId: $userId,
@@ -165,11 +182,12 @@ describe('When deactivating, and reactivating a user as a community editor', () 
             }
           }
         `,
-        {
-          userId: newUserId,
-          email: newUserEmail
-        });
-      } catch(e) {
+          {
+            userId: newUserId,
+            email: newUserEmail,
+          },
+        );
+      } catch (e) {
         expect(e).toMatchSnapshot();
       }
     });

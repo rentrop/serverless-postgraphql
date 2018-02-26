@@ -1,4 +1,4 @@
-@import "css/mixins/flexbox";
+@import 'css/mixins/flexbox';
 
 .CrossingMapPage__map-container {
   flex: auto;
@@ -21,7 +21,7 @@
 
   .CrossingListItem--dirty {
     outline: none;
-    box-shadow: 0 4px #40B3FF inset, 0 -4px #40B3FF inset;
+    box-shadow: 0 4px #40b3ff inset, 0 -4px #40b3ff inset;
   }
 }
 
@@ -39,21 +39,21 @@
 }
 
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    height: 100%;
+  height: 100%;
 }
 
 .RootContainer {
-    height: 100%;
+  height: 100%;
 }
 
 .PageLayout {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .Header {
@@ -63,13 +63,13 @@ body {
 .CrossingMapPage__page-container {
   flex: auto;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
 }
 
 .fullscreen {
   flex: auto;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .CrossingMapPage {

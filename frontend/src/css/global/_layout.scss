@@ -1,5 +1,5 @@
-@import "css/mixins/layout";
-@import "css/mixins/colors";
+@import 'css/mixins/layout';
+@import 'css/mixins/colors';
 
 .section-header {
   @include section-header;
@@ -25,7 +25,7 @@
   }
 }
 
-$sizes: (lv1, 5), (lv2, 10);
+$sizes: (lv1, 5),  (lv2, 10);
 
 @each $name, $size in $sizes {
   .m#{$name} {

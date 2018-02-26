@@ -5,21 +5,22 @@ import schema from 'stories/schema/schema';
 import { withApolloProvider } from 'storybook-addon-apollo-graphql';
 
 const root = {
-  searchCrossings: () => ({ totalCount: 6})
+  searchCrossings: () => ({ totalCount: 6 }),
 };
 
 const user = {
-  role: 'floods_super_admin'
+  role: 'floods_super_admin',
 };
 
 storiesOf('Crossing List Header', module)
   .addDecorator(withApolloProvider({ schema, root }))
-  .add('Large Width', () => 
+  .add('Large Width', () => (
     <div className="storybook--lg">
-      <CrossingListHeader currentUser={user}/>
-    </div>)
-  .add('Small Width', () => 
-    <div className="storybook--sm">
-	  	<CrossingListHeader currentUser={user}/>
+      <CrossingListHeader currentUser={user} />
     </div>
-  );
+  ))
+  .add('Small Width', () => (
+    <div className="storybook--sm">
+      <CrossingListHeader currentUser={user} />
+    </div>
+  ));

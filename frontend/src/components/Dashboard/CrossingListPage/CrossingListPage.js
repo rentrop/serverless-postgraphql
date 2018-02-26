@@ -13,24 +13,35 @@ class CrossingListPage extends Component {
       showCaution: true,
       showLongterm: true,
       searchQuery: '',
-      formattedSearchQuery: '%%'
+      formattedSearchQuery: '%%',
     };
   }
 
   formatSearchQuery(query) {
-    return `%${query.replace(/ /g,"%")}%`;
+    return `%${query.replace(/ /g, '%')}%`;
   }
 
-  toggleShowOpen = () => { this.setState({ showOpen: !this.state.showOpen }) };
-  toggleShowClosed = () => { this.setState({ showClosed: !this.state.showClosed }) };
-  toggleShowCaution = () => { this.setState({ showCaution: !this.state.showCaution }) };
-  toggleShowLongterm = () => { this.setState({ showLongterm: !this.state.showLongterm }) };
-  toggleSortByUpdated = () => { this.setState({sortByUpdatedAsc: !this.state.sortByUpdatedAsc }) };
-  searchQueryUpdated = (e) => {
-    this.setState({ searchQuery: e.target.value });
-    this.setState({ formattedSearchQuery: this.formatSearchQuery(e.target.value) });
+  toggleShowOpen = () => {
+    this.setState({ showOpen: !this.state.showOpen });
   };
-  
+  toggleShowClosed = () => {
+    this.setState({ showClosed: !this.state.showClosed });
+  };
+  toggleShowCaution = () => {
+    this.setState({ showCaution: !this.state.showCaution });
+  };
+  toggleShowLongterm = () => {
+    this.setState({ showLongterm: !this.state.showLongterm });
+  };
+  toggleSortByUpdated = () => {
+    this.setState({ sortByUpdatedAsc: !this.state.sortByUpdatedAsc });
+  };
+  searchQueryUpdated = e => {
+    this.setState({ searchQuery: e.target.value });
+    this.setState({
+      formattedSearchQuery: this.formatSearchQuery(e.target.value),
+    });
+  };
 
   render() {
     const { currentUser } = this.props;
@@ -46,12 +57,13 @@ class CrossingListPage extends Component {
           toggleShowCaution={this.toggleShowCaution}
           showLongterm={this.state.showLongterm}
           toggleShowLongterm={this.toggleShowLongterm}
-          toggleSortByUpdated={this.toggleSortByUpdated} 
+          toggleSortByUpdated={this.toggleSortByUpdated}
           sortByUpdatedAsc={this.state.sortByUpdatedAsc}
           searchQuery={this.state.searchQuery}
           formattedSearchQuery={this.state.formattedSearchQuery}
           searchQueryUpdated={this.searchQueryUpdated}
-          currentUser={currentUser} />
+          currentUser={currentUser}
+        />
         <InfiniteCrossingPaginationContainer
           {...this.props}
           showOpen={this.state.showOpen}
@@ -60,11 +72,11 @@ class CrossingListPage extends Component {
           showLongterm={this.state.showLongterm}
           sortByUpdatedAsc={this.state.sortByUpdatedAsc}
           searchQuery={this.state.formattedSearchQuery}
-          currentUser={currentUser} /> 
+          currentUser={currentUser}
+        />
       </div>
     );
   }
-
 }
 
 export default CrossingListPage;

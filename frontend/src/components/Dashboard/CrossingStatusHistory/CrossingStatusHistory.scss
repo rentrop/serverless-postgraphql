@@ -1,12 +1,12 @@
-@import "css/mixins/flexbox";
-@import "css/mixins/layout";
-@import "css/mixins/colors";
+@import 'css/mixins/flexbox';
+@import 'css/mixins/layout';
+@import 'css/mixins/colors';
 
 .CrossingStatusHistory--lg {
   .CrossingStatusHistory__item-details-flexcontainer {
     @include flexcontainer--row;
   }
-  background: #EFEFEF;
+  background: #efefef;
 }
 
 .CrossingStatusHistory__list-wrapper {
@@ -70,9 +70,9 @@
   text-align: right;
   color: white;
   text-decoration: none;
-  letter-spacing: .6em;
+  letter-spacing: 0.6em;
 }
 
 .CrossingStatusHistory__spreadsheet-download-link {
-  color: #7affaf 
+  color: #7affaf;
 }

@@ -5,7 +5,7 @@ import 'react-virtualized/styles.css';
 import crossingsQuery from 'components/Dashboard/CrossingListPage/queries/crossingsQuery';
 import statusReasonsQuery from 'components/Dashboard/CrossingListPage/queries/statusReasonsQuery';
 import statusDurationsQuery from 'components/Dashboard/CrossingListPage/queries/statusDurationsQuery';
-import {ContainerQuery} from 'react-container-query';
+import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';
 
 // The linter can't figure out how we're using this ref so I'm just gonna...
@@ -13,44 +13,46 @@ import classnames from 'classnames';
 let infiniteCrossingListRef;
 let crossingQueryVariables;
 
-const containerQuery = {    
+const containerQuery = {
   'CrossingListItem--lg': {
-    minWidth: 600, 
-  } 
+    minWidth: 600,
+  },
 };
 
 const configObject = {
-  options: (props) => {
+  options: props => {
     crossingQueryVariables = {
       search: props.searchQuery,
       showOpen: props.showOpen,
       showClosed: props.showClosed,
       showCaution: props.showCaution,
       showLongterm: props.showLongterm,
-      communityId: props.currentUser.role !== "floods_super_admin" ? props.currentUser.communityId : null,
+      communityId:
+        props.currentUser.role !== 'floods_super_admin'
+          ? props.currentUser.communityId
+          : null,
       orderAsc: props.sortByUpdatedAsc,
-      pageCursor: null
+      pageCursor: null,
     };
 
     return {
-      variables: crossingQueryVariables
-    }
+      variables: crossingQueryVariables,
+    };
   },
   force: true,
-  props: ({ownProps, data}) => {
-    const  {loading, searchCrossings, fetchMore} = data;
+  props: ({ ownProps, data }) => {
+    const { loading, searchCrossings, fetchMore } = data;
     const loadMoreRows = () => {
-
       return fetchMore({
-        variables:{
-          pageCursor:searchCrossings.pageInfo.endCursor,
+        variables: {
+          pageCursor: searchCrossings.pageInfo.endCursor,
         },
-        updateQuery:(previousResult, {fetchMoreResult}) => {
-          const totalCount=fetchMoreResult.searchCrossings.totalCount;
-          const newEdges=fetchMoreResult.searchCrossings.edges;
-          const pageInfo=fetchMoreResult.searchCrossings.pageInfo;
-          
-          if(!previousResult.searchCrossings) {
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          const totalCount = fetchMoreResult.searchCrossings.totalCount;
+          const newEdges = fetchMoreResult.searchCrossings.edges;
+          const pageInfo = fetchMoreResult.searchCrossings.pageInfo;
+
+          if (!previousResult.searchCrossings) {
             return;
           }
 
@@ -58,51 +60,55 @@ const configObject = {
             searchCrossings: {
               __typename: 'SearchCrossingsConnection',
               totalCount,
-              edges:[...previousResult.searchCrossings.edges, ...newEdges],
-              pageInfo
-            }
+              edges: [...previousResult.searchCrossings.edges, ...newEdges],
+              pageInfo,
+            },
           };
-        }
-      })
-    }
+        },
+      });
+    };
 
     return {
       loading,
       searchCrossings,
-      loadMoreRows
-    }
-  }
-}
+      loadMoreRows,
+    };
+  },
+};
 
 export class InfiniteCrossingPaginationContainer extends Component {
-  
-  render() {  
-    const isLoading = (
-     !this.props.statusReasonsQuery ||
+  render() {
+    const isLoading =
+      !this.props.statusReasonsQuery ||
       this.props.statusReasonsQuery.loading ||
-     !this.props.statusDurationsQuery ||
+      !this.props.statusDurationsQuery ||
       this.props.statusDurationsQuery.loading ||
-      this.props.loading
-    );
+      this.props.loading;
 
-    const { searchCrossings, loadMoreRows, currentUser, sortByUpdatedAsc} = this.props;
-     
+    const {
+      searchCrossings,
+      loadMoreRows,
+      currentUser,
+      sortByUpdatedAsc,
+    } = this.props;
+
     if (isLoading) {
       return '';
-    };
-    
+    }
+
     const statusReasons = this.props.statusReasonsQuery.allStatusReasons.nodes;
-    const statusDurations = this.props.statusDurationsQuery.allStatusDurations.nodes;
+    const statusDurations = this.props.statusDurationsQuery.allStatusDurations
+      .nodes;
 
     return (
-      <ContainerQuery query={containerQuery}> 
-        {(params) => {
+      <ContainerQuery query={containerQuery}>
+        {params => {
           const cqClassName = classnames(params);
           return (
             <div className="CrossingListPage_crossing-list-container">
               <InfiniteCrossingList
                 {...this.props}
-                ref={(ref) => infiniteCrossingListRef = ref} 
+                ref={ref => (infiniteCrossingListRef = ref)}
                 loadMoreRows={loadMoreRows}
                 crossingsQuery={searchCrossings}
                 statusReasons={statusReasons}
@@ -110,7 +116,8 @@ export class InfiniteCrossingPaginationContainer extends Component {
                 currentUser={currentUser}
                 sortByUpdatedAsc={sortByUpdatedAsc}
                 crossingQueryVariables={crossingQueryVariables}
-                cqClassName={cqClassName} />
+                cqClassName={cqClassName}
+              />
             </div>
           );
         }}
@@ -122,5 +129,5 @@ export class InfiniteCrossingPaginationContainer extends Component {
 export default compose(
   graphql(crossingsQuery, configObject),
   graphql(statusReasonsQuery, { name: 'statusReasonsQuery' }),
-  graphql(statusDurationsQuery, { name: 'statusDurationsQuery' })
+  graphql(statusDurationsQuery, { name: 'statusDurationsQuery' }),
 )(InfiniteCrossingPaginationContainer);
