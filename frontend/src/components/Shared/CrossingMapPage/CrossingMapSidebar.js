@@ -13,7 +13,7 @@ class CrossingMapSidebar extends Component {
     this.state = {
       visible: true,
       showFilters: false,
-      searchFocused: false,
+      searchFocused: true,
     };
   }
 

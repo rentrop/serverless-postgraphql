@@ -28,7 +28,7 @@
 .CrossingMapSearchBar__container {
   background: #006cb5;
   color: #8bbadb;
-  height: 50px;
+  min-height: 50px;
   @include flexcontainer;
 }
 
@@ -50,18 +50,6 @@
 .CrossingMapSearchBar__text-entry {
   width: 100%;
   margin: auto;
-  input {
-    font-size: medium;
-    color: white;
-    margin-left: 3%;
-    margin-right: 3%;
-    width: 94%;
-    border: none;
-    background: none;
-    @include placeholder {
-      color: white;
-    }
-  }
 }
 
 .CrossingMapSearchBar__selected-item {
@@ -72,10 +60,29 @@
   text-align: center;
 }
 
+.react-autosuggest__input {
+  font-size: medium;
+  color: white;
+  margin-left: 3%;
+  margin-right: 3%;
+  width: 94%;
+  border: none;
+  background: none;
+  @include placeholder {
+    color: white;
+  }
+}
+
+.react-autosuggest__container {
+  margin-top: 14px;
+}
+
 .react-autosuggest__suggestions-container {
   color: black;
   background: white;
-  position: absolute;
+  margin-top: 15px;
+  margin-left: -30px;
+  margin-right: -26px;
 }
 
 .react-autosuggest__suggestion--highlighted {

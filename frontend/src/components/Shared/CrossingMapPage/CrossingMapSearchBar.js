@@ -216,6 +216,7 @@ class CrossingMapSearchBar extends Component {
                 renderSuggestion={renderSuggestion}
                 inputProps={inputProps}
                 shouldRenderSuggestions={() => true}
+                alwaysRenderSuggestions={true}
               />
             )}
           </div>
