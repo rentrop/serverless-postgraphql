@@ -26,6 +26,8 @@ class CrossingMap extends React.Component {
     if (nextProps.selectedCrossingId !== this.props.selectedCrossingId) {
       if (nextProps.selectedCrossingId) {
         this.setState({ selectedCrossingId: nextProps.selectedCrossingId });
+        const crossing = this.props.openCrossings.searchCrossings.nodes.find(c => c.id === nextProps.selectedCrossingId) || this.props.closedCrossings.searchCrossings.nodes.find(c => c.id === nextProps.selectedCrossingId) || this.props.cautionCrossings.searchCrossings.nodes.find(c => c.id === nextProps.selectedCrossingId) || this.props.cautionCrossings.searchCrossings.nodes.find(c => c.id === nextProps.selectedCrossingId);
+        this.selectCrossing(crossing);
       } else {
         this.setState({ selectedCrossingId: -1 });
         this.setState({ selectedCrossing: null });
@@ -161,6 +163,28 @@ class CrossingMap extends React.Component {
 
   addCrossingClickHandlers(map) {
     map.on('click', this.onMapClick);
+  }
+
+  selectCrossing = crossing => {
+    const coordinates = JSON.parse(crossing.geojson).coordinates;
+
+    const mapCrossing = {
+      crossingId: crossing.id,
+      crossingName: crossing.name,
+      crossingStatus: crossing.latestStatusId,
+      geojson: crossing.geojson,
+    }
+
+    this.setState({
+      selectedCrossingCoordinates: coordinates,
+      selectedCrossing: mapCrossing,
+    });
+    this.flyTo(coordinates);
+    this.props.selectCrossing(
+      crossing.id,
+      crossing.latestStatusId,
+      crossing.name,
+    );
   }
 
   onCrossingClick = crossing => {

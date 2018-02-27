@@ -81,7 +81,15 @@ class CrossingMapSearchBar extends Component {
     event,
     { suggestion, suggestionValue, suggestionIndex, sectionIndex, method },
   ) => {
-    this.props.setCenter(suggestion.center);
+    // If we've selected a crossing, center in on it
+    if (suggestion.__typename === 'Crossing') {
+      this.props.selectCrossing(suggestion.id);
+    }
+
+    // If we've selected a mapbox location
+    if (suggestion.blarg) {
+      this.props.setCenter(suggestion.center);
+    }
   };
 
   // Autosuggest will call this function every time you need to update suggestions.
