@@ -45,19 +45,34 @@ class CrossingMapSearchBar extends Component {
     // Suggestions also need to be provided to the Autosuggest,
     // and they are initially empty because the Autosuggest is closed.
     this.state = {
-      value: '',
+      typedValue: '',
+      selectedValue: '',
       mapboxSuggestions: [],
       crossingSuggestions: [],
     };
   }
 
-  onChange = (event, { newValue }) => {
-    console.log(event.type);
-    // If we're typing in the search bar, the event type is change
-    // we should update the suggestions accordingly
-    if (event.type === 'change') {
+  onChange = (event, { newValue, method }) => {
+    console.log(method);
+    console.log(newValue);
+
+    if (method === 'type') {
       this.setState({
-        value: newValue,
+        typedValue: newValue,
+        selectedValue: null,
+      });
+    } else if (method === 'escape') {
+      this.setState({
+        selectedValue: null,
+      });
+    } else if (method === 'enter' || method === 'click') {
+      this.setState({
+        selectedValue: newValue,
+        typedValue: newValue,
+      });
+    } else if (method === 'down' || method === 'up') {
+      this.setState({
+        selectedValue: newValue,
       });
     }
   };
@@ -66,14 +81,7 @@ class CrossingMapSearchBar extends Component {
     event,
     { suggestion, suggestionValue, suggestionIndex, sectionIndex, method },
   ) => {
-    this.setState({
-      value: suggestionValue,
-    });
     this.props.setCenter(suggestion.center);
-  };
-
-  onSuggestionHighlighted = suggestion => {
-    console.log(suggestion);
   };
 
   // Autosuggest will call this function every time you need to update suggestions.
@@ -127,7 +135,7 @@ class CrossingMapSearchBar extends Component {
       selectedCrossingName,
     } = this.props;
 
-    const { value, mapboxSuggestions, crossingSuggestions } = this.state;
+    const { typedValue, selectedValue, mapboxSuggestions, crossingSuggestions } = this.state;
 
     const suggestions = [
       {
@@ -144,6 +152,8 @@ class CrossingMapSearchBar extends Component {
       },
     ];
 
+    const value = selectedValue ? selectedValue : typedValue;
+
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
       placeholder: 'Search...',
@@ -151,7 +161,7 @@ class CrossingMapSearchBar extends Component {
       onChange: this.onChange,
     };
 
-    const formattedQuery = formatSearchQuery(value);
+    const formattedQuery = formatSearchQuery(typedValue);
 
     return (
       <div>
