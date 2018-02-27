@@ -18,11 +18,14 @@ const getSuggestionValue = suggestion => {
 
 // Use your imagination to render suggestions.
 const renderSuggestion = suggestion => (
-  <div>{suggestion.place_name || suggestion.name}</div>
+  <div>
+    <FontAwesome name="map-marker" size="2x" />
+    {suggestion.place_name || suggestion.name}
+  </div>
 );
 
 const renderSectionTitle = section => {
-  return <strong>{section.title}</strong>;
+  return null;
 };
 
 const getSectionSuggestions = section => {
@@ -190,7 +193,7 @@ class CrossingMapSearchBar extends Component {
           updateSuggestions={this.updateCrossingSuggestions}
         />
         <div className="CrossingMapSearchBar__header">
-          SEARCH FOR A PLACE, AREA, OR CROSSING
+          SEARCH FOR A PLACE, COMMUNITY, OR CROSSING
         </div>
         <div className="CrossingMapSearchBar__container">
           <div className="CrossingMapSearchBar__location-icon">
@@ -233,22 +236,3 @@ class CrossingMapSearchBar extends Component {
 }
 
 export default CrossingMapSearchBar;
-
-/*
-
-
-          { !selectedCrossingId &&
-            <div className="CrossingMapSearchBar__text-entry">
-              <input type="text"
-                     placeholder="Search..."
-                     value={searchQuery}
-                     onChange={searchQueryUpdated} />
-            </div> 
-          }
-          { !selectedCrossingId && 
-            <div className="CrossingMapSearchBar__glass-icon">
-              <FontAwesome name='search' size='2x'/>  
-            </div>
-          }
-
-*/
