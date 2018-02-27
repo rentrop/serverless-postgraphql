@@ -87,8 +87,8 @@ class CrossingMapSearchBar extends Component {
     }
 
     // If we've selected a mapbox location
-    if (suggestion.blarg) {
-      this.props.setCenter(suggestion.center);
+    if (suggestion.type === 'Feature') {
+      this.props.setSelectedLocationCoordinates(suggestion.center);
     }
   };
 

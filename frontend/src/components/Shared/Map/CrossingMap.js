@@ -19,10 +19,12 @@ class CrossingMap extends React.Component {
     selectedCrossingId: -1, // Mapbox filters don't support null values
     selectedCrossing: null,
     selectedCrossingCoordinates: null,
+    selectedLocationCoordinates: null,
     firstLoadComplete: false,
   };
 
   componentWillReceiveProps(nextProps) {
+    // If we've selected a crossing
     if (nextProps.selectedCrossingId !== this.props.selectedCrossingId) {
       if (nextProps.selectedCrossingId) {
         this.setState({ selectedCrossingId: nextProps.selectedCrossingId });
@@ -42,6 +44,14 @@ class CrossingMap extends React.Component {
     ) {
       selectedCrossing.crossingStatus = nextProps.selectedCrossingStatus;
       this.setState({ selectedCrossing: selectedCrossing });
+    }
+
+    // If we aren't selecting a location, fly to it
+    if (nextProps.selectedLocationCoordinates !== this.state.selectedLocationCoordinates) {
+      this.setState({ selectedLocationCoordinates: nextProps.selectedLocationCoordinates });
+      if(nextProps.selectedLocationCoordinates) {
+        this.flyTo(nextProps.selectedLocationCoordinates);  
+      }
     }
 
     // This is a slightly strange litle fix here, we used to check loading in render, and not render the map until it loaded
@@ -115,11 +125,12 @@ class CrossingMap extends React.Component {
 
   flyTo = point => {
     const { map } = this.state;
-
-    map.flyTo({
-      center: point,
-      zoom: 11,
-    });
+    if(map){
+      map.flyTo({
+        center: point,
+        zoom: 11,
+      });  
+    }
   };
 
   updateVisibleCrossings = e => {

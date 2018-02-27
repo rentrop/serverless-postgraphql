@@ -44,7 +44,7 @@ class CrossingMapSidebar extends Component {
       allCommunities,
       selectedCrossingName,
       center,
-      setCenter,
+      setSelectedLocationCoordinates,
     } = this.props;
 
     return (
@@ -58,7 +58,7 @@ class CrossingMapSidebar extends Component {
               searchQueryUpdated={searchQueryUpdated}
               selectedCrossingName={selectedCrossingName}
               center={center}
-              setCenter={setCenter}
+              setSelectedLocationCoordinates={setSelectedLocationCoordinates}
             />
             {selectedCrossingId && (
               <SelectedCrossingContainer
