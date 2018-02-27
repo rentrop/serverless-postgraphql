@@ -118,6 +118,7 @@ class CrossingMap extends React.Component {
 
     map.flyTo({
       center: point,
+      zoom: 11,
     });
   };
 
