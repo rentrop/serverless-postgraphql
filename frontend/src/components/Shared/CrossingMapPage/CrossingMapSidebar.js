@@ -68,9 +68,7 @@ class CrossingMapSidebar extends Component {
               toggleSearchFocus={this.toggleSearchFocus}
             />
 
-            {searchFocused ? (
-              "BLARG"
-            ) : (
+            {!searchFocused && (
               <div>
               {selectedCrossingId && (
                 <SelectedCrossingContainer
