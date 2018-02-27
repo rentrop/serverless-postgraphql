@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SelectedCrossingContainer from 'components/Shared/CrossingMapPage/SelectedCrossingContainer';
 import CrossingMapSearchBar from 'components/Shared/CrossingMapPage/CrossingMapSearchBar';
-import CrossingSidebarSearchResultItem from 'components/Shared/CrossingMapPage/CrossingSidebarSearchResultItem';
+import CrossingSidebarNearbyCrossingItem from 'components/Shared/CrossingMapPage/CrossingSidebarNearbyCrossingItem';
 import 'components/Shared/CrossingMapPage/CrossingMapSidebar.css';
 import FontAwesome from 'react-fontawesome';
 import classnames from 'classnames';
@@ -13,6 +13,7 @@ class CrossingMapSidebar extends Component {
     this.state = {
       visible: true,
       showFilters: false,
+      searchFocused: false,
     };
   }
 
@@ -24,8 +25,13 @@ class CrossingMapSidebar extends Component {
     this.setState({ showFilters: !this.state.showFilters });
   };
 
+  toggleSearchFocus = focused => {
+    console.log(focused);
+    this.setState({ searchFocused: focused });
+  }
+
   render() {
-    const { visible } = this.state;
+    const { visible, searchFocused } = this.state;
     const {
       toggleShowOpen,
       toggleShowClosed,
@@ -59,6 +65,7 @@ class CrossingMapSidebar extends Component {
               selectedCrossingName={selectedCrossingName}
               center={center}
               setSelectedLocationCoordinates={setSelectedLocationCoordinates}
+              toggleSearchFocus={this.toggleSearchFocus}
             />
             {selectedCrossingId && (
               <SelectedCrossingContainer
@@ -124,9 +131,9 @@ class CrossingMapSidebar extends Component {
                 </label>
               </div>
             )}
-            <div className="CrossingMapPage_sidebar-searchresults">
+            <div className="CrossingMapPage_sidebar-nearbycrossings">
               {visibleCrossings.map(c => (
-                <CrossingSidebarSearchResultItem
+                <CrossingSidebarNearbyCrossingItem
                   key={c.id}
                   latestStatus={c.latestStatus}
                   statusId={c.statusId}

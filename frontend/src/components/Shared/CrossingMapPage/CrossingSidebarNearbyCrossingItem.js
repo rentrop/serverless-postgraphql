@@ -3,7 +3,7 @@ import 'components/Shared/CrossingMapPage/CrossingMapPage.css';
 import { strings, statusIcons } from 'constants/StatusConstants';
 import moment from 'moment';
 
-class CrossingSidebarSearchResultItem extends React.Component {
+class CrossingSidebarNearbyCrossingItem extends React.Component {
   render() {
     const {
       latestStatus,
@@ -14,37 +14,37 @@ class CrossingSidebarSearchResultItem extends React.Component {
     } = this.props;
 
     return (
-      <div className="CrossingMapPage_sidebar-search-result-container">
-        <div className="CrossingMapPage_sidebar-search-result-status-icon">
+      <div className="CrossingMapPage_sidebar-nearby-crossing-container">
+        <div className="CrossingMapPage_sidebar-nearby-crossing-status-icon">
           <img
             src={statusIcons[statusId]}
             alt={strings[statusId]}
             className="CrossingStatusHistory__status-icon"
           />
         </div>
-        <div className="CrossingMapPage_sidebar-search-result-details">
-          <div className="CrossingMapPage_sidebar-search-result-details-status">
+        <div className="CrossingMapPage_sidebar-nearby-crossing-details">
+          <div className="CrossingMapPage_sidebar-nearby-crossing-details-status">
             {strings[statusId]}
           </div>
-          <div className="CrossingMapPage_sidebar-search-result-details-name">
+          <div className="CrossingMapPage_sidebar-nearby-crossing-details-name">
             {crossingName}
           </div>
-          <div className="CrossingMapPage_sidebar-search-result-details-communities">
+          <div className="CrossingMapPage_sidebar-nearby-crossing-details-communities">
             {allCommunities &&
               communityIds
                 .map(id => allCommunities.find(c => c.id === id).name)
                 .join(', ')}
           </div>
         </div>
-        <div className="CrossingMapPage_sidebar-search-result-update-datetime">
-          <div className="CrossingMapPage_sidebar-search-result-update-datetime-date">
+        <div className="CrossingMapPage_sidebar-nearby-crossing-update-datetime">
+          <div className="CrossingMapPage_sidebar-nearby-crossing-update-datetime-date">
             {moment(latestStatus).calendar(null, {
               lastDay: '[Yesterday]',
               sameDay: '[Today]',
               sameElse: 'MM/DD/YYYY',
             })}
           </div>
-          <div className="CrossingMapPage_sidebar-search-result-update-datetime-time">
+          <div className="CrossingMapPage_sidebar-nearby-crossing-update-datetime-time">
             {moment(latestStatus).format('h:mm A')}
           </div>
         </div>
@@ -53,4 +53,4 @@ class CrossingSidebarSearchResultItem extends React.Component {
   }
 }
 
-export default CrossingSidebarSearchResultItem;
+export default CrossingSidebarNearbyCrossingItem;

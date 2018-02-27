@@ -31,7 +31,7 @@ const getSectionSuggestions = section => {
 
 const formatSearchQuery = query => {
   // debugger;
-  if (!query) return '';
+  // if (!query) return '';
   return `%${query.replace(/ /g, '%')}%`;
 };
 
@@ -126,7 +126,7 @@ class CrossingMapSearchBar extends Component {
   clearSearch = () => {
     this.props.searchQueryUpdated({ target: { value: '' } });
     this.props.selectCrossing(null, null);
-    this.setState({ value: '' });
+    this.setState({ typedValue: '', selectedValue: null });
   };
 
   updateCrossingSuggestions = suggestions => {
@@ -135,6 +135,16 @@ class CrossingMapSearchBar extends Component {
       crossingSuggestions: suggestions,
     });
   };
+
+  onInputFocus = () => {
+    this.props.toggleSearchFocus(true);
+    console.log('INPUT FOCUS')
+  }
+
+  onInputBlur = () => {
+    this.props.toggleSearchFocus(false);
+    console.log('INPUT BLUR')
+  }
 
   render() {
     const {
@@ -167,6 +177,8 @@ class CrossingMapSearchBar extends Component {
       placeholder: 'Search...',
       value,
       onChange: this.onChange,
+      onFocus: this.onInputFocus,
+      onBlur: this.onInputBlur,
     };
 
     const formattedQuery = formatSearchQuery(typedValue);
@@ -203,6 +215,7 @@ class CrossingMapSearchBar extends Component {
                 getSuggestionValue={getSuggestionValue}
                 renderSuggestion={renderSuggestion}
                 inputProps={inputProps}
+                shouldRenderSuggestions={() => true}
               />
             )}
           </div>
