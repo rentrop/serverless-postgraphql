@@ -40,7 +40,7 @@ $closed-color: #f44336;
   @extend .StatusToggle;
   border-radius: 8px 0px 0px 8px;
   -webkit-text-stroke-width: 1.5px;
-  font-size: 1.8em;
+  font-size: 1.8rem;
 }
 
 .StatusToggle__open--selected {
@@ -51,7 +51,7 @@ $closed-color: #f44336;
 
 .StatusToggle__caution {
   @extend .StatusToggle;
-  font-size: 1.8em;
+  font-size: 1.8rem;
 }
 
 .StatusToggle__caution--selected {
@@ -64,7 +64,7 @@ $closed-color: #f44336;
 .StatusToggle__closed {
   @extend .StatusToggle;
   -webkit-text-stroke: 1px white;
-  font-size: 2.5em;
+  font-size: 2.5rem;
 }
 
 .StatusToggle__closed--selected {
@@ -78,7 +78,7 @@ $closed-color: #f44336;
   @extend .StatusToggle;
   border-right-style: solid;
   border-radius: 0px 8px 8px 0px;
-  font-size: 2em;
+  font-size: 2rem;
 }
 
 .StatusToggle__longterm--selected {
