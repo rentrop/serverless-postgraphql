@@ -12,6 +12,7 @@
   width: 430px;
   @include flexcontainer;
   flex-direction: column;
+  overflow: hidden;
 
   .CrossingListItem {
     margin-bottom: 0px;

@@ -58,6 +58,7 @@ class CrossingMapSearchBar extends Component {
       selectedValue: '',
       mapboxSuggestions: [],
       crossingSuggestions: [],
+      communitySuggestions: [],
     };
   }
 
@@ -106,7 +107,7 @@ class CrossingMapSearchBar extends Component {
   // Autosuggest will call this function every time you need to update suggestions.
   onSuggestionsFetchRequested = ({ value }) => {
     console.log(value);
-    const { center } = this.props;
+    const { center, communityId, communities } = this.props;
 
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
@@ -125,12 +126,20 @@ class CrossingMapSearchBar extends Component {
     } else {
       this.setState({ mapboxSuggestions: [] });
     }
+
+    // If we aren't filtering by community, get the communities
+    if(!communityId) {
+      const communitySuggestions = communities.filter(c => c.name.toLowerCase().includes(inputValue));
+      this.setState({communitySuggestions: communitySuggestions});
+    }
+
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequested = () => {
     this.setState({
       mapboxSuggestions: [],
+      communitySuggestions: [],
     });
   };
 
@@ -167,16 +176,16 @@ class CrossingMapSearchBar extends Component {
 
     console.log(communityId)
 
-    const { typedValue, selectedValue, mapboxSuggestions, crossingSuggestions } = this.state;
+    const { typedValue, selectedValue, mapboxSuggestions, crossingSuggestions, communitySuggestions } = this.state;
 
     const suggestions = [
       {
-        title: 'Crossings',
-        suggestions: crossingSuggestions,
+        title: 'Communities',
+        suggestions: communitySuggestions,
       },
       {
-        title: 'Communities',
-        suggestions: [],
+        title: 'Crossings',
+        suggestions: crossingSuggestions,
       },
       {
         title: 'Locations',
