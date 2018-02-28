@@ -7,6 +7,8 @@ import FontAwesome from 'react-fontawesome';
 
 import 'components/Dashboard/Header/UserControls.css';
 
+console.log(React.Fragment)
+
 class UserControlsBase extends React.Component {
   constructor(props) {
     super(props);
@@ -40,26 +42,23 @@ class UserControlsBase extends React.Component {
           onClick={this.toggleControls}
           className="Header__settings-icon"
         />
-
-        {(this.props.cqParams.fullsize || this.state.showControls) &&
-        this.props.currentUser ? (
-          <Link className="UserControls__link" to="#">
-            {`${this.props.currentUser.firstName} ${
-              this.props.currentUser.lastName
-            }`}
-          </Link>
-        ) : (
-          ''
+        {this.state.showControls && (
+          <React.Fragment>
+            {this.props.currentUser && (
+              <Link className="UserControls__link" to="#">
+                {`${this.props.currentUser.firstName} ${
+                  this.props.currentUser.lastName
+                }`}
+              </Link>
+            )}
+            <div
+              className="underline UserControls__link"
+              onClick={() => auth.signout(() => window.location.reload())}
+            >
+              Sign out
+            </div>
+          </React.Fragment>
         )}
-        {'|'}
-        {this.props.cqParams.fullsize || this.state.showControls ? (
-          <div
-            className="underline UserControls__link"
-            onClick={() => auth.signout(() => window.location.reload())}
-          >
-            Sign out
-          </div>
-        ) : null}
       </div>
     ) : null;
   }

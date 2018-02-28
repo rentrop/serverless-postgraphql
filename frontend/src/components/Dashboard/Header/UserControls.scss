@@ -24,18 +24,6 @@
   color: #969696;
 }
 
-.UserControls.smallsize {
-  @include flexcontainer;
-  @include flexitem--pushed-right;
-  align-items: center;
-  padding-bottom: 1em;
-  width: fit-content;
-  min-width: 30px;
-  padding-left: 1em;
-  padding-top: 1em;
-  flex: auto;
-}
-
 .Header__settings-icon {
   cursor: pointer;
 }
