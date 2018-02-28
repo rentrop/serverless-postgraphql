@@ -26,7 +26,6 @@ class CrossingMapSidebar extends Component {
   };
 
   toggleSearchFocus = focused => {
-    console.log(focused);
     this.setState({ searchFocused: focused });
   };
 

@@ -47,8 +47,6 @@ const getSectionSuggestions = section => {
 };
 
 const formatSearchQuery = query => {
-  // debugger;
-  // if (!query) return '';
   return `%${query.replace(/ /g, '%')}%`;
 };
 
@@ -56,11 +54,6 @@ class CrossingMapSearchBar extends Component {
   constructor() {
     super();
 
-    // Autosuggest is a controlled component.
-    // This means that you need to provide an input value
-    // and an onChange handler that updates this value (see below).
-    // Suggestions also need to be provided to the Autosuggest,
-    // and they are initially empty because the Autosuggest is closed.
     this.state = {
       typedValue: '',
       selectedValue: '',
@@ -71,9 +64,6 @@ class CrossingMapSearchBar extends Component {
   }
 
   onChange = (event, { newValue, method }) => {
-    console.log(method);
-    console.log(newValue);
-
     if (method === 'type') {
       this.setState({
         typedValue: newValue,
@@ -104,7 +94,7 @@ class CrossingMapSearchBar extends Component {
       this.props.selectCrossing(suggestion.id);
     }
 
-    // If we've selected a mapbox location
+    // If we've selected a mapbox location, center on it
     if (suggestion.type === 'Feature') {
       this.props.setSelectedLocationCoordinates(suggestion.center);
     }
@@ -114,6 +104,7 @@ class CrossingMapSearchBar extends Component {
       this.props.setSelectedCommunity(suggestion);
     }
 
+    // Unfocus the search bar
     autosuggestInput.blur();
   };
 
@@ -168,7 +159,6 @@ class CrossingMapSearchBar extends Component {
   };
 
   updateCrossingSuggestions = suggestions => {
-    console.log(suggestions);
     this.setState({
       crossingSuggestions: suggestions,
     });
@@ -176,19 +166,15 @@ class CrossingMapSearchBar extends Component {
 
   onInputFocus = () => {
     this.props.toggleSearchFocus(true);
-    console.log('INPUT FOCUS');
   };
 
   onInputBlur = () => {
     this.props.toggleSearchFocus(false);
-    console.log('INPUT BLUR');
   };
 
   render() {
     const { selectedCrossingId, communityId } = this.props;
-
-    console.log(communityId);
-
+    
     const {
       typedValue,
       selectedValue,

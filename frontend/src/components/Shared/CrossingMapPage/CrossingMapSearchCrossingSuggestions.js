@@ -20,8 +20,6 @@ class CrossingMapSearchCrossingSuggestions extends Component {
   }
 }
 
-// export default CrossingMapSearchCrossingSuggestions;
-
 export default graphql(suggestCrossings, {
   name: 'suggestCrossings',
   options: ownProps => ({

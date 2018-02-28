@@ -58,7 +58,7 @@ class CrossingMap extends React.Component {
       this.setState({ selectedCrossing: selectedCrossing });
     }
 
-    // If we aren't selecting a location, fly to it
+    // If we are selecting a location, fly to it
     if (
       nextProps.selectedLocationCoordinates !==
       this.state.selectedLocationCoordinates
