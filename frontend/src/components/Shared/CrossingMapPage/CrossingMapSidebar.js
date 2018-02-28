@@ -6,6 +6,18 @@ import 'components/Shared/CrossingMapPage/CrossingMapSidebar.css';
 import FontAwesome from 'react-fontawesome';
 import classnames from 'classnames';
 
+const FilterCheckbox = ({defaultChecked, onClick, title}) => (
+  <label className="CrossingMapPage_sidebar-filter">
+    <input
+      className="CrossingMapPage_sidebar-filter-checkbox"
+      type="checkbox"
+      defaultChecked={defaultChecked}
+      onClick={onClick}
+    />
+     {title}
+  </label>
+)
+
 class CrossingMapSidebar extends Component {
   constructor(props) {
     super(props);
@@ -102,42 +114,26 @@ class CrossingMapSidebar extends Component {
                 </div>
                 {this.state.showFilters && (
                   <div className="CrossingMapPage_sidebar-filter-container">
-                    <label className="CrossingMapPage_sidebar-filter">
-                      <input
-                        className="CrossingMapPage_sidebar-filter-checkbox"
-                        type="checkbox"
-                        defaultChecked={showOpen}
-                        onClick={toggleShowOpen}
-                      />
-                      Open
-                    </label>
-                    <label className="CrossingMapPage_sidebar-filter">
-                      <input
-                        className="CrossingMapPage_sidebar-filter-checkbox"
-                        type="checkbox"
-                        defaultChecked={showCaution}
-                        onClick={toggleShowCaution}
-                      />
-                      Caution
-                    </label>
-                    <label className="CrossingMapPage_sidebar-filter">
-                      <input
-                        className="CrossingMapPage_sidebar-filter-checkbox"
-                        type="checkbox"
-                        defaultChecked={showClosed}
-                        onClick={toggleShowClosed}
-                      />
-                      Closed
-                    </label>
-                    <label className="CrossingMapPage_sidebar-filter">
-                      <input
-                        className="CrossingMapPage_sidebar-filter-checkbox"
-                        type="checkbox"
-                        defaultChecked={showLongterm}
-                        onClick={toggleShowLongterm}
-                      />
-                      Long Term Closure
-                    </label>
+                    <FilterCheckbox
+                      title="Open"
+                      defaultChecked={showOpen}
+                      onClick={toggleShowOpen}
+                    />
+                    <FilterCheckbox
+                      title="Closed"
+                      defaultChecked={showClosed}
+                      onClick={toggleShowClosed}
+                    />
+                    <FilterCheckbox
+                      title="Caution"
+                      defaultChecked={showCaution}
+                      onClick={toggleShowCaution}
+                    />
+                    <FilterCheckbox
+                      title="Long Term Closure"
+                      defaultChecked={showLongterm}
+                      onClick={toggleShowLongterm}
+                    />
                   </div>
                 )}
                 <div className="CrossingMapPage_sidebar-nearbycrossings">

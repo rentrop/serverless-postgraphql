@@ -9,8 +9,6 @@ const mapboxClient = new MapboxClient(
   'pk.eyJ1IjoiY3Jvd2VhdHgiLCJhIjoiY2o1NDFvYmxkMHhkcDMycDF2a3pseDFpZiJ9.UcnizcFDleMpv5Vbv8Rngw',
 );
 
-let autosuggestInput;
-
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
@@ -19,7 +17,7 @@ const getSuggestionValue = suggestion => {
 };
 
 // Use your imagination to render suggestions.
-const renderSuggestion = suggestion => (
+const Suggestion = suggestion => (
   <div className="CrossingMapSearchBar__suggestion-container">
     <div className="CrossingMapSearchBar__suggestion-icon">
       {suggestion.__typename === 'Crossing' && (
@@ -53,6 +51,8 @@ const formatSearchQuery = query => {
 class CrossingMapSearchBar extends Component {
   constructor() {
     super();
+
+    let autosuggestInput;
 
     this.state = {
       typedValue: '',
@@ -105,12 +105,11 @@ class CrossingMapSearchBar extends Component {
     }
 
     // Unfocus the search bar
-    autosuggestInput.blur();
+    this.autosuggestInput.blur();
   };
 
   // Autosuggest will call this function every time you need to update suggestions.
   onSuggestionsFetchRequested = ({ value }) => {
-    console.log(value);
     const { center, communityId, communities } = this.props;
 
     const inputValue = value.trim().toLowerCase();
@@ -238,7 +237,7 @@ class CrossingMapSearchBar extends Component {
               <Autosuggest
                 ref={autosuggest => {
                   if (autosuggest !== null) {
-                    autosuggestInput = autosuggest.input;
+                    this.autosuggestInput = autosuggest.input;
                   }
                 }}
                 suggestions={suggestions}
@@ -250,7 +249,7 @@ class CrossingMapSearchBar extends Component {
                 onSuggestionSelected={this.onSuggestionSelected}
                 onSuggestionHighlighted={this.onSuggestionHighlighted}
                 getSuggestionValue={getSuggestionValue}
-                renderSuggestion={renderSuggestion}
+                renderSuggestion={Suggestion}
                 inputProps={inputProps}
                 shouldRenderSuggestions={() => true}
                 focusInputOnSuggestionClick={false}
