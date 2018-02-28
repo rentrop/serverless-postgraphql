@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { get } from 'lodash';
-import { displayedInputs, statusIcons } from 'constants/StatusConstants';
+import { displayedInputs } from 'constants/StatusConstants';
 import DateTime from 'components/Dashboard/CrossingListPage/CrossingListItem/DateTime';
+import StatusIcon from 'components/Shared/StatusIcon';
 import 'components/Dashboard/CrossingStatusHistory/CrossingStatusHistory.css';
 
 class CrossingStatusHistoryItem extends Component {
@@ -42,9 +43,9 @@ class CrossingStatusHistoryItem extends Component {
 
         <div className="CrossingStatusHistory__item-details-flexcontainer">
           <div className="CrossingStatusHistory__item-details">
-            <img
+            <StatusIcon
+              statusId={statusId}
               onLoad={measure}
-              src={statusIcons[statusId]}
               alt={shouldDisplay.status}
               className="CrossingStatusHistory__status-icon"
             />

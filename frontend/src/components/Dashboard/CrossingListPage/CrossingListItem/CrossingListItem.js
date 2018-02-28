@@ -520,7 +520,7 @@ class CrossingListItem extends React.Component {
         <div className="CrossingListItemFlexContainer">
           <div className="CrossingListItemFlexItem">
             <div className="ControlLabel">
-              Status: {statusConstants.strings[this.state.selectedStatus]}
+              Status: {statusConstants.statusNames[this.state.selectedStatus]}
             </div>
             <StatusToggle
               status={this.state.selectedStatus}

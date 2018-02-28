@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 import mapboxstyle from 'components/Shared/Map/mapboxstyle.json';
-import { statusIcons } from 'constants/StatusConstants';
+import StatusIcon from 'components/Shared/StatusIcon';
 
 const Map = ReactMapboxGl({ accessToken: null, interactive: false });
 
@@ -23,7 +23,7 @@ class CrossingStaticMap extends Component {
         onStyleLoad={this.onStyleLoad}
       >
         <Marker coordinates={coordinates} anchor="bottom">
-          <img src={statusIcons[statusId]} alt={status} />
+          <StatusIcon statusId={statusId} alt={status} />
         </Marker>
       </Map>
     );
