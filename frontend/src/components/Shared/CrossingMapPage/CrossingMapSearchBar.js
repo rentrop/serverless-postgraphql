@@ -22,7 +22,15 @@ const getSuggestionValue = suggestion => {
 const renderSuggestion = suggestion => (
   <div className='CrossingMapSearchBar__suggestion-container'>
     <div className="CrossingMapSearchBar__suggestion-icon">
+    {suggestion.__typename === 'Crossing' && (
+      <FontAwesome name="map-pin" size="2x" />
+    )}
+    {suggestion.__typename === 'Community' && (
+      <FontAwesome name="globe" size="2x" />
+    )}
+    {suggestion.type === 'Feature' && (
       <FontAwesome name="map-marker" size="2x" />
+    )}
     </div>
     <div className="CrossingMapSearchBar__suggestion-text">
       {suggestion.place_name || suggestion.name}
@@ -129,7 +137,7 @@ class CrossingMapSearchBar extends Component {
 
     // If we aren't filtering by community, get the communities
     if(!communityId) {
-      const communitySuggestions = communities.filter(c => c.name.toLowerCase().includes(inputValue));
+      const communitySuggestions = communities.filter(c => c.name.toLowerCase().includes(inputValue)).slice(0,4);
       this.setState({communitySuggestions: communitySuggestions});
     }
 
