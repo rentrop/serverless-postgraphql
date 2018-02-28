@@ -109,6 +109,11 @@ class CrossingMapSearchBar extends Component {
       this.props.setSelectedLocationCoordinates(suggestion.center);
     }
 
+    // If we've selected a commuity, set the map bounds and filter
+    if (suggestion.__typename === 'Community') {
+      this.props.setSelectedCommunity(suggestion);
+    }
+
     autosuggestInput.blur();
   };
 
@@ -155,6 +160,7 @@ class CrossingMapSearchBar extends Component {
   clearSearch = () => {
     this.props.searchQueryUpdated({ target: { value: '' } });
     this.props.selectCrossing(null, null);
+    this.props.setSelectedCommunity(null);
     this.setState({ typedValue: '', selectedValue: null });
   };
 

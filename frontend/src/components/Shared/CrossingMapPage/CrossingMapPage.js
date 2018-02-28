@@ -63,6 +63,7 @@ class CrossingMapPage extends Component {
       mapCenter: center,
       center: center,
       selectedLocationCoordinates: null,
+      selectedCommunity: null,
     };
   }
 
@@ -114,6 +115,10 @@ class CrossingMapPage extends Component {
     this.setState({ selectedLocationCoordinates: coordinates });
   };
 
+  setSelectedCommunity = community => {
+    this.setState({ selectedCommunity: community });
+  };
+
   render() {
     const {
       viewport,
@@ -126,6 +131,7 @@ class CrossingMapPage extends Component {
       visibleCrossings,
       selectedCrossingName,
       selectedLocationCoordinates,
+      selectedCommunity
     } = this.state;
     const { currentUser } = this.props;
     const allCommunities =
@@ -151,6 +157,7 @@ class CrossingMapPage extends Component {
                     searchQuery={searchQuery}
                     searchQueryUpdated={this.searchQueryUpdated}
                     selectedCrossingName={selectedCrossingName}
+                    setSelectedCommunity={this.setSelectedCommunity}
                   />
                 )}
                 {params.fullsize && (
@@ -185,6 +192,7 @@ class CrossingMapPage extends Component {
                     setSelectedLocationCoordinates={
                       this.setSelectedLocationCoordinates
                     }
+                    setSelectedCommunity={this.setSelectedCommunity}
                   />
                 )}
                 <div
@@ -209,6 +217,7 @@ class CrossingMapPage extends Component {
                     showCaution={this.state.showCaution}
                     showLongterm={this.state.showLongterm}
                     setVisibleCrossings={this.setVisibleCrossings}
+                    selectedCommunityId={selectedCommunity && selectedCommunity.id}
                   />
                 </div>
                 {!params.fullsize &&

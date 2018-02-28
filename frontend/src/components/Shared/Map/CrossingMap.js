@@ -545,7 +545,7 @@ export default compose(
           ownProps.currentUser &&
           ownProps.currentUser.role !== 'floods_super_admin'
             ? ownProps.currentUser.communityId
-            : null,
+            : ownProps.selectedCommunityId,
       },
     }),
   }),
@@ -562,7 +562,7 @@ export default compose(
           ownProps.currentUser &&
           ownProps.currentUser.role !== 'floods_super_admin'
             ? ownProps.currentUser.communityId
-            : null,
+            : ownProps.selectedCommunityId,
       },
     }),
   }),
@@ -579,7 +579,7 @@ export default compose(
           ownProps.currentUser &&
           ownProps.currentUser.role !== 'floods_super_admin'
             ? ownProps.currentUser.communityId
-            : null,
+            : ownProps.selectedCommunityId,
       },
     }),
   }),
@@ -596,7 +596,7 @@ export default compose(
           ownProps.currentUser &&
           ownProps.currentUser.role !== 'floods_super_admin'
             ? ownProps.currentUser.communityId
-            : null,
+            : ownProps.selectedCommunityId,
       },
     }),
   }),
