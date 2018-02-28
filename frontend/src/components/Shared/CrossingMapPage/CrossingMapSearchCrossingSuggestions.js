@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import suggestCrossings from 'components/Shared/CrossingMapPage/queries/suggestCrossingsQuery';
 import { graphql } from 'react-apollo';
 

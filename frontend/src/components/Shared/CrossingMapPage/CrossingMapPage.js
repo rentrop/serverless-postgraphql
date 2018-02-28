@@ -137,7 +137,6 @@ class CrossingMapPage extends Component {
     const {
       viewport,
       mapCenter,
-      center,
       selectedCrossingId,
       selectedCrossingStatus,
       searchQuery,

@@ -192,8 +192,6 @@ class CrossingMapSearchBar extends Component {
   render() {
     const {
       selectedCrossingId,
-      searchQueryUpdated,
-      selectedCrossingName,
       communityId,
     } = this.props;
 
