@@ -20,17 +20,17 @@ const getSuggestionValue = suggestion => {
 
 // Use your imagination to render suggestions.
 const renderSuggestion = suggestion => (
-  <div className='CrossingMapSearchBar__suggestion-container'>
+  <div className="CrossingMapSearchBar__suggestion-container">
     <div className="CrossingMapSearchBar__suggestion-icon">
-    {suggestion.__typename === 'Crossing' && (
-      <FontAwesome name="map-pin" size="2x" />
-    )}
-    {suggestion.__typename === 'Community' && (
-      <FontAwesome name="globe" size="2x" />
-    )}
-    {suggestion.type === 'Feature' && (
-      <FontAwesome name="map-marker" size="2x" />
-    )}
+      {suggestion.__typename === 'Crossing' && (
+        <FontAwesome name="map-pin" size="2x" />
+      )}
+      {suggestion.__typename === 'Community' && (
+        <FontAwesome name="globe" size="2x" />
+      )}
+      {suggestion.type === 'Feature' && (
+        <FontAwesome name="map-marker" size="2x" />
+      )}
     </div>
     <div className="CrossingMapSearchBar__suggestion-text">
       {suggestion.place_name || suggestion.name}
@@ -136,11 +136,12 @@ class CrossingMapSearchBar extends Component {
     }
 
     // If we aren't filtering by community, get the communities
-    if(!communityId) {
-      const communitySuggestions = communities.filter(c => c.name.toLowerCase().includes(inputValue)).slice(0,4);
-      this.setState({communitySuggestions: communitySuggestions});
+    if (!communityId) {
+      const communitySuggestions = communities
+        .filter(c => c.name.toLowerCase().includes(inputValue))
+        .slice(0, 4);
+      this.setState({ communitySuggestions: communitySuggestions });
     }
-
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
@@ -166,13 +167,13 @@ class CrossingMapSearchBar extends Component {
 
   onInputFocus = () => {
     this.props.toggleSearchFocus(true);
-    console.log('INPUT FOCUS')
-  }
+    console.log('INPUT FOCUS');
+  };
 
   onInputBlur = () => {
     this.props.toggleSearchFocus(false);
-    console.log('INPUT BLUR')
-  }
+    console.log('INPUT BLUR');
+  };
 
   render() {
     const {
@@ -182,9 +183,15 @@ class CrossingMapSearchBar extends Component {
       communityId,
     } = this.props;
 
-    console.log(communityId)
+    console.log(communityId);
 
-    const { typedValue, selectedValue, mapboxSuggestions, crossingSuggestions, communitySuggestions } = this.state;
+    const {
+      typedValue,
+      selectedValue,
+      mapboxSuggestions,
+      crossingSuggestions,
+      communitySuggestions,
+    } = this.state;
 
     const suggestions = [
       {
@@ -230,15 +237,18 @@ class CrossingMapSearchBar extends Component {
           </div>
           <div className="CrossingMapSearchBar__text-entry">
             {selectedCrossingId && (
-              <div className="CrossingMapSearchBar__selected-item">
-                {selectedCrossingName}
+              <div
+                className="CrossingMapSearchBar__selected-item"
+                onClick={this.clearSearch}
+              >
+                Back to Search
               </div>
             )}
             {!selectedCrossingId && (
               <Autosuggest
                 ref={autosuggest => {
                   if (autosuggest !== null) {
-                    autosuggestInput = autosuggest.input
+                    autosuggestInput = autosuggest.input;
                   }
                 }}
                 suggestions={suggestions}

@@ -28,7 +28,7 @@ class CrossingMapSidebar extends Component {
   toggleSearchFocus = focused => {
     console.log(focused);
     this.setState({ searchFocused: focused });
-  }
+  };
 
   render() {
     const { visible, searchFocused } = this.state;
@@ -72,83 +72,86 @@ class CrossingMapSidebar extends Component {
 
             {!searchFocused && (
               <div>
-              {selectedCrossingId && (
-                <SelectedCrossingContainer
-                  crossingId={selectedCrossingId}
-                  currentUser={currentUser}
-                  selectCrossing={selectCrossing}
-                />
-              )}
-              <div className="CrossingMapPage_sidebar-filter-sort-toggle-container">
-                <div
-                  className={classnames('CrossingMapPage_sidebar-filter-toggle', {
-                    selected: this.state.showFilters,
-                  })}
-                  onClick={this.toggleFilters}
-                >
-                  <div className="CrossingMapPage_sidebar-filter-toggle-text">
-                    {this.state.showFilters ? (
-                      <FontAwesome name="minus" ariaLabel="Hide" />
-                    ) : (
-                      <FontAwesome name="plus" ariaLabel="Show" />
-                    )}{' '}
-                    FILTER
+                {selectedCrossingId && (
+                  <SelectedCrossingContainer
+                    crossingId={selectedCrossingId}
+                    currentUser={currentUser}
+                    selectCrossing={selectCrossing}
+                  />
+                )}
+                <div className="CrossingMapPage_sidebar-filter-sort-toggle-container">
+                  <div
+                    className={classnames(
+                      'CrossingMapPage_sidebar-filter-toggle',
+                      {
+                        selected: this.state.showFilters,
+                      },
+                    )}
+                    onClick={this.toggleFilters}
+                  >
+                    <div className="CrossingMapPage_sidebar-filter-toggle-text">
+                      {this.state.showFilters ? (
+                        <FontAwesome name="minus" ariaLabel="Hide" />
+                      ) : (
+                        <FontAwesome name="plus" ariaLabel="Show" />
+                      )}{' '}
+                      FILTER
+                    </div>
                   </div>
                 </div>
-              </div>
-              {this.state.showFilters && (
-                <div className="CrossingMapPage_sidebar-filter-container">
-                  <label className="CrossingMapPage_sidebar-filter">
-                    <input
-                      className="CrossingMapPage_sidebar-filter-checkbox"
-                      type="checkbox"
-                      defaultChecked={showOpen}
-                      onClick={toggleShowOpen}
+                {this.state.showFilters && (
+                  <div className="CrossingMapPage_sidebar-filter-container">
+                    <label className="CrossingMapPage_sidebar-filter">
+                      <input
+                        className="CrossingMapPage_sidebar-filter-checkbox"
+                        type="checkbox"
+                        defaultChecked={showOpen}
+                        onClick={toggleShowOpen}
+                      />
+                      Open
+                    </label>
+                    <label className="CrossingMapPage_sidebar-filter">
+                      <input
+                        className="CrossingMapPage_sidebar-filter-checkbox"
+                        type="checkbox"
+                        defaultChecked={showCaution}
+                        onClick={toggleShowCaution}
+                      />
+                      Caution
+                    </label>
+                    <label className="CrossingMapPage_sidebar-filter">
+                      <input
+                        className="CrossingMapPage_sidebar-filter-checkbox"
+                        type="checkbox"
+                        defaultChecked={showClosed}
+                        onClick={toggleShowClosed}
+                      />
+                      Closed
+                    </label>
+                    <label className="CrossingMapPage_sidebar-filter">
+                      <input
+                        className="CrossingMapPage_sidebar-filter-checkbox"
+                        type="checkbox"
+                        defaultChecked={showLongterm}
+                        onClick={toggleShowLongterm}
+                      />
+                      Long Term Closure
+                    </label>
+                  </div>
+                )}
+                <div className="CrossingMapPage_sidebar-nearbycrossings">
+                  {visibleCrossings.map(c => (
+                    <CrossingSidebarNearbyCrossingItem
+                      key={c.id}
+                      latestStatus={c.latestStatus}
+                      statusId={c.statusId}
+                      crossingName={c.crossingName}
+                      communityIds={c.communityIds}
+                      allCommunities={allCommunities}
                     />
-                    Open
-                  </label>
-                  <label className="CrossingMapPage_sidebar-filter">
-                    <input
-                      className="CrossingMapPage_sidebar-filter-checkbox"
-                      type="checkbox"
-                      defaultChecked={showCaution}
-                      onClick={toggleShowCaution}
-                    />
-                    Caution
-                  </label>
-                  <label className="CrossingMapPage_sidebar-filter">
-                    <input
-                      className="CrossingMapPage_sidebar-filter-checkbox"
-                      type="checkbox"
-                      defaultChecked={showClosed}
-                      onClick={toggleShowClosed}
-                    />
-                    Closed
-                  </label>
-                  <label className="CrossingMapPage_sidebar-filter">
-                    <input
-                      className="CrossingMapPage_sidebar-filter-checkbox"
-                      type="checkbox"
-                      defaultChecked={showLongterm}
-                      onClick={toggleShowLongterm}
-                    />
-                    Long Term Closure
-                  </label>
+                  ))}
                 </div>
-              )}
-              <div className="CrossingMapPage_sidebar-nearbycrossings">
-                {visibleCrossings.map(c => (
-                  <CrossingSidebarNearbyCrossingItem
-                    key={c.id}
-                    latestStatus={c.latestStatus}
-                    statusId={c.statusId}
-                    crossingName={c.crossingName}
-                    communityIds={c.communityIds}
-                    allCommunities={allCommunities}
-                  />
-                ))}
               </div>
-            </div>
             )}
           </div>
         )}

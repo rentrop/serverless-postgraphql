@@ -28,7 +28,19 @@ class CrossingMap extends React.Component {
     if (nextProps.selectedCrossingId !== this.props.selectedCrossingId) {
       if (nextProps.selectedCrossingId) {
         this.setState({ selectedCrossingId: nextProps.selectedCrossingId });
-        const crossing = this.props.openCrossings.searchCrossings.nodes.find(c => c.id === nextProps.selectedCrossingId) || this.props.closedCrossings.searchCrossings.nodes.find(c => c.id === nextProps.selectedCrossingId) || this.props.cautionCrossings.searchCrossings.nodes.find(c => c.id === nextProps.selectedCrossingId) || this.props.cautionCrossings.searchCrossings.nodes.find(c => c.id === nextProps.selectedCrossingId);
+        const crossing =
+          this.props.openCrossings.searchCrossings.nodes.find(
+            c => c.id === nextProps.selectedCrossingId,
+          ) ||
+          this.props.closedCrossings.searchCrossings.nodes.find(
+            c => c.id === nextProps.selectedCrossingId,
+          ) ||
+          this.props.cautionCrossings.searchCrossings.nodes.find(
+            c => c.id === nextProps.selectedCrossingId,
+          ) ||
+          this.props.cautionCrossings.searchCrossings.nodes.find(
+            c => c.id === nextProps.selectedCrossingId,
+          );
         this.selectCrossing(crossing);
       } else {
         this.setState({ selectedCrossingId: -1 });
@@ -47,10 +59,15 @@ class CrossingMap extends React.Component {
     }
 
     // If we aren't selecting a location, fly to it
-    if (nextProps.selectedLocationCoordinates !== this.state.selectedLocationCoordinates) {
-      this.setState({ selectedLocationCoordinates: nextProps.selectedLocationCoordinates });
-      if(nextProps.selectedLocationCoordinates) {
-        this.flyTo(nextProps.selectedLocationCoordinates);  
+    if (
+      nextProps.selectedLocationCoordinates !==
+      this.state.selectedLocationCoordinates
+    ) {
+      this.setState({
+        selectedLocationCoordinates: nextProps.selectedLocationCoordinates,
+      });
+      if (nextProps.selectedLocationCoordinates) {
+        this.flyTo(nextProps.selectedLocationCoordinates);
       }
     }
 
@@ -125,11 +142,11 @@ class CrossingMap extends React.Component {
 
   flyTo = point => {
     const { map } = this.state;
-    if(map){
+    if (map) {
       map.flyTo({
         center: point,
         zoom: 11,
-      });  
+      });
     }
   };
 
@@ -185,7 +202,7 @@ class CrossingMap extends React.Component {
       crossingName: crossing.name,
       crossingStatus: crossing.latestStatusId,
       geojson: crossing.geojson,
-    }
+    };
 
     this.setState({
       selectedCrossingCoordinates: coordinates,
@@ -197,7 +214,7 @@ class CrossingMap extends React.Component {
       crossing.latestStatusId,
       crossing.name,
     );
-  }
+  };
 
   onCrossingClick = crossing => {
     this.setState({ selectedCrossingId: crossing.properties.crossingId });

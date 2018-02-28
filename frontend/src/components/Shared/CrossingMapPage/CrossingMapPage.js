@@ -182,7 +182,9 @@ class CrossingMapPage extends Component {
                     visibleCrossings={visibleCrossings}
                     allCommunities={allCommunities}
                     center={mapCenter}
-                    setSelectedLocationCoordinates={this.setSelectedLocationCoordinates}
+                    setSelectedLocationCoordinates={
+                      this.setSelectedLocationCoordinates
+                    }
                   />
                 )}
                 <div

@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 const suggestCrossings = gql`
-  query suggestCrossings($search: String, $communityId:Int) {
+  query suggestCrossings($search: String, $communityId: Int) {
     searchCrossings(
       search: $search
       communityId: $communityId
@@ -9,8 +9,8 @@ const suggestCrossings = gql`
       showClosed: true
       showCaution: true
       showLongterm: true
-      first: 5) 
-    {
+      first: 5
+    ) {
       nodes {
         id
         name
