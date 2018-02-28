@@ -19,17 +19,29 @@ class CrossingMap extends React.Component {
     selectedCrossingId: -1, // Mapbox filters don't support null values
     selectedCrossing: null,
     selectedCrossingCoordinates: null,
+    selectedLocationCoordinates: null,
     firstLoadComplete: false,
-    center: [
-      (this.props.viewport[0][0] + this.props.viewport[1][0]) / 2,
-      (this.props.viewport[0][1] + this.props.viewport[1][1]) / 2,
-    ],
   };
 
   componentWillReceiveProps(nextProps) {
+    // If we've selected a crossing
     if (nextProps.selectedCrossingId !== this.props.selectedCrossingId) {
       if (nextProps.selectedCrossingId) {
         this.setState({ selectedCrossingId: nextProps.selectedCrossingId });
+        const crossing =
+          this.props.openCrossings.searchCrossings.nodes.find(
+            c => c.id === nextProps.selectedCrossingId,
+          ) ||
+          this.props.closedCrossings.searchCrossings.nodes.find(
+            c => c.id === nextProps.selectedCrossingId,
+          ) ||
+          this.props.cautionCrossings.searchCrossings.nodes.find(
+            c => c.id === nextProps.selectedCrossingId,
+          ) ||
+          this.props.cautionCrossings.searchCrossings.nodes.find(
+            c => c.id === nextProps.selectedCrossingId,
+          );
+        this.selectCrossing(crossing);
       } else {
         this.setState({ selectedCrossingId: -1 });
         this.setState({ selectedCrossing: null });
@@ -44,6 +56,19 @@ class CrossingMap extends React.Component {
     ) {
       selectedCrossing.crossingStatus = nextProps.selectedCrossingStatus;
       this.setState({ selectedCrossing: selectedCrossing });
+    }
+
+    // If we are selecting a location, fly to it
+    if (
+      nextProps.selectedLocationCoordinates !==
+      this.state.selectedLocationCoordinates
+    ) {
+      this.setState({
+        selectedLocationCoordinates: nextProps.selectedLocationCoordinates,
+      });
+      if (nextProps.selectedLocationCoordinates) {
+        this.flyTo(nextProps.selectedLocationCoordinates);
+      }
     }
 
     // This is a slightly strange litle fix here, we used to check loading in render, and not render the map until it loaded
@@ -72,6 +97,10 @@ class CrossingMap extends React.Component {
     this.addGeoLocateControl(map);
     this.addCrossingClickHandlers(map);
     this.addUpdateVisibleCrossingHandlers(map);
+
+    // update the map page center on map move
+    map.on('moveend', this.getMapCenter);
+
     // disable map rotation using right click + drag
     map.dragRotate.disable();
 
@@ -103,6 +132,23 @@ class CrossingMap extends React.Component {
     map.on('moveend', this.updateVisibleCrossings);
     map.on('data', this.updateVisibleCrossings);
   }
+
+  getMapCenter = () => {
+    const { map } = this.state;
+    const center = map.getCenter();
+
+    this.props.getMapCenter(center);
+  };
+
+  flyTo = point => {
+    const { map } = this.state;
+    if (map) {
+      map.flyTo({
+        center: point,
+        zoom: 13,
+      });
+    }
+  };
 
   updateVisibleCrossings = e => {
     if (e.type === 'data' && !e.isSourceLoaded) return;
@@ -148,13 +194,35 @@ class CrossingMap extends React.Component {
     map.on('click', this.onMapClick);
   }
 
+  selectCrossing = crossing => {
+    const coordinates = JSON.parse(crossing.geojson).coordinates;
+
+    const mapCrossing = {
+      crossingId: crossing.id,
+      crossingName: crossing.name,
+      crossingStatus: crossing.latestStatusId,
+      geojson: crossing.geojson,
+    };
+
+    this.setState({
+      selectedCrossingCoordinates: coordinates,
+      selectedCrossing: mapCrossing,
+    });
+    this.flyTo(coordinates);
+    this.props.selectCrossing(
+      crossing.id,
+      crossing.latestStatusId,
+      crossing.name,
+    );
+  };
+
   onCrossingClick = crossing => {
     this.setState({ selectedCrossingId: crossing.properties.crossingId });
     this.setState({ selectedCrossing: crossing.properties });
     this.setState({
       selectedCrossingCoordinates: crossing.geometry.coordinates,
     });
-    this.setState({ center: crossing.geometry.coordinates });
+    this.flyTo(crossing.geometry.coordinates);
     this.props.selectCrossing(
       crossing.properties.crossingId,
       crossing.properties.crossingStatus,
@@ -214,7 +282,13 @@ class CrossingMap extends React.Component {
       ? this.props.longtermCrossings.searchCrossings.nodes
       : null;
 
-    const { showOpen, showClosed, showCaution, showLongterm } = this.props;
+    const {
+      showOpen,
+      showClosed,
+      showCaution,
+      showLongterm,
+      center,
+    } = this.props;
 
     return (
       <Map
@@ -226,7 +300,7 @@ class CrossingMap extends React.Component {
           display: 'block',
         }}
         fitBounds={this.props.viewport}
-        center={this.state.center}
+        center={center}
       >
         {!isLoading &&
           showOpen && (
@@ -471,7 +545,7 @@ export default compose(
           ownProps.currentUser &&
           ownProps.currentUser.role !== 'floods_super_admin'
             ? ownProps.currentUser.communityId
-            : null,
+            : ownProps.selectedCommunityId,
       },
     }),
   }),
@@ -488,7 +562,7 @@ export default compose(
           ownProps.currentUser &&
           ownProps.currentUser.role !== 'floods_super_admin'
             ? ownProps.currentUser.communityId
-            : null,
+            : ownProps.selectedCommunityId,
       },
     }),
   }),
@@ -505,7 +579,7 @@ export default compose(
           ownProps.currentUser &&
           ownProps.currentUser.role !== 'floods_super_admin'
             ? ownProps.currentUser.communityId
-            : null,
+            : ownProps.selectedCommunityId,
       },
     }),
   }),
@@ -522,7 +596,7 @@ export default compose(
           ownProps.currentUser &&
           ownProps.currentUser.role !== 'floods_super_admin'
             ? ownProps.currentUser.communityId
-            : null,
+            : ownProps.selectedCommunityId,
       },
     }),
   }),

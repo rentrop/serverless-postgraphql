@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import SelectedCrossingContainer from 'components/Shared/CrossingMapPage/SelectedCrossingContainer';
 import CrossingMapSearchBar from 'components/Shared/CrossingMapPage/CrossingMapSearchBar';
-import CrossingSidebarSearchResultItem from 'components/Shared/CrossingMapPage/CrossingSidebarSearchResultItem';
+import CrossingSidebarNearbyCrossingItem from 'components/Shared/CrossingMapPage/CrossingSidebarNearbyCrossingItem';
 import 'components/Shared/CrossingMapPage/CrossingMapSidebar.css';
 import FontAwesome from 'react-fontawesome';
 import classnames from 'classnames';
+
+const FilterCheckbox = ({defaultChecked, onClick, title}) => (
+  <label className="CrossingMapPage_sidebar-filter">
+    <input
+      className="CrossingMapPage_sidebar-filter-checkbox"
+      type="checkbox"
+      defaultChecked={defaultChecked}
+      onClick={onClick}
+    />
+     {title}
+  </label>
+)
 
 class CrossingMapSidebar extends Component {
   constructor(props) {
@@ -13,6 +25,7 @@ class CrossingMapSidebar extends Component {
     this.state = {
       visible: true,
       showFilters: false,
+      searchFocused: false,
     };
   }
 
@@ -24,8 +37,12 @@ class CrossingMapSidebar extends Component {
     this.setState({ showFilters: !this.state.showFilters });
   };
 
+  toggleSearchFocus = focused => {
+    this.setState({ searchFocused: focused });
+  };
+
   render() {
-    const { visible } = this.state;
+    const { visible, searchFocused } = this.state;
     const {
       toggleShowOpen,
       toggleShowClosed,
@@ -43,6 +60,9 @@ class CrossingMapSidebar extends Component {
       visibleCrossings,
       allCommunities,
       selectedCrossingName,
+      center,
+      setSelectedLocationCoordinates,
+      setSelectedCommunity,
     } = this.props;
 
     return (
@@ -55,83 +75,83 @@ class CrossingMapSidebar extends Component {
               searchQuery={searchQuery}
               searchQueryUpdated={searchQueryUpdated}
               selectedCrossingName={selectedCrossingName}
+              center={center}
+              setSelectedLocationCoordinates={setSelectedLocationCoordinates}
+              toggleSearchFocus={this.toggleSearchFocus}
+              communities={allCommunities}
+              communityId={currentUser && currentUser.communityId}
+              setSelectedCommunity={setSelectedCommunity}
             />
-            {selectedCrossingId && (
-              <SelectedCrossingContainer
-                crossingId={selectedCrossingId}
-                currentUser={currentUser}
-                selectCrossing={selectCrossing}
-              />
-            )}
-            <div className="CrossingMapPage_sidebar-filter-sort-toggle-container">
-              <div
-                className={classnames('CrossingMapPage_sidebar-filter-toggle', {
-                  selected: this.state.showFilters,
-                })}
-                onClick={this.toggleFilters}
-              >
-                <div className="CrossingMapPage_sidebar-filter-toggle-text">
-                  {this.state.showFilters ? (
-                    <FontAwesome name="minus" ariaLabel="Hide" />
-                  ) : (
-                    <FontAwesome name="plus" ariaLabel="Show" />
-                  )}{' '}
-                  FILTER
+
+            {!searchFocused && (
+              <div>
+                {selectedCrossingId && (
+                  <SelectedCrossingContainer
+                    crossingId={selectedCrossingId}
+                    currentUser={currentUser}
+                    selectCrossing={selectCrossing}
+                  />
+                )}
+                <div className="CrossingMapPage_sidebar-filter-sort-toggle-container">
+                  <div
+                    className={classnames(
+                      'CrossingMapPage_sidebar-filter-toggle',
+                      {
+                        selected: this.state.showFilters,
+                      },
+                    )}
+                    onClick={this.toggleFilters}
+                  >
+                    <div className="CrossingMapPage_sidebar-filter-toggle-text">
+                      {this.state.showFilters ? (
+                        <FontAwesome name="minus" ariaLabel="Hide" />
+                      ) : (
+                        <FontAwesome name="plus" ariaLabel="Show" />
+                      )}{' '}
+                      FILTER
+                    </div>
+                  </div>
+                </div>
+                {this.state.showFilters && (
+                  <div className="CrossingMapPage_sidebar-filter-container">
+                    <FilterCheckbox
+                      title="Open"
+                      defaultChecked={showOpen}
+                      onClick={toggleShowOpen}
+                    />
+                    <FilterCheckbox
+                      title="Closed"
+                      defaultChecked={showClosed}
+                      onClick={toggleShowClosed}
+                    />
+                    <FilterCheckbox
+                      title="Caution"
+                      defaultChecked={showCaution}
+                      onClick={toggleShowCaution}
+                    />
+                    <FilterCheckbox
+                      title="Long Term Closure"
+                      defaultChecked={showLongterm}
+                      onClick={toggleShowLongterm}
+                    />
+                  </div>
+                )}
+                <div className="CrossingMapPage_sidebar-nearbycrossings">
+                  {visibleCrossings.map(c => (
+                    <CrossingSidebarNearbyCrossingItem
+                      key={c.id}
+                      latestStatus={c.latestStatus}
+                      statusId={c.statusId}
+                      crossingId={c.id}
+                      crossingName={c.crossingName}
+                      communityIds={c.communityIds}
+                      allCommunities={allCommunities}
+                      selectCrossing={selectCrossing}
+                    />
+                  ))}
                 </div>
               </div>
-            </div>
-            {this.state.showFilters && (
-              <div className="CrossingMapPage_sidebar-filter-container">
-                <label className="CrossingMapPage_sidebar-filter">
-                  <input
-                    className="CrossingMapPage_sidebar-filter-checkbox"
-                    type="checkbox"
-                    defaultChecked={showOpen}
-                    onClick={toggleShowOpen}
-                  />
-                  Open
-                </label>
-                <label className="CrossingMapPage_sidebar-filter">
-                  <input
-                    className="CrossingMapPage_sidebar-filter-checkbox"
-                    type="checkbox"
-                    defaultChecked={showCaution}
-                    onClick={toggleShowCaution}
-                  />
-                  Caution
-                </label>
-                <label className="CrossingMapPage_sidebar-filter">
-                  <input
-                    className="CrossingMapPage_sidebar-filter-checkbox"
-                    type="checkbox"
-                    defaultChecked={showClosed}
-                    onClick={toggleShowClosed}
-                  />
-                  Closed
-                </label>
-                <label className="CrossingMapPage_sidebar-filter">
-                  <input
-                    className="CrossingMapPage_sidebar-filter-checkbox"
-                    type="checkbox"
-                    defaultChecked={showLongterm}
-                    onClick={toggleShowLongterm}
-                  />
-                  Long Term Closure
-                </label>
-              </div>
             )}
-            <div className="CrossingMapPage_sidebar-searchresults">
-              {visibleCrossings.map(c => (
-                <CrossingSidebarSearchResultItem
-                  key={c.id}
-                  latestStatus={c.latestStatus}
-                  statusId={c.statusId}
-                  crossingName={c.crossingName}
-                  communityIds={c.communityIds}
-                  allCommunities={allCommunities}
-                />
-              ))}
-            </div>
           </div>
         )}
         <div

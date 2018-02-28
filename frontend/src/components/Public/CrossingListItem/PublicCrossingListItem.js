@@ -55,7 +55,7 @@ class PublicCrossingListItem extends React.Component {
         <div className="CrossingListItemFlexContainer">
           <div className="CrossingListItemFlexItem">
             <div className="ControlLabel">
-              Status: {statusConstants.strings[crossing.latestStatusId]}
+              Status: {statusConstants.statusNames[crossing.latestStatusId]}
             </div>
           </div>
 
