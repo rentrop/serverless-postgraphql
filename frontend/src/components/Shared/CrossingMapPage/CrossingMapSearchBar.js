@@ -9,6 +9,8 @@ const mapboxClient = new MapboxClient(
   'pk.eyJ1IjoiY3Jvd2VhdHgiLCJhIjoiY2o1NDFvYmxkMHhkcDMycDF2a3pseDFpZiJ9.UcnizcFDleMpv5Vbv8Rngw',
 );
 
+let autosuggestInput;
+
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
@@ -97,6 +99,8 @@ class CrossingMapSearchBar extends Component {
     if (suggestion.type === 'Feature') {
       this.props.setSelectedLocationCoordinates(suggestion.center);
     }
+
+    autosuggestInput.blur();
   };
 
   // Autosuggest will call this function every time you need to update suggestions.
@@ -211,6 +215,11 @@ class CrossingMapSearchBar extends Component {
             )}
             {!selectedCrossingId && (
               <Autosuggest
+                ref={autosuggest => {
+                  if (autosuggest !== null) {
+                    autosuggestInput = autosuggest.input
+                  }
+                }}
                 suggestions={suggestions}
                 multiSection={true}
                 getSectionSuggestions={getSectionSuggestions}
@@ -223,7 +232,7 @@ class CrossingMapSearchBar extends Component {
                 renderSuggestion={renderSuggestion}
                 inputProps={inputProps}
                 shouldRenderSuggestions={() => true}
-                alwaysRenderSuggestions={true}
+                focusInputOnSuggestionClick={false}
               />
             )}
           </div>
