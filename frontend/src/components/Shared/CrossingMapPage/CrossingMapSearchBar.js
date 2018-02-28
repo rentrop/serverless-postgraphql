@@ -18,9 +18,13 @@ const getSuggestionValue = suggestion => {
 
 // Use your imagination to render suggestions.
 const renderSuggestion = suggestion => (
-  <div>
-    <FontAwesome name="map-marker" size="2x" />
-    {suggestion.place_name || suggestion.name}
+  <div className='CrossingMapSearchBar__suggestion-container'>
+    <div className="CrossingMapSearchBar__suggestion-icon">
+      <FontAwesome name="map-marker" size="2x" />
+    </div>
+    <div className="CrossingMapSearchBar__suggestion-text">
+      {suggestion.place_name || suggestion.name}
+    </div>
   </div>
 );
 
