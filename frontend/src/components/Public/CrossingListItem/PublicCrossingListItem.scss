@@ -30,7 +30,7 @@
 
 .CrossingName {
   color: #000;
-  font-size: 14pt;
+  font-size: 1.4rem;
   font-weight: 700;
   text-decoration: none;
 }
@@ -41,7 +41,7 @@
 
 .ControlLabel {
   @include flexitem;
-  font-size: 10pt;
+  font-size: 1.0rem;
   font-weight: 600;
   line-height: 2em;
   text-transform: uppercase;
@@ -49,7 +49,7 @@
 
 .NotesTextBox {
   width: 100%;
-  font-size: 12pt;
+  font-size: 1.2rem;
   text-indent: 12px;
   height: 40px;
   overflow: hidden;
@@ -69,7 +69,7 @@
   height: 40px;
   line-height: 40px;
   border-radius: 5px;
-  font-size: 11pt;
+  font-size: 1.1rem;
   text-align: center;
   border: 2px solid #0054ff;
   cursor: pointer;
@@ -91,7 +91,7 @@
 .required {
   @include flexitem;
   text-align: right;
-  font-size: 9pt;
+  font-size: .9rem;
   font-weight: 400;
   font-style: italic;
   align-self: center;
