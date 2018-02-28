@@ -70,8 +70,8 @@ class CrossingMapPage extends Component {
     return {
       viewport: viewport,
       center: center,
-    }
-  }
+    };
+  };
 
   formatSearchQuery(query) {
     return `%${query.replace(/ /g, '%')}%`;
@@ -123,13 +123,15 @@ class CrossingMapPage extends Component {
 
   setSelectedCommunity = community => {
     this.setState({ selectedCommunity: community });
-    if(community && community.viewportgeojson) {
-      const viewportAndCenter = this.getViewportAndCenter(community.viewportgeojson)
+    if (community && community.viewportgeojson) {
+      const viewportAndCenter = this.getViewportAndCenter(
+        community.viewportgeojson,
+      );
       this.setState({
         viewport: viewportAndCenter.viewport,
         center: viewportAndCenter.center,
         mapCenter: viewportAndCenter.mapCenter,
-      })
+      });
     }
   };
 
@@ -144,7 +146,7 @@ class CrossingMapPage extends Component {
       visibleCrossings,
       selectedCrossingName,
       selectedLocationCoordinates,
-      selectedCommunity
+      selectedCommunity,
     } = this.state;
     const { currentUser } = this.props;
     const allCommunities =
@@ -230,7 +232,9 @@ class CrossingMapPage extends Component {
                     showCaution={this.state.showCaution}
                     showLongterm={this.state.showLongterm}
                     setVisibleCrossings={this.setVisibleCrossings}
-                    selectedCommunityId={selectedCommunity && selectedCommunity.id}
+                    selectedCommunityId={
+                      selectedCommunity && selectedCommunity.id
+                    }
                   />
                 </div>
                 {!params.fullsize &&

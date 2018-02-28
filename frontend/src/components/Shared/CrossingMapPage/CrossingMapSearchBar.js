@@ -133,12 +133,7 @@ class CrossingMapSearchBar extends Component {
           proximity: { latitude: center.lat, longitude: center.lng },
           // Hardcoding this for now to get better results
           // TODO: Design a better solution for accurate geocode results
-          bbox: [
-            -100,
-            27,
-            -94,
-            34,
-          ]
+          bbox: [-100, 27, -94, 34],
         },
         (err, res) => {
           this.setState({ mapboxSuggestions: res.features });
@@ -190,10 +185,7 @@ class CrossingMapSearchBar extends Component {
   };
 
   render() {
-    const {
-      selectedCrossingId,
-      communityId,
-    } = this.props;
+    const { selectedCrossingId, communityId } = this.props;
 
     console.log(communityId);
 
