@@ -34,13 +34,13 @@
   @include flexcontainer;
   @include flexitem--pushed-right;
   justify-content: flex-end;
+  align-self: flex-end;
   list-style: none;
-  text-transform: uppercase;
   margin: 0;
 }
 
 @mixin Header__tab {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   padding: 0.5rem 1rem;
   a {
     text-decoration: none;
@@ -52,5 +52,9 @@
 
 .Header__tab--active {
   @include Header__tab;
-  font-weight: bold;
+  border-bottom: 7px solid #03a9f4;
+}
+
+.Header .Header__tab--active a {
+  color: #03a9f4;
 }

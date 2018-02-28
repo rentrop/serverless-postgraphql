@@ -4,7 +4,24 @@
   @include flexcontainer;
   @include flexitem;
   align-items: center;
-  padding-bottom: 1em;
+  background: #000000;
+  color: #969696;
+  padding: 0.5rem 5%;
+  font-size: 1.2rem;
+}
+
+.Header__banner-message {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.Header__banner-message a {
+  padding-left: 0.3rem;
+}
+
+.UserControls a {
+  color: #969696;
 }
 
 .UserControls.smallsize {
@@ -20,12 +37,14 @@
 }
 
 .Header__settings-icon {
-  margin-right: 1rem;
-  height: 2rem;
   cursor: pointer;
 }
 
-.UserControls__text {
-  padding-left: 1em;
+.Header__settings-icon.fa {
+  font-size: 1.5rem;
+}
+
+.UserControls__link {
+  padding: 0 1em;
   cursor: pointer;
 }

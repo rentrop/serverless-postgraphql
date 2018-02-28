@@ -20,7 +20,7 @@ class PublicHeader extends React.Component {
                 pathname.endsWith('map') ? 'Header__tab--active' : 'Header__tab'
               }
             >
-              <Link to="/map">Map</Link>
+              <Link to="/map">Crossings Map</Link>
             </li>
             <li
               className={
