@@ -131,6 +131,14 @@ class CrossingMapSearchBar extends Component {
         inputValue,
         {
           proximity: { latitude: center.lat, longitude: center.lng },
+          // Hardcoding this for now to get better results
+          // TODO: Design a better solution for accurate geocode results
+          bbox: [
+            -100,
+            27,
+            -94,
+            34,
+          ]
         },
         (err, res) => {
           this.setState({ mapboxSuggestions: res.features });
