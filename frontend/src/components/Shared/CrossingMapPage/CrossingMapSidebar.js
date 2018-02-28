@@ -66,6 +66,8 @@ class CrossingMapSidebar extends Component {
               center={center}
               setSelectedLocationCoordinates={setSelectedLocationCoordinates}
               toggleSearchFocus={this.toggleSearchFocus}
+              communities={allCommunities}
+              communityId={currentUser && currentUser.communityId}
             />
 
             {!searchFocused && (

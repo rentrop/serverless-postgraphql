@@ -27,6 +27,7 @@ export default graphql(suggestCrossings, {
   options: ownProps => ({
     variables: {
       search: ownProps.searchQuery,
+      communityId: ownProps.communityId,
     },
   }),
 })(CrossingMapSearchCrossingSuggestions);

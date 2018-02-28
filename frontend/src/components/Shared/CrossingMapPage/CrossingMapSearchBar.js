@@ -162,7 +162,10 @@ class CrossingMapSearchBar extends Component {
       selectedCrossingId,
       searchQueryUpdated,
       selectedCrossingName,
+      communityId,
     } = this.props;
+
+    console.log(communityId)
 
     const { typedValue, selectedValue, mapboxSuggestions, crossingSuggestions } = this.state;
 
@@ -198,6 +201,7 @@ class CrossingMapSearchBar extends Component {
       <div>
         <CrossingMapSearchCrossingSuggestions
           searchQuery={formattedQuery}
+          communityId={communityId}
           updateSuggestions={this.updateCrossingSuggestions}
         />
         <div className="CrossingMapSearchBar__header">
