@@ -23,15 +23,34 @@ class CrossingMapPage extends Component {
     super(props);
 
     // If we have a current user, we're on the dashboard, we should get their viewport
-    const envelope = this.props.currentUser
-      ? JSON.parse(
-          this.props.currentUser.communityByCommunityId.viewportgeojson,
-        )
-      : JSON.parse(
-          `{"type":"Polygon","coordinates":[[[-98.086914,30.148464],[-98.086914,30.433285],[-97.615974,30.433285],[-97.615974,30.148464],[-98.086914,30.148464]]]}`,
-        );
+    const viewportgeojson = this.props.currentUser
+      ? this.props.currentUser.communityByCommunityId.viewportgeojson
+      : `{"type":"Polygon","coordinates":[[[-98.086914,30.148464],[-98.086914,30.433285],[-97.615974,30.433285],[-97.615974,30.148464],[-98.086914,30.148464]]]}`;
 
-    // I actually like doing the padding here because it keeps the data/view separation
+    const viewportAndCenter = this.getViewportAndCenter(viewportgeojson);
+
+    this.state = {
+      selectedCrossingId: null,
+      selectedCrossingStatus: null,
+      fullscreen: false,
+      searchQuery: '',
+      formattedSearchQuery: '%%',
+      showOpen: true,
+      showClosed: true,
+      showCaution: true,
+      showLongterm: true,
+      visibleCrossings: [],
+      selectedLocationCoordinates: null,
+      selectedCommunity: null,
+      viewport: viewportAndCenter.viewport,
+      center: viewportAndCenter.center,
+      mapCenter: viewportAndCenter.center,
+    };
+  }
+
+  getViewportAndCenter = viewportgeojson => {
+    const envelope = JSON.parse(viewportgeojson);
+
     const viewport = [
       [
         Math.min(...envelope.coordinates[0].map(arr => arr[0])) - 0.1,
@@ -48,23 +67,10 @@ class CrossingMapPage extends Component {
       lat: (viewport[0][1] + viewport[1][1]) / 2,
     };
 
-    this.state = {
+    return {
       viewport: viewport,
-      selectedCrossingId: null,
-      selectedCrossingStatus: null,
-      fullscreen: false,
-      searchQuery: '',
-      formattedSearchQuery: '%%',
-      showOpen: true,
-      showClosed: true,
-      showCaution: true,
-      showLongterm: true,
-      visibleCrossings: [],
-      mapCenter: center,
       center: center,
-      selectedLocationCoordinates: null,
-      selectedCommunity: null,
-    };
+    }
   }
 
   formatSearchQuery(query) {
@@ -117,6 +123,14 @@ class CrossingMapPage extends Component {
 
   setSelectedCommunity = community => {
     this.setState({ selectedCommunity: community });
+    if(community && community.viewportgeojson) {
+      const viewportAndCenter = this.getViewportAndCenter(community.viewportgeojson)
+      this.setState({
+        viewport: viewportAndCenter.viewport,
+        center: viewportAndCenter.center,
+        mapCenter: viewportAndCenter.mapCenter,
+      })
+    }
   };
 
   render() {
@@ -245,6 +259,7 @@ const allCommunities = gql`
       nodes {
         id
         name
+        viewportgeojson
       }
     }
   }
