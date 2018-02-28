@@ -8,13 +8,15 @@ class CrossingSidebarNearbyCrossingItem extends React.Component {
     const {
       latestStatus,
       statusId,
+      crossingId,
       crossingName,
       communityIds,
       allCommunities,
+      selectCrossing,
     } = this.props;
 
     return (
-      <div className="CrossingMapPage_sidebar-nearby-crossing-container">
+      <div className="CrossingMapPage_sidebar-nearby-crossing-container" onClick={() => selectCrossing(crossingId)}>
         <div className="CrossingMapPage_sidebar-nearby-crossing-status-icon">
           <img
             src={statusIcons[statusId]}

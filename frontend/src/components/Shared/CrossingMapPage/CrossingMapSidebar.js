@@ -147,9 +147,11 @@ class CrossingMapSidebar extends Component {
                       key={c.id}
                       latestStatus={c.latestStatus}
                       statusId={c.statusId}
+                      crossingId={c.id}
                       crossingName={c.crossingName}
                       communityIds={c.communityIds}
                       allCommunities={allCommunities}
+                      selectCrossing={selectCrossing}
                     />
                   ))}
                 </div>
