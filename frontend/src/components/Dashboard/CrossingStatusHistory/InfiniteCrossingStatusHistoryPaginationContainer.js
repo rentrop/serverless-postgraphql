@@ -16,6 +16,8 @@ const containerQuery = {
   'CrossingStatusHistory--lg': {
     minWidth: LARGE_ITEM_MIN_WIDTH,
   },
+  fullsize: { minWidth: 768 },
+  smallsize: { maxWidth: 767 },
 };
 
 const configObject = {
@@ -84,6 +86,7 @@ export class InfiniteCrossingStatusHistoryPaginationContainer extends Component 
                 allStatusUpdates={allStatusUpdates}
                 showNames={showNames}
                 cqClassName={cqClassName}
+                cqParams={params}
               />
             </div>
           );

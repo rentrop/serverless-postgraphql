@@ -55,7 +55,7 @@ export default class InfiniteCrossingStatusHistoryList extends React.Component {
   }
 
   _rowRenderer({ key, index, style, parent }) {
-    const { showNames } = this.props;
+    const { showNames, cqParams } = this.props;
     let statusUpdate;
 
     if (index < virtualizingList.length) {
@@ -82,6 +82,7 @@ export default class InfiniteCrossingStatusHistoryList extends React.Component {
               key={key}
               update={statusUpdate}
               showNames={showNames}
+              cqParams={cqParams}
             />
           </div>
         )}
