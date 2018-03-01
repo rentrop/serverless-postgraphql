@@ -308,12 +308,10 @@ class CrossingMap extends React.Component {
               type="symbol"
               id="openCrossings"
               layout={{ 'icon-image': 'open', 'icon-allow-overlap': true }}
-              layerOptions={{
-                filter: [
-                  'all',
-                  ['!=', 'crossingId', this.state.selectedCrossingId],
-                ],
-              }}
+              filter={[
+                'all',
+                ['!=', 'crossingId', this.state.selectedCrossingId],
+              ]}
             >
               {openCrossings.map((crossing, i) => {
                 return (
@@ -339,12 +337,10 @@ class CrossingMap extends React.Component {
               type="symbol"
               id="longtermCrossings"
               layout={{ 'icon-image': 'longterm', 'icon-allow-overlap': true }}
-              layerOptions={{
-                filter: [
-                  'all',
-                  ['!=', 'crossingId', this.state.selectedCrossingId],
-                ],
-              }}
+              filter={[
+                'all',
+                ['!=', 'crossingId', this.state.selectedCrossingId],
+              ]}
             >
               {longtermCrossings.map((crossing, i) => {
                 return (
@@ -370,12 +366,10 @@ class CrossingMap extends React.Component {
               type="symbol"
               id="cautionCrossings"
               layout={{ 'icon-image': 'caution', 'icon-allow-overlap': true }}
-              layerOptions={{
-                filter: [
-                  'all',
-                  ['!=', 'crossingId', this.state.selectedCrossingId],
-                ],
-              }}
+              filter={[
+                'all',
+                ['!=', 'crossingId', this.state.selectedCrossingId],
+              ]}
             >
               {cautionCrossings.map((crossing, i) => {
                 return (
@@ -401,12 +395,10 @@ class CrossingMap extends React.Component {
               type="symbol"
               id="closedCrossings"
               layout={{ 'icon-image': 'closed', 'icon-allow-overlap': true }}
-              layerOptions={{
-                filter: [
-                  'all',
-                  ['!=', 'crossingId', this.state.selectedCrossingId],
-                ],
-              }}
+              filter={[
+                'all',
+                ['!=', 'crossingId', this.state.selectedCrossingId],
+              ]}
             >
               {closedCrossings.map((crossing, i) => {
                 return (
