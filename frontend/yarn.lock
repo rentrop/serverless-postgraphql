@@ -4479,11 +4479,11 @@ graphql@0.10.1:
   dependencies:
     iterall "^1.1.0"
 
-graphql@0.13.1:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.13.1.tgz#9b3db3d8e40d1827e4172404bfdd2e4e17a58b55"
+graphql@0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.13.0.tgz#d1b44a282279a9ce0a6ec1037329332f4c1079b6"
   dependencies:
-    iterall "^1.2.0"
+    iterall "1.1.x"
 
 graphql@^0.10.0, graphql@^0.10.3:
   version "0.10.5"
@@ -5351,13 +5351,13 @@ istanbul-reports@^1.1.2:
   dependencies:
     handlebars "^4.0.3"
 
+iterall@1.1.x:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.4.tgz#0db40d38fdcf53ae14dc8ec674e62ab190d52cfc"
+
 iterall@^1.0.0, iterall@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.1.tgz#f7f0af11e9a04ec6426260f5019d9fcca4d50214"
-
-iterall@^1.2.0:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.2.tgz#92d70deb8028e0c39ff3164fdbf4d8b088130cd7"
 
 jest-changed-files@^20.0.3:
   version "20.0.3"
