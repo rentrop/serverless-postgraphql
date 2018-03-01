@@ -1,7 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withApolloProvider } from 'storybook-addon-apollo-graphql';
-import { gql, graphql } from 'react-apollo';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import UserList from 'components/Dashboard/ManageUsersPage/UserList';
 import schema from 'stories/schema/schema';
 
