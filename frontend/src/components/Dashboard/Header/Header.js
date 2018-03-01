@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import 'components/Dashboard/Header/Header.css';
-import UserControls from 'components/Dashboard/Header/UserControls';
-import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';
+import { ContainerQuery } from 'react-container-query';
+
+import TopBar from 'components/Shared/TopBar';
+import UserControls from 'components/Dashboard/Header/UserControls';
+
+import 'components/Dashboard/Header/Header.css';
 
 const containerQuery = {
   fullsize: { minWidth: 650 },
@@ -22,7 +25,9 @@ class Header extends React.Component {
       <ContainerQuery query={containerQuery}>
         {params => (
           <div>
-            <UserControls cqParams={params} {...this.props} />
+            <TopBar>
+              <UserControls {...this.props} />
+            </TopBar>
             <div className="Header">
               <div className="flexcontainer" />
 

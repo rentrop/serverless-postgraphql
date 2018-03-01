@@ -1,38 +1,8 @@
-@import 'css/mixins/flexbox';
-
 .UserControls {
-  @include flexcontainer;
-  @include flexitem;
-  align-items: center;
-  background: #000000;
-  color: #969696;
-  padding: 0.5rem 5%;
-  font-size: 1.2rem;
-}
-
-.Header__banner-message {
-  flex: 1;
   display: flex;
-  justify-content: center;
-}
-
-.Header__banner-message a {
-  padding-left: 0.3rem;
-}
-
-.UserControls a {
-  color: #969696;
-}
-
-.Header__settings-icon {
-  cursor: pointer;
-}
-
-.Header__settings-icon.fa {
-  font-size: 1.5rem;
 }
 
 .UserControls__link {
-  padding: 0 1em;
+  padding: 0 0.5em;
   cursor: pointer;
 }
