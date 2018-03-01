@@ -45,18 +45,24 @@
   "scripts": {
     "start-js": "NODE_PATH=src react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "start-local": "REACT_APP_AWS_ENDPOINT='http://localhost:5000/graphql' yarn run start",
+    "start-local":
+      "REACT_APP_AWS_ENDPOINT='http://localhost:5000/graphql' yarn run start",
     "validate-map-style": "node src/Map/style/scripts/validate.js",
-    "build-map-style-json": "node src/components/Shared/Map/style/scripts/build.js",
+    "build-map-style-json":
+      "node src/components/Shared/Map/style/scripts/build.js",
     "build-map-style": "yarn build-map-icons; yarn build-map-style-json",
-    "build-map-icons": "spritezero public/mapboxstyle/sprite src/components/Shared/Map/style/icons/; spritezero --retina public/mapboxstyle/sprite@2x src/components/Shared/Map/style/icons/",
+    "build-map-icons":
+      "spritezero public/mapboxstyle/sprite src/components/Shared/Map/style/icons/; spritezero --retina public/mapboxstyle/sprite@2x src/components/Shared/Map/style/icons/",
     "build-css": "node-sass-chokidar --include-path ./src src/ -o src/",
-    "watch-css": "yarn run build-css && node-sass-chokidar --include-path ./src src/ -o src/ --watch --recursive",
+    "watch-css":
+      "yarn run build-css && node-sass-chokidar --include-path ./src src/ -o src/ --watch --recursive",
     "get-schema": "./src/stories/schema/getSchema.sh",
-    "build": "yarn build-map-style-json; yarn build-css; NODE_PATH=src react-scripts build",
+    "build":
+      "yarn build-map-style-json; yarn build-css; NODE_PATH=src react-scripts build",
     "test": "yarn build-css; NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "storybook": "NODE_PATH=src start-storybook -p 9001 -c .storybook & yarn watch-css"
+    "storybook":
+      "NODE_PATH=src start-storybook -p 9001 -c .storybook & yarn watch-css"
   },
   "prettier": {
     "semi": true,
