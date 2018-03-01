@@ -38,7 +38,7 @@ class CrossingMap extends React.Component {
           this.props.cautionCrossings.searchCrossings.nodes.find(
             c => c.id === nextProps.selectedCrossingId,
           ) ||
-          this.props.cautionCrossings.searchCrossings.nodes.find(
+          this.props.longtermCrossings.searchCrossings.nodes.find(
             c => c.id === nextProps.selectedCrossingId,
           );
         this.selectCrossing(crossing);

@@ -1,0 +1,25 @@
+@import 'css/mixins/flexbox';
+
+.TopBar {
+  @include flexcontainer;
+  @include flexitem;
+  align-items: center;
+  background: #000000;
+  color: #969696;
+  padding: 0.5rem 5%;
+  font-size: 1.2rem;
+}
+
+.TopBar a {
+  color: #969696;
+}
+
+.TopBar__banner-message a {
+  padding-left: 0.3rem;
+}
+
+.TopBar__banner-message {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
