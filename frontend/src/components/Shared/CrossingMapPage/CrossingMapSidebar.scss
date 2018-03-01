@@ -120,3 +120,35 @@
 .CrossingMapPage_sidebar-nearbycrossings {
   overflow: hidden;
 }
+
+.CrossingMapPage_sidebar-nearby-history-toggle {
+  background: #009FF2;
+  display: flex;
+  height: 45px;
+  color: #7FA8CB;
+  font-size: 1.7rem;
+  line-height: 3.7rem;
+  text-align: center;
+}
+
+.CrossingMapPage_sidebar-nearby-tab {
+  flex: auto;
+  background: #004D90;
+  height: 37px;
+}
+
+.CrossingMapPage_sidebar-history-tab {
+  flex: auto;
+  background: #004D90;
+  height: 37px;
+}
+
+.CrossingMapPage_sidebar-nearby-tab.selected {
+  background: #009FF2;
+  color: white;
+}
+
+.CrossingMapPage_sidebar-history-tab.selected {
+  background: #009FF2;
+  color: white;
+}

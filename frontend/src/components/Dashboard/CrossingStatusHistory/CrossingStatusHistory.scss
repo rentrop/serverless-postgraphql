@@ -10,9 +10,9 @@
 }
 
 .CrossingStatusHistory__list-wrapper {
-  @include raised-container-wrapper;
   max-width: 1100px;
   margin: auto;
+  background: #efefef;
 }
 
 .CrossingStatusHistory_header-background {
@@ -26,39 +26,86 @@
   margin: auto;
 }
 
-.CrossingStatusHistory__item {
+.CrossingStatusHistoryItem {
+  background: white;
   padding: 20px;
-  border-bottom: 1px solid $border-color-light;
-  @include flexcontainer--column;
-  @include raised-container;
+  margin-bottom: 2px;
 }
 
-.CrossingStatusHistory__item-details-flexcontainer {
-  @include flexitem;
-  @include flexcontainer--column;
+.CrossingStatusHistoryItem__details-container {
+  width: 100%;
 }
 
-.CrossingStatusHistory__item-details {
-  @include flexitem;
-  align-items: center;
-  padding: 10px 5px 0;
-  &:first-of-type {
-    @include flexcontainer;
-    padding-left: 0;
-  }
+.CrossingStatusHistoryItem__details {
+  display: flex;
 }
 
-.CrossingStatusHistory__status-icon {
+.CrossingStatusHistoryItem__status {
+  display: flex;
+}
+
+.CrossingStatusHistoryItem__status-icon {
   margin-right: 10px;
 }
 
-.CrossingStatusHistory__item-subdetails {
-  @include flexcontainer--column;
-  margin-bottom: 10px;
-  line-height: 2.2rem;
-  &:last-of-type {
-    margin-bottom: 0px;
-  }
+.CrossingStatusHistoryItem__status-and-author {
+  width: 180px;
+  margin-top: 10px;
+}
+
+.CrossingStatusHistoryItem__author-name {
+  text-decoration: underline;
+}
+
+.CrossingStatusHistoryItem__datetime {
+  text-align: right;
+  font-size: 1.5rem;
+  width: 100px;
+  margin-top: 10px;
+}
+
+.CrossingStatusHistoryItem__datetime.smallsize {
+  flex: 2;
+}
+
+.CrossingStatusHistoryItem__datetime-date {
+  text-transform: uppercase;
+  color: #547281;  
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.CrossingStatusHistoryItem__reason-duration-notes {
+  flex: auto;
+  display: flex;
+}
+
+.CrossingStatusHistoryItem__reason-duration {
+  flex: 1;
+}
+
+.CrossingStatusHistoryItem__notes {
+  flex: 1;
+  margin-top: 10px;
+}
+
+.CrossingStatusHistoryItem__reason {
+  margin-top: 10px;
+}
+
+.CrossingStatusHistoryItem__duration {
+  margin-top: 10px;
+}
+
+.CrossingStatusHistoryItem__subdetails-title {
+  text-transform: uppercase;
+  color: #547281;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.CrossingStatusHistoryItem__subdetails-content {
+  font-size: 1.5rem;
 }
 
 .CrossingStatusHistory__section-header--title {
