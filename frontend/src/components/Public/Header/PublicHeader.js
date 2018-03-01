@@ -17,7 +17,7 @@ class PublicHeader extends React.Component {
       <div>
         <TopBar>
           <div>
-            <a href="#">Translate</a>
+            <a href="/">Translate</a>
           </div>
         </TopBar>
         <div className="Header">
