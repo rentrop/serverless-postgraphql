@@ -16,17 +16,18 @@
 }
 
 .CrossingMapSearchBar__header {
-  background: #004d90;
+  background: #2c579b;
   color: white;
   padding-left: 20px;
   padding-top: 5px;
   padding-bottom: 5px;
   letter-spacing: 0.11em;
   font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .CrossingMapSearchBar__container {
-  background: #006cb5;
+  background: #3b77bd;
   color: #8bbadb;
   min-height: 50px;
   @include flexcontainer;
@@ -112,7 +113,7 @@
 
 .react-autosuggest__suggestion--highlighted {
   .CrossingMapSearchBar__suggestion-container {
-    background: #f8f8f9;  
+    background: #f8f8f9;
   }
   background: black;
 }

@@ -38,27 +38,51 @@
 }
 
 .CrossingMapPage_sidebar-filter-sort-toggle-container {
-  background: #004d90;
-  height: 30px;
+  background: #2c579b;
+  display: flex;
+  color: #fff;
+  flex-direction: row;
+  font-size: 1.3em;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
 }
 
-.CrossingMapPage_sidebar-filter-toggle-text {
-  color: white;
-  padding: 5px;
-  padding-left: 15px;
-  font-size: 1.3rem;
+.CrossingMapPage_sidebar-filter-toggle {
+  display: flex;
+  flex: 1;
+  padding: 5px 20px;
+  text-transform: uppercase;
 }
 
-.CrossingMapPage_sidebar-filter-container {
-  background: #006cb5;
-  height: 60px;
+.CrossingMapPage_sidebar-filter-toggle-icon  {
+  padding-right: 5px;
+}
+.CrossingMapPage_sidebar-sort-toggle-icon  {
+  padding-left: 5px;
+}
+
+.CrossingMapPage_sidebar-sort-toggle {
+  padding: 5px 20px;
+  text-transform: uppercase;
 }
 
 .CrossingMapPage_sidebar-filter {
   color: white;
-  line-height: 60px;
+  padding: 10px 0;
+  margin: 0 5px;
   font-size: 1.3rem;
-  margin: 20px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.CrossingMapPage_sidebar-filter-container {
+  background: #3b77bd;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 10px;
 }
 
 .CrossingMapPage_sidebar-nearby-crossing-container {

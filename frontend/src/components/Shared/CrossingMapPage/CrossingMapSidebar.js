@@ -15,7 +15,7 @@ const FilterCheckbox = ({ defaultChecked, onClick, title }) => (
       defaultChecked={defaultChecked}
       onClick={onClick}
     />
-    {title}
+    <div>{title}</div>
   </label>
 );
 
@@ -135,12 +135,16 @@ class CrossingMapSidebar extends Component {
                       >
                         <div className="CrossingMapPage_sidebar-filter-toggle-text">
                           {this.state.showFilters ? (
-                            <FontAwesome name="minus" ariaLabel="Hide" />
+                            <span className="CrossingMapPage_sidebar-filter-toggle-icon"><FontAwesome name="minus" ariaLabel="Hide" /></span>
                           ) : (
-                            <FontAwesome name="plus" ariaLabel="Show" />
+                            <span className="CrossingMapPage_sidebar-filter-toggle-icon"><FontAwesome name="plus" ariaLabel="Show" /></span>
                           )}{' '}
-                          FILTER
+                          Filter
                         </div>
+                      </div>
+                      <div className="CrossingMapPage_sidebar-sort-toggle">
+                        Last Updated
+                        <span className="CrossingMapPage_sidebar-sort-toggle-icon"><FontAwesome name="chevron-down" ariaLabel="Sort" /></span>
                       </div>
                     </div>
                     {this.state.showFilters && (
