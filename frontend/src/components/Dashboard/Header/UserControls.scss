@@ -1,31 +1,8 @@
-@import 'css/mixins/flexbox';
-
 .UserControls {
-  @include flexcontainer;
-  @include flexitem;
-  align-items: center;
-  padding-bottom: 1em;
+  display: flex;
 }
 
-.UserControls.smallsize {
-  @include flexcontainer;
-  @include flexitem--pushed-right;
-  align-items: center;
-  padding-bottom: 1em;
-  width: fit-content;
-  min-width: 30px;
-  padding-left: 1em;
-  padding-top: 1em;
-  flex: auto;
-}
-
-.Header__settings-icon {
-  margin-right: 1rem;
-  height: 2rem;
-  cursor: pointer;
-}
-
-.UserControls__text {
-  padding-left: 1em;
+.UserControls__link {
+  padding: 0 0.5em;
   cursor: pointer;
 }
