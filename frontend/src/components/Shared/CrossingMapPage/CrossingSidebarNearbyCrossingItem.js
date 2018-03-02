@@ -1,7 +1,7 @@
 import React from 'react';
-import 'components/Shared/CrossingMapPage/CrossingMapPage.css';
-import { statusNames, statusIcons } from 'constants/StatusConstants';
 import moment from 'moment';
+import { statusNames, statusIcons } from 'constants/StatusConstants';
+import 'components/Shared/CrossingMapPage/CrossingSidebarNearbyCrossingItem.css';
 
 class CrossingSidebarNearbyCrossingItem extends React.Component {
   render() {
