@@ -2,10 +2,11 @@ import React from 'react';
 import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';
 import moment from 'moment';
-import Location from 'components/Dashboard/CrossingListPage/CrossingListItem/Location';
+import Location from 'components/Shared/CrossingListItem/Location';
 import * as statusConstants from 'constants/StatusConstants';
 import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
 import 'components/Public/CrossingListItem/PublicCrossingListItem.css';
+import DetailsItem from 'components/Public/CrossingListItem/DetailsItem';
 
 const containerQuery = {
   'CrossingListItem--lg': {
@@ -28,18 +29,20 @@ class PublicCrossingListItem extends React.Component {
         break;
       case statusConstants.CAUTION:
       case statusConstants.CLOSED:
-        show = ['reason'];
+        show = ['reason', 'notes'];
         break;
       case statusConstants.LONGTERM:
-        show = ['reason', 'duration'];
+        show = ['reason', 'reopen', 'notes'];
         break;
       default:
         break;
     }
 
+    console.log(show);
+
     const CrossingListItemJSX = (
-      <div>
-        <div>
+      <div className="CrossingListItem PublicCrossingListItem">
+        <div className="PublicCrossingListItem__Overview">
           <div>
             <a href={`/map`} className="CrossingName">
               {crossing.name}
@@ -53,34 +56,26 @@ class PublicCrossingListItem extends React.Component {
             {moment(createdAt).format('h:mm a')}
           </div>
         </div>
-        <div>
-          <div>
-            <div className="ControlLabel">
-              Status: {statusConstants.statusNames[crossing.latestStatusId]}
-            </div>
-          </div>
-
+        <div className="PublicCrossingListItem__Details">
           {show.includes('reason') && (
-            <div>
-              <div className="ControlLabelContainer">
-                <div className="ControlLabel">Reason</div>
-              </div>
-            </div>
+            <DetailsItem title="Reason">
+              {/* TODO: Add actual reason */}
+              Blah reason
+            </DetailsItem>
           )}
-          <div>
-            <div className="ControlLabel">Notes to the public</div>
-          </div>
+          {show.includes('reopen') && (
+            <DetailsItem title="Reason">
+              {/* TODO: Add actual reopen */}
+              Blah minutes
+            </DetailsItem>
+          )}
+          {show.includes('notes') && (
+            <DetailsItem title="Notes">
+              {/* TODO: Add actual reopen */}
+              {crossing.statusUpdateByLatestStatusUpdateId.notes}
+            </DetailsItem>
+          )}
         </div>
-
-        {show.includes('duration') && (
-          <div>
-            <div>
-              <div className="ControlLabelContainer">
-                <div className="ControlLabel">Duration</div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     );
 
@@ -88,9 +83,7 @@ class PublicCrossingListItem extends React.Component {
       return (
         <ContainerQuery query={containerQuery}>
           {params => (
-            <div className={classnames(params)}>
-              {CrossingListItemJSX}
-            </div>
+            <div className={classnames(params)}>{CrossingListItemJSX}</div>
           )}
         </ContainerQuery>
       );

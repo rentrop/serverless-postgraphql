@@ -1,8 +1,18 @@
 @import 'css/mixins/flexbox';
 @import 'css/mixins/layout';
 
-.CrossingListItem {
-  @include raised-container;
+
+.PublicCrossingListItem {
+}
+
+.PublicCrossingListItem__Overview {
+  padding: 15px;
+  background: #fff;
+}
+
+.PublicCrossingListItem__Details {
+  padding: 15px;
+  padding-left: 60px;
 }
 
 .CrossingListItem.CrossingListItem--dirty {
@@ -15,19 +25,6 @@
   font-weight: 700;
   line-height: 1.7rem;
   text-decoration: none;
-}
-
-.ControlLabelContainer {
-  display: flex;
-}
-
-.ControlLabel {
-  @include flexitem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  line-height: 2em;
-  text-transform: uppercase;
-  color: #727272;
 }
 
 .NotesTextBox {

@@ -1,5 +1,4 @@
 import React from 'react';
-import 'components/Dashboard/CrossingListPage/CrossingListItem/Location.css';
 
 class Location extends React.Component {
   render() {
@@ -11,7 +10,7 @@ class Location extends React.Component {
         <div>{crossing.description}</div>
         <div>
           {crossing.communities.nodes.map(community => (
-            <a href="/">
+            <a href="/" key={community.id}>
               {/* TODO: Link to community */}
               {community.name}
             </a>

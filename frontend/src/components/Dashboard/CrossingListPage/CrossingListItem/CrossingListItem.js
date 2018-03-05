@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo';
 import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';
 import moment from 'moment';
-import Location from 'components/Dashboard/CrossingListPage/CrossingListItem/Location';
+import Location from 'components/Shared/CrossingListItem/Location';
 import StatusToggle from 'components/Dashboard/CrossingListPage/CrossingListItem/StatusToggle';
 import Dropdown from 'components/Dashboard/Dropdown/Dropdown';
 import newStatusUpdateMutation from 'components/Dashboard/CrossingListPage/queries/newStatusUpdateMutation';
@@ -499,7 +499,7 @@ class CrossingListItem extends React.Component {
     }
 
     const CrossingListItemJSX = (
-      <div>
+      <div className="CrossingListItem DashboardCrossingListItem">
         <div>
           <div>
             <a

@@ -2,8 +2,13 @@
 @import 'css/mixins/layout';
 
 .CrossingListItem {
-  @include raised-container;
   font-size: 1.5rem;
+}
+
+.DashboardCrossingListItem {
+  background: #fff;
+  padding: 3rem 1.5rem;
+  border-bottom: 1px solid #cfd8dc;
 }
 
 .CrossingListItem.CrossingListItem--dirty {
