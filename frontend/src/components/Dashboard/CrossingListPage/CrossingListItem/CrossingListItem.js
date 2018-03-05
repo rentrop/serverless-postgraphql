@@ -500,8 +500,8 @@ class CrossingListItem extends React.Component {
 
     const CrossingListItemJSX = (
       <div>
-        <div className="CrossingListItemFlexContainer">
-          <div className="CrossingListItemFlexItem">
+        <div>
+          <div>
             <a
               href={`/dashboard/crossing/${crossing.id}`}
               className="CrossingName"
@@ -509,16 +509,16 @@ class CrossingListItem extends React.Component {
               {crossing.name}
             </a>
           </div>
-          <div className="CrossingListItemFlexItem">
+          <div>
             <Location crossing={crossing} />
           </div>
-          <div className="CrossingListItemFlexItem">
+          <div>
             {moment(createdAt).format('MM/DD/YY')}
             {moment(createdAt).format('h:mm a')}
           </div>
         </div>
-        <div className="CrossingListItemFlexContainer">
-          <div className="CrossingListItemFlexItem">
+        <div>
+          <div>
             <div className="ControlLabel">
               Status: {statusConstants.statusNames[this.state.selectedStatus]}
             </div>
@@ -531,8 +531,8 @@ class CrossingListItem extends React.Component {
             />
           </div>
 
-          {show.includes('reason') ? (
-            <div className="CrossingListItemFlexItem">
+          {show.includes('reason') && (
+            <div>
               <div className="ControlLabelContainer">
                 <div className="ControlLabel">Reason</div>
                 <div className="required">
@@ -547,10 +547,8 @@ class CrossingListItem extends React.Component {
                 onChange={this.reasonChanged}
               />
             </div>
-          ) : (
-            <div className="CrossingListItemFlexItem--spacer" />
           )}
-          <div className="CrossingListItemFlexItem">
+          <div>
             <div className="ControlLabel">Notes to the public</div>
             <input
               className="NotesTextBox"
@@ -562,11 +560,9 @@ class CrossingListItem extends React.Component {
         </div>
 
         {(show.includes('duration') || show.includes('cancelSave')) && (
-          <div className="CrossingListItemFlexContainer">
-            <div className="CrossingListItemFlexItem--spacer" />
-
-            {show.includes('duration') ? (
-              <div className="CrossingListItemFlexItem">
+          <div>
+            {show.includes('duration') && (
+              <div>
                 <div className="ControlLabelContainer">
                   <div className="ControlLabel">Duration</div>
                   <div className="required">
@@ -579,12 +575,10 @@ class CrossingListItem extends React.Component {
                   onChange={this.durationChanged}
                 />
               </div>
-            ) : (
-              <div className="CrossingListItemFlexItem--spacer" />
             )}
 
-            {show.includes('cancelSave') ? (
-              <div className="CrossingListItemFlexItem">
+            {show.includes('cancelSave') && (
+              <div>
                 <div className="ButtonContainer">
                   <div className="CancelButton" onClick={this.cancelClicked}>
                     Cancel
@@ -594,8 +588,6 @@ class CrossingListItem extends React.Component {
                   </div>
                 </div>
               </div>
-            ) : (
-              <div className="CrossingListItemFlexItem--spacer" />
             )}
           </div>
         )}

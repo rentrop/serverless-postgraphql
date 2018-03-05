@@ -9,23 +9,8 @@
   outline: 4px solid #40b3ff;
 }
 
-.CrossingListItemFlexContainer {
-  @include flexcontainer;
-  flex-direction: column;
-}
-
 .CrossingListItem.CrossingListItem--lg .CrossingListItemFlexContainer {
   flex-direction: row;
-}
-
-.CrossingListItemFlexItem {
-  @include flexitem;
-  margin: 10px;
-}
-
-.CrossingListItemFlexItem--spacer {
-  @include flexitem;
-  margin: 0 10px;
 }
 
 .CrossingName {
@@ -42,10 +27,11 @@
 
 .ControlLabel {
   @include flexitem;
-  font-size: 1.0rem;
+  font-size: 1.3rem;
   font-weight: 600;
   line-height: 2em;
   text-transform: uppercase;
+  color: #727272;
 }
 
 .NotesTextBox {

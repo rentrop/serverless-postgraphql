@@ -39,52 +39,47 @@ class PublicCrossingListItem extends React.Component {
 
     const CrossingListItemJSX = (
       <div>
-        <div className="CrossingListItemFlexContainer">
-          <div className="CrossingListItemFlexItem">
+        <div>
+          <div>
             <a href={`/map`} className="CrossingName">
               {crossing.name}
             </a>
           </div>
-          <div className="CrossingListItemFlexItem">
+          <div>
             <Location crossing={crossing} />
           </div>
-          <div className="CrossingListItemFlexItem">
+          <div>
             {moment(createdAt).format('MM/DD/YY')}
             {moment(createdAt).format('h:mm a')}
           </div>
         </div>
-        <div className="CrossingListItemFlexContainer">
-          <div className="CrossingListItemFlexItem">
+        <div>
+          <div>
             <div className="ControlLabel">
               Status: {statusConstants.statusNames[crossing.latestStatusId]}
             </div>
           </div>
 
-          {show.includes('reason') ? (
-            <div className="CrossingListItemFlexItem">
+          {show.includes('reason') && (
+            <div>
               <div className="ControlLabelContainer">
                 <div className="ControlLabel">Reason</div>
               </div>
             </div>
-          ) : (
-            <div className="CrossingListItemFlexItem--spacer" />
           )}
-          <div className="CrossingListItemFlexItem">
+          <div>
             <div className="ControlLabel">Notes to the public</div>
           </div>
         </div>
 
-        {show.includes('duration') ? (
-          <div className="CrossingListItemFlexContainer">
-            <div className="CrossingListItemFlexItem--spacer" />
-            <div className="CrossingListItemFlexItem">
+        {show.includes('duration') && (
+          <div>
+            <div>
               <div className="ControlLabelContainer">
                 <div className="ControlLabel">Duration</div>
               </div>
             </div>
           </div>
-        ) : (
-          <div className="CrossingListItemFlexItem--spacer" />
         )}
       </div>
     );
