@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { get } from 'lodash';
 import { displayedInputs } from 'constants/StatusConstants';
-import DateTime from 'components/Dashboard/CrossingListPage/CrossingListItem/DateTime';
 import StatusIcon from 'components/Shared/StatusIcon';
 import 'components/Dashboard/CrossingStatusHistory/CrossingStatusHistory.css';
 import moment from 'moment';

@@ -1,8 +1,8 @@
 import React from 'react';
 import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';
+import moment from 'moment';
 import Location from 'components/Dashboard/CrossingListPage/CrossingListItem/Location';
-import DateTime from 'components/Dashboard/CrossingListPage/CrossingListItem/DateTime';
 import * as statusConstants from 'constants/StatusConstants';
 import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
 import 'components/Public/CrossingListItem/PublicCrossingListItem.css';
@@ -49,7 +49,8 @@ class PublicCrossingListItem extends React.Component {
             <Location crossing={crossing} />
           </div>
           <div className="CrossingListItemFlexItem">
-            <DateTime datetime={createdAt} user={userByCreatorId} />
+            {moment(createdAt).format('MM/DD/YY')}
+            {moment(createdAt).format('h:mm a')}
           </div>
         </div>
         <div className="CrossingListItemFlexContainer">
