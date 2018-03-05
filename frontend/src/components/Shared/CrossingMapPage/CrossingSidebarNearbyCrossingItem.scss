@@ -5,6 +5,11 @@
   background: white;
   padding: 15px;
   border-bottom: 1px solid #cfd8dc;
+  cursor: pointer;
+}
+
+.CrossingMapPage_sidebar-nearby-crossing-container:hover {
+  background-color: #eee;
 }
 
 .CrossingMapPage_sidebar-nearby-crossing-status-icon {
