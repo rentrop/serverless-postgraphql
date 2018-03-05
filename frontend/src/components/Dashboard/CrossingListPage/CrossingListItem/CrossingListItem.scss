@@ -10,10 +10,6 @@
   outline: 4px solid #40b3ff;
 }
 
-.CrossingListItem.CrossingListItem--lg .CrossingListItemFlexContainer {
-  flex-direction: row;
-}
-
 .CrossingName {
   color: #000;
   font-size: 1.6rem;
@@ -27,7 +23,7 @@
 }
 
 .ControlLabel {
-  @include flexitem;
+  flex: 1;
   font-size: 1.3rem;
   font-weight: 600;
   text-transform: uppercase;

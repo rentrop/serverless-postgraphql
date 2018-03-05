@@ -88,7 +88,7 @@ class PublicCrossingListItem extends React.Component {
       return (
         <ContainerQuery query={containerQuery}>
           {params => (
-            <div className={classnames(params, 'CrossingListItem')}>
+            <div className={classnames(params)}>
               {CrossingListItemJSX}
             </div>
           )}
@@ -97,7 +97,7 @@ class PublicCrossingListItem extends React.Component {
     }
 
     return (
-      <div className={classnames(this.props.cqClassName, 'CrossingListItem')}>
+      <div className={classnames(this.props.cqClassName)}>
         {CrossingListItemJSX}
       </div>
     );

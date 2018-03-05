@@ -602,7 +602,6 @@ class CrossingListItem extends React.Component {
               className={classnames(
                 params,
                 { 'CrossingListItem--dirty': this.isDirty() },
-                'CrossingListItem',
               )}
             >
               {CrossingListItemJSX}
@@ -617,7 +616,6 @@ class CrossingListItem extends React.Component {
         className={classnames(
           this.props.cqClassName,
           { 'CrossingListItem--dirty': this.isDirty() },
-          'CrossingListItem',
         )}
       >
         {CrossingListItemJSX}
