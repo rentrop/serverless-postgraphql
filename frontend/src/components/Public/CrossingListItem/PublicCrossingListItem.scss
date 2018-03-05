@@ -1,18 +1,40 @@
 @import 'css/mixins/flexbox';
 @import 'css/mixins/layout';
 
-
 .PublicCrossingListItem {
 }
 
-.PublicCrossingListItem__Overview {
+.PublicCrossingListItem__overview {
   padding: 15px;
   background: #fff;
+  display: flex;
 }
 
-.PublicCrossingListItem__Details {
+.PublicCrossingListItem__details {
   padding: 15px;
   padding-left: 60px;
+}
+
+.PublicCrossingListItem__status-name,
+.PublicCrossingListItem__datetime-date {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: #5f7d8c;
+  padding-bottom: 0.5rem;
+}
+
+.PublicCrossingListItem__status-icon {
+  width: 45px;
+}
+
+.PublicCrossingListItem__info {
+  flex: 1;
+}
+
+.PublicCrossingListItem__datetime {
+  text-align: right;
 }
 
 .CrossingListItem.CrossingListItem--dirty {
@@ -71,7 +93,7 @@
 .required {
   @include flexitem;
   text-align: right;
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 400;
   font-style: italic;
   align-self: center;

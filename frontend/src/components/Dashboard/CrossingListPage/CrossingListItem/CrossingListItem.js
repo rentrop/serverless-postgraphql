@@ -3,6 +3,8 @@ import { graphql } from 'react-apollo';
 import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';
 import moment from 'moment';
+import Date from 'components/Shared/DateTime/Date';
+import Hour from 'components/Shared/DateTime/Hour';
 import Location from 'components/Shared/CrossingListItem/Location';
 import StatusToggle from 'components/Dashboard/CrossingListPage/CrossingListItem/StatusToggle';
 import Dropdown from 'components/Dashboard/Dropdown/Dropdown';
@@ -513,8 +515,8 @@ class CrossingListItem extends React.Component {
             <Location crossing={crossing} />
           </div>
           <div>
-            {moment(createdAt).format('MM/DD/YY')}
-            {moment(createdAt).format('h:mm a')}
+            <Date date={createdAt} />
+            <Hour date={createdAt} />
           </div>
         </div>
         <div>

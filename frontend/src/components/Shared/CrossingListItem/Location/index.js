@@ -1,13 +1,15 @@
 import React from 'react';
 
+import './Location.css';
+
 class Location extends React.Component {
   render() {
     const { crossing } = this.props;
 
     return (
-      <div className="LocationContainer">
+      <div className="CrossingListItemLocationContainer">
         <div>{crossing.humanAddress}</div>
-        <div>{crossing.description}</div>
+        <div className="CrossingListItemLocationContainer__description">{crossing.description}</div>
         <div>
           {crossing.communities.nodes.map(community => (
             <a href="/" key={community.id}>

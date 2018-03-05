@@ -1,12 +1,15 @@
 import React from 'react';
 import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';
-import moment from 'moment';
 import Location from 'components/Shared/CrossingListItem/Location';
 import * as statusConstants from 'constants/StatusConstants';
 import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
 import 'components/Public/CrossingListItem/PublicCrossingListItem.css';
 import DetailsItem from 'components/Public/CrossingListItem/DetailsItem';
+import StatusIcon from 'components/Shared/StatusIcon';
+import StatusName from 'components/Shared/StatusName';
+import Date from 'components/Shared/DateTime/Date';
+import Hour from 'components/Shared/DateTime/Hour';
 
 const containerQuery = {
   'CrossingListItem--lg': {
@@ -38,25 +41,33 @@ class PublicCrossingListItem extends React.Component {
         break;
     }
 
-    console.log(show);
-
     const CrossingListItemJSX = (
       <div className="CrossingListItem PublicCrossingListItem">
-        <div className="PublicCrossingListItem__Overview">
-          <div>
+        <div className="PublicCrossingListItem__overview">
+          <div className="PublicCrossingListItem__status-icon">
+            <StatusIcon statusId={crossing.latestStatusId} />
+          </div>
+          <div className="PublicCrossingListItem__info">
+            <div className="PublicCrossingListItem__status-name">
+              <StatusName statusId={crossing.latestStatusId} />
+            </div>
             <a href={`/map`} className="CrossingName">
               {crossing.name}
             </a>
+            <div>
+              <Location crossing={crossing} />
+            </div>
           </div>
-          <div>
-            <Location crossing={crossing} />
-          </div>
-          <div>
-            {moment(createdAt).format('MM/DD/YY')}
-            {moment(createdAt).format('h:mm a')}
+          <div className="PublicCrossingListItem__datetime">
+            <div className="PublicCrossingListItem__datetime-date">
+                <Date date={createdAt} />
+            </div>
+            <div>
+              <Hour date={createdAt} />
+            </div>
           </div>
         </div>
-        <div className="PublicCrossingListItem__Details">
+        <div className="PublicCrossingListItem__details">
           {show.includes('reason') && (
             <DetailsItem title="Reason">
               {/* TODO: Add actual reason */}

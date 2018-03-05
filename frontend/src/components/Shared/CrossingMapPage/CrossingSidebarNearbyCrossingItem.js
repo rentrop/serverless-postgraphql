@@ -1,6 +1,9 @@
 import React from 'react';
-import moment from 'moment';
+
 import { statusNames, statusIcons } from 'constants/StatusConstants';
+import Date from 'components/Shared/DateTime/Date';
+import Hour from 'components/Shared/DateTime/Hour';
+
 import 'components/Shared/CrossingMapPage/CrossingSidebarNearbyCrossingItem.css';
 
 class CrossingSidebarNearbyCrossingItem extends React.Component {
@@ -46,14 +49,10 @@ class CrossingSidebarNearbyCrossingItem extends React.Component {
         </div>
         <div className="CrossingMapPage_sidebar-nearby-crossing-update-datetime">
           <div className="CrossingMapPage_sidebar-nearby-crossing-update-datetime-date">
-            {moment(latestStatus).calendar(null, {
-              lastDay: '[Yesterday]',
-              sameDay: '[Today]',
-              sameElse: 'M/D/YYYY',
-            })}
+            <Date date={latestStatus} />
           </div>
           <div className="CrossingMapPage_sidebar-nearby-crossing-update-datetime-time">
-            {moment(latestStatus).format('h:mm A')}
+            <Hour date={latestStatus} />
           </div>
         </div>
       </div>
