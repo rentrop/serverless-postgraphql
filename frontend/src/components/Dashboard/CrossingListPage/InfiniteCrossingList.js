@@ -1,5 +1,5 @@
 import React from 'react';
-import CrossingListItem from 'components/Dashboard/CrossingListPage/CrossingListItem/CrossingListItem';
+import CrossingListItem from 'components/Dashboard/CrossingListPage/DashboardCrossingListItem/DashboardCrossingListItem';
 import {
   InfiniteLoader,
   AutoSizer,

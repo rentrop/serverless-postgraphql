@@ -1,41 +1,49 @@
-@import 'css/mixins/flexbox';
-@import 'css/mixins/layout';
-
-.CrossingListItem {
+.DashboardCrossingListItem {
   font-size: 1.5rem;
 }
 
-.DashboardCrossingListItem {
-  background: #fff;
-  padding: 3rem 1.5rem;
-  border-bottom: 1px solid #cfd8dc;
+.DashboardCrossingListItem__overview {
+  background: #f9f9fa;
+  padding: 2rem;
 }
 
-.CrossingListItem.CrossingListItem--dirty {
+.DashboardCrossingListItem__controls {
+  background: #fff;
+  padding: 2.5rem 2rem;
+}
+
+.DashboardCrossingListItem.DashboardCrossingListItem--dirty {
   outline: 4px solid #40b3ff;
 }
 
-.CrossingName {
-  color: #000;
-  font-size: 1.6rem;
+.DashboardCrossingListItem__crossing-name {
+  font-size: 1.7rem;
   font-weight: 700;
-  line-height: 1.7rem;
+  margin-bottom: 1rem;
+}
+.DashboardCrossingListItem__crossing-name a {
+  color: #000;
   text-decoration: none;
 }
 
-.ControlLabelContainer {
+.DashboardCrossingListItem__overview-details {
   display: flex;
 }
 
-.ControlLabel {
+.DashboardCrossingListItem__overview-location {
   flex: 1;
-  font-size: 1.3rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #000;
+}
+.DashboardCrossingListItem__overview-meta {
+  flex: 1;
+  text-align: right;
 }
 
-.NotesTextBox {
+.DashboardCrossingListItem__community-list, .DashboardCrossingListItem__user {
+  margin-top: 0.5rem;
+}
+
+
+.DashboardCrossingListItem__notes-text-box {
   width: 100%;
   font-size: 1.2rem;
   text-indent: 12px;
@@ -53,7 +61,7 @@
 }
 
 @mixin button {
-  @include flexitem;
+  flex: 1;
   height: 40px;
   line-height: 40px;
   border-radius: 5px;
@@ -63,21 +71,21 @@
   cursor: pointer;
 }
 
-.CancelButton {
+.DashboardCrossingListItem__cancel-button {
   @include button;
   color: #0054ff;
   margin-right: 15px;
 }
 
-.SaveButton {
+.DashboardCrossingListItem__save-button {
   @include button;
   color: white;
   background-color: #0054ff;
   margin-left: 15px;
 }
 
-.required {
-  @include flexitem;
+.DashboardCrossingListItem__field-required {
+  flex: 1;
   text-align: right;
   font-size: .9rem;
   font-weight: 400;

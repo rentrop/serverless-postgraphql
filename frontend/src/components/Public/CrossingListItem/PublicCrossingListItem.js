@@ -1,15 +1,18 @@
 import React from 'react';
 import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';
+
+import CrossingCommunityList from 'components/Shared/CrossingListItem/CrossingCommunityList';
 import Location from 'components/Shared/CrossingListItem/Location';
-import * as statusConstants from 'constants/StatusConstants';
-import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
-import 'components/Public/CrossingListItem/PublicCrossingListItem.css';
 import DetailsItem from 'components/Public/CrossingListItem/DetailsItem';
 import StatusIcon from 'components/Shared/StatusIcon';
 import StatusName from 'components/Shared/StatusName';
 import Date from 'components/Shared/DateTime/Date';
 import Hour from 'components/Shared/DateTime/Hour';
+import * as statusConstants from 'constants/StatusConstants';
+import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
+
+import 'components/Public/CrossingListItem/PublicCrossingListItem.css';
 
 const containerQuery = {
   'CrossingListItem--lg': {
@@ -42,7 +45,7 @@ class PublicCrossingListItem extends React.Component {
     }
 
     const CrossingListItemJSX = (
-      <div className="CrossingListItem PublicCrossingListItem">
+      <div className="PublicCrossingListItem">
         <div className="PublicCrossingListItem__overview">
           <div className="PublicCrossingListItem__status-icon">
             <StatusIcon statusId={crossing.latestStatusId} />
@@ -51,11 +54,12 @@ class PublicCrossingListItem extends React.Component {
             <div className="PublicCrossingListItem__status-name">
               <StatusName statusId={crossing.latestStatusId} />
             </div>
-            <a href={`/map`} className="CrossingName">
+            <a href={`/map`} className="PublicCrossingListItem__crossing-name">
               {crossing.name}
             </a>
             <div>
               <Location crossing={crossing} />
+              <CrossingCommunityList crossing={crossing} />
             </div>
           </div>
           <div className="PublicCrossingListItem__datetime">

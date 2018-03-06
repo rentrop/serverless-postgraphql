@@ -90,7 +90,7 @@ class CrossingStatusHistoryItem extends Component {
           <div className="CrossingStatusHistoryItem__crossing-name">
             <a
               href={`/dashboard/crossing/${crossingId}`}
-              className="CrossingName"
+              className="PublicCrossingListItem__crossing-name"
             >
               {crossingName}
             </a>

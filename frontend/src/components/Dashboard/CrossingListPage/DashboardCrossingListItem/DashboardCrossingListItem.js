@@ -3,10 +3,13 @@ import { graphql } from 'react-apollo';
 import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';
 import moment from 'moment';
+
 import Date from 'components/Shared/DateTime/Date';
 import Hour from 'components/Shared/DateTime/Hour';
 import Location from 'components/Shared/CrossingListItem/Location';
-import StatusToggle from 'components/Dashboard/CrossingListPage/CrossingListItem/StatusToggle';
+import User from 'components/Shared/CrossingListItem/User';
+import CrossingCommunityList from 'components/Shared/CrossingListItem/CrossingCommunityList';
+import StatusToggle from 'components/Dashboard/CrossingListPage/DashboardCrossingListItem/StatusToggle';
 import Dropdown from 'components/Dashboard/Dropdown/Dropdown';
 import newStatusUpdateMutation from 'components/Dashboard/CrossingListPage/queries/newStatusUpdateMutation';
 import crossingsQuery from 'components/Dashboard/CrossingListPage/queries/crossingsQuery';
@@ -15,15 +18,16 @@ import statusCountsQuery from 'components/Dashboard/CrossingListPage/queries/sta
 import statusUpdateFragment from 'components/Dashboard/CrossingListPage/queries/statusUpdateFragment';
 import * as statusConstants from 'constants/StatusConstants';
 import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
-import 'components/Dashboard/CrossingListPage/CrossingListItem/CrossingListItem.css';
+
+import 'components/Dashboard/CrossingListPage/DashboardCrossingListItem/DashboardCrossingListItem.css';
 
 const containerQuery = {
-  'CrossingListItem--lg': {
+  'DashboardCrossingListItem--lg': {
     minWidth: LARGE_ITEM_MIN_WIDTH,
   },
 };
 
-class CrossingListItem extends React.Component {
+class DashboardCrossingListItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -501,25 +505,24 @@ class CrossingListItem extends React.Component {
     }
 
     const CrossingListItemJSX = (
-      <div className="CrossingListItem DashboardCrossingListItem">
-        <div>
-          <div>
-            <a
-              href={`/dashboard/crossing/${crossing.id}`}
-              className="CrossingName"
-            >
-              {crossing.name}
-            </a>
+      <div className="DashboardCrossingListItem">
+        <div className="DashboardCrossingListItem__overview">
+          <div className="DashboardCrossingListItem__crossing-name">
+            <a href={`/dashboard/crossing/${crossing.id}`}>{crossing.name}</a>
           </div>
-          <div>
-            <Location crossing={crossing} />
-          </div>
-          <div>
-            <Date date={createdAt} />
-            <Hour date={createdAt} />
+          <div className="DashboardCrossingListItem__overview-details">
+            <div className="DashboardCrossingListItem__overview-location">
+              <Location crossing={crossing} />
+              <div className="DashboardCrossingListItem__community-list"><CrossingCommunityList crossing={crossing} /></div>
+            </div>
+            <div className="DashboardCrossingListItem__overview-meta">
+              <div><Date date={createdAt} /></div>
+              <div><Hour date={createdAt} /></div>
+              <div className="DashboardCrossingListItem__user"><User user={userByCreatorId} /></div>
+            </div>
           </div>
         </div>
-        <div>
+        <div className="DashboardCrossingListItem__controls">
           <div>
             <div className="ControlLabel">
               Status: {statusConstants.statusNames[this.state.selectedStatus]}
@@ -537,7 +540,7 @@ class CrossingListItem extends React.Component {
             <div>
               <div className="ControlLabelContainer">
                 <div className="ControlLabel">Reason</div>
-                <div className="required">
+                <div className="DashboardCrossingListItem__field-required">
                   {this.isDirty() ? 'Required' : ''}
                 </div>
               </div>
@@ -553,7 +556,7 @@ class CrossingListItem extends React.Component {
           <div>
             <div className="ControlLabel">Notes to the public</div>
             <input
-              className="NotesTextBox"
+              className="DashboardCrossingListItem__notes-text-box"
               type="text"
               value={this.state.notes}
               onChange={this.notesChanged}
@@ -567,7 +570,7 @@ class CrossingListItem extends React.Component {
               <div>
                 <div className="ControlLabelContainer">
                   <div className="ControlLabel">Duration</div>
-                  <div className="required">
+                  <div className="DashboardCrossingListItem__field-required">
                     {this.isDirty() ? 'Required' : ''}
                   </div>
                 </div>
@@ -582,10 +585,16 @@ class CrossingListItem extends React.Component {
             {show.includes('cancelSave') && (
               <div>
                 <div className="ButtonContainer">
-                  <div className="CancelButton" onClick={this.cancelClicked}>
+                  <div
+                    className="DashboardCrossingListItem__cancel-button"
+                    onClick={this.cancelClicked}
+                  >
                     Cancel
                   </div>
-                  <div className="SaveButton" onClick={this.newStatusUpdate}>
+                  <div
+                    className="DashboardCrossingListItem__save-button"
+                    onClick={this.newStatusUpdate}
+                  >
                     Save
                   </div>
                 </div>
@@ -601,10 +610,9 @@ class CrossingListItem extends React.Component {
         <ContainerQuery query={containerQuery}>
           {params => (
             <div
-              className={classnames(
-                params,
-                { 'CrossingListItem--dirty': this.isDirty() },
-              )}
+              className={classnames(params, {
+                'DashboardCrossingListItem--dirty': this.isDirty(),
+              })}
             >
               {CrossingListItemJSX}
             </div>
@@ -615,10 +623,9 @@ class CrossingListItem extends React.Component {
 
     return (
       <div
-        className={classnames(
-          this.props.cqClassName,
-          { 'CrossingListItem--dirty': this.isDirty() },
-        )}
+        className={classnames(this.props.cqClassName, {
+          'DashboardCrossingListItem--dirty': this.isDirty(),
+        })}
       >
         {CrossingListItemJSX}
       </div>
@@ -628,4 +635,4 @@ class CrossingListItem extends React.Component {
 
 export default graphql(newStatusUpdateMutation, {
   name: 'newStatusUpdateMutation',
-})(CrossingListItem);
+})(DashboardCrossingListItem);

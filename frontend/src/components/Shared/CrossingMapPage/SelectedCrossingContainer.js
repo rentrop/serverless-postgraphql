@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CrossingListItem from 'components/Dashboard/CrossingListPage/CrossingListItem/CrossingListItem';
+import CrossingListItem from 'components/Dashboard/CrossingListPage/DashboardCrossingListItem/DashboardCrossingListItem';
 import PublicCrossingListItem from 'components/Public/CrossingListItem/PublicCrossingListItem';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';

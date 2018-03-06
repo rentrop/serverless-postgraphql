@@ -37,14 +37,17 @@ class CrossingSidebarNearbyCrossingItem extends React.Component {
           <div className="CrossingMapPage_sidebar-nearby-crossing-details-name">
             {crossingName}
           </div>
+          {/*
+            TODO: Replace with <CrossingCommunityList crossing={crossing} />
+            Then we can get rid of the allCommunities prop and doing a find in the render
+          */}
           <div className="CrossingMapPage_sidebar-nearby-crossing-details-communities">
             <a href="/">
-            {/* TODO: Link to community */}
-            {allCommunities &&
-              communityIds
-                .map(id => allCommunities.find(c => c.id === id).name)
-                .join(', ')}
-              </a>
+              {allCommunities &&
+                communityIds
+                  .map(id => allCommunities.find(c => c.id === id).name)
+                  .join(', ')}
+            </a>
           </div>
         </div>
         <div className="CrossingMapPage_sidebar-nearby-crossing-update-datetime">
