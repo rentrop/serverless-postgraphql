@@ -49,19 +49,13 @@ const formatSearchQuery = query => {
 };
 
 class CrossingMapSearchBar extends Component {
-  constructor() {
-    super();
-
-    let autosuggestInput;
-
-    this.state = {
-      typedValue: '',
-      selectedValue: '',
-      mapboxSuggestions: [],
-      crossingSuggestions: [],
-      communitySuggestions: [],
-    };
-  }
+  state = {
+    typedValue: '',
+    selectedValue: '',
+    mapboxSuggestions: [],
+    crossingSuggestions: [],
+    communitySuggestions: [],
+  };
 
   onChange = (event, { newValue, method }) => {
     if (method === 'type') {
