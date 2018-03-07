@@ -604,7 +604,7 @@ class DashboardCrossingListItem extends React.Component {
                     className="DashboardCrossingListItem__save-button"
                     onClick={this.newStatusUpdate}
                   >
-                    Save
+                    Submit
                   </ButtonPrimary>
                 </div>
               )}
