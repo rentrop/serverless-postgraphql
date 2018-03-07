@@ -6,6 +6,8 @@ import InfiniteCrossingStatusHistoryPaginationContainer from 'components/Dashboa
 import 'components/Shared/CrossingMapPage/CrossingMapSidebar.css';
 import FontAwesome from 'react-fontawesome';
 import classnames from 'classnames';
+import geolib from 'geolib';
+import _ from 'lodash';
 
 const FilterCheckbox = ({ defaultChecked, onClick, title }) => (
   <label className="CrossingMapPage_sidebar-filter">
@@ -70,6 +72,35 @@ class CrossingMapSidebar extends Component {
     }
   };
 
+  getNearbyCrossings = () => {
+    const {
+      openCrossings,
+      closedCrossings,
+      cautionCrossings,
+      longtermCrossings,
+      showOpen,
+      showClosed,
+      showCaution,
+      showLongterm,
+      center,
+    } = this.props;
+
+    let nearbyCrossings = [];
+
+    if (showOpen && openCrossings) nearbyCrossings.push(...openCrossings);
+    if (showClosed && closedCrossings) nearbyCrossings.push(...closedCrossings);
+    if (showCaution && cautionCrossings)
+      nearbyCrossings.push(...cautionCrossings);
+    if (showLongterm && longtermCrossings)
+      nearbyCrossings.push(...longtermCrossings);
+
+    return nearbyCrossings.length
+      ? _.sortBy(nearbyCrossings, c =>
+          geolib.getDistance(center, JSON.parse(c.geojson).coordinates),
+        ).slice(0, 20)
+      : [];
+  };
+
   render() {
     const { visible, searchFocused, showNearby, showHistory } = this.state;
     const {
@@ -86,13 +117,14 @@ class CrossingMapSidebar extends Component {
       selectedCrossingId,
       selectCrossing,
       currentUser,
-      visibleCrossings,
       allCommunities,
       selectedCrossingName,
       center,
       setSelectedLocationCoordinates,
       setSelectedCommunity,
     } = this.props;
+
+    const nearbyCrossings = this.getNearbyCrossings();
 
     return (
       <div className="CrossingMapSidebar__overlay-container">
@@ -197,13 +229,13 @@ class CrossingMapSidebar extends Component {
                 )}
                 {showNearby && (
                   <div className="CrossingMapPage_sidebar-nearbycrossings">
-                    {visibleCrossings.map(c => (
+                    {nearbyCrossings.map(c => (
                       <CrossingSidebarNearbyCrossingItem
                         key={c.id}
-                        latestStatus={c.latestStatus}
-                        statusId={c.statusId}
+                        latestStatus={c.latestStatusCreatedAt}
+                        statusId={c.latestStatusId}
                         crossingId={c.id}
-                        crossingName={c.crossingName}
+                        crossingName={c.name}
                         communityIds={c.communityIds}
                         allCommunities={allCommunities}
                         selectCrossing={selectCrossing}

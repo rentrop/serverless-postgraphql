@@ -13,12 +13,13 @@
     "apollo-link-http": "1.5.2",
     "classnames": "^2.2.5",
     "formatcoords": "^1.1.3",
+    "geolib": "^2.0.24",
     "get-graphql-schema": "^2.1.0",
     "graphql": "0.13.0",
     "graphql-tag": "2.8.0",
     "jwt-decode": "^2.2.0",
     "mapbox": "^1.0.0-beta9",
-    "mapbox-gl": "0.44.0",
+    "mapbox-gl": "0.44.1",
     "mobile-detect": "^1.4.1",
     "moment": "2.20.1",
     "node-sass-chokidar": "^0.0.3",
@@ -45,24 +46,18 @@
   "scripts": {
     "start-js": "NODE_PATH=src react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "start-local":
-      "REACT_APP_AWS_ENDPOINT='http://localhost:5000/graphql' yarn run start",
+    "start-local": "REACT_APP_AWS_ENDPOINT='http://localhost:5000/graphql' yarn run start",
     "validate-map-style": "node src/Map/style/scripts/validate.js",
-    "build-map-style-json":
-      "node src/components/Shared/Map/style/scripts/build.js",
+    "build-map-style-json": "node src/components/Shared/Map/style/scripts/build.js",
     "build-map-style": "yarn build-map-icons; yarn build-map-style-json",
-    "build-map-icons":
-      "spritezero public/mapboxstyle/sprite src/components/Shared/Map/style/icons/; spritezero --retina public/mapboxstyle/sprite@2x src/components/Shared/Map/style/icons/",
+    "build-map-icons": "spritezero public/mapboxstyle/sprite src/components/Shared/Map/style/icons/; spritezero --retina public/mapboxstyle/sprite@2x src/components/Shared/Map/style/icons/",
     "build-css": "node-sass-chokidar --include-path ./src src/ -o src/",
-    "watch-css":
-      "yarn run build-css && node-sass-chokidar --include-path ./src src/ -o src/ --watch --recursive",
+    "watch-css": "yarn run build-css && node-sass-chokidar --include-path ./src src/ -o src/ --watch --recursive",
     "get-schema": "./src/stories/schema/getSchema.sh",
-    "build":
-      "yarn build-map-style-json; yarn build-css; NODE_PATH=src react-scripts build",
+    "build": "yarn build-map-style-json; yarn build-css; NODE_PATH=src react-scripts build",
     "test": "yarn build-css; NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "storybook":
-      "NODE_PATH=src start-storybook -p 9001 -c .storybook & yarn watch-css"
+    "storybook": "NODE_PATH=src start-storybook -p 9001 -c .storybook & yarn watch-css"
   },
   "prettier": {
     "semi": true,
