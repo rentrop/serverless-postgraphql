@@ -1,11 +1,8 @@
 import React from 'react';
-import { graphql, compose } from 'react-apollo';
 import * as MapboxGl from 'mapbox-gl';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import mapboxstyle from 'components/Shared/Map/mapboxstyle.json';
-import allCrossings from 'components/Shared/Map/queries/allCrossingsQuery';
 import 'components/Shared/Map/CrossingMap.css';
-import _ from 'lodash';
 
 const Map = ReactMapboxGl({ accessToken: null, attributionControl: false });
 
@@ -29,16 +26,16 @@ class CrossingMap extends React.Component {
       if (nextProps.selectedCrossingId) {
         this.setState({ selectedCrossingId: nextProps.selectedCrossingId });
         const crossing =
-          this.props.openCrossings.searchCrossings.nodes.find(
+          this.props.openCrossings.find(
             c => c.id === nextProps.selectedCrossingId,
           ) ||
-          this.props.closedCrossings.searchCrossings.nodes.find(
+          this.props.closedCrossings.find(
             c => c.id === nextProps.selectedCrossingId,
           ) ||
-          this.props.cautionCrossings.searchCrossings.nodes.find(
+          this.props.cautionCrossings.find(
             c => c.id === nextProps.selectedCrossingId,
           ) ||
-          this.props.longtermCrossings.searchCrossings.nodes.find(
+          this.props.longtermCrossings.find(
             c => c.id === nextProps.selectedCrossingId,
           );
         this.selectCrossing(crossing);
@@ -78,13 +75,9 @@ class CrossingMap extends React.Component {
     if (!this.state.firstLoadComplete) {
       const isLoading =
         !nextProps.openCrossings ||
-        nextProps.openCrossings.loading ||
         !nextProps.closedCrossings ||
-        nextProps.closedCrossings.loading ||
         !nextProps.cautionCrossings ||
-        nextProps.cautionCrossings.loading ||
-        !nextProps.longtermCrossings ||
-        nextProps.longtermCrossings.loading;
+        !nextProps.longtermCrossings;
       this.setState({
         firstLoadComplete: this.state.firstLoadComplete || !isLoading,
       });
@@ -96,7 +89,6 @@ class CrossingMap extends React.Component {
     this.addZoomControl(map);
     this.addGeoLocateControl(map);
     this.addCrossingClickHandlers(map);
-    this.addUpdateVisibleCrossingHandlers(map);
 
     // update the map page center on map move
     map.on('moveend', this.getMapCenter);
@@ -128,9 +120,8 @@ class CrossingMap extends React.Component {
     map.addControl(zoomControl, 'bottom-right');
   }
 
-  addUpdateVisibleCrossingHandlers(map) {
-    map.on('moveend', this.updateVisibleCrossings);
-    map.on('data', this.updateVisibleCrossings);
+  addCrossingClickHandlers(map) {
+    map.on('click', this.onMapClick);
   }
 
   getMapCenter = () => {
@@ -149,50 +140,6 @@ class CrossingMap extends React.Component {
       });
     }
   };
-
-  updateVisibleCrossings = e => {
-    if (e.type === 'data' && !e.isSourceLoaded) return;
-
-    const {
-      showOpen,
-      showClosed,
-      showCaution,
-      showLongterm,
-      openCrossings,
-      closedCrossings,
-      cautionCrossings,
-      longtermCrossings,
-    } = this.props;
-
-    const { map } = this.state;
-
-    const layersToQuery = [
-      showOpen && !openCrossings.loading ? 'openCrossings' : null,
-      showClosed && !closedCrossings.loading ? 'closedCrossings' : null,
-      showCaution && !cautionCrossings.loading ? 'cautionCrossings' : null,
-      showLongterm && !longtermCrossings.loading ? 'longtermCrossings' : null,
-    ].filter(l => l !== null);
-    const features = map.queryRenderedFeatures({ layers: layersToQuery });
-    const crossings = _.uniqBy(
-      features.map(f => ({
-        id: f.properties.crossingId,
-        latestStatus: f.properties.latestStatusCreatedAt,
-        statusId: f.properties.crossingStatus,
-        crossingName: f.properties.crossingName,
-        communityIds: JSON.parse(f.properties.communityIds),
-      })),
-      'id',
-    );
-
-    // Get the first 10 visible crossings by latest status for the results
-    this.props.setVisibleCrossings(
-      _.slice(_.orderBy(crossings, ['latestStatus'], ['desc']), 0, 10),
-    );
-  };
-
-  addCrossingClickHandlers(map) {
-    map.on('click', this.onMapClick);
-  }
 
   selectCrossing = crossing => {
     const coordinates = JSON.parse(crossing.geojson).coordinates;
@@ -232,7 +179,25 @@ class CrossingMap extends React.Component {
 
   onMapClick = e => {
     const { map } = this.state;
-    const features = map.queryRenderedFeatures(e.point);
+    const { showOpen, showClosed, showCaution, showLongterm } = this.props;
+
+    const width = 10;
+    const height = 10;
+    let layersToQuery = [];
+    if (showOpen) layersToQuery.push('openCrossings');
+    if (showClosed) layersToQuery.push('closedCrossings');
+    if (showCaution) layersToQuery.push('cautionCrossings');
+    if (showLongterm) layersToQuery.push('longtermCrossings');
+
+    const features = map.queryRenderedFeatures(
+      [
+        [e.point.x - width / 2, e.point.y - height / 2],
+        [e.point.x + width / 2, e.point.y + height / 2],
+      ],
+      { layers: layersToQuery },
+    );
+
+    // const features = map.queryRenderedFeatures(e.point);
 
     if (features && features[0] && features[0].properties.crossingId) {
       this.onCrossingClick(features[0]);
@@ -245,42 +210,8 @@ class CrossingMap extends React.Component {
   };
 
   render() {
-    const isLoading =
-      !this.props.openCrossings ||
-      this.props.openCrossings.loading ||
-      !this.props.closedCrossings ||
-      this.props.closedCrossings.loading ||
-      !this.props.cautionCrossings ||
-      this.props.cautionCrossings.loading ||
-      !this.props.longtermCrossings ||
-      this.props.longtermCrossings.loading;
-
-    if (
-      !isLoading &&
-      (this.props.openCrossings.searchCrossings == null ||
-        this.props.closedCrossings.searchCrossings == null ||
-        this.props.cautionCrossings.searchCrossings == null ||
-        this.props.longtermCrossings.searchCrossings == null)
-    ) {
-      // TODO: add error logging
-      return <div>Error Loading Crossings</div>;
-    }
-
     const { firstLoadComplete } = this.state;
     if (!firstLoadComplete) return null;
-
-    const openCrossings = !isLoading
-      ? this.props.openCrossings.searchCrossings.nodes
-      : null;
-    const closedCrossings = !isLoading
-      ? this.props.closedCrossings.searchCrossings.nodes
-      : null;
-    const cautionCrossings = !isLoading
-      ? this.props.cautionCrossings.searchCrossings.nodes
-      : null;
-    const longtermCrossings = !isLoading
-      ? this.props.longtermCrossings.searchCrossings.nodes
-      : null;
 
     const {
       showOpen,
@@ -288,6 +219,10 @@ class CrossingMap extends React.Component {
       showCaution,
       showLongterm,
       center,
+      openCrossings,
+      closedCrossings,
+      cautionCrossings,
+      longtermCrossings,
     } = this.props;
 
     return (
@@ -302,18 +237,18 @@ class CrossingMap extends React.Component {
         fitBounds={this.props.viewport}
         center={center}
       >
-        {!isLoading &&
-          showOpen && (
-            <Layer
-              type="symbol"
-              id="openCrossings"
-              layout={{ 'icon-image': 'open', 'icon-allow-overlap': true }}
-              filter={[
-                'all',
-                ['!=', 'crossingId', this.state.selectedCrossingId],
-              ]}
-            >
-              {openCrossings.map((crossing, i) => {
+        {showOpen && (
+          <Layer
+            type="symbol"
+            id="openCrossings"
+            layout={{ 'icon-image': 'open', 'icon-allow-overlap': true }}
+            filter={[
+              'all',
+              ['!=', 'crossingId', this.state.selectedCrossingId],
+            ]}
+          >
+            {openCrossings &&
+              openCrossings.map((crossing, i) => {
                 return (
                   <Feature
                     key={i}
@@ -329,20 +264,20 @@ class CrossingMap extends React.Component {
                   />
                 );
               })}
-            </Layer>
-          )}
-        {!isLoading &&
-          showLongterm && (
-            <Layer
-              type="symbol"
-              id="longtermCrossings"
-              layout={{ 'icon-image': 'longterm', 'icon-allow-overlap': true }}
-              filter={[
-                'all',
-                ['!=', 'crossingId', this.state.selectedCrossingId],
-              ]}
-            >
-              {longtermCrossings.map((crossing, i) => {
+          </Layer>
+        )}
+        {showLongterm && (
+          <Layer
+            type="symbol"
+            id="longtermCrossings"
+            layout={{ 'icon-image': 'longterm', 'icon-allow-overlap': true }}
+            filter={[
+              'all',
+              ['!=', 'crossingId', this.state.selectedCrossingId],
+            ]}
+          >
+            {longtermCrossings &&
+              longtermCrossings.map((crossing, i) => {
                 return (
                   <Feature
                     key={i}
@@ -358,20 +293,20 @@ class CrossingMap extends React.Component {
                   />
                 );
               })}
-            </Layer>
-          )}
-        {!isLoading &&
-          showCaution && (
-            <Layer
-              type="symbol"
-              id="cautionCrossings"
-              layout={{ 'icon-image': 'caution', 'icon-allow-overlap': true }}
-              filter={[
-                'all',
-                ['!=', 'crossingId', this.state.selectedCrossingId],
-              ]}
-            >
-              {cautionCrossings.map((crossing, i) => {
+          </Layer>
+        )}
+        {showCaution && (
+          <Layer
+            type="symbol"
+            id="cautionCrossings"
+            layout={{ 'icon-image': 'caution', 'icon-allow-overlap': true }}
+            filter={[
+              'all',
+              ['!=', 'crossingId', this.state.selectedCrossingId],
+            ]}
+          >
+            {cautionCrossings &&
+              cautionCrossings.map((crossing, i) => {
                 return (
                   <Feature
                     key={i}
@@ -387,20 +322,20 @@ class CrossingMap extends React.Component {
                   />
                 );
               })}
-            </Layer>
-          )}
-        {!isLoading &&
-          showClosed && (
-            <Layer
-              type="symbol"
-              id="closedCrossings"
-              layout={{ 'icon-image': 'closed', 'icon-allow-overlap': true }}
-              filter={[
-                'all',
-                ['!=', 'crossingId', this.state.selectedCrossingId],
-              ]}
-            >
-              {closedCrossings.map((crossing, i) => {
+          </Layer>
+        )}
+        {showClosed && (
+          <Layer
+            type="symbol"
+            id="closedCrossings"
+            layout={{ 'icon-image': 'closed', 'icon-allow-overlap': true }}
+            filter={[
+              'all',
+              ['!=', 'crossingId', this.state.selectedCrossingId],
+            ]}
+          >
+            {closedCrossings &&
+              closedCrossings.map((crossing, i) => {
                 return (
                   <Feature
                     key={i}
@@ -416,180 +351,103 @@ class CrossingMap extends React.Component {
                   />
                 );
               })}
-            </Layer>
-          )}
-        {!isLoading && (
-          <Layer
-            type="symbol"
-            id="selectedLongtermCrossing"
-            layout={{
-              'icon-image': 'longterm_selected',
-              'icon-allow-overlap': true,
-            }}
-          >
-            {this.state.selectedCrossing &&
-            this.state.selectedCrossing.crossingStatus === STATUS_LONGTERM ? (
-              <Feature
-                key={1}
-                coordinates={
-                  JSON.parse(this.state.selectedCrossing.geojson).coordinates
-                }
-                properties={{
-                  crossingStatus: this.state.selectedCrossing.crossingStatus,
-                  crossingId: this.state.selectedCrossing.crossingId,
-                  geojson: this.state.selectedCrossing.geojson,
-                }}
-              />
-            ) : null}
           </Layer>
         )}
-        {!isLoading && (
-          <Layer
-            type="symbol"
-            id="selectedCautionCrossing"
-            layout={{
-              'icon-image': 'caution_selected',
-              'icon-allow-overlap': true,
-            }}
-          >
-            {this.state.selectedCrossing &&
-            this.state.selectedCrossing.crossingStatus === STATUS_CAUTION ? (
-              <Feature
-                key={1}
-                coordinates={
-                  JSON.parse(this.state.selectedCrossing.geojson).coordinates
-                }
-                properties={{
-                  crossingStatus: this.state.selectedCrossing.crossingStatus,
-                  crossingId: this.state.selectedCrossing.crossingId,
-                  geojson: this.state.selectedCrossing.geojson,
-                }}
-              />
-            ) : null}
-          </Layer>
-        )}
-        {!isLoading && (
-          <Layer
-            type="symbol"
-            id="selectedClosedCrossing"
-            layout={{
-              'icon-image': 'closed_selected',
-              'icon-allow-overlap': true,
-            }}
-          >
-            {this.state.selectedCrossing &&
-            this.state.selectedCrossing.crossingStatus === STATUS_CLOSED ? (
-              <Feature
-                key={1}
-                coordinates={
-                  JSON.parse(this.state.selectedCrossing.geojson).coordinates
-                }
-                properties={{
-                  crossingStatus: this.state.selectedCrossing.crossingStatus,
-                  crossingId: this.state.selectedCrossing.crossingId,
-                  geojson: this.state.selectedCrossing.geojson,
-                }}
-              />
-            ) : null}
-          </Layer>
-        )}
-        {!isLoading && (
-          <Layer
-            type="symbol"
-            id="selectedOpenCrossing"
-            layout={{
-              'icon-image': 'open_selected',
-              'icon-allow-overlap': true,
-            }}
-          >
-            {this.state.selectedCrossing &&
-            this.state.selectedCrossing.crossingStatus === STATUS_OPEN ? (
-              <Feature
-                key={1}
-                coordinates={
-                  JSON.parse(this.state.selectedCrossing.geojson).coordinates
-                }
-                properties={{
-                  crossingStatus: this.state.selectedCrossing.crossingStatus,
-                  crossingId: this.state.selectedCrossing.crossingId,
-                  geojson: this.state.selectedCrossing.geojson,
-                }}
-              />
-            ) : null}
-          </Layer>
-        )}
+        <Layer
+          type="symbol"
+          id="selectedLongtermCrossing"
+          layout={{
+            'icon-image': 'longterm_selected',
+            'icon-allow-overlap': true,
+          }}
+        >
+          {this.state.selectedCrossing &&
+          this.state.selectedCrossing.crossingStatus === STATUS_LONGTERM ? (
+            <Feature
+              key={1}
+              coordinates={
+                JSON.parse(this.state.selectedCrossing.geojson).coordinates
+              }
+              properties={{
+                crossingStatus: this.state.selectedCrossing.crossingStatus,
+                crossingId: this.state.selectedCrossing.crossingId,
+                geojson: this.state.selectedCrossing.geojson,
+              }}
+            />
+          ) : null}
+        </Layer>
+        <Layer
+          type="symbol"
+          id="selectedCautionCrossing"
+          layout={{
+            'icon-image': 'caution_selected',
+            'icon-allow-overlap': true,
+          }}
+        >
+          {this.state.selectedCrossing &&
+          this.state.selectedCrossing.crossingStatus === STATUS_CAUTION ? (
+            <Feature
+              key={1}
+              coordinates={
+                JSON.parse(this.state.selectedCrossing.geojson).coordinates
+              }
+              properties={{
+                crossingStatus: this.state.selectedCrossing.crossingStatus,
+                crossingId: this.state.selectedCrossing.crossingId,
+                geojson: this.state.selectedCrossing.geojson,
+              }}
+            />
+          ) : null}
+        </Layer>
+        <Layer
+          type="symbol"
+          id="selectedClosedCrossing"
+          layout={{
+            'icon-image': 'closed_selected',
+            'icon-allow-overlap': true,
+          }}
+        >
+          {this.state.selectedCrossing &&
+          this.state.selectedCrossing.crossingStatus === STATUS_CLOSED ? (
+            <Feature
+              key={1}
+              coordinates={
+                JSON.parse(this.state.selectedCrossing.geojson).coordinates
+              }
+              properties={{
+                crossingStatus: this.state.selectedCrossing.crossingStatus,
+                crossingId: this.state.selectedCrossing.crossingId,
+                geojson: this.state.selectedCrossing.geojson,
+              }}
+            />
+          ) : null}
+        </Layer>
+        <Layer
+          type="symbol"
+          id="selectedOpenCrossing"
+          layout={{
+            'icon-image': 'open_selected',
+            'icon-allow-overlap': true,
+          }}
+        >
+          {this.state.selectedCrossing &&
+          this.state.selectedCrossing.crossingStatus === STATUS_OPEN ? (
+            <Feature
+              key={1}
+              coordinates={
+                JSON.parse(this.state.selectedCrossing.geojson).coordinates
+              }
+              properties={{
+                crossingStatus: this.state.selectedCrossing.crossingStatus,
+                crossingId: this.state.selectedCrossing.crossingId,
+                geojson: this.state.selectedCrossing.geojson,
+              }}
+            />
+          ) : null}
+        </Layer>
       </Map>
     );
   }
 }
 
-export default compose(
-  graphql(allCrossings, {
-    name: 'openCrossings',
-    options: ownProps => ({
-      variables: {
-        search: ownProps.searchQuery,
-        showOpen: true,
-        showClosed: false,
-        showCaution: false,
-        showLongterm: false,
-        communityId:
-          ownProps.currentUser &&
-          ownProps.currentUser.role !== 'floods_super_admin'
-            ? ownProps.currentUser.communityId
-            : ownProps.selectedCommunityId,
-      },
-    }),
-  }),
-  graphql(allCrossings, {
-    name: 'closedCrossings',
-    options: ownProps => ({
-      variables: {
-        search: ownProps.searchQuery,
-        showOpen: false,
-        showClosed: true,
-        showCaution: false,
-        showLongterm: false,
-        communityId:
-          ownProps.currentUser &&
-          ownProps.currentUser.role !== 'floods_super_admin'
-            ? ownProps.currentUser.communityId
-            : ownProps.selectedCommunityId,
-      },
-    }),
-  }),
-  graphql(allCrossings, {
-    name: 'cautionCrossings',
-    options: ownProps => ({
-      variables: {
-        search: ownProps.searchQuery,
-        showOpen: false,
-        showClosed: false,
-        showCaution: true,
-        showLongterm: false,
-        communityId:
-          ownProps.currentUser &&
-          ownProps.currentUser.role !== 'floods_super_admin'
-            ? ownProps.currentUser.communityId
-            : ownProps.selectedCommunityId,
-      },
-    }),
-  }),
-  graphql(allCrossings, {
-    name: 'longtermCrossings',
-    options: ownProps => ({
-      variables: {
-        search: ownProps.searchQuery,
-        showOpen: false,
-        showClosed: false,
-        showCaution: false,
-        showLongterm: true,
-        communityId:
-          ownProps.currentUser &&
-          ownProps.currentUser.role !== 'floods_super_admin'
-            ? ownProps.currentUser.communityId
-            : ownProps.selectedCommunityId,
-      },
-    }),
-  }),
-)(CrossingMap);
+export default CrossingMap;
