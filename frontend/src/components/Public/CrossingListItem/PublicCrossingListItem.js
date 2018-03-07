@@ -15,7 +15,7 @@ import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
 import 'components/Public/CrossingListItem/PublicCrossingListItem.css';
 
 const containerQuery = {
-  'CrossingListItem--lg': {
+  'PublicCrossingListItem--lg': {
     minWidth: LARGE_ITEM_MIN_WIDTH,
   },
 };

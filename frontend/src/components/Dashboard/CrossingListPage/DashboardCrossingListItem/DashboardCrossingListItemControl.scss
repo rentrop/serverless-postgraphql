@@ -1,5 +1,10 @@
 .DashboardCrossingListItem__control {
-  margin-bottom: 2rem;
+  flex-basis: auto;
+  min-width: 200px;
+  max-width: 400px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  margin: 1rem 1rem;
 }
 
 .DashboardCrossingListItem__control-meta {

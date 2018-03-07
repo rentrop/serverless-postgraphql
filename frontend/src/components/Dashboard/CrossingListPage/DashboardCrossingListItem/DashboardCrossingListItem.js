@@ -536,24 +536,21 @@ class DashboardCrossingListItem extends React.Component {
           </div>
         </div>
         <div className="DashboardCrossingListItem__controls">
-          <div>
-            <DashboardCrossingListItemControl
-              label={
-                <div>
-                  Status:{' '}
-                  {statusConstants.statusNames[this.state.selectedStatus]}
-                </div>
-              }
-            >
-              <StatusToggle
-                status={this.state.selectedStatus}
-                openClicked={this.openClicked}
-                cautionClicked={this.cautionClicked}
-                closedClicked={this.closedClicked}
-                longtermClicked={this.longtermClicked}
-              />
-            </DashboardCrossingListItemControl>
-          </div>
+          <DashboardCrossingListItemControl
+            label={
+              <div>
+                Status: {statusConstants.statusNames[this.state.selectedStatus]}
+              </div>
+            }
+          >
+            <StatusToggle
+              status={this.state.selectedStatus}
+              openClicked={this.openClicked}
+              cautionClicked={this.cautionClicked}
+              closedClicked={this.closedClicked}
+              longtermClicked={this.longtermClicked}
+            />
+          </DashboardCrossingListItemControl>
 
           {show.includes('reason') && (
             <DashboardCrossingListItemControl
@@ -577,40 +574,35 @@ class DashboardCrossingListItem extends React.Component {
               onChange={this.notesChanged}
             />
           </DashboardCrossingListItemControl>
-          {(show.includes('duration') || show.includes('cancelSave')) && (
-            <div>
-              {show.includes('duration') && (
-                <DashboardCrossingListItemControl
-                  label="Duration"
-                  isRequired={this.isDirty()}
-                >
-                  <Dropdown
-                    options={durations}
-                    selected={this.state.selectedDuration}
-                    onChange={this.durationChanged}
-                  />
-                </DashboardCrossingListItemControl>
-              )}
-
-              {show.includes('cancelSave') && (
-                <div className="DashboardCrossingListItem__button-container">
-                  <ButtonSecondary
-                    className="DashboardCrossingListItem__cancel-button"
-                    onClick={this.cancelClicked}
-                  >
-                    Cancel
-                  </ButtonSecondary>
-                  <ButtonPrimary
-                    className="DashboardCrossingListItem__save-button"
-                    onClick={this.newStatusUpdate}
-                  >
-                    Submit
-                  </ButtonPrimary>
-                </div>
-              )}
-            </div>
+          {show.includes('duration') && (
+            <DashboardCrossingListItemControl
+              label="Duration"
+              isRequired={this.isDirty()}
+            >
+              <Dropdown
+                options={durations}
+                selected={this.state.selectedDuration}
+                onChange={this.durationChanged}
+              />
+            </DashboardCrossingListItemControl>
           )}
         </div>
+        {show.includes('cancelSave') && (
+          <div className="DashboardCrossingListItem__button-container">
+            <ButtonSecondary
+              className="DashboardCrossingListItem__cancel-button"
+              onClick={this.cancelClicked}
+            >
+              Cancel
+            </ButtonSecondary>
+            <ButtonPrimary
+              className="DashboardCrossingListItem__save-button"
+              onClick={this.newStatusUpdate}
+            >
+              Submit
+            </ButtonPrimary>
+          </div>
+        )}
       </div>
     );
 

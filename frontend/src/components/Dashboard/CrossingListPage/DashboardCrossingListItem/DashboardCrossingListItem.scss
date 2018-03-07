@@ -1,5 +1,6 @@
 .DashboardCrossingListItem {
   font-size: 1.5rem;
+  border-bottom: 1px solid #cfd8dc;
 }
 
 .DashboardCrossingListItem__overview {
@@ -9,7 +10,13 @@
 
 .DashboardCrossingListItem__controls {
   background: #fff;
-  padding: 2.5rem 2rem;
+  padding: 0 1rem 1.5rem
+}
+
+.DashboardCrossingListItem--lg .DashboardCrossingListItem__controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .DashboardCrossingListItem.DashboardCrossingListItem--dirty {
@@ -57,6 +64,10 @@
 .DashboardCrossingListItem__button-container {
   display: flex;
   justify-content: flex-end;
+  flex-basis: 300px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  background: #fff;
 }
 
 .DashboardCrossingListItem__cancel-button {
