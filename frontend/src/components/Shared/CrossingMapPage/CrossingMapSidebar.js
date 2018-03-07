@@ -31,6 +31,7 @@ class CrossingMapSidebar extends Component {
       searchFocused: false,
       showNearby: true,
       showHistory: false,
+      nearbyCrossings: [],
     };
   }
 
@@ -41,6 +42,32 @@ class CrossingMapSidebar extends Component {
         showNearby: true,
         showHistory: false,
       });
+    }
+
+    // If we have a new map center, different crossings, or different visibility, update nearby crossings
+    if (
+      this.props.center !== nextProps.center ||
+      this.props.showOpen !== nextProps.showOpen ||
+      this.props.showClosed !== nextProps.showClosed ||
+      this.props.showCaution !== nextProps.showCaution ||
+      this.props.showClosed !== nextProps.showClosed ||
+      this.props.openCrossings !== nextProps.openCrossings ||
+      this.props.closedCrossings !== nextProps.closedCrossings ||
+      this.props.cautionCrossings !== nextProps.cautionCrossings ||
+      this.props.longtermCrossings !== nextProps.longtermCrossings
+    ) {
+      const nearbyCrossings = this.getNearbyCrossings(
+        nextProps.center,
+        nextProps.openCrossings,
+        nextProps.closedCrossings,
+        nextProps.cautionCrossings,
+        nextProps.longtermCrossings,
+        nextProps.showOpen,
+        nextProps.showClosed,
+        nextProps.showCaution,
+        nextProps.showLongterm,
+      );
+      this.setState({ nearbyCrossings: nearbyCrossings });
     }
   }
 
@@ -72,19 +99,17 @@ class CrossingMapSidebar extends Component {
     }
   };
 
-  getNearbyCrossings = () => {
-    const {
-      openCrossings,
-      closedCrossings,
-      cautionCrossings,
-      longtermCrossings,
-      showOpen,
-      showClosed,
-      showCaution,
-      showLongterm,
-      center,
-    } = this.props;
-
+  getNearbyCrossings = (
+    center,
+    openCrossings,
+    closedCrossings,
+    cautionCrossings,
+    longtermCrossings,
+    showOpen,
+    showClosed,
+    showCaution,
+    showLongterm,
+  ) => {
     let nearbyCrossings = [];
 
     if (showOpen && openCrossings) nearbyCrossings.push(...openCrossings);
@@ -124,7 +149,7 @@ class CrossingMapSidebar extends Component {
       setSelectedCommunity,
     } = this.props;
 
-    const nearbyCrossings = this.getNearbyCrossings();
+    const { nearbyCrossings } = this.state;
 
     return (
       <div className="CrossingMapSidebar__overlay-container">
