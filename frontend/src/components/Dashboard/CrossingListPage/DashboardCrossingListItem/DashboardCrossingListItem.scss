@@ -45,7 +45,7 @@
 
 .DashboardCrossingListItem__notes-text-box {
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   text-indent: 12px;
   height: 40px;
   overflow: hidden;
@@ -82,14 +82,4 @@
   color: white;
   background-color: #0054ff;
   margin-left: 15px;
-}
-
-.DashboardCrossingListItem__field-required {
-  flex: 1;
-  text-align: right;
-  font-size: .9rem;
-  font-weight: 400;
-  font-style: italic;
-  align-self: center;
-  text-transform: uppercase;
 }

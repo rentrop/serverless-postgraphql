@@ -10,12 +10,15 @@ import Location from 'components/Shared/CrossingListItem/Location';
 import User from 'components/Shared/CrossingListItem/User';
 import CrossingCommunityList from 'components/Shared/CrossingListItem/CrossingCommunityList';
 import StatusToggle from 'components/Dashboard/CrossingListPage/DashboardCrossingListItem/StatusToggle';
+import DashboardCrossingListItemControl from 'components/Dashboard/CrossingListPage/DashboardCrossingListItem/DashboardCrossingListItemControl';
 import Dropdown from 'components/Dashboard/Dropdown/Dropdown';
+
 import newStatusUpdateMutation from 'components/Dashboard/CrossingListPage/queries/newStatusUpdateMutation';
 import crossingsQuery from 'components/Dashboard/CrossingListPage/queries/crossingsQuery';
 import allCrossings from 'components/Shared/Map/queries/allCrossingsQuery';
 import statusCountsQuery from 'components/Dashboard/CrossingListPage/queries/statusCountsQuery';
 import statusUpdateFragment from 'components/Dashboard/CrossingListPage/queries/statusUpdateFragment';
+
 import * as statusConstants from 'constants/StatusConstants';
 import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
 
@@ -513,37 +516,48 @@ class DashboardCrossingListItem extends React.Component {
           <div className="DashboardCrossingListItem__overview-details">
             <div className="DashboardCrossingListItem__overview-location">
               <Location crossing={crossing} />
-              <div className="DashboardCrossingListItem__community-list"><CrossingCommunityList crossing={crossing} /></div>
+              <div className="DashboardCrossingListItem__community-list">
+                <CrossingCommunityList crossing={crossing} />
+              </div>
             </div>
             <div className="DashboardCrossingListItem__overview-meta">
-              <div><Date date={createdAt} /></div>
-              <div><Hour date={createdAt} /></div>
-              <div className="DashboardCrossingListItem__user"><User user={userByCreatorId} /></div>
+              <div>
+                <Date date={createdAt} />
+              </div>
+              <div>
+                <Hour date={createdAt} />
+              </div>
+              <div className="DashboardCrossingListItem__user">
+                <User user={userByCreatorId} />
+              </div>
             </div>
           </div>
         </div>
         <div className="DashboardCrossingListItem__controls">
           <div>
-            <div className="ControlLabel">
-              Status: {statusConstants.statusNames[this.state.selectedStatus]}
-            </div>
-            <StatusToggle
-              status={this.state.selectedStatus}
-              openClicked={this.openClicked}
-              cautionClicked={this.cautionClicked}
-              closedClicked={this.closedClicked}
-              longtermClicked={this.longtermClicked}
-            />
+            <DashboardCrossingListItemControl
+              label={
+                <div>
+                  Status:{' '}
+                  {statusConstants.statusNames[this.state.selectedStatus]}
+                </div>
+              }
+            >
+              <StatusToggle
+                status={this.state.selectedStatus}
+                openClicked={this.openClicked}
+                cautionClicked={this.cautionClicked}
+                closedClicked={this.closedClicked}
+                longtermClicked={this.longtermClicked}
+              />
+            </DashboardCrossingListItemControl>
           </div>
 
           {show.includes('reason') && (
-            <div>
-              <div className="ControlLabelContainer">
-                <div className="ControlLabel">Reason</div>
-                <div className="DashboardCrossingListItem__field-required">
-                  {this.isDirty() ? 'Required' : ''}
-                </div>
-              </div>
+            <DashboardCrossingListItemControl
+              label="Reason"
+              isRequired={this.isDirty()}
+            >
               <Dropdown
                 options={reasons.filter(
                   reason => reason.statusId === this.state.selectedStatus,
@@ -551,35 +565,33 @@ class DashboardCrossingListItem extends React.Component {
                 selected={this.state.selectedReason}
                 onChange={this.reasonChanged}
               />
-            </div>
+            </DashboardCrossingListItemControl>
           )}
-          <div>
-            <div className="ControlLabel">Notes to the public</div>
+          <DashboardCrossingListItemControl
+            label="Notes to the public"
+          >
             <input
               className="DashboardCrossingListItem__notes-text-box"
               type="text"
               value={this.state.notes}
               onChange={this.notesChanged}
             />
-          </div>
+          </DashboardCrossingListItemControl>
         </div>
 
         {(show.includes('duration') || show.includes('cancelSave')) && (
           <div>
             {show.includes('duration') && (
-              <div>
-                <div className="ControlLabelContainer">
-                  <div className="ControlLabel">Duration</div>
-                  <div className="DashboardCrossingListItem__field-required">
-                    {this.isDirty() ? 'Required' : ''}
-                  </div>
-                </div>
+              <DashboardCrossingListItemControl
+                label="Duration"
+                isRequired={this.isDirty()}
+              >
                 <Dropdown
                   options={durations}
                   selected={this.state.selectedDuration}
                   onChange={this.durationChanged}
                 />
-              </div>
+              </DashboardCrossingListItemControl>
             )}
 
             {show.includes('cancelSave') && (
