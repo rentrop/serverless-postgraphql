@@ -54,32 +54,15 @@
   border-radius: 5px;
 }
 
-.ButtonContainer {
+.DashboardCrossingListItem__button-container {
   display: flex;
-  align-items: flex-end;
-  height: 100%;
-}
-
-@mixin button {
-  flex: 1;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  text-align: center;
-  border: 2px solid #0054ff;
-  cursor: pointer;
+  justify-content: flex-end;
 }
 
 .DashboardCrossingListItem__cancel-button {
-  @include button;
-  color: #0054ff;
-  margin-right: 15px;
+  margin-right: 1.5rem;
 }
 
 .DashboardCrossingListItem__save-button {
-  @include button;
-  color: white;
-  background-color: #0054ff;
-  margin-left: 15px;
+
 }
