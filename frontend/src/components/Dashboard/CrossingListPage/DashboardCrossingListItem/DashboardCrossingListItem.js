@@ -3,26 +3,36 @@ import { graphql } from 'react-apollo';
 import { ContainerQuery } from 'react-container-query';
 import classnames from 'classnames';
 import moment from 'moment';
-import Location from 'components/Dashboard/CrossingListPage/CrossingListItem/Location';
-import DateTime from 'components/Dashboard/CrossingListPage/CrossingListItem/DateTime';
-import StatusToggle from 'components/Dashboard/CrossingListPage/CrossingListItem/StatusToggle';
+
+import Date from 'components/Shared/DateTime/Date';
+import Hour from 'components/Shared/DateTime/Hour';
+import Location from 'components/Shared/CrossingListItem/Location';
+import User from 'components/Shared/CrossingListItem/User';
+import CrossingCommunityList from 'components/Shared/CrossingListItem/CrossingCommunityList';
+import StatusToggle from 'components/Dashboard/CrossingListPage/DashboardCrossingListItem/StatusToggle';
+import DashboardCrossingListItemControl from 'components/Dashboard/CrossingListPage/DashboardCrossingListItem/DashboardCrossingListItemControl';
 import Dropdown from 'components/Dashboard/Dropdown/Dropdown';
+import ButtonSecondary from 'components/Shared/Button/ButtonSecondary';
+import ButtonPrimary from 'components/Shared/Button/ButtonPrimary';
+
 import newStatusUpdateMutation from 'components/Dashboard/CrossingListPage/queries/newStatusUpdateMutation';
 import crossingsQuery from 'components/Dashboard/CrossingListPage/queries/crossingsQuery';
 import allCrossings from 'components/Shared/Map/queries/allCrossingsQuery';
 import statusCountsQuery from 'components/Dashboard/CrossingListPage/queries/statusCountsQuery';
 import statusUpdateFragment from 'components/Dashboard/CrossingListPage/queries/statusUpdateFragment';
+
 import * as statusConstants from 'constants/StatusConstants';
 import { LARGE_ITEM_MIN_WIDTH } from 'constants/containerQueryConstants';
-import 'components/Dashboard/CrossingListPage/CrossingListItem/CrossingListItem.css';
+
+import 'components/Dashboard/CrossingListPage/DashboardCrossingListItem/DashboardCrossingListItem.css';
 
 const containerQuery = {
-  'CrossingListItem--lg': {
+  'DashboardCrossingListItem--lg': {
     minWidth: LARGE_ITEM_MIN_WIDTH,
   },
 };
 
-class CrossingListItem extends React.Component {
+class DashboardCrossingListItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -500,28 +510,39 @@ class CrossingListItem extends React.Component {
     }
 
     const CrossingListItemJSX = (
-      <div>
-        <div className="CrossingListItemFlexContainer">
-          <div className="CrossingListItemFlexItem">
-            <a
-              href={`/dashboard/crossing/${crossing.id}`}
-              className="CrossingName"
-            >
-              {crossing.name}
-            </a>
+      <div className="DashboardCrossingListItem">
+        <div className="DashboardCrossingListItem__overview">
+          <div className="DashboardCrossingListItem__crossing-name">
+            <a href={`/dashboard/crossing/${crossing.id}`}>{crossing.name}</a>
           </div>
-          <div className="CrossingListItemFlexItem">
-            <Location crossing={crossing} />
-          </div>
-          <div className="CrossingListItemFlexItem">
-            <DateTime datetime={createdAt} user={userByCreatorId} />
+          <div className="DashboardCrossingListItem__overview-details">
+            <div className="DashboardCrossingListItem__overview-location">
+              <Location crossing={crossing} />
+              <div className="DashboardCrossingListItem__community-list">
+                <CrossingCommunityList crossing={crossing} />
+              </div>
+            </div>
+            <div className="DashboardCrossingListItem__overview-meta">
+              <div>
+                <Date date={createdAt} />
+              </div>
+              <div>
+                <Hour date={createdAt} />
+              </div>
+              <div className="DashboardCrossingListItem__user">
+                <User user={userByCreatorId} />
+              </div>
+            </div>
           </div>
         </div>
-        <div className="CrossingListItemFlexContainer">
-          <div className="CrossingListItemFlexItem">
-            <div className="ControlLabel">
-              Status: {statusConstants.statusNames[this.state.selectedStatus]}
-            </div>
+        <div className="DashboardCrossingListItem__controls">
+          <DashboardCrossingListItemControl
+            label={
+              <div>
+                Status: {statusConstants.statusNames[this.state.selectedStatus]}
+              </div>
+            }
+          >
             <StatusToggle
               status={this.state.selectedStatus}
               openClicked={this.openClicked}
@@ -529,16 +550,13 @@ class CrossingListItem extends React.Component {
               closedClicked={this.closedClicked}
               longtermClicked={this.longtermClicked}
             />
-          </div>
+          </DashboardCrossingListItemControl>
 
-          {show.includes('reason') ? (
-            <div className="CrossingListItemFlexItem">
-              <div className="ControlLabelContainer">
-                <div className="ControlLabel">Reason</div>
-                <div className="required">
-                  {this.isDirty() ? 'Required' : ''}
-                </div>
-              </div>
+          {show.includes('reason') && (
+            <DashboardCrossingListItemControl
+              label="Reason"
+              isRequired={this.isDirty()}
+            >
               <Dropdown
                 options={reasons.filter(
                   reason => reason.statusId === this.state.selectedStatus,
@@ -546,57 +564,43 @@ class CrossingListItem extends React.Component {
                 selected={this.state.selectedReason}
                 onChange={this.reasonChanged}
               />
-            </div>
-          ) : (
-            <div className="CrossingListItemFlexItem--spacer" />
+            </DashboardCrossingListItemControl>
           )}
-          <div className="CrossingListItemFlexItem">
-            <div className="ControlLabel">Notes to the public</div>
+          <DashboardCrossingListItemControl label="Notes to the public">
             <input
-              className="NotesTextBox"
+              className="DashboardCrossingListItem__notes-text-box"
               type="text"
               value={this.state.notes}
               onChange={this.notesChanged}
             />
-          </div>
+          </DashboardCrossingListItemControl>
+          {show.includes('duration') && (
+            <DashboardCrossingListItemControl
+              label="Duration"
+              isRequired={this.isDirty()}
+            >
+              <Dropdown
+                options={durations}
+                selected={this.state.selectedDuration}
+                onChange={this.durationChanged}
+              />
+            </DashboardCrossingListItemControl>
+          )}
         </div>
-
-        {(show.includes('duration') || show.includes('cancelSave')) && (
-          <div className="CrossingListItemFlexContainer">
-            <div className="CrossingListItemFlexItem--spacer" />
-
-            {show.includes('duration') ? (
-              <div className="CrossingListItemFlexItem">
-                <div className="ControlLabelContainer">
-                  <div className="ControlLabel">Duration</div>
-                  <div className="required">
-                    {this.isDirty() ? 'Required' : ''}
-                  </div>
-                </div>
-                <Dropdown
-                  options={durations}
-                  selected={this.state.selectedDuration}
-                  onChange={this.durationChanged}
-                />
-              </div>
-            ) : (
-              <div className="CrossingListItemFlexItem--spacer" />
-            )}
-
-            {show.includes('cancelSave') ? (
-              <div className="CrossingListItemFlexItem">
-                <div className="ButtonContainer">
-                  <div className="CancelButton" onClick={this.cancelClicked}>
-                    Cancel
-                  </div>
-                  <div className="SaveButton" onClick={this.newStatusUpdate}>
-                    Save
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="CrossingListItemFlexItem--spacer" />
-            )}
+        {show.includes('cancelSave') && (
+          <div className="DashboardCrossingListItem__button-container">
+            <ButtonSecondary
+              className="DashboardCrossingListItem__cancel-button"
+              onClick={this.cancelClicked}
+            >
+              Cancel
+            </ButtonSecondary>
+            <ButtonPrimary
+              className="DashboardCrossingListItem__save-button"
+              onClick={this.newStatusUpdate}
+            >
+              Submit
+            </ButtonPrimary>
           </div>
         )}
       </div>
@@ -607,11 +611,9 @@ class CrossingListItem extends React.Component {
         <ContainerQuery query={containerQuery}>
           {params => (
             <div
-              className={classnames(
-                params,
-                { 'CrossingListItem--dirty': this.isDirty() },
-                'CrossingListItem',
-              )}
+              className={classnames(params, {
+                'DashboardCrossingListItem--dirty': this.isDirty(),
+              })}
             >
               {CrossingListItemJSX}
             </div>
@@ -622,11 +624,9 @@ class CrossingListItem extends React.Component {
 
     return (
       <div
-        className={classnames(
-          this.props.cqClassName,
-          { 'CrossingListItem--dirty': this.isDirty() },
-          'CrossingListItem',
-        )}
+        className={classnames(this.props.cqClassName, {
+          'DashboardCrossingListItem--dirty': this.isDirty(),
+        })}
       >
         {CrossingListItemJSX}
       </div>
@@ -636,4 +636,4 @@ class CrossingListItem extends React.Component {
 
 export default graphql(newStatusUpdateMutation, {
   name: 'newStatusUpdateMutation',
-})(CrossingListItem);
+})(DashboardCrossingListItem);

@@ -1,0 +1,65 @@
+@import 'css/mixins/flexbox';
+
+.CrossingMapPage_sidebar-nearby-crossing-container {
+  @include flexcontainer;
+  background: white;
+  padding: 15px;
+  border-bottom: 1px solid #cfd8dc;
+  cursor: pointer;
+}
+
+.CrossingMapPage_sidebar-nearby-crossing-container:hover {
+  background-color: #eee;
+}
+
+.CrossingMapPage_sidebar-nearby-crossing-status-icon {
+  width: 45px;
+}
+
+.CrossingMapPage_sidebar-nearby-crossing-details {
+  flex: auto;
+}
+
+.CrossingMapPage_sidebar-nearby-crossing-details-status {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: #5f7d8c;
+}
+
+.CrossingMapPage_sidebar-nearby-crossing-details-status, .CrossingMapPage_sidebar-nearby-crossing-update-datetime-date {
+  padding-bottom: 0.5rem;
+}
+
+.CrossingMapPage_sidebar-nearby-crossing-details-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.7rem;
+}
+
+.CrossingMapPage_sidebar-nearby-crossing-update-datetime {
+  text-align: right;
+}
+
+.CrossingMapPage_sidebar-nearby-crossing-update-datetime-date {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: #5f7d8c;
+}
+
+.CrossingMapPage_sidebar-nearby-crossing-update-datetime-time {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #000;
+}
+
+.CrossingMapPage_sidebar-nearby-crossing-details-communities {
+  font-size: 1.5rem;
+  margin-top: 5px;
+  a {
+    color: #000;
+  }
+}

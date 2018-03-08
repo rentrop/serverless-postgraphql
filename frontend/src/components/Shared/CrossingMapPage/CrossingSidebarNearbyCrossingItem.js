@@ -1,7 +1,10 @@
 import React from 'react';
-import 'components/Shared/CrossingMapPage/CrossingMapPage.css';
+
 import { statusNames, statusIcons } from 'constants/StatusConstants';
-import moment from 'moment';
+import Date from 'components/Shared/DateTime/Date';
+import Hour from 'components/Shared/DateTime/Hour';
+
+import 'components/Shared/CrossingMapPage/CrossingSidebarNearbyCrossingItem.css';
 
 class CrossingSidebarNearbyCrossingItem extends React.Component {
   render() {
@@ -34,23 +37,25 @@ class CrossingSidebarNearbyCrossingItem extends React.Component {
           <div className="CrossingMapPage_sidebar-nearby-crossing-details-name">
             {crossingName}
           </div>
+          {/*
+            TODO: Replace with <CrossingCommunityList crossing={crossing} />
+            Then we can get rid of the allCommunities prop and doing a find in the render
+          */}
           <div className="CrossingMapPage_sidebar-nearby-crossing-details-communities">
-            {allCommunities &&
-              communityIds
-                .map(id => allCommunities.find(c => c.id === id).name)
-                .join(', ')}
+            <a href="/">
+              {allCommunities &&
+                communityIds
+                  .map(id => allCommunities.find(c => c.id === id).name)
+                  .join(', ')}
+            </a>
           </div>
         </div>
         <div className="CrossingMapPage_sidebar-nearby-crossing-update-datetime">
           <div className="CrossingMapPage_sidebar-nearby-crossing-update-datetime-date">
-            {moment(latestStatus).calendar(null, {
-              lastDay: '[Yesterday]',
-              sameDay: '[Today]',
-              sameElse: 'MM/DD/YYYY',
-            })}
+            <Date date={latestStatus} />
           </div>
           <div className="CrossingMapPage_sidebar-nearby-crossing-update-datetime-time">
-            {moment(latestStatus).format('h:mm A')}
+            <Hour date={latestStatus} />
           </div>
         </div>
       </div>

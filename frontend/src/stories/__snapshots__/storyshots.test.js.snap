@@ -405,218 +405,217 @@ exports[`Storyshots Crossing List Header Small Width 1`] = `
 
 exports[`Storyshots Crossing List Item Caution 1`] = `
 <div
-  className="CrossingListItem"
+  className=""
 >
-  <div>
+  <div
+    className="DashboardCrossingListItem"
+  >
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__overview"
     >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__crossing-name"
       >
         <a
-          className="CrossingName"
           href="/dashboard/crossing/1"
         >
           Spurlock Valley
         </a>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__overview-details"
       >
         <div
-          className="LocationContainer"
+          className="DashboardCrossingListItem__overview-location"
         >
           <div
-            className="MapIcon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-map-marker"
-            />
-          </div>
-          <div
-            className="LocationText"
+            className="CrossingListItemLocationContainer"
           >
             <div>
               605 Spurlock Valley · West Lake Hills, TX 78746
             </div>
             <div
-              style={
-                Object {
-                  "fontStyle": "italic",
-                }
-              }
+              className="CrossingListItemLocationContainer__description"
             >
               E of Intersection w/ Clifford
             </div>
-            <div>
-              All of Texas.
+          </div>
+          <div
+            className="DashboardCrossingListItem__community-list"
+          >
+            <div
+              className="CrossingCommunityList"
+            >
+              <a
+                href="/"
+              >
+                All of Texas.
+              </a>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="CrossingListItemFlexItem"
-      >
         <div
-          className="DateTime"
+          className="DashboardCrossingListItem__overview-meta"
         >
-          <div
-            className="DateTime__clock-icon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
+          <div>
+            10/10/2017
+          </div>
+          <div>
+            4:35 AM
           </div>
           <div
-            className="DateTime__text"
+            className="DashboardCrossingListItem__user"
           >
-            <div>
-              10/10/17, 4:35 am
-            </div>
-            <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
-            >
-              S. Admin
-            </div>
+            S. Admin
           </div>
         </div>
       </div>
     </div>
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__controls"
     >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabel"
+          className="DashboardCrossingListItem__control-meta"
         >
-          Status: 
-          Caution
+          <div
+            className="DashboardCrossingListItem__control-label"
+          >
+            <div>
+              Status: 
+              Caution
+            </div>
+          </div>
         </div>
         <div
-          className="StatusToggleContainer"
+          className="DashboardCrossingListItem__control-children"
         >
           <div
-            className="StatusToggle__open"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
+            className="StatusToggleContainer"
           >
-            <span
-              aria-hidden={true}
-              className="fa fa-circle-o"
-            />
-          </div>
-          <div
-            className="StatusToggle__caution--selected"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-exclamation-triangle"
-            />
-          </div>
-          <div
-            className="StatusToggle__closed"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-            />
-          </div>
-          <div
-            className="StatusToggle__longterm"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-              style={
-                Object {
-                  "textDecoration": "underline",
+            <div
+              className="StatusToggle__open"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-circle-o"
+              />
+            </div>
+            <div
+              className="StatusToggle__caution--selected"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-exclamation-triangle"
+              />
+            </div>
+            <div
+              className="StatusToggle__closed"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+              />
+            </div>
+            <div
+              className="StatusToggle__longterm"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
                 }
-              }
-            />
+              />
+            </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabelContainer"
+          className="DashboardCrossingListItem__control-meta"
         >
           <div
-            className="ControlLabel"
+            className="DashboardCrossingListItem__control-label"
           >
             Reason
           </div>
-          <div
-            className="required"
-          >
-            
-          </div>
         </div>
         <div
-          className="Dropdown"
+          className="DashboardCrossingListItem__control-children"
         >
-          <select
-            className="Dropdown__select"
-            defaultValue={1}
-            id=""
-            name=""
-            onChange={[Function]}
-          >
-            <option
-              value={1}
-            >
-              Flooded
-            </option>
-            <option
-              value={2}
-            >
-              Bridge Broken
-            </option>
-          </select>
           <div
-            className="Chevron"
+            className="Dropdown"
           >
-            <span
-              aria-hidden={true}
-              className="fa fa-chevron-down"
-            />
+            <select
+              className="Dropdown__select"
+              defaultValue={1}
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                value={1}
+              >
+                Flooded
+              </option>
+              <option
+                value={2}
+              >
+                Bridge Broken
+              </option>
+            </select>
+            <div
+              className="Chevron"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-down"
+              />
+            </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabel"
+          className="DashboardCrossingListItem__control-meta"
         >
-          Notes to the public
+          <div
+            className="DashboardCrossingListItem__control-label"
+          >
+            Notes to the public
+          </div>
         </div>
-        <input
-          className="NotesTextBox"
-          onChange={[Function]}
-          type="text"
-          value="Watch Out"
-        />
+        <div
+          className="DashboardCrossingListItem__control-children"
+        >
+          <input
+            className="DashboardCrossingListItem__notes-text-box"
+            onChange={[Function]}
+            type="text"
+            value="Watch Out"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -625,249 +624,239 @@ exports[`Storyshots Crossing List Item Caution 1`] = `
 
 exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
 <div
-  className="CrossingListItem--dirty CrossingListItem"
+  className="DashboardCrossingListItem--dirty"
 >
-  <div>
+  <div
+    className="DashboardCrossingListItem"
+  >
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__overview"
     >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__crossing-name"
       >
         <a
-          className="CrossingName"
           href="/dashboard/crossing/1"
         >
           Spurlock Valley
         </a>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__overview-details"
       >
         <div
-          className="LocationContainer"
+          className="DashboardCrossingListItem__overview-location"
         >
           <div
-            className="MapIcon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-map-marker"
-            />
-          </div>
-          <div
-            className="LocationText"
+            className="CrossingListItemLocationContainer"
           >
             <div>
               605 Spurlock Valley · West Lake Hills, TX 78746
             </div>
             <div
-              style={
-                Object {
-                  "fontStyle": "italic",
-                }
-              }
+              className="CrossingListItemLocationContainer__description"
             >
               E of Intersection w/ Clifford
             </div>
-            <div>
-              All of Texas.
+          </div>
+          <div
+            className="DashboardCrossingListItem__community-list"
+          >
+            <div
+              className="CrossingCommunityList"
+            >
+              <a
+                href="/"
+              >
+                All of Texas.
+              </a>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="CrossingListItemFlexItem"
-      >
         <div
-          className="DateTime"
+          className="DashboardCrossingListItem__overview-meta"
         >
-          <div
-            className="DateTime__clock-icon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
+          <div>
+            10/10/2017
+          </div>
+          <div>
+            4:35 AM
           </div>
           <div
-            className="DateTime__text"
+            className="DashboardCrossingListItem__user"
           >
-            <div>
-              10/10/17, 4:35 am
-            </div>
-            <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
-            >
-              S. Admin
-            </div>
+            S. Admin
           </div>
         </div>
       </div>
     </div>
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__controls"
     >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabel"
+          className="DashboardCrossingListItem__control-meta"
         >
-          Status: 
-          Caution
+          <div
+            className="DashboardCrossingListItem__control-label"
+          >
+            <div>
+              Status: 
+              Caution
+            </div>
+          </div>
         </div>
         <div
-          className="StatusToggleContainer"
+          className="DashboardCrossingListItem__control-children"
         >
           <div
-            className="StatusToggle__open"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
+            className="StatusToggleContainer"
           >
-            <span
-              aria-hidden={true}
-              className="fa fa-circle-o"
-            />
-          </div>
-          <div
-            className="StatusToggle__caution--selected"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-exclamation-triangle"
-            />
-          </div>
-          <div
-            className="StatusToggle__closed"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-            />
-          </div>
-          <div
-            className="StatusToggle__longterm"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-              style={
-                Object {
-                  "textDecoration": "underline",
+            <div
+              className="StatusToggle__open"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-circle-o"
+              />
+            </div>
+            <div
+              className="StatusToggle__caution--selected"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-exclamation-triangle"
+              />
+            </div>
+            <div
+              className="StatusToggle__closed"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+              />
+            </div>
+            <div
+              className="StatusToggle__longterm"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
                 }
-              }
-            />
+              />
+            </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabelContainer"
+          className="DashboardCrossingListItem__control-meta"
         >
           <div
-            className="ControlLabel"
+            className="DashboardCrossingListItem__control-label"
           >
             Reason
           </div>
           <div
-            className="required"
+            className="DashboardCrossingListItem__control-required"
           >
             Required
           </div>
         </div>
         <div
-          className="Dropdown"
+          className="DashboardCrossingListItem__control-children"
         >
-          <select
-            className="Dropdown__select"
-            defaultValue={1}
-            id=""
-            name=""
-            onChange={[Function]}
-          >
-            <option
-              value={1}
-            >
-              Flooded
-            </option>
-            <option
-              value={2}
-            >
-              Bridge Broken
-            </option>
-          </select>
           <div
-            className="Chevron"
+            className="Dropdown"
           >
-            <span
-              aria-hidden={true}
-              className="fa fa-chevron-down"
-            />
+            <select
+              className="Dropdown__select"
+              defaultValue={1}
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                value={1}
+              >
+                Flooded
+              </option>
+              <option
+                value={2}
+              >
+                Bridge Broken
+              </option>
+            </select>
+            <div
+              className="Chevron"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-down"
+              />
+            </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabel"
+          className="DashboardCrossingListItem__control-meta"
         >
-          Notes to the public
+          <div
+            className="DashboardCrossingListItem__control-label"
+          >
+            Notes to the public
+          </div>
         </div>
-        <input
-          className="NotesTextBox"
-          onChange={[Function]}
-          type="text"
-          value="Watch Out"
-        />
+        <div
+          className="DashboardCrossingListItem__control-children"
+        >
+          <input
+            className="DashboardCrossingListItem__notes-text-box"
+            onChange={[Function]}
+            type="text"
+            value="Watch Out"
+          />
+        </div>
       </div>
     </div>
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__button-container"
     >
-      <div
-        className="CrossingListItemFlexItem--spacer"
-      />
-      <div
-        className="CrossingListItemFlexItem--spacer"
-      />
-      <div
-        className="CrossingListItemFlexItem"
+      <button
+        className="Shared__button DashboardCrossingListItem__cancel-button Shared__button--secondary"
+        onClick={[Function]}
       >
-        <div
-          className="ButtonContainer"
-        >
-          <div
-            className="CancelButton"
-            onClick={[Function]}
-          >
-            Cancel
-          </div>
-          <div
-            className="SaveButton"
-            onClick={[Function]}
-          >
-            Save
-          </div>
-        </div>
-      </div>
+        Cancel
+      </button>
+      <button
+        className="Shared__button DashboardCrossingListItem__save-button Shared__button--primary"
+        onClick={[Function]}
+      >
+        Submit
+      </button>
     </div>
   </div>
 </div>
@@ -875,218 +864,217 @@ exports[`Storyshots Crossing List Item Caution Dirty 1`] = `
 
 exports[`Storyshots Crossing List Item Closed 1`] = `
 <div
-  className="CrossingListItem"
+  className=""
 >
-  <div>
+  <div
+    className="DashboardCrossingListItem"
+  >
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__overview"
     >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__crossing-name"
       >
         <a
-          className="CrossingName"
           href="/dashboard/crossing/1"
         >
           Spurlock Valley
         </a>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__overview-details"
       >
         <div
-          className="LocationContainer"
+          className="DashboardCrossingListItem__overview-location"
         >
           <div
-            className="MapIcon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-map-marker"
-            />
-          </div>
-          <div
-            className="LocationText"
+            className="CrossingListItemLocationContainer"
           >
             <div>
               605 Spurlock Valley · West Lake Hills, TX 78746
             </div>
             <div
-              style={
-                Object {
-                  "fontStyle": "italic",
-                }
-              }
+              className="CrossingListItemLocationContainer__description"
             >
               E of Intersection w/ Clifford
             </div>
-            <div>
-              All of Texas.
+          </div>
+          <div
+            className="DashboardCrossingListItem__community-list"
+          >
+            <div
+              className="CrossingCommunityList"
+            >
+              <a
+                href="/"
+              >
+                All of Texas.
+              </a>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="CrossingListItemFlexItem"
-      >
         <div
-          className="DateTime"
+          className="DashboardCrossingListItem__overview-meta"
         >
-          <div
-            className="DateTime__clock-icon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
+          <div>
+            10/10/2017
+          </div>
+          <div>
+            4:35 AM
           </div>
           <div
-            className="DateTime__text"
+            className="DashboardCrossingListItem__user"
           >
-            <div>
-              10/10/17, 4:35 am
-            </div>
-            <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
-            >
-              S. Admin
-            </div>
+            S. Admin
           </div>
         </div>
       </div>
     </div>
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__controls"
     >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabel"
+          className="DashboardCrossingListItem__control-meta"
         >
-          Status: 
-          Closed
+          <div
+            className="DashboardCrossingListItem__control-label"
+          >
+            <div>
+              Status: 
+              Closed
+            </div>
+          </div>
         </div>
         <div
-          className="StatusToggleContainer"
+          className="DashboardCrossingListItem__control-children"
         >
           <div
-            className="StatusToggle__open"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
+            className="StatusToggleContainer"
           >
-            <span
-              aria-hidden={true}
-              className="fa fa-circle-o"
-            />
-          </div>
-          <div
-            className="StatusToggle__caution"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-exclamation-triangle"
-            />
-          </div>
-          <div
-            className="StatusToggle__closed--selected"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-            />
-          </div>
-          <div
-            className="StatusToggle__longterm"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-              style={
-                Object {
-                  "textDecoration": "underline",
+            <div
+              className="StatusToggle__open"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-circle-o"
+              />
+            </div>
+            <div
+              className="StatusToggle__caution"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-exclamation-triangle"
+              />
+            </div>
+            <div
+              className="StatusToggle__closed--selected"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+              />
+            </div>
+            <div
+              className="StatusToggle__longterm"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
                 }
-              }
-            />
+              />
+            </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabelContainer"
+          className="DashboardCrossingListItem__control-meta"
         >
           <div
-            className="ControlLabel"
+            className="DashboardCrossingListItem__control-label"
           >
             Reason
           </div>
-          <div
-            className="required"
-          >
-            
-          </div>
         </div>
         <div
-          className="Dropdown"
+          className="DashboardCrossingListItem__control-children"
         >
-          <select
-            className="Dropdown__select"
-            defaultValue={1}
-            id=""
-            name=""
-            onChange={[Function]}
-          >
-            <option
-              value={1}
-            >
-              Flooded
-            </option>
-            <option
-              value={2}
-            >
-              Bridge Broken
-            </option>
-          </select>
           <div
-            className="Chevron"
+            className="Dropdown"
           >
-            <span
-              aria-hidden={true}
-              className="fa fa-chevron-down"
-            />
+            <select
+              className="Dropdown__select"
+              defaultValue={1}
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                value={1}
+              >
+                Flooded
+              </option>
+              <option
+                value={2}
+              >
+                Bridge Broken
+              </option>
+            </select>
+            <div
+              className="Chevron"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-down"
+              />
+            </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabel"
+          className="DashboardCrossingListItem__control-meta"
         >
-          Notes to the public
+          <div
+            className="DashboardCrossingListItem__control-label"
+          >
+            Notes to the public
+          </div>
         </div>
-        <input
-          className="NotesTextBox"
-          onChange={[Function]}
-          type="text"
-          value="No Go"
-        />
+        <div
+          className="DashboardCrossingListItem__control-children"
+        >
+          <input
+            className="DashboardCrossingListItem__notes-text-box"
+            onChange={[Function]}
+            type="text"
+            value="No Go"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1095,280 +1083,239 @@ exports[`Storyshots Crossing List Item Closed 1`] = `
 
 exports[`Storyshots Crossing List Item Closed Dirty 1`] = `
 <div
-  className="CrossingListItem--dirty CrossingListItem"
+  className="DashboardCrossingListItem--dirty"
 >
-  <div>
+  <div
+    className="DashboardCrossingListItem"
+  >
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__overview"
     >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__crossing-name"
       >
         <a
-          className="CrossingName"
           href="/dashboard/crossing/1"
         >
           Spurlock Valley
         </a>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__overview-details"
       >
         <div
-          className="LocationContainer"
+          className="DashboardCrossingListItem__overview-location"
         >
           <div
-            className="MapIcon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-map-marker"
-            />
-          </div>
-          <div
-            className="LocationText"
+            className="CrossingListItemLocationContainer"
           >
             <div>
               605 Spurlock Valley · West Lake Hills, TX 78746
             </div>
             <div
-              style={
-                Object {
-                  "fontStyle": "italic",
-                }
-              }
+              className="CrossingListItemLocationContainer__description"
             >
               E of Intersection w/ Clifford
             </div>
-            <div>
-              All of Texas.
+          </div>
+          <div
+            className="DashboardCrossingListItem__community-list"
+          >
+            <div
+              className="CrossingCommunityList"
+            >
+              <a
+                href="/"
+              >
+                All of Texas.
+              </a>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="CrossingListItemFlexItem"
-      >
         <div
-          className="DateTime"
+          className="DashboardCrossingListItem__overview-meta"
         >
-          <div
-            className="DateTime__clock-icon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
+          <div>
+            10/10/2017
+          </div>
+          <div>
+            4:35 AM
           </div>
           <div
-            className="DateTime__text"
+            className="DashboardCrossingListItem__user"
           >
-            <div>
-              10/10/17, 4:35 am
-            </div>
-            <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
-            >
-              S. Admin
-            </div>
+            S. Admin
           </div>
         </div>
       </div>
     </div>
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__controls"
     >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabel"
+          className="DashboardCrossingListItem__control-meta"
         >
-          Status: 
-          Closed
+          <div
+            className="DashboardCrossingListItem__control-label"
+          >
+            <div>
+              Status: 
+              Closed
+            </div>
+          </div>
         </div>
         <div
-          className="StatusToggleContainer"
+          className="DashboardCrossingListItem__control-children"
         >
           <div
-            className="StatusToggle__open"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
+            className="StatusToggleContainer"
           >
-            <span
-              aria-hidden={true}
-              className="fa fa-circle-o"
-            />
-          </div>
-          <div
-            className="StatusToggle__caution"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-exclamation-triangle"
-            />
-          </div>
-          <div
-            className="StatusToggle__closed--selected"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-            />
-          </div>
-          <div
-            className="StatusToggle__longterm"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-              style={
-                Object {
-                  "textDecoration": "underline",
+            <div
+              className="StatusToggle__open"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-circle-o"
+              />
+            </div>
+            <div
+              className="StatusToggle__caution"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-exclamation-triangle"
+              />
+            </div>
+            <div
+              className="StatusToggle__closed--selected"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+              />
+            </div>
+            <div
+              className="StatusToggle__longterm"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
                 }
-              }
-            />
+              />
+            </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabelContainer"
+          className="DashboardCrossingListItem__control-meta"
         >
           <div
-            className="ControlLabel"
+            className="DashboardCrossingListItem__control-label"
           >
             Reason
           </div>
           <div
-            className="required"
+            className="DashboardCrossingListItem__control-required"
           >
             Required
           </div>
         </div>
         <div
-          className="Dropdown"
+          className="DashboardCrossingListItem__control-children"
         >
-          <select
-            className="Dropdown__select"
-            defaultValue={1}
-            id=""
-            name=""
+          <div
+            className="Dropdown"
+          >
+            <select
+              className="Dropdown__select"
+              defaultValue={1}
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                value={1}
+              >
+                Flooded
+              </option>
+              <option
+                value={2}
+              >
+                Bridge Broken
+              </option>
+            </select>
+            <div
+              className="Chevron"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-down"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="DashboardCrossingListItem__control"
+      >
+        <div
+          className="DashboardCrossingListItem__control-meta"
+        >
+          <div
+            className="DashboardCrossingListItem__control-label"
+          >
+            Notes to the public
+          </div>
+        </div>
+        <div
+          className="DashboardCrossingListItem__control-children"
+        >
+          <input
+            className="DashboardCrossingListItem__notes-text-box"
             onChange={[Function]}
-          >
-            <option
-              value={1}
-            >
-              Flooded
-            </option>
-            <option
-              value={2}
-            >
-              Bridge Broken
-            </option>
-          </select>
-          <div
-            className="Chevron"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-chevron-down"
-            />
-          </div>
+            type="text"
+            value="No Go"
+          />
         </div>
-      </div>
-      <div
-        className="CrossingListItemFlexItem"
-      >
-        <div
-          className="ControlLabel"
-        >
-          Notes to the public
-        </div>
-        <input
-          className="NotesTextBox"
-          onChange={[Function]}
-          type="text"
-          value="No Go"
-        />
       </div>
     </div>
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__button-container"
     >
-      <div
-        className="CrossingListItemFlexItem--spacer"
-      />
-      <div
-        className="CrossingListItemFlexItem--spacer"
-      />
-      <div
-        className="CrossingListItemFlexItem"
+      <button
+        className="Shared__button DashboardCrossingListItem__cancel-button Shared__button--secondary"
+        onClick={[Function]}
       >
-        <div
-          className="ButtonContainer"
-        >
-          <div
-            className="CancelButton"
-            onClick={[Function]}
-          >
-            Cancel
-          </div>
-          <div
-            className="SaveButton"
-            onClick={[Function]}
-          >
-            Save
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Crossing List Item DateTime DateTime 1`] = `
-<div
-  className="DateTime"
->
-  <div
-    className="DateTime__clock-icon"
-  >
-    <span
-      aria-hidden={true}
-      className="fa fa-clock-o"
-    />
-  </div>
-  <div
-    className="DateTime__text"
-  >
-    <div>
-      10/10/17, 4:35 am
-    </div>
-    <div
-      style={
-        Object {
-          "textDecoration": "underline",
-        }
-      }
-    >
-      S. Admin
+        Cancel
+      </button>
+      <button
+        className="Shared__button DashboardCrossingListItem__save-button Shared__button--primary"
+        onClick={[Function]}
+      >
+        Submit
+      </button>
     </div>
   </div>
 </div>
@@ -1379,102 +1326,375 @@ exports[`Storyshots Crossing List Item Large Width 1`] = `
   className="storybook--lg"
 >
   <div
-    className="CrossingListItem"
+    className=""
   >
-    <div>
+    <div
+      className="DashboardCrossingListItem"
+    >
       <div
-        className="CrossingListItemFlexContainer"
+        className="DashboardCrossingListItem__overview"
       >
         <div
-          className="CrossingListItemFlexItem"
+          className="DashboardCrossingListItem__crossing-name"
         >
           <a
-            className="CrossingName"
             href="/dashboard/crossing/1"
           >
             Spurlock Valley
           </a>
         </div>
         <div
-          className="CrossingListItemFlexItem"
+          className="DashboardCrossingListItem__overview-details"
         >
           <div
-            className="LocationContainer"
+            className="DashboardCrossingListItem__overview-location"
           >
             <div
-              className="MapIcon"
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-map-marker"
-              />
-            </div>
-            <div
-              className="LocationText"
+              className="CrossingListItemLocationContainer"
             >
               <div>
                 605 Spurlock Valley · West Lake Hills, TX 78746
               </div>
               <div
-                style={
-                  Object {
-                    "fontStyle": "italic",
-                  }
-                }
+                className="CrossingListItemLocationContainer__description"
               >
                 E of Intersection w/ Clifford
               </div>
-              <div>
-                All of Texas.
+            </div>
+            <div
+              className="DashboardCrossingListItem__community-list"
+            >
+              <div
+                className="CrossingCommunityList"
+              >
+                <a
+                  href="/"
+                >
+                  All of Texas.
+                </a>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="CrossingListItemFlexItem"
-        >
           <div
-            className="DateTime"
+            className="DashboardCrossingListItem__overview-meta"
           >
-            <div
-              className="DateTime__clock-icon"
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-clock-o"
-              />
+            <div>
+              10/10/2017
+            </div>
+            <div>
+              4:35 AM
             </div>
             <div
-              className="DateTime__text"
+              className="DashboardCrossingListItem__user"
             >
-              <div>
-                10/10/17, 4:35 am
-              </div>
-              <div
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
-                }
-              >
-                S. Admin
-              </div>
+              S. Admin
             </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingListItemFlexContainer"
+        className="DashboardCrossingListItem__controls"
       >
         <div
-          className="CrossingListItemFlexItem"
+          className="DashboardCrossingListItem__control"
         >
           <div
-            className="ControlLabel"
+            className="DashboardCrossingListItem__control-meta"
           >
-            Status: 
-            Closed Longterm
+            <div
+              className="DashboardCrossingListItem__control-label"
+            >
+              <div>
+                Status: 
+                Closed Longterm
+              </div>
+            </div>
           </div>
+          <div
+            className="DashboardCrossingListItem__control-children"
+          >
+            <div
+              className="StatusToggleContainer"
+            >
+              <div
+                className="StatusToggle__open"
+                onClick={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+              >
+                <span
+                  aria-hidden={true}
+                  className="fa fa-circle-o"
+                />
+              </div>
+              <div
+                className="StatusToggle__caution"
+                onClick={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+              >
+                <span
+                  aria-hidden={true}
+                  className="fa fa-exclamation-triangle"
+                />
+              </div>
+              <div
+                className="StatusToggle__closed"
+                onClick={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+              >
+                <span
+                  aria-hidden={true}
+                  className="fa fa-times"
+                />
+              </div>
+              <div
+                className="StatusToggle__longterm--selected"
+                onClick={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+              >
+                <span
+                  aria-hidden={true}
+                  className="fa fa-times"
+                  style={
+                    Object {
+                      "textDecoration": "underline",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="DashboardCrossingListItem__control"
+        >
+          <div
+            className="DashboardCrossingListItem__control-meta"
+          >
+            <div
+              className="DashboardCrossingListItem__control-label"
+            >
+              Reason
+            </div>
+          </div>
+          <div
+            className="DashboardCrossingListItem__control-children"
+          >
+            <div
+              className="Dropdown"
+            >
+              <select
+                className="Dropdown__select"
+                defaultValue={2}
+                id=""
+                name=""
+                onChange={[Function]}
+              >
+                <option
+                  value={1}
+                >
+                  Flooded
+                </option>
+                <option
+                  value={2}
+                >
+                  Bridge Broken
+                </option>
+              </select>
+              <div
+                className="Chevron"
+              >
+                <span
+                  aria-hidden={true}
+                  className="fa fa-chevron-down"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="DashboardCrossingListItem__control"
+        >
+          <div
+            className="DashboardCrossingListItem__control-meta"
+          >
+            <div
+              className="DashboardCrossingListItem__control-label"
+            >
+              Notes to the public
+            </div>
+          </div>
+          <div
+            className="DashboardCrossingListItem__control-children"
+          >
+            <input
+              className="DashboardCrossingListItem__notes-text-box"
+              onChange={[Function]}
+              type="text"
+              value="Gonna be a while"
+            />
+          </div>
+        </div>
+        <div
+          className="DashboardCrossingListItem__control"
+        >
+          <div
+            className="DashboardCrossingListItem__control-meta"
+          >
+            <div
+              className="DashboardCrossingListItem__control-label"
+            >
+              Duration
+            </div>
+          </div>
+          <div
+            className="DashboardCrossingListItem__control-children"
+          >
+            <div
+              className="Dropdown"
+            >
+              <select
+                className="Dropdown__select"
+                defaultValue={2}
+                id=""
+                name=""
+                onChange={[Function]}
+              >
+                <option
+                  value={1}
+                >
+                  A Minute
+                </option>
+                <option
+                  value={2}
+                >
+                  A Week
+                </option>
+              </select>
+              <div
+                className="Chevron"
+              >
+                <span
+                  aria-hidden={true}
+                  className="fa fa-chevron-down"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Crossing List Item Location Location 1`] = `
+<div
+  className="CrossingListItemLocationContainer"
+>
+  <div>
+    605 Spurlock Valley · West Lake Hills, TX 78746
+  </div>
+  <div
+    className="CrossingListItemLocationContainer__description"
+  >
+    E of Intersection w/ Clifford
+  </div>
+</div>
+`;
+
+exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
+<div
+  className=""
+>
+  <div
+    className="DashboardCrossingListItem"
+  >
+    <div
+      className="DashboardCrossingListItem__overview"
+    >
+      <div
+        className="DashboardCrossingListItem__crossing-name"
+      >
+        <a
+          href="/dashboard/crossing/1"
+        >
+          Spurlock Valley
+        </a>
+      </div>
+      <div
+        className="DashboardCrossingListItem__overview-details"
+      >
+        <div
+          className="DashboardCrossingListItem__overview-location"
+        >
+          <div
+            className="CrossingListItemLocationContainer"
+          >
+            <div>
+              605 Spurlock Valley · West Lake Hills, TX 78746
+            </div>
+            <div
+              className="CrossingListItemLocationContainer__description"
+            >
+              E of Intersection w/ Clifford
+            </div>
+          </div>
+          <div
+            className="DashboardCrossingListItem__community-list"
+          >
+            <div
+              className="CrossingCommunityList"
+            >
+              <a
+                href="/"
+              >
+                All of Texas.
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          className="DashboardCrossingListItem__overview-meta"
+        >
+          <div>
+            10/10/2017
+          </div>
+          <div>
+            4:35 AM
+          </div>
+          <div
+            className="DashboardCrossingListItem__user"
+          >
+            S. Admin
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="DashboardCrossingListItem__controls"
+    >
+      <div
+        className="DashboardCrossingListItem__control"
+      >
+        <div
+          className="DashboardCrossingListItem__control-meta"
+        >
+          <div
+            className="DashboardCrossingListItem__control-label"
+          >
+            <div>
+              Status: 
+              Closed Longterm
+            </div>
+          </div>
+        </div>
+        <div
+          className="DashboardCrossingListItem__control-children"
+        >
           <div
             className="StatusToggleContainer"
           >
@@ -1529,23 +1749,22 @@ exports[`Storyshots Crossing List Item Large Width 1`] = `
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="DashboardCrossingListItem__control"
+      >
         <div
-          className="CrossingListItemFlexItem"
+          className="DashboardCrossingListItem__control-meta"
         >
           <div
-            className="ControlLabelContainer"
+            className="DashboardCrossingListItem__control-label"
           >
-            <div
-              className="ControlLabel"
-            >
-              Reason
-            </div>
-            <div
-              className="required"
-            >
-              
-            </div>
+            Reason
           </div>
+        </div>
+        <div
+          className="DashboardCrossingListItem__control-children"
+        >
           <div
             className="Dropdown"
           >
@@ -1577,16 +1796,24 @@ exports[`Storyshots Crossing List Item Large Width 1`] = `
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="DashboardCrossingListItem__control"
+      >
         <div
-          className="CrossingListItemFlexItem"
+          className="DashboardCrossingListItem__control-meta"
         >
           <div
-            className="ControlLabel"
+            className="DashboardCrossingListItem__control-label"
           >
             Notes to the public
           </div>
+        </div>
+        <div
+          className="DashboardCrossingListItem__control-children"
+        >
           <input
-            className="NotesTextBox"
+            className="DashboardCrossingListItem__notes-text-box"
             onChange={[Function]}
             type="text"
             value="Gonna be a while"
@@ -1594,28 +1821,20 @@ exports[`Storyshots Crossing List Item Large Width 1`] = `
         </div>
       </div>
       <div
-        className="CrossingListItemFlexContainer"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="CrossingListItemFlexItem--spacer"
-        />
-        <div
-          className="CrossingListItemFlexItem"
+          className="DashboardCrossingListItem__control-meta"
         >
           <div
-            className="ControlLabelContainer"
+            className="DashboardCrossingListItem__control-label"
           >
-            <div
-              className="ControlLabel"
-            >
-              Duration
-            </div>
-            <div
-              className="required"
-            >
-              
-            </div>
+            Duration
           </div>
+        </div>
+        <div
+          className="DashboardCrossingListItem__control-children"
+        >
           <div
             className="Dropdown"
           >
@@ -1647,322 +1866,7 @@ exports[`Storyshots Crossing List Item Large Width 1`] = `
             </div>
           </div>
         </div>
-        <div
-          className="CrossingListItemFlexItem--spacer"
-        />
       </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Crossing List Item Location Location 1`] = `
-<div
-  className="LocationContainer"
->
-  <div
-    className="MapIcon"
-  >
-    <span
-      aria-hidden={true}
-      className="fa fa-map-marker"
-    />
-  </div>
-  <div
-    className="LocationText"
-  >
-    <div>
-      605 Spurlock Valley · West Lake Hills, TX 78746
-    </div>
-    <div
-      style={
-        Object {
-          "fontStyle": "italic",
-        }
-      }
-    >
-      E of Intersection w/ Clifford
-    </div>
-    <div>
-      All of Texas.
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
-<div
-  className="CrossingListItem"
->
-  <div>
-    <div
-      className="CrossingListItemFlexContainer"
-    >
-      <div
-        className="CrossingListItemFlexItem"
-      >
-        <a
-          className="CrossingName"
-          href="/dashboard/crossing/1"
-        >
-          Spurlock Valley
-        </a>
-      </div>
-      <div
-        className="CrossingListItemFlexItem"
-      >
-        <div
-          className="LocationContainer"
-        >
-          <div
-            className="MapIcon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-map-marker"
-            />
-          </div>
-          <div
-            className="LocationText"
-          >
-            <div>
-              605 Spurlock Valley · West Lake Hills, TX 78746
-            </div>
-            <div
-              style={
-                Object {
-                  "fontStyle": "italic",
-                }
-              }
-            >
-              E of Intersection w/ Clifford
-            </div>
-            <div>
-              All of Texas.
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="CrossingListItemFlexItem"
-      >
-        <div
-          className="DateTime"
-        >
-          <div
-            className="DateTime__clock-icon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
-          </div>
-          <div
-            className="DateTime__text"
-          >
-            <div>
-              10/10/17, 4:35 am
-            </div>
-            <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
-            >
-              S. Admin
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="CrossingListItemFlexContainer"
-    >
-      <div
-        className="CrossingListItemFlexItem"
-      >
-        <div
-          className="ControlLabel"
-        >
-          Status: 
-          Closed Longterm
-        </div>
-        <div
-          className="StatusToggleContainer"
-        >
-          <div
-            className="StatusToggle__open"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-circle-o"
-            />
-          </div>
-          <div
-            className="StatusToggle__caution"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-exclamation-triangle"
-            />
-          </div>
-          <div
-            className="StatusToggle__closed"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-            />
-          </div>
-          <div
-            className="StatusToggle__longterm--selected"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        className="CrossingListItemFlexItem"
-      >
-        <div
-          className="ControlLabelContainer"
-        >
-          <div
-            className="ControlLabel"
-          >
-            Reason
-          </div>
-          <div
-            className="required"
-          >
-            
-          </div>
-        </div>
-        <div
-          className="Dropdown"
-        >
-          <select
-            className="Dropdown__select"
-            defaultValue={2}
-            id=""
-            name=""
-            onChange={[Function]}
-          >
-            <option
-              value={1}
-            >
-              Flooded
-            </option>
-            <option
-              value={2}
-            >
-              Bridge Broken
-            </option>
-          </select>
-          <div
-            className="Chevron"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-chevron-down"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        className="CrossingListItemFlexItem"
-      >
-        <div
-          className="ControlLabel"
-        >
-          Notes to the public
-        </div>
-        <input
-          className="NotesTextBox"
-          onChange={[Function]}
-          type="text"
-          value="Gonna be a while"
-        />
-      </div>
-    </div>
-    <div
-      className="CrossingListItemFlexContainer"
-    >
-      <div
-        className="CrossingListItemFlexItem--spacer"
-      />
-      <div
-        className="CrossingListItemFlexItem"
-      >
-        <div
-          className="ControlLabelContainer"
-        >
-          <div
-            className="ControlLabel"
-          >
-            Duration
-          </div>
-          <div
-            className="required"
-          >
-            
-          </div>
-        </div>
-        <div
-          className="Dropdown"
-        >
-          <select
-            className="Dropdown__select"
-            defaultValue={2}
-            id=""
-            name=""
-            onChange={[Function]}
-          >
-            <option
-              value={1}
-            >
-              A Minute
-            </option>
-            <option
-              value={2}
-            >
-              A Week
-            </option>
-          </select>
-          <div
-            className="Chevron"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-chevron-down"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        className="CrossingListItemFlexItem--spacer"
-      />
     </div>
   </div>
 </div>
@@ -1970,294 +1874,291 @@ exports[`Storyshots Crossing List Item Long Term Closure 1`] = `
 
 exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
 <div
-  className="CrossingListItem--dirty CrossingListItem"
+  className="DashboardCrossingListItem--dirty"
 >
-  <div>
+  <div
+    className="DashboardCrossingListItem"
+  >
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__overview"
     >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__crossing-name"
       >
         <a
-          className="CrossingName"
           href="/dashboard/crossing/1"
         >
           Spurlock Valley
         </a>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__overview-details"
       >
         <div
-          className="LocationContainer"
+          className="DashboardCrossingListItem__overview-location"
         >
           <div
-            className="MapIcon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-map-marker"
-            />
-          </div>
-          <div
-            className="LocationText"
+            className="CrossingListItemLocationContainer"
           >
             <div>
               605 Spurlock Valley · West Lake Hills, TX 78746
             </div>
             <div
-              style={
-                Object {
-                  "fontStyle": "italic",
-                }
-              }
+              className="CrossingListItemLocationContainer__description"
             >
               E of Intersection w/ Clifford
             </div>
-            <div>
-              All of Texas.
+          </div>
+          <div
+            className="DashboardCrossingListItem__community-list"
+          >
+            <div
+              className="CrossingCommunityList"
+            >
+              <a
+                href="/"
+              >
+                All of Texas.
+              </a>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="CrossingListItemFlexItem"
-      >
         <div
-          className="DateTime"
+          className="DashboardCrossingListItem__overview-meta"
         >
-          <div
-            className="DateTime__clock-icon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
+          <div>
+            10/10/2017
+          </div>
+          <div>
+            4:35 AM
           </div>
           <div
-            className="DateTime__text"
+            className="DashboardCrossingListItem__user"
           >
-            <div>
-              10/10/17, 4:35 am
-            </div>
-            <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
-            >
-              S. Admin
-            </div>
+            S. Admin
           </div>
         </div>
       </div>
     </div>
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__controls"
     >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabel"
+          className="DashboardCrossingListItem__control-meta"
         >
-          Status: 
-          Closed Longterm
+          <div
+            className="DashboardCrossingListItem__control-label"
+          >
+            <div>
+              Status: 
+              Closed Longterm
+            </div>
+          </div>
         </div>
         <div
-          className="StatusToggleContainer"
+          className="DashboardCrossingListItem__control-children"
         >
           <div
-            className="StatusToggle__open"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
+            className="StatusToggleContainer"
           >
-            <span
-              aria-hidden={true}
-              className="fa fa-circle-o"
-            />
-          </div>
-          <div
-            className="StatusToggle__caution"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-exclamation-triangle"
-            />
-          </div>
-          <div
-            className="StatusToggle__closed"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-            />
-          </div>
-          <div
-            className="StatusToggle__longterm--selected"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-              style={
-                Object {
-                  "textDecoration": "underline",
+            <div
+              className="StatusToggle__open"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-circle-o"
+              />
+            </div>
+            <div
+              className="StatusToggle__caution"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-exclamation-triangle"
+              />
+            </div>
+            <div
+              className="StatusToggle__closed"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+              />
+            </div>
+            <div
+              className="StatusToggle__longterm--selected"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
                 }
-              }
-            />
+              />
+            </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabelContainer"
+          className="DashboardCrossingListItem__control-meta"
         >
           <div
-            className="ControlLabel"
+            className="DashboardCrossingListItem__control-label"
           >
             Reason
           </div>
           <div
-            className="required"
+            className="DashboardCrossingListItem__control-required"
           >
             Required
           </div>
         </div>
         <div
-          className="Dropdown"
+          className="DashboardCrossingListItem__control-children"
         >
-          <select
-            className="Dropdown__select"
-            defaultValue={2}
-            id=""
-            name=""
-            onChange={[Function]}
-          >
-            <option
-              value={1}
-            >
-              Flooded
-            </option>
-            <option
-              value={2}
-            >
-              Bridge Broken
-            </option>
-          </select>
           <div
-            className="Chevron"
+            className="Dropdown"
           >
-            <span
-              aria-hidden={true}
-              className="fa fa-chevron-down"
-            />
+            <select
+              className="Dropdown__select"
+              defaultValue={2}
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                value={1}
+              >
+                Flooded
+              </option>
+              <option
+                value={2}
+              >
+                Bridge Broken
+              </option>
+            </select>
+            <div
+              className="Chevron"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-down"
+              />
+            </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabel"
-        >
-          Notes to the public
-        </div>
-        <input
-          className="NotesTextBox"
-          onChange={[Function]}
-          type="text"
-          value="Gonna be a while"
-        />
-      </div>
-    </div>
-    <div
-      className="CrossingListItemFlexContainer"
-    >
-      <div
-        className="CrossingListItemFlexItem--spacer"
-      />
-      <div
-        className="CrossingListItemFlexItem"
-      >
-        <div
-          className="ControlLabelContainer"
+          className="DashboardCrossingListItem__control-meta"
         >
           <div
-            className="ControlLabel"
+            className="DashboardCrossingListItem__control-label"
+          >
+            Notes to the public
+          </div>
+        </div>
+        <div
+          className="DashboardCrossingListItem__control-children"
+        >
+          <input
+            className="DashboardCrossingListItem__notes-text-box"
+            onChange={[Function]}
+            type="text"
+            value="Gonna be a while"
+          />
+        </div>
+      </div>
+      <div
+        className="DashboardCrossingListItem__control"
+      >
+        <div
+          className="DashboardCrossingListItem__control-meta"
+        >
+          <div
+            className="DashboardCrossingListItem__control-label"
           >
             Duration
           </div>
           <div
-            className="required"
+            className="DashboardCrossingListItem__control-required"
           >
             Required
           </div>
         </div>
         <div
-          className="Dropdown"
+          className="DashboardCrossingListItem__control-children"
         >
-          <select
-            className="Dropdown__select"
-            defaultValue={2}
-            id=""
-            name=""
-            onChange={[Function]}
-          >
-            <option
-              value={1}
-            >
-              A Minute
-            </option>
-            <option
-              value={2}
-            >
-              A Week
-            </option>
-          </select>
           <div
-            className="Chevron"
+            className="Dropdown"
           >
-            <span
-              aria-hidden={true}
-              className="fa fa-chevron-down"
-            />
+            <select
+              className="Dropdown__select"
+              defaultValue={2}
+              id=""
+              name=""
+              onChange={[Function]}
+            >
+              <option
+                value={1}
+              >
+                A Minute
+              </option>
+              <option
+                value={2}
+              >
+                A Week
+              </option>
+            </select>
+            <div
+              className="Chevron"
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-down"
+              />
+            </div>
           </div>
         </div>
       </div>
-      <div
-        className="CrossingListItemFlexItem"
+    </div>
+    <div
+      className="DashboardCrossingListItem__button-container"
+    >
+      <button
+        className="Shared__button DashboardCrossingListItem__cancel-button Shared__button--secondary"
+        onClick={[Function]}
       >
-        <div
-          className="ButtonContainer"
-        >
-          <div
-            className="CancelButton"
-            onClick={[Function]}
-          >
-            Cancel
-          </div>
-          <div
-            className="SaveButton"
-            onClick={[Function]}
-          >
-            Save
-          </div>
-        </div>
-      </div>
+        Cancel
+      </button>
+      <button
+        className="Shared__button DashboardCrossingListItem__save-button Shared__button--primary"
+        onClick={[Function]}
+      >
+        Submit
+      </button>
     </div>
   </div>
 </div>
@@ -2265,173 +2166,170 @@ exports[`Storyshots Crossing List Item Long Term Closure Dirty 1`] = `
 
 exports[`Storyshots Crossing List Item Open 1`] = `
 <div
-  className="CrossingListItem"
+  className=""
 >
-  <div>
+  <div
+    className="DashboardCrossingListItem"
+  >
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__overview"
     >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__crossing-name"
       >
         <a
-          className="CrossingName"
           href="/dashboard/crossing/1"
         >
           Spurlock Valley
         </a>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__overview-details"
       >
         <div
-          className="LocationContainer"
+          className="DashboardCrossingListItem__overview-location"
         >
           <div
-            className="MapIcon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-map-marker"
-            />
-          </div>
-          <div
-            className="LocationText"
+            className="CrossingListItemLocationContainer"
           >
             <div>
               605 Spurlock Valley · West Lake Hills, TX 78746
             </div>
             <div
-              style={
-                Object {
-                  "fontStyle": "italic",
-                }
-              }
+              className="CrossingListItemLocationContainer__description"
             >
               E of Intersection w/ Clifford
             </div>
-            <div>
-              All of Texas.
+          </div>
+          <div
+            className="DashboardCrossingListItem__community-list"
+          >
+            <div
+              className="CrossingCommunityList"
+            >
+              <a
+                href="/"
+              >
+                All of Texas.
+              </a>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="CrossingListItemFlexItem"
-      >
         <div
-          className="DateTime"
+          className="DashboardCrossingListItem__overview-meta"
         >
-          <div
-            className="DateTime__clock-icon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
+          <div>
+            10/10/2017
+          </div>
+          <div>
+            4:35 AM
           </div>
           <div
-            className="DateTime__text"
+            className="DashboardCrossingListItem__user"
           >
-            <div>
-              10/10/17, 4:35 am
-            </div>
-            <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
-            >
-              S. Admin
-            </div>
+            S. Admin
           </div>
         </div>
       </div>
     </div>
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__controls"
     >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabel"
+          className="DashboardCrossingListItem__control-meta"
         >
-          Status: 
-          Open
+          <div
+            className="DashboardCrossingListItem__control-label"
+          >
+            <div>
+              Status: 
+              Open
+            </div>
+          </div>
         </div>
         <div
-          className="StatusToggleContainer"
+          className="DashboardCrossingListItem__control-children"
         >
           <div
-            className="StatusToggle__open--selected"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
+            className="StatusToggleContainer"
           >
-            <span
-              aria-hidden={true}
-              className="fa fa-circle-o"
-            />
-          </div>
-          <div
-            className="StatusToggle__caution"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-exclamation-triangle"
-            />
-          </div>
-          <div
-            className="StatusToggle__closed"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-            />
-          </div>
-          <div
-            className="StatusToggle__longterm"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-              style={
-                Object {
-                  "textDecoration": "underline",
+            <div
+              className="StatusToggle__open--selected"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-circle-o"
+              />
+            </div>
+            <div
+              className="StatusToggle__caution"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-exclamation-triangle"
+              />
+            </div>
+            <div
+              className="StatusToggle__closed"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+              />
+            </div>
+            <div
+              className="StatusToggle__longterm"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
                 }
-              }
-            />
+              />
+            </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingListItemFlexItem--spacer"
-      />
-      <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabel"
+          className="DashboardCrossingListItem__control-meta"
         >
-          Notes to the public
+          <div
+            className="DashboardCrossingListItem__control-label"
+          >
+            Notes to the public
+          </div>
         </div>
-        <input
-          className="NotesTextBox"
-          onChange={[Function]}
-          type="text"
-          value="All Clear"
-        />
+        <div
+          className="DashboardCrossingListItem__control-children"
+        >
+          <input
+            className="DashboardCrossingListItem__notes-text-box"
+            onChange={[Function]}
+            type="text"
+            value="All Clear"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -2440,204 +2338,187 @@ exports[`Storyshots Crossing List Item Open 1`] = `
 
 exports[`Storyshots Crossing List Item Open Dirty 1`] = `
 <div
-  className="CrossingListItem--dirty CrossingListItem"
+  className="DashboardCrossingListItem--dirty"
 >
-  <div>
+  <div
+    className="DashboardCrossingListItem"
+  >
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__overview"
     >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__crossing-name"
       >
         <a
-          className="CrossingName"
           href="/dashboard/crossing/1"
         >
           Spurlock Valley
         </a>
       </div>
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__overview-details"
       >
         <div
-          className="LocationContainer"
+          className="DashboardCrossingListItem__overview-location"
         >
           <div
-            className="MapIcon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-map-marker"
-            />
-          </div>
-          <div
-            className="LocationText"
+            className="CrossingListItemLocationContainer"
           >
             <div>
               605 Spurlock Valley · West Lake Hills, TX 78746
             </div>
             <div
-              style={
-                Object {
-                  "fontStyle": "italic",
-                }
-              }
+              className="CrossingListItemLocationContainer__description"
             >
               E of Intersection w/ Clifford
             </div>
-            <div>
-              All of Texas.
+          </div>
+          <div
+            className="DashboardCrossingListItem__community-list"
+          >
+            <div
+              className="CrossingCommunityList"
+            >
+              <a
+                href="/"
+              >
+                All of Texas.
+              </a>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="CrossingListItemFlexItem"
-      >
         <div
-          className="DateTime"
+          className="DashboardCrossingListItem__overview-meta"
         >
-          <div
-            className="DateTime__clock-icon"
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-clock-o"
-            />
+          <div>
+            10/10/2017
+          </div>
+          <div>
+            4:35 AM
           </div>
           <div
-            className="DateTime__text"
+            className="DashboardCrossingListItem__user"
+          >
+            S. Admin
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="DashboardCrossingListItem__controls"
+    >
+      <div
+        className="DashboardCrossingListItem__control"
+      >
+        <div
+          className="DashboardCrossingListItem__control-meta"
+        >
+          <div
+            className="DashboardCrossingListItem__control-label"
           >
             <div>
-              10/10/17, 4:35 am
+              Status: 
+              Open
+            </div>
+          </div>
+        </div>
+        <div
+          className="DashboardCrossingListItem__control-children"
+        >
+          <div
+            className="StatusToggleContainer"
+          >
+            <div
+              className="StatusToggle__open--selected"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-circle-o"
+              />
             </div>
             <div
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
+              className="StatusToggle__caution"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
             >
-              S. Admin
+              <span
+                aria-hidden={true}
+                className="fa fa-exclamation-triangle"
+              />
+            </div>
+            <div
+              className="StatusToggle__closed"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+              />
+            </div>
+            <div
+              className="StatusToggle__longterm"
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+            >
+              <span
+                aria-hidden={true}
+                className="fa fa-times"
+                style={
+                  Object {
+                    "textDecoration": "underline",
+                  }
+                }
+              />
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      className="CrossingListItemFlexContainer"
-    >
       <div
-        className="CrossingListItemFlexItem"
+        className="DashboardCrossingListItem__control"
       >
         <div
-          className="ControlLabel"
+          className="DashboardCrossingListItem__control-meta"
         >
-          Status: 
-          Open
+          <div
+            className="DashboardCrossingListItem__control-label"
+          >
+            Notes to the public
+          </div>
         </div>
         <div
-          className="StatusToggleContainer"
+          className="DashboardCrossingListItem__control-children"
         >
-          <div
-            className="StatusToggle__open--selected"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-circle-o"
-            />
-          </div>
-          <div
-            className="StatusToggle__caution"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-exclamation-triangle"
-            />
-          </div>
-          <div
-            className="StatusToggle__closed"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-            />
-          </div>
-          <div
-            className="StatusToggle__longterm"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-          >
-            <span
-              aria-hidden={true}
-              className="fa fa-times"
-              style={
-                Object {
-                  "textDecoration": "underline",
-                }
-              }
-            />
-          </div>
+          <input
+            className="DashboardCrossingListItem__notes-text-box"
+            onChange={[Function]}
+            type="text"
+            value="All Clear"
+          />
         </div>
-      </div>
-      <div
-        className="CrossingListItemFlexItem--spacer"
-      />
-      <div
-        className="CrossingListItemFlexItem"
-      >
-        <div
-          className="ControlLabel"
-        >
-          Notes to the public
-        </div>
-        <input
-          className="NotesTextBox"
-          onChange={[Function]}
-          type="text"
-          value="All Clear"
-        />
       </div>
     </div>
     <div
-      className="CrossingListItemFlexContainer"
+      className="DashboardCrossingListItem__button-container"
     >
-      <div
-        className="CrossingListItemFlexItem--spacer"
-      />
-      <div
-        className="CrossingListItemFlexItem--spacer"
-      />
-      <div
-        className="CrossingListItemFlexItem"
+      <button
+        className="Shared__button DashboardCrossingListItem__cancel-button Shared__button--secondary"
+        onClick={[Function]}
       >
-        <div
-          className="ButtonContainer"
-        >
-          <div
-            className="CancelButton"
-            onClick={[Function]}
-          >
-            Cancel
-          </div>
-          <div
-            className="SaveButton"
-            onClick={[Function]}
-          >
-            Save
-          </div>
-        </div>
-      </div>
+        Cancel
+      </button>
+      <button
+        className="Shared__button DashboardCrossingListItem__save-button Shared__button--primary"
+        onClick={[Function]}
+      >
+        Submit
+      </button>
     </div>
   </div>
 </div>
@@ -2648,277 +2529,265 @@ exports[`Storyshots Crossing List Item Small Width 1`] = `
   className="storybook--sm"
 >
   <div
-    className="CrossingListItem"
+    className=""
   >
-    <div>
+    <div
+      className="DashboardCrossingListItem"
+    >
       <div
-        className="CrossingListItemFlexContainer"
+        className="DashboardCrossingListItem__overview"
       >
         <div
-          className="CrossingListItemFlexItem"
+          className="DashboardCrossingListItem__crossing-name"
         >
           <a
-            className="CrossingName"
             href="/dashboard/crossing/1"
           >
             Spurlock Valley
           </a>
         </div>
         <div
-          className="CrossingListItemFlexItem"
+          className="DashboardCrossingListItem__overview-details"
         >
           <div
-            className="LocationContainer"
+            className="DashboardCrossingListItem__overview-location"
           >
             <div
-              className="MapIcon"
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-map-marker"
-              />
-            </div>
-            <div
-              className="LocationText"
+              className="CrossingListItemLocationContainer"
             >
               <div>
                 605 Spurlock Valley · West Lake Hills, TX 78746
               </div>
               <div
-                style={
-                  Object {
-                    "fontStyle": "italic",
-                  }
-                }
+                className="CrossingListItemLocationContainer__description"
               >
                 E of Intersection w/ Clifford
               </div>
-              <div>
-                All of Texas.
+            </div>
+            <div
+              className="DashboardCrossingListItem__community-list"
+            >
+              <div
+                className="CrossingCommunityList"
+              >
+                <a
+                  href="/"
+                >
+                  All of Texas.
+                </a>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="CrossingListItemFlexItem"
-        >
           <div
-            className="DateTime"
+            className="DashboardCrossingListItem__overview-meta"
           >
-            <div
-              className="DateTime__clock-icon"
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-clock-o"
-              />
+            <div>
+              10/10/2017
+            </div>
+            <div>
+              4:35 AM
             </div>
             <div
-              className="DateTime__text"
+              className="DashboardCrossingListItem__user"
             >
-              <div>
-                10/10/17, 4:35 am
-              </div>
-              <div
-                style={
-                  Object {
-                    "textDecoration": "underline",
-                  }
-                }
-              >
-                S. Admin
-              </div>
+              S. Admin
             </div>
           </div>
         </div>
       </div>
       <div
-        className="CrossingListItemFlexContainer"
+        className="DashboardCrossingListItem__controls"
       >
         <div
-          className="CrossingListItemFlexItem"
+          className="DashboardCrossingListItem__control"
         >
           <div
-            className="ControlLabel"
+            className="DashboardCrossingListItem__control-meta"
           >
-            Status: 
-            Closed Longterm
+            <div
+              className="DashboardCrossingListItem__control-label"
+            >
+              <div>
+                Status: 
+                Closed Longterm
+              </div>
+            </div>
           </div>
           <div
-            className="StatusToggleContainer"
+            className="DashboardCrossingListItem__control-children"
           >
             <div
-              className="StatusToggle__open"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
+              className="StatusToggleContainer"
             >
-              <span
-                aria-hidden={true}
-                className="fa fa-circle-o"
-              />
-            </div>
-            <div
-              className="StatusToggle__caution"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-exclamation-triangle"
-              />
-            </div>
-            <div
-              className="StatusToggle__closed"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-              />
-            </div>
-            <div
-              className="StatusToggle__longterm--selected"
-              onClick={[Function]}
-              onMouseLeave={[Function]}
-              onMouseOver={[Function]}
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-times"
-                style={
-                  Object {
-                    "textDecoration": "underline",
+              <div
+                className="StatusToggle__open"
+                onClick={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+              >
+                <span
+                  aria-hidden={true}
+                  className="fa fa-circle-o"
+                />
+              </div>
+              <div
+                className="StatusToggle__caution"
+                onClick={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+              >
+                <span
+                  aria-hidden={true}
+                  className="fa fa-exclamation-triangle"
+                />
+              </div>
+              <div
+                className="StatusToggle__closed"
+                onClick={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+              >
+                <span
+                  aria-hidden={true}
+                  className="fa fa-times"
+                />
+              </div>
+              <div
+                className="StatusToggle__longterm--selected"
+                onClick={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+              >
+                <span
+                  aria-hidden={true}
+                  className="fa fa-times"
+                  style={
+                    Object {
+                      "textDecoration": "underline",
+                    }
                   }
-                }
-              />
+                />
+              </div>
             </div>
           </div>
         </div>
         <div
-          className="CrossingListItemFlexItem"
+          className="DashboardCrossingListItem__control"
         >
           <div
-            className="ControlLabelContainer"
+            className="DashboardCrossingListItem__control-meta"
           >
             <div
-              className="ControlLabel"
+              className="DashboardCrossingListItem__control-label"
             >
               Reason
             </div>
+          </div>
+          <div
+            className="DashboardCrossingListItem__control-children"
+          >
             <div
-              className="required"
+              className="Dropdown"
             >
-              
+              <select
+                className="Dropdown__select"
+                defaultValue={2}
+                id=""
+                name=""
+                onChange={[Function]}
+              >
+                <option
+                  value={1}
+                >
+                  Flooded
+                </option>
+                <option
+                  value={2}
+                >
+                  Bridge Broken
+                </option>
+              </select>
+              <div
+                className="Chevron"
+              >
+                <span
+                  aria-hidden={true}
+                  className="fa fa-chevron-down"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="DashboardCrossingListItem__control"
+        >
+          <div
+            className="DashboardCrossingListItem__control-meta"
+          >
+            <div
+              className="DashboardCrossingListItem__control-label"
+            >
+              Notes to the public
             </div>
           </div>
           <div
-            className="Dropdown"
+            className="DashboardCrossingListItem__control-children"
           >
-            <select
-              className="Dropdown__select"
-              defaultValue={2}
-              id=""
-              name=""
+            <input
+              className="DashboardCrossingListItem__notes-text-box"
               onChange={[Function]}
-            >
-              <option
-                value={1}
-              >
-                Flooded
-              </option>
-              <option
-                value={2}
-              >
-                Bridge Broken
-              </option>
-            </select>
-            <div
-              className="Chevron"
-            >
-              <span
-                aria-hidden={true}
-                className="fa fa-chevron-down"
-              />
-            </div>
+              type="text"
+              value="Gonna be a while"
+            />
           </div>
         </div>
         <div
-          className="CrossingListItemFlexItem"
+          className="DashboardCrossingListItem__control"
         >
           <div
-            className="ControlLabel"
-          >
-            Notes to the public
-          </div>
-          <input
-            className="NotesTextBox"
-            onChange={[Function]}
-            type="text"
-            value="Gonna be a while"
-          />
-        </div>
-      </div>
-      <div
-        className="CrossingListItemFlexContainer"
-      >
-        <div
-          className="CrossingListItemFlexItem--spacer"
-        />
-        <div
-          className="CrossingListItemFlexItem"
-        >
-          <div
-            className="ControlLabelContainer"
+            className="DashboardCrossingListItem__control-meta"
           >
             <div
-              className="ControlLabel"
+              className="DashboardCrossingListItem__control-label"
             >
               Duration
             </div>
-            <div
-              className="required"
-            >
-              
-            </div>
           </div>
           <div
-            className="Dropdown"
+            className="DashboardCrossingListItem__control-children"
           >
-            <select
-              className="Dropdown__select"
-              defaultValue={2}
-              id=""
-              name=""
-              onChange={[Function]}
-            >
-              <option
-                value={1}
-              >
-                A Minute
-              </option>
-              <option
-                value={2}
-              >
-                A Week
-              </option>
-            </select>
             <div
-              className="Chevron"
+              className="Dropdown"
             >
-              <span
-                aria-hidden={true}
-                className="fa fa-chevron-down"
-              />
+              <select
+                className="Dropdown__select"
+                defaultValue={2}
+                id=""
+                name=""
+                onChange={[Function]}
+              >
+                <option
+                  value={1}
+                >
+                  A Minute
+                </option>
+                <option
+                  value={2}
+                >
+                  A Week
+                </option>
+              </select>
+              <div
+                className="Chevron"
+              >
+                <span
+                  aria-hidden={true}
+                  className="fa fa-chevron-down"
+                />
+              </div>
             </div>
           </div>
         </div>
-        <div
-          className="CrossingListItemFlexItem--spacer"
-        />
       </div>
     </div>
   </div>

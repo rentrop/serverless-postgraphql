@@ -3,8 +3,9 @@ import { get } from 'lodash';
 import { displayedInputs } from 'constants/StatusConstants';
 import StatusIcon from 'components/Shared/StatusIcon';
 import 'components/Dashboard/CrossingStatusHistory/CrossingStatusHistory.css';
-import moment from 'moment';
 import classnames from 'classnames';
+import Date from 'components/Shared/DateTime/Date';
+import Hour from 'components/Shared/DateTime/Hour';
 
 const ReasonDurationNotes = ({
   shouldDisplayReason,
@@ -89,7 +90,7 @@ class CrossingStatusHistoryItem extends Component {
           <div className="CrossingStatusHistoryItem__crossing-name">
             <a
               href={`/dashboard/crossing/${crossingId}`}
-              className="CrossingName"
+              className="PublicCrossingListItem__crossing-name"
             >
               {crossingName}
             </a>
@@ -134,14 +135,10 @@ class CrossingStatusHistoryItem extends Component {
                 )}
               >
                 <div className="CrossingStatusHistoryItem__datetime-date">
-                  {moment(createdAt).calendar(null, {
-                    lastDay: '[Yesterday]',
-                    sameDay: '[Today]',
-                    sameElse: 'MM/DD/YYYY',
-                  })}
+                  <Date date={createdAt} />
                 </div>
                 <div className="CrossingStatusHistoryItem__datetime-time">
-                  {moment(createdAt).format('h:mm A')}
+                  <Hour date={createdAt} />
                 </div>
               </div>
             </div>

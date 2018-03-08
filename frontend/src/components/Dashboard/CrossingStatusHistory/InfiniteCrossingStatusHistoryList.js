@@ -8,7 +8,7 @@ import {
   CellMeasurer,
   CellMeasurerCache,
 } from 'react-virtualized';
-import 'components/Dashboard/CrossingListPage/CrossingList.css';
+import 'components/Dashboard/CrossingListPage/CrossingListPage.css';
 
 let virtualizingList = [];
 let listRef;

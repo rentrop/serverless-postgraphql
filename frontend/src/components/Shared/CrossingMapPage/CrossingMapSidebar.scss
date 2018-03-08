@@ -30,7 +30,6 @@
   padding: 10px;
   margin-top: 24px;
   border-radius: 0px 5px 5px 0px;
-  border: 1px solid #046bb6;
   border-left: none;
   .fa {
     margin-top: 5px;
@@ -38,83 +37,51 @@
 }
 
 .CrossingMapPage_sidebar-filter-sort-toggle-container {
-  background: #004d90;
-  height: 30px;
+  background: #2c579b;
+  display: flex;
+  color: #fff;
+  flex-direction: row;
+  font-size: 1.3em;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
 }
 
-.CrossingMapPage_sidebar-filter-toggle-text {
-  color: white;
-  padding: 5px;
-  padding-left: 15px;
-  font-size: 1.3rem;
+.CrossingMapPage_sidebar-filter-toggle {
+  display: flex;
+  flex: 1;
+  padding: 5px 20px;
+  text-transform: uppercase;
 }
 
-.CrossingMapPage_sidebar-filter-container {
-  background: #006cb5;
-  height: 60px;
+.CrossingMapPage_sidebar-filter-toggle-icon {
+  padding-right: 5px;
+}
+.CrossingMapPage_sidebar-sort-toggle-icon {
+  padding-left: 5px;
+}
+
+.CrossingMapPage_sidebar-sort-toggle {
+  padding: 5px 20px;
+  text-transform: uppercase;
 }
 
 .CrossingMapPage_sidebar-filter {
   color: white;
-  line-height: 60px;
+  padding: 10px 0;
+  margin: 0 5px;
   font-size: 1.3rem;
-  margin: 20px;
-}
-
-.CrossingMapPage_sidebar-nearby-crossing-container {
-  @include flexcontainer;
-  background: white;
-  margin-bottom: 4px;
-}
-
-.CrossingMapPage_sidebar-nearby-crossing-status-icon {
-  min-width: 60px;
-  img {
-    margin-left: 5px;
-  }
-}
-
-.CrossingMapPage_sidebar-nearby-crossing-details {
-  flex: auto;
-}
-
-.CrossingMapPage_sidebar-nearby-crossing-details-status {
-  font-size: 1.0rem;;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
   text-transform: uppercase;
-  font-weight: 600;
-  color: #757575;
-  padding-top: 10px;
+  display: flex;
+  align-items: center;
 }
 
-.CrossingMapPage_sidebar-nearby-crossing-details-name {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-top: 2px;
-}
-
-.CrossingMapPage_sidebar-nearby-crossing-update-datetime {
-  margin-right: 10px;
-  text-align: right;
-}
-
-.CrossingMapPage_sidebar-nearby-crossing-update-datetime-date {
-  font-size: 1.0rem;;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #757575;
-  padding-top: 10px;
-}
-
-.CrossingMapPage_sidebar-nearby-crossing-update-datetime-time {
-  font-size: 1.3rem;
-  font-weight: 300;
-}
-
-.CrossingMapPage_sidebar-nearby-crossing-details-communities {
-  font-size: 1.3rem;
-  font-weight: 300;
-  margin-top: 5px;
-  margin-bottom: 10px;
+.CrossingMapPage_sidebar-filter-container {
+  background: #3b77bd;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 10px;
 }
 
 .CrossingMapPage_sidebar-nearbycrossings {
@@ -122,10 +89,10 @@
 }
 
 .CrossingMapPage_sidebar-nearby-history-toggle {
-  background: #009FF2;
+  background: #009ff2;
   display: flex;
   height: 45px;
-  color: #7FA8CB;
+  color: #7fa8cb;
   font-size: 1.7rem;
   line-height: 3.7rem;
   text-align: center;
@@ -133,22 +100,22 @@
 
 .CrossingMapPage_sidebar-nearby-tab {
   flex: auto;
-  background: #004D90;
+  background: #004d90;
   height: 37px;
 }
 
 .CrossingMapPage_sidebar-history-tab {
   flex: auto;
-  background: #004D90;
+  background: #004d90;
   height: 37px;
 }
 
 .CrossingMapPage_sidebar-nearby-tab.selected {
-  background: #009FF2;
+  background: #009ff2;
   color: white;
 }
 
 .CrossingMapPage_sidebar-history-tab.selected {
-  background: #009FF2;
+  background: #009ff2;
   color: white;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import CrossingListItem from 'components/Dashboard/CrossingListPage/CrossingListItem/CrossingListItem';
+import CrossingListItem from 'components/Dashboard/CrossingListPage/DashboardCrossingListItem/DashboardCrossingListItem';
 
 const reasons = [
   { id: 1, name: 'Flooded', statusId: 2 },

@@ -14,7 +14,7 @@ let infiniteCrossingListRef;
 let crossingQueryVariables;
 
 const containerQuery = {
-  'CrossingListItem--lg': {
+  'DashboardCrossingListItem--lg': {
     minWidth: 600,
   },
 };

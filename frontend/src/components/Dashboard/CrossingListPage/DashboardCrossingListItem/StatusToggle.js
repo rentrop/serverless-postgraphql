@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import * as statusConstants from 'constants/StatusConstants';
-import 'components/Dashboard/CrossingListPage/CrossingListItem/StatusToggle.css';
+import 'components/Dashboard/CrossingListPage/DashboardCrossingListItem/StatusToggle.css';
 
 class StatusToggle extends React.Component {
   constructor(props) {

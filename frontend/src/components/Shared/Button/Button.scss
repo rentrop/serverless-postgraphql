@@ -1,0 +1,21 @@
+.Shared__button {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 1rem;
+  border: 2px solid #0054ff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Shared__button--primary {
+  color: #0054ff;
+  margin-right: 15px;
+}
+
+.Shared__button--secondary {
+  color: white;
+  background-color: #0054ff;
+  margin-left: 15px;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import CrossingListItem from 'components/Dashboard/CrossingListPage/CrossingListItem/CrossingListItem';
+import CrossingListItem from 'components/Dashboard/CrossingListPage/DashboardCrossingListItem/DashboardCrossingListItem';
 import {
   InfiniteLoader,
   AutoSizer,
@@ -8,7 +8,7 @@ import {
   CellMeasurer,
   CellMeasurerCache,
 } from 'react-virtualized';
-import 'components/Dashboard/CrossingListPage/CrossingList.css';
+import 'components/Dashboard/CrossingListPage/CrossingListPage.css';
 
 let virtualizingList = [];
 let listRef;

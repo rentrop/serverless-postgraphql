@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Location from 'components/Dashboard/CrossingListPage/CrossingListItem/Location';
+import Location from 'components/Shared/CrossingListItem/Location';
 
 const crossing = {
   id: 1,

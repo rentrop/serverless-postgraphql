@@ -1,0 +1,79 @@
+.DashboardCrossingListItem {
+  font-size: 1.5rem;
+  border-bottom: 1px solid #cfd8dc;
+}
+
+.DashboardCrossingListItem__overview {
+  background: #f9f9fa;
+  padding: 2rem;
+}
+
+.DashboardCrossingListItem__controls {
+  background: #fff;
+  padding: 0 1rem 1.5rem
+}
+
+.DashboardCrossingListItem--lg .DashboardCrossingListItem__controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.DashboardCrossingListItem.DashboardCrossingListItem--dirty {
+  outline: 4px solid #40b3ff;
+}
+
+.DashboardCrossingListItem__crossing-name {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.DashboardCrossingListItem__crossing-name a {
+  color: #000;
+  text-decoration: none;
+}
+
+.DashboardCrossingListItem__overview-details {
+  display: flex;
+}
+
+.DashboardCrossingListItem__overview-location {
+  flex: 1;
+}
+.DashboardCrossingListItem__overview-meta {
+  flex: 1;
+  text-align: right;
+}
+
+.DashboardCrossingListItem__community-list, .DashboardCrossingListItem__user {
+  margin-top: 0.5rem;
+}
+
+.DashboardCrossingListItem__notes-text-box {
+  width: 100%;
+  font-size: 1.5rem;
+  text-indent: 12px;
+  height: 40px;
+  overflow: hidden;
+  border: 1px solid #b0bec5;
+  background: #f9f9fa;
+  border-radius: 5px;
+}
+
+.DashboardCrossingListItem__button-container {
+  display: flex;
+  justify-content: flex-end;
+  flex-basis: 300px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.DashboardCrossingListItem__cancel-button {
+  margin-right: 1.5rem;
+}
+
+.DashboardCrossingListItem__save-button {
+
+}
