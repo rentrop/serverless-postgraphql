@@ -25,7 +25,6 @@ class PublicCrossingListItem extends React.Component {
     const { crossing } = this.props;
     const {
       createdAt,
-      userByCreatorId,
     } = crossing.statusUpdateByLatestStatusUpdateId;
 
     var show = [];
