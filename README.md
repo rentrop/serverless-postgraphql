@@ -4,7 +4,10 @@ and [postgraphql](https://github.com/calebmer/postgraphql)
 
 * [Short Intro to postgraphql](https://www.youtube.com/watch?v=b3pwlCDy6vY)
 
-# How to use:
+> Official lambda implementation from the postgraphql-creators:
+https://github.com/graphile/postgraphile-lambda-example
+
+# How to use my implementation:
 
 ## Setup
 💾 Install [Serverless](https://github.com/serverless/serverless#quick-start)
